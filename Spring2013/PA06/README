@@ -1,0 +1,35 @@
+In this assignment, you need to write README and submit it with your
+program.
+
+What to put inside README?
+
+First of all, you must understand that you write README for yourself,
+not for the teaching staff.  The teaching staff already know how to
+write this program.
+
+Write README explaining how to write this program.  You should write
+README before writing your program.  Why?  You need to think carefully
+about the problem and the solution before writing code.  Explain why
+you write the program in this way.  Explain why you use one function
+vs another (for example, should you use fgetc, fscanf, fgets, or
+something else?).  How do you write the comparison function for qsort?
+
+The students that received high scores in ECE 264 would likely tell
+you that they wrote README and comments before they wrote code.  As a
+general rule, if you rush to write code, you will spend much more
+time.  The more time you spend on thinking and designing, the less
+time you spend on coding and debugging.  
+
+Treat gcc warnings seriously.  In most cases, the warnings are serious
+problems. There were many cases when students thought, "I will make my
+program work first and then I will worry about the warnings."  Their
+programs did not work because they ignored the warnings. 
+
+You can use README to document your progress.  For example, you can
+write down 
+
+I did ....  and it did not work.  Later, I found the solution should
+be ...
+
+Again, write README for youself, not for the teaching staff.  Use
+README as an opportunity for learning.

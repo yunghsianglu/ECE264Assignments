@@ -1,0 +1,128 @@
+subset of A B C D E F G 
+G 
+F 
+F G 
+E 
+E G 
+E F 
+E F G 
+D 
+D G 
+D F 
+D F G 
+D E 
+D E G 
+D E F 
+D E F G 
+C 
+C G 
+C F 
+C F G 
+C E 
+C E G 
+C E F 
+C E F G 
+C D 
+C D G 
+C D F 
+C D F G 
+C D E 
+C D E G 
+C D E F 
+C D E F G 
+B 
+B G 
+B F 
+B F G 
+B E 
+B E G 
+B E F 
+B E F G 
+B D 
+B D G 
+B D F 
+B D F G 
+B D E 
+B D E G 
+B D E F 
+B D E F G 
+B C 
+B C G 
+B C F 
+B C F G 
+B C E 
+B C E G 
+B C E F 
+B C E F G 
+B C D 
+B C D G 
+B C D F 
+B C D F G 
+B C D E 
+B C D E G 
+B C D E F 
+B C D E F G 
+A 
+A G 
+A F 
+A F G 
+A E 
+A E G 
+A E F 
+A E F G 
+A D 
+A D G 
+A D F 
+A D F G 
+A D E 
+A D E G 
+A D E F 
+A D E F G 
+A C 
+A C G 
+A C F 
+A C F G 
+A C E 
+A C E G 
+A C E F 
+A C E F G 
+A C D 
+A C D G 
+A C D F 
+A C D F G 
+A C D E 
+A C D E G 
+A C D E F 
+A C D E F G 
+A B 
+A B G 
+A B F 
+A B F G 
+A B E 
+A B E G 
+A B E F 
+A B E F G 
+A B D 
+A B D G 
+A B D F 
+A B D F G 
+A B D E 
+A B D E G 
+A B D E F 
+A B D E F G 
+A B C 
+A B C G 
+A B C F 
+A B C F G 
+A B C E 
+A B C E G 
+A B C E F 
+A B C E F G 
+A B C D 
+A B C D G 
+A B C D F 
+A B C D F G 
+A B C D E 
+A B C D E G 
+A B C D E F 
+A B C D E F G 

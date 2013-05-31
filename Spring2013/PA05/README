@@ -1,0 +1,26 @@
+This assignment will have you work with strings and pointers.  We ask
+you to implement a number of string manipulation functions.  Many of
+these functions are already available in the C standard library
+(string.h); here we will create our own versions of these functions.
+You are obviously NOT allowed to use the existing versions in your
+implementing.  Instead, you must implement all the code yourself.
+
+Please see the files pa05.h and answer05.c for the function prototypes
+you will be asked to write.  Fill in answer05.c with your code and
+submit only this file through Blackboard.
+
+While string management often requires you to manage memory as well,
+this is not necessary for the functions we ask you write here.  You
+should not be required to create new memory, not even for temporary
+storage.  If you find yourself using malloc(), strdup(), and/or
+free(), you are not solving this problem in the easiest way possible.
+We will not deduct points for the use of dynamic memory management,
+but you are reponsible for any memory leaks you may introduce.
+
+A NULL-terminated string contains '\0' as the end of the string.  You
+do not need to worry about the characters (if any) after '\0'.
+
+NOTE:
+Type "make" to compile the source code.
+Type "make grade -s" to run the grading script.
+Type "make clean" to remove generated files.

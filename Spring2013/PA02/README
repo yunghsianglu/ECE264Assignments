@@ -1,0 +1,5 @@
+This assignment asks you to compute several properties of an array of
+integers.  The functions are the same as those in PA01 but you must
+implement these functions using recursion.  You cannot use for or
+while or goto.
+

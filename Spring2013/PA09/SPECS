@@ -1,0 +1,53 @@
+In this assignment, you need to submit the following files:
+
+README
+Makefile
+pa09.c (You need to modify pa09.c.)
+tree.h
+tree.c
+helper.h
+helper.c
+
+You need to create a zip file that include all of these files.
+(Remember README)
+
+This assignment has the following purposes:
+
+* learn how to use binary search trees: insert, search, delete, and
+  destroy
+
+* learn how to write the main function
+
+* learn how to write Makefile
+
+Your program needs to have the following functions:
+
+* Read commands and integers from a file.  You do not know the length
+  of the file and you must NOT scan the file to count the number of
+  lines.  Instead, the program must allocate memory as more data is
+  read.  
+
+* Your program cannot use fseek or rewind in this program.  Your program
+  can read the input file only once.
+
+* The program stores the integers in a binary search tree.
+
+* Delete some integers in the binary search tree. The tree must
+  maintain the properties of a binary search tree, i.e., no
+  duplicates, all values in the left substree are smaller than the
+  root, all values in the right substree are smaller than the root,
+  recursively.
+
+* It is possible that the input file may contain duplicate integers.
+
+*************
+* IMPORTANT *
+*************
+  If your program leaks memory (reported by valgrind), you will lose
+  1% for every leaked byte.
+
+NOTE:
+Type "make" to compile the source code.
+Type "make grade -s" to run the grading script.
+Type "make clean" to remove generated files.
+

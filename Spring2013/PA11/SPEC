@@ -1,0 +1,163 @@
+------------------------------------------------------------------
+ECE 264 - SPRING 2013 - PROGRAMMING ASSIGNMENT 11
+------------------------------------------------------------------
+(Derived from an assignment by Professor Vijay Raghunathan)
+
+In this assignment, you will continue your work on Huffman coding to
+not only decode the Huffman tree, but also use it to decode a
+compressed file.
+
+
+INTRODUCTION
+============
+
+As stated in last week's assignment, Huffman coding is a very common
+compression technique used in both JPEG and MP3 compression.  Please
+see the file pa11.pdf that comes with this assignment to read more
+about Huffman coding.
+
+
+ASSIGNMENT
+==========
+ 
+Write a program that takes a compressed file, reads the Huffman tree
+specified by the header, and decompresses the file.
+
+
+PRACTICALITIES
+============== 
+
+There will not be a skeleton provided for this assignment.  It will be
+up to you to define all functions.  Your program should have at least
+2 .c files and 1 .h file.  The Google repository comes with no files
+expect for this specification, the PDF file, and test cases.  You
+should use your code from PA10 as a starting point.
+
+Since this assignment overlaps with PA10, you can earn some
+points back for PA10.  Your score for PA10 is the higher value
+between:
+
+   1. original score for PA10
+   2. 80% of PA11
+
+For example, if you received 0.5 points in PA10 and 4 in PA11, your
+score for PA10 becomes 3.2.
+
+
+SPECIFICATIONS
+============== 
+
+* The program takes two input arguments:
+
+  1. the input filename of the compressed file; and
+  2. the output filename for the uncompressed file.
+
+* If both filenames are not provided, the program prints an error
+  message and terminates with return value EXIT_FAILURE.  If any of
+  the files cannot be opened, it also prints an error message and
+  returns EXIT_FAILURE.  If things go well, your program returns
+  EXIT_SUCCESS. These two constants are defined in stdlib.h and your
+  program needs to include that header file.
+
+* You must include a Makefile in your submission.  There is a Makefile
+  attached that you can use and modify as needed.  Your program will
+  be compiled and built using your Makefile.  The name of the
+  executable file must be 'pa11' (case-sensitive, no extension).
+
+* Your code needs to follow the coding standards specified here:
+  https://engineering.purdue.edu/OOSD/F2012/Exercises/Coding_Standards.doc
+
+  We will manually check this and you can lose points if standards are
+  not followed.  You can find examples of how to follow the coding
+  standards here.
+
+* Your program will read the file header, build the Huffman tree, and
+  then use the Huffman tree to decode the data following the header.
+  The uncompressed data should be written to the output file.
+
+* Be wary of memory leaks!  Remember to completely deallocate your
+  Huffman tree and close all open files at the end of your program.
+ 
+
+HINTS
+=====
+
+* As specified in the pa11.pdf file, the data in the body of the
+  compressed files (i.e. not the header) is bit-packed.  This means
+  that we are using the individual bits in each character (8 bits) in
+  the file to store the 0/1 Huffman codes.  To manipulate individual
+  bits, it might be useful for you to define the following functions:
+
+  - int getBit(int data, int bitPos): get the value of a bit in a
+    position
+
+  - int setBit(int data, int bitPos): return a new version of data
+    where a particular bit has been set (assigned 1)
+
+  - int clearBit(int data, int bitPos): return a new version of data
+    where a particular bit has been cleared (assigned 0)
+
+* Because the codes are packed into individual bits, it is possible
+  (indeed, likely) that some Huffman codes will span more than one
+  byte.  You will need to 
+
+* The bit-packing uses a bit order starting with bit position 7 and
+  descending to 0. 
+
+* You need to use structures for this assignment.  See tree.h for the
+  Huffman node structure.
+
+* We will check whether your program initializes all pointers to NULL.
+  This can be accomplished in the following ways.
+
+  - int * ptr = NULL; /* initialized to NULL, required */
+  - int * ptr; 
+  - ptr = NULL; /* immediately after declaring ptr */
+  - int * ptr = malloc(numberElement * sizeof(int));
+
+  If you write the following code without initialization, you will
+  lose 0.2 points.
+
+  - int * ptr; /* uninitialized pointer. NOT ALLOWED */
+
+  Why do we check this? Uninitializing pointers make a program's
+  behavior unpredictable.
+
+  (You are also allowed to declare and allocate memory for a pointer
+  immediately using malloc() or calloc().)
+
+
+WHAT TO SUBMIT?
+===============
+
+Submit a .zip file containing the following files: 
+
+1. All the .c and .h files needed to execute your assignment.  All
+   submission for this programming assignment should have at least 2
+   .c files and 1 .h file.  You can have more .c and .h files as you
+   see fit.  Any submissions with one .c file will have points
+   deducted.
+
+2. Makefile to compile your assignment (target should be 'pa11').
+
+3. A README file that describes the algorithm used in your assignment.
+   The README should say how the functions accomplish their goals, not
+   just the goals themselves.
+ 
+
+HOW TO SUBMIT?
+==============
+ 
+Your submission should be submitted through Blackboard.  You can
+submit as many times on Blackboard as you need before the deadline. We
+will grade the final submission, so please make sure that it is your
+FINAL version with everything included.
+
+
+HOW WILL WE GRADE YOUR SUBMISSION?
+==================================
+ 
+We will grade your assignments on algorithm correctness through DDD,
+memory allocation and deletions through valgrind, proper coding
+standards, content of README, a proper Makefile, and commenting.
+ 

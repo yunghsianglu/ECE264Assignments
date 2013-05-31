@@ -1,0 +1,64 @@
+subset of A B C D E F 
+F 
+E 
+E F 
+D 
+D F 
+D E 
+D E F 
+C 
+C F 
+C E 
+C E F 
+C D 
+C D F 
+C D E 
+C D E F 
+B 
+B F 
+B E 
+B E F 
+B D 
+B D F 
+B D E 
+B D E F 
+B C 
+B C F 
+B C E 
+B C E F 
+B C D 
+B C D F 
+B C D E 
+B C D E F 
+A 
+A F 
+A E 
+A E F 
+A D 
+A D F 
+A D E 
+A D E F 
+A C 
+A C F 
+A C E 
+A C E F 
+A C D 
+A C D F 
+A C D E 
+A C D E F 
+A B 
+A B F 
+A B E 
+A B E F 
+A B D 
+A B D F 
+A B D E 
+A B D E F 
+A B C 
+A B C F 
+A B C E 
+A B C E F 
+A B C D 
+A B C D F 
+A B C D E 
+A B C D E F 

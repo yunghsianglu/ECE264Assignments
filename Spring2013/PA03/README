@@ -1,0 +1,111 @@
+This assignment asks you to solve three problems using recursion.  You
+will find that the solutions have similar structures.
+
+The three problems are
+
+* partition a positive integer
+* list all subsets of a given set
+* permute the elements in a set
+
+You should change only answer03.c.  You can add more functions in
+that file.  Do not modify pa03.h or pa03.c.
+
+Please check the sample outputs for the formats.
+
+The outputs of your programs are sorted before being compared with the
+expected outputs.  Thus, you do not need to worry about the
+orders. For example, your program may output
+
+A B C
+C B A
+
+even though in the sample output, the order is
+
+C B A
+A B C
+
+-----------------------------------------------------
+
+Partitioning an integer means breaking the integer into the sum of
+some positive integers (including the integer itself).
+
+For example, 3 can be partitioned into
+   1 + 1 + 1 
+   1 + 2
+   2 + 1
+   3
+
+Your solution should be general.  You will receive zero if you hard
+code the answers for some cases, something like the following:
+
+   if (n == 3)
+   {
+     printf("1 + 1 + 1\n");
+     printf("1 + 2\n");
+     printf("2 + 1\n");
+     printf("3\n");
+   }
+
+This solution is not general and you fail to demonstrate understanding
+of recursion.
+
+-----------------------------------------------------
+
+A set's subsets include none, some, or all elements of the set.  
+
+For this problem, we do not include the empty set.
+
+For example, consider the set {A, B, C, D}
+
+The subsets include
+{A}
+{B}
+{C}
+{D}
+{A, B}
+{A, C}
+{A, D}
+{B, C}
+{B, D}
+{C, D}
+{A, B, C}
+{A, C, D}
+{A, B, D}
+{B, C, D}
+{A, B, C, D}
+
+The orders of the elements do not matter.
+
+Similar to the integer partition problem, your program must provide a
+general solution.  You cannot do anything like 
+
+   if (n == 3)
+   {
+      ...
+   }
+
+   if (n == 4)
+   {
+      ...
+   }
+
+-----------------------------------------------------
+
+Permutation is similar to the subset problem but the orders matter.
+Thus,
+
+A B C D
+
+is considered different from
+
+A C D B
+
+-----------------------------------------------------
+
+To simplify the outputs of your program, you do not need to print "+"
+for integer partition, "{", ",", or "}" for subsets.  Use space to
+separate the numbers and the elements.  Please check the sample outputs
+for the formats.
+
+
+

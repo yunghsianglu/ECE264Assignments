@@ -1,0 +1,298 @@
+------------------------------------------------------------------
+ECE 265 - SPRING 2013 - PROGRAMMING ASSIGNMENT 10
+------------------------------------------------------------------
+(Derived from an assignment by Professor Vijay Raghunathan)
+
+In this assignment, you will utilize your knowledge about priority
+queues, stacks, and trees to design a file compression program and
+file decompression program (similar to zip and unzip).  
+
+
+INTRODUCTION
+============
+
+You will base your utilities on the widely used algorithmic technique
+of Huffman coding, which is used in JPEG compression as well as in MP3
+audio compression. Please see the file pa10.pdf that comes with the
+assignment to read more about Huffman coding.
+
+
+ASSIGNMENT
+==========
+ 
+Write a program that takes in a compressed file and generates the
+Huffman tree specified by the header.
+
+
+SPECIFICATIONS
+============== 
+
+There will not be a skeleton provided for this assignment.  It will be
+up to you to define all functions.  Your program should have at least
+2 .c files and 1 .h file.  The Google repository provides two files
+that will be helpful in the testing of your algorithm.  They include:
+
+  - tree.h - a header file containing the function header for the
+    function Huff_postOrderPrint as well as the the definition of the
+    HuffNode structure. You must use this definition for your tree
+    nodes.  Do not edit the provided header file.  The function header
+    for Huff_postOrderPrint is:
+    
+      void Huff_postOrderPrint(HuffNode *tree)
+
+  - tree.c - a .c file that contains the code for Huff_postOrderPrint.
+    Do not write your own version of PostOrderWalk.
+
+  - A suite of inputs and their expected outputs.
+
+Here are the specifications for the pa10 program:
+
+* The program takes one input argument as the compressed file. If this
+  input filename is not provided, the program prints an error message
+  and terminates with return value EXIT_FAILURE.  If the file cannot
+  be opened, it also prints an error message and returns EXIT_FAILURE.
+  This constant is defined in stdlib.h and your program needs to
+  include that header file.
+
+* You must include a Makefile in your submission.  Your program will
+  be compiled and built using your Makefile.  The name of the
+  executable file must be 'pa10' (case-sensitive, no extension).
+
+* Your code needs to follow the coding standards specified here:
+  https://engineering.purdue.edu/OOSD/F2012/Exercises/Coding_Standards.doc
+
+  We will manually check this and you can lose points if standards are
+  not followed.  You can find examples of how to follow the coding
+  standards here.
+
+* Your program will read the file header, build the Huffman tree, and
+  finally call Huff_postOrderPrint to generate the required output.
+
+* Be wary of memory leaks!  Remember to completely deallocate your
+  Huffman tree at the end of your program.
+ 
+ 
+SAMPLE OUTPUT
+=============
+
+Consider the compressed file for string "streets are stone stars are
+not", the output file of the program should read as follows:
+
+Left
+Left
+Left
+Back
+Right
+Back
+Leaf: t
+Back
+Right
+Left
+Left
+Back
+Right
+Back
+Leaf: a
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf: r
+Back
+Back
+Back
+Right
+Left
+Left
+Left
+Left
+Back
+Right
+Back
+Leaf: n
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf: o
+Back
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf:  
+Back
+Back
+Right
+Left
+Left
+Back
+Right
+Back
+Leaf: e
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf: s
+Back
+Back
+Back
+Back
+ 
+Consider the compressed file for string "go go gophers", the output
+file of the program should read as follows:
+
+Left
+Left
+Left
+Back
+Right
+Back
+Leaf: g
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf: o
+Back
+Back
+Right
+Left
+Left
+Left
+Back
+Right
+Back
+Leaf: s
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf:  
+Back
+Back
+Right
+Left
+Left
+Left
+Back
+Right
+Back
+Leaf: e
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf: h
+Back
+Back
+Right
+Left
+Left
+Back
+Right
+Back
+Leaf: p
+Back
+Right
+Left
+Back
+Right
+Back
+Leaf: r
+Back
+Back
+Back
+Back
+Back
+
+
+HINTS
+=====
+
+* You need to use structures for this assignment.  See tree.h for the
+  Huffman node structure.
+
+* A stack is a last-in first-out (LIFO) data structure that is very
+  similar to a linked list, but it has three special operations:
+  
+  - push: place a new item (a Huffman subtree?) on the top of the
+    stack, making this the new top.
+
+  - peek: access the item (the Huffman subtree?) at the top of the
+    stack, but does not change the stack.
+
+  - pop: removes (and deallocates) the topmost element of the stack,
+    making the next element the new top.
+
+  It is also highly likely that you need a function to check the
+  number of elements currently on the stack.
+
+* We will check whether your program initializes all pointers to NULL.
+  This can be accomplished in the following ways.
+
+  - int * ptr = NULL; /* initialized to NULL, required */
+  - int * ptr; 
+  - ptr = NULL; /* immediately after declaring ptr */
+  - int * ptr = malloc(numberElement * sizeof(int));
+
+  If you write the following code without initialization, you will
+  lose 0.2 point.
+
+  - int * ptr; /* uninitialized pointer. NOT ALLOWED */
+
+  Why do we check this? Uninitializing pointers make a program's
+  behavior unpredictable.
+
+  (You are also allowed to declare and allocate memory for a pointer
+  immediately using malloc() or calloc().)
+
+
+WHAT TO SUBMIT?
+===============
+
+Submit a .zip file containing the following files: 
+
+1. All the .c and .h files needed to execute your assignment.  All
+   submission for this IPA should have at least 2 .c files and 1 .h
+   file.  You can have more .c and .h files as you see fit.  Any
+   submissions with one .c file will have points deducted.
+
+2. Makefile to compile your assignment (target should be 'pa10').
+
+3. A README file that describes the algorithm used in your assignment.
+   The README should say how the functions accomplish their goals, not
+   just the goals themselves.
+ 
+
+HOW TO SUBMIT?
+==============
+ 
+Your submission should be submitted through Blackboard.  You can
+submit as many times on Blackboard as you need before the deadline. We
+will grade the final submission, so please make sure that it is your
+FINAL version with everything included.
+
+
+HOW WILL WE GRADE YOUR SUBMISSION?
+==================================
+ 
+We will grade your assignments on algorithm correctness through DDD,
+memory allocation and deletions through valgrind, proper coding
+standards, content of README, a proper Makefile, and commenting.
+ 
