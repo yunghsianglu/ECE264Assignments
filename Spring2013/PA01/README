@@ -1,0 +1,70 @@
+This assignment asks you to compute several properties of an array of
+integers.  
+
+You should modify only the file answer01.c  
+
+You can add additional functions in answer01.c.  
+
+You can add new functions.  This is true for all assignments.
+
+Some parts of the program have already been written for you and you
+should not modify those parts.
+
+This assignment includes many pieces of useful information and you
+will learn these pieces in the coming weeks.  Do not worry if you do
+not understand everything in the first week.  Focus on writing the
+functions in answer01.c.  If you have taken the prerequisite CS 159, you
+should have no problem filling the code for these functions.
+
+If you need help, please visit the intructors' or the teaching
+assistants' office hours.
+
+=================================================================
+
+This assignment asks you to 
+* add all elements in an array of integers
+* determine whether any element in the array is a negative number
+* determine whether the elements' values are increasing
+
+This program has the following files
+pa01.h     a header file
+pa01.c     a C file for main
+answer01.c   a C file
+inputgen.c a C file used to generate the test cases
+Makefile   
+
+You need to worry about answer01.c only.  You are certainly welcome to
+read the other files.  Do not worry if you do not understand the other
+files yet.  
+
+To execute and to test your program, type
+
+   	       make
+
+in Linux terminal.  
+
+You will receive the score of your program.
+
+You can use 
+
+    	    make -s
+
+to print fewer messages.  
+
+If you have not changed the program since that last time you type
+make and you type make again, you will get this message
+
+make: `pa01' is up to date.
+
+Please type 
+
+       	    make clean
+
+then
+
+	    make
+
+================================================================
+
+After you finish this program, upload answer01.c to Blackboard and
+submit it.

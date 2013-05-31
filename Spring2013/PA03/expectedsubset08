@@ -1,0 +1,256 @@
+subset of A B C D E F G H 
+H 
+G 
+G H 
+F 
+F H 
+F G 
+F G H 
+E 
+E H 
+E G 
+E G H 
+E F 
+E F H 
+E F G 
+E F G H 
+D 
+D H 
+D G 
+D G H 
+D F 
+D F H 
+D F G 
+D F G H 
+D E 
+D E H 
+D E G 
+D E G H 
+D E F 
+D E F H 
+D E F G 
+D E F G H 
+C 
+C H 
+C G 
+C G H 
+C F 
+C F H 
+C F G 
+C F G H 
+C E 
+C E H 
+C E G 
+C E G H 
+C E F 
+C E F H 
+C E F G 
+C E F G H 
+C D 
+C D H 
+C D G 
+C D G H 
+C D F 
+C D F H 
+C D F G 
+C D F G H 
+C D E 
+C D E H 
+C D E G 
+C D E G H 
+C D E F 
+C D E F H 
+C D E F G 
+C D E F G H 
+B 
+B H 
+B G 
+B G H 
+B F 
+B F H 
+B F G 
+B F G H 
+B E 
+B E H 
+B E G 
+B E G H 
+B E F 
+B E F H 
+B E F G 
+B E F G H 
+B D 
+B D H 
+B D G 
+B D G H 
+B D F 
+B D F H 
+B D F G 
+B D F G H 
+B D E 
+B D E H 
+B D E G 
+B D E G H 
+B D E F 
+B D E F H 
+B D E F G 
+B D E F G H 
+B C 
+B C H 
+B C G 
+B C G H 
+B C F 
+B C F H 
+B C F G 
+B C F G H 
+B C E 
+B C E H 
+B C E G 
+B C E G H 
+B C E F 
+B C E F H 
+B C E F G 
+B C E F G H 
+B C D 
+B C D H 
+B C D G 
+B C D G H 
+B C D F 
+B C D F H 
+B C D F G 
+B C D F G H 
+B C D E 
+B C D E H 
+B C D E G 
+B C D E G H 
+B C D E F 
+B C D E F H 
+B C D E F G 
+B C D E F G H 
+A 
+A H 
+A G 
+A G H 
+A F 
+A F H 
+A F G 
+A F G H 
+A E 
+A E H 
+A E G 
+A E G H 
+A E F 
+A E F H 
+A E F G 
+A E F G H 
+A D 
+A D H 
+A D G 
+A D G H 
+A D F 
+A D F H 
+A D F G 
+A D F G H 
+A D E 
+A D E H 
+A D E G 
+A D E G H 
+A D E F 
+A D E F H 
+A D E F G 
+A D E F G H 
+A C 
+A C H 
+A C G 
+A C G H 
+A C F 
+A C F H 
+A C F G 
+A C F G H 
+A C E 
+A C E H 
+A C E G 
+A C E G H 
+A C E F 
+A C E F H 
+A C E F G 
+A C E F G H 
+A C D 
+A C D H 
+A C D G 
+A C D G H 
+A C D F 
+A C D F H 
+A C D F G 
+A C D F G H 
+A C D E 
+A C D E H 
+A C D E G 
+A C D E G H 
+A C D E F 
+A C D E F H 
+A C D E F G 
+A C D E F G H 
+A B 
+A B H 
+A B G 
+A B G H 
+A B F 
+A B F H 
+A B F G 
+A B F G H 
+A B E 
+A B E H 
+A B E G 
+A B E G H 
+A B E F 
+A B E F H 
+A B E F G 
+A B E F G H 
+A B D 
+A B D H 
+A B D G 
+A B D G H 
+A B D F 
+A B D F H 
+A B D F G 
+A B D F G H 
+A B D E 
+A B D E H 
+A B D E G 
+A B D E G H 
+A B D E F 
+A B D E F H 
+A B D E F G 
+A B D E F G H 
+A B C 
+A B C H 
+A B C G 
+A B C G H 
+A B C F 
+A B C F H 
+A B C F G 
+A B C F G H 
+A B C E 
+A B C E H 
+A B C E G 
+A B C E G H 
+A B C E F 
+A B C E F H 
+A B C E F G 
+A B C E F G H 
+A B C D 
+A B C D H 
+A B C D G 
+A B C D G H 
+A B C D F 
+A B C D F H 
+A B C D F G 
+A B C D F G H 
+A B C D E 
+A B C D E H 
+A B C D E G 
+A B C D E G H 
+A B C D E F 
+A B C D E F H 
+A B C D E F G 
+A B C D E F G H 

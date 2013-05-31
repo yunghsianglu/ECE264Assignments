@@ -1,0 +1,178 @@
+------------------------------------------------------------------
+ECE 265 - SPRING 2013 - PROGRAMMING ASSIGNMENT 7
+------------------------------------------------------------------
+
+In this assignment, you need to write README explaining how you
+solve the problem.  You should write README and comments before
+writing code.
+
+INTRODUCTION
+============
+
+So far we have only looked at text files in this class, but most of
+the realistic files in a filesystem are actually binary.  This means
+that the data they contain is not necessarily restricted to the
+alphanumeric characters you will find in a text file and which you can
+edit in a text editor.  Examples of binary file formats include MP3,
+DOC, JPG, and many other files that are not restricted to raw ASCII
+text.  In this exercise, we will see how to write C programs that are
+capable of reading and writing binary files.  We will study a specific
+file format for image data called BMP that is commonly used in the
+Windows operating system.  Most web browsers are also able to read and
+display BMP files.
+
+
+ASSIGNMENT
+==========
+
+Write a C program that reads an image from a binary BMP file on disk,
+inverts all of the pixels, and saves the image as a new BMP file.
+
+
+BACKGROUND: BMP IMAGE FILES
+===========================
+
+The BMP file format is one of the easier formats out there, but it
+still has a lot of complex support for extensions, compression, and
+various color models.  To make this exercise manageable, we are going
+to be focusing exclusively on 24-bit uncompressed BMP files.  We have
+provided a function called BMP_checkValid() that ensures that the file
+you are trying to read fulfills these constraints.  Your code should
+call BMP_checkValid() to ensure that this is the case.
+
+In general, BMP files consist of a 54-byte header (defined in the file
+bmp.h that we provide in the next section) followed by image data.
+The header has the same format for all 24-bit BMP images, and contains
+information about the size of the image, its dimensions, its color
+model, and so on.  Immediately following the header is a large chunk
+of bytes that contain the color values for the image, arranged in a
+sequence of rows (in other words, the first values are for the first
+row, then the second, then the third, etc).  Color values in 24-bit
+BMP are represented by three bytes: one for red (0-255), one for green
+(0-255), and one for blue (0-255).  These three bytes uniquely
+represent a particular color for that particular pixel in the image.
+
+In this assignment, we are not going to worry too much about the exact
+contents and dimensions of the image since we are not going to try to
+display it on the screen (there are other programs for this).
+Instead, we are going to simply invert all of the bytes in the image
+data part of the file, and then store it back on disk.  This is good
+because BMP files have fancy ways of padding each row so that it is a
+multiple of four.  Don't worry about this here: if we make sure to
+read all of the bytes from the file into memory, invert those bytes,
+and then save them back, we are sure that the output file is going to
+be correct.  Inverting a byte "value" is simply the same as replacing
+it doing "value=255-value".  If you think about it, for color this
+will result in the complementary color being chosen (black becomes
+white, etc).
+
+Reading a BMP file consists of the following steps:
+
+1. Open a binary file for reading.
+2. Read the 54-byte header into memory.
+3. Check that the data in the header is valid (use BMP_checkValid
+   given in bmp.c).
+4. Allocate space for the image data.
+5. Read the image data (which is the file size minus the 54 bytes of
+   the header).
+6. Close the file.
+
+Saving a BMP file is similar:
+
+1. Open a binary file for writing
+2. Write the 54-byte header into the file
+3. Write the image data into the file (again, the file size from the
+   header minus 54 bytes)
+4. Close the file.
+
+DO NOT MODIFY pa07.c. You can temporarily comment out some codes in
+pa07.c, however, to test functionalities of individual functions.
+
+
+SPECIFICATIONS
+==============
+
+* Note that the 54-btye header actually consists of a 14-byte pre-header, following 40-byte of the "real" header. Therefore it is correct when you run BMP_printHeader and see "header size: 40" instead of 54. 
+
+* The source file (argv[1]) and the destination file (argv[2]) are
+  command-line arguments.
+
+* Your program should first read the source file from disk, then
+  invert all of the pixels in the image in memory, and then save
+  back the file to the disk using the destination filename as the
+  new name.
+
+* Loading image data should be done by reading the remainder of the
+  contents of the file (header.size - sizeof(BMP_Header)) using
+  fread. The image data will come directly after the BMP_Header data
+  in the file.
+
+* You have to use the function PrintBMPHeader( ) as specified inside
+  bmp.c to print the header.
+
+* Your BMP loading function does not need to work for all .bmp files
+  (the BMP standard allows for compression, different bitdepths, and
+  colormaps).  It need only work for 24-bit RGB images with no
+  colormap.  If you want to try this with other images beyond the
+  ones we provide below, make sure you save the .bmp file with RLE
+  (compression) disabled and with 24-bit colorspace.
+
+* Inverting an RGB color pixel consists of reading the byte as
+  "value" for the pixel, and replacing it with "255 - value".  This
+  should be done for all components (red, green, blue) for each
+  pixel.
+
+* Saving a BMP file is similar to loading it.  First write the
+  BMP_Header you loaded using fwrite, and then iteratively write
+  each pixel using fwrite after the header.
+
+* Note! There exist freely available BMP file loaders and savers
+  with C source code on the Internet. Copying from these is
+  cheating!  You are supposed to write the code yourself and you are
+  required to use the structures and functions in our bmp.h and
+  bmp.c files, you may not change any of these.
+
+
+WARNING
+=======
+
+You MAY NOT use anything like the following:
+
+    int num_pixels = 0;
+    ... /* find the number of pixels */
+    int array[num_pixels]; 
+
+You have to use malloc() and free().
+
+
+COMPILING AND EXECUTING
+=======================
+
+Warning messages are often indications of errors. For this assignment,
+you lose 0.1 point for each warning message. The command will generate
+an executable file called "pa07."
+
+To execute this program, type
+
+  ./pa07 <srcfile.bmp> <dstfile.bmp>
+
+The second argument (argv[1]) is the file to load and the third
+argument (argv[2]) is the file to save to (will be created).
+
+
+MEMORY MANAGEMENT
+=================
+
+Memory management (allocation and release) is an important part of ECE
+264. You have to allocate enough memory to make your program work. You
+have to allocate and release memory as needed. You are not allowed to
+allocate a large piece of memory regardless of the input size. We will
+restrict stack size to prevent that. You will receive a heavy penalty
+(50%) if your program does not release all memory (i.e. memory
+leak). We will use valgrind to check for memory leaks.
+
+
+GRADING
+=======
+
+The maximum score for this exercise is 4.0 points.

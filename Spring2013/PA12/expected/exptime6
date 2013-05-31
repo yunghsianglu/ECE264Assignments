@@ -1,0 +1,74 @@
+file type (should be 0x4d42): 4d42
+file size: 360054
+offset to image data: 54
+header size: 40
+width: 400
+height: 300
+planes: 1
+bits: 24
+load time:   0.0012
+1 threads, invert time:   0.0021
+2 threads, invert time:   0.0011
+3 threads, invert time:   0.0010
+4 threads, invert time:   0.0019
+5 threads, invert time:   0.0016
+6 threads, invert time:   0.0018
+7 threads, invert time:   0.0016
+8 threads, invert time:   0.0017
+9 threads, invert time:   0.0012
+10 threads, invert time:   0.0009
+11 threads, invert time:   0.0019
+12 threads, invert time:   0.0019
+13 threads, invert time:   0.0020
+14 threads, invert time:   0.0024
+15 threads, invert time:   0.0027
+16 threads, invert time:   0.0022
+17 threads, invert time:   0.0037
+18 threads, invert time:   0.0028
+19 threads, invert time:   0.0023
+20 threads, invert time:   0.0027
+21 threads, invert time:   0.0020
+22 threads, invert time:   0.0023
+23 threads, invert time:   0.0020
+24 threads, invert time:   0.0042
+25 threads, invert time:   0.0025
+26 threads, invert time:   0.0027
+27 threads, invert time:   0.0022
+28 threads, invert time:   0.0035
+29 threads, invert time:   0.0024
+30 threads, invert time:   0.0028
+31 threads, invert time:   0.0033
+32 threads, invert time:   0.0029
+33 threads, invert time:   0.0040
+34 threads, invert time:   0.0041
+35 threads, invert time:   0.0039
+36 threads, invert time:   0.0051
+37 threads, invert time:   0.0043
+38 threads, invert time:   0.0034
+39 threads, invert time:   0.0050
+40 threads, invert time:   0.0083
+41 threads, invert time:   0.0066
+42 threads, invert time:   0.0081
+43 threads, invert time:   0.0070
+44 threads, invert time:   0.0063
+45 threads, invert time:   0.0037
+46 threads, invert time:   0.0038
+47 threads, invert time:   0.0038
+48 threads, invert time:   0.0029
+49 threads, invert time:   0.0033
+50 threads, invert time:   0.0036
+51 threads, invert time:   0.0037
+52 threads, invert time:   0.0030
+53 threads, invert time:   0.0041
+54 threads, invert time:   0.0027
+55 threads, invert time:   0.0037
+56 threads, invert time:   0.0032
+57 threads, invert time:   0.0032
+58 threads, invert time:   0.0027
+59 threads, invert time:   0.0037
+60 threads, invert time:   0.0030
+61 threads, invert time:   0.0045
+62 threads, invert time:   0.0037
+63 threads, invert time:   0.0037
+64 threads, invert time:   0.0044
+save time:   0.0001

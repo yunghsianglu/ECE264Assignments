@@ -1,0 +1,32 @@
+subset of A B C D E 
+E 
+D 
+D E 
+C 
+C E 
+C D 
+C D E 
+B 
+B E 
+B D 
+B D E 
+B C 
+B C E 
+B C D 
+B C D E 
+A 
+A E 
+A D 
+A D E 
+A C 
+A C E 
+A C D 
+A C D E 
+A B 
+A B E 
+A B D 
+A B D E 
+A B C 
+A B C E 
+A B C D 
+A B C D E 

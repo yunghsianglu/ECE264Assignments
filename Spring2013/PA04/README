@@ -1,0 +1,30 @@
+This assignment asks you to write a program that can process text
+files.  For simplicity, we assume each line can have at most 80
+characters, including the new line character '\n'.  This program has
+three functions:
+
+* count the occurrences of the 26 English letters. Ignore cases: 'A'
+  and 'a' are treated as the same.
+
+* detect and count strings in each line.  
+
+* determine whether a file is a palindrome.  A palindrome is a word or
+  a phrase that is the same regardless of reading from left to right
+  or from right to left.  The following are examples of palindrome:
+
+  level
+  Civic
+  A Nut for a  Jar of     Tuna
+
+  The following are not palindromes:
+
+  purdue 
+  A    Nut is for a      Jar of            Tuna
+
+  Consider only English letters and ignore numbers, punctuation marks,
+  space, tab, and newline characters when the program determines
+  whether the file is a palindrome.  Your program should ignore
+  non-alphabet letters in the file.  However, you should treat an
+  upper case letter and its lower case form as the same letter.  
+
+

@@ -1,0 +1,142 @@
+In this assignment, you need to write README and submit it with student.c
+
+This assignment has the following purposes:
+
+* learn how to allocate memory when the program runs.
+
+* You do not know the amount of memory needed in advance.  The program
+reads data from a file and allocates memory as more data is read.
+
+* The data is stored in linked lists.  This assignment asks you to
+write functions that will create two types of linked lists: sorted by
+by the students' IDs and sorted by the students' names.
+
+* Your program cannot use for, while, goto, or anything similar.  If
+you need to traverse the data, you must use recursion.
+
+This assignment asks you to write a program that uses a structure called
+Student.  Each Student object has two attributes: 
+
+ID is an integer
+name is a string (char *)
+
+
+Your program needs to have the following functions:
+
+* Read students' data from a file.  You do not know the length of the
+  file and you must not scan the file to count the number of students.
+  Instead, the program must allocate memory as more students' data is
+  read.
+
+* Write the sorted student data into files.
+
+* When your program reads a student's name from a file, you can assume
+  the name does not exceed the constant defined as MAXIMUM_LENGTH.  It
+  is defined in student.c and the value is 80.  Please notice that
+  this is the only place when you can assume the maximum length of
+  students' names.  When your program allocates memory for individual
+  students, the program must allocate only necessary amounts of
+  memory.  You will lose points if your program allocates too much
+  memory. If you assume that every student's name need MAXIMUM_LENGTH,
+  you will lose most points.
+
+  You may use MAXIMUM_LENGTH in at most one place in your program.
+
+* Each of the test inputs should have distinct IDs and distinct names.
+  If you find duplicates in a file, the teaching staff have made a
+  mistake.  Please inform the instructor.
+
+*************
+* IMPORTANT *
+*************
+
+  When your program allocates memory, you must allocate enough memory
+  to store the data but not more than necessary.  In other words, you
+  CANNOT use MAXIMUM_LENGTH for the length of every student's name.
+  If a student's name needs only 11 characters (including '\0'), your
+  program should allocate memory for only 11 characters.
+
+  If your program allocates more memory than necessary, you will lose
+  1% for every unnecessary byte.
+
+  You will receive zero if your program allocate a large amount of
+  memory that is independent of the size of the input file.  For
+  example, if you do this
+
+  #define LARGESIZE 10000
+  Student stu[LARGESIZE]; 
+  /* allocate a large array, 
+     regardless of the size of the input file */
+
+  The teaching staff will manually inspect your program to ensure that
+  you do not violate this rule.  You will receive zero even if your
+  program passes the computer grader.
+
+  You are allowed to have at most one array whose size is
+  MAXIMUM_LENGTH inside each function as a local variable. 
+
+  You should never have any global variable or static variable.  You
+  will lose one point (i.e. 25% of the full score) for each global or
+  static variable.
+
+  You are allowed to use static functions.
+
+The purpose of this assignment is to help you understand linked list.
+Thus, for this assignment, you cannot use fseek or rewind.  You will
+receive zero if your program uses fseek or rewind. 
+
+You cannot use fopen twice because this is an indirect way of calling fseek.
+
+In this assignment, you will likely need to write some functions to
+help the required functions.
+
+If you need help debugging, please watch this video:
+    https://www.youtube.com/watch?v=mJNxaoSLBdY
+You can use ddd to print the nodes of a linked list.
+
+Since this assignment overlaps with PA06, you can earn some points
+back for PA06.  Your score for PA06 is the higher value between
+   1. original score for PA06
+   2. 60% of PA08
+For example, if you received 0.5 in PA06 and 4 in PA08, your score 
+for PA06 becomes 2.4.
+
+NOTE:
+Type "make" to compile the source code.
+Type "make grade -s" to run the grading script.
+Type "make clean" to remove generated files.
+
+For test10, test11, and test12, The grading script will print
+readStudent fail
+make[1]: *** [test10] Error 1
+make test10 passes
+
+or
+
+writeStudent fail
+make[1]: *** [test12] Error 1
+make test12 passes
+
+These test cases have passed, they just have a different return value
+that causes the Makefile to complain. 
+
+*******************************
+* About Testing and Debugging *
+*******************************
+
+We intentionally not to write a function that would print the linked
+list on screen after the list is read from the file (by readStudent) or after 
+it is sorted. There are two reasons.   First, it is not necessary for 
+grading this assignment because everything printed on screen is 
+discarded for grading.  Second, you need to make a judgment whether you 
+should write this function for testing and debugging.  If your 
+program works correctly, you do not need it.  If your program has 
+problems, you may want to print the linked list before sorting it.  
+You want to know whether problems occur before sorting or after sorting.
+
+The concept we want to convey here is this: often you write functions for 
+testing and debugging even though the functions are not graded.
+
+It is common to write additional functions to ensure the necessary
+functions are correct.  It is common that writing the additional functions
+can save your time in testing and debugging. 
