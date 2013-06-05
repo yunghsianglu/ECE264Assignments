@@ -74,6 +74,8 @@ that file. Do not modify pa01.h or pa01.c.
 
 Please check the sample outputs for the formats.
 
+(i.e., expected/example-output)
+
 The outputs of your programs are sorted before being compared with the
 expected outputs.  Thus, you do not need to worry about the
 orders. For example, your program may output
