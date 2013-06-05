@@ -1,6 +1,168 @@
-This assignment asks you to solve problems using recursion.  You
-will find that the solutions have similar structures.
+This assignment asks you to solve problems using recursion.  You need
+to submit answer01.c through Blackboard.  You can submit only
+answer01.c.  If you change pa01.c or pa01.h, your change will be
+ignored in grading.
 
+The teaching staff have office hours everyday Monday to Friday. If you
+need help, please go to the office hours.  
 
+The teaching staff will not debug your code.  Do not send your program
+to the teaching staff and ask them to debug for you.
+
+Copying code is strictly forbidden.  If you copy code, you will
+receive F in this course and your case will be reported to the
+department.
+
+The deadline is enforced by Blackboard. If Blackboard marks your
+submission as late, your submission will not be graded and you will
+receive zero.  Being late by one second is late.
+
+You can submit as many times as you wish before the deadline.  If you
+want to resubmit, you need to withdraw your earlier submission first.
+Blackboard does not keep the files you withdraw.  If you withdraw
+without resubmission, it would be impossible for the teaching staff to
+retrieve an earlier version for grading.
+
+Submission by email is not accepted.
+
+You should not think that a program is correct if it can generate a
+correct output for one test case.  It is possible that the program
+fails for some other test cases.  Moreover, a program may be wrong
+even if it can generate a correct output.  A program may have some
+hidden problems.  The most common hidden problems are
+
+* memory leaks 
+and
+* invalid memory accesses
+
+The indexes for an array start from 0, not 1.  If an array has n
+elements, valid indexes are 0, 1, ..., n-1.  If you use n as an index,
+the program may appear working in some cases.  However, the program is
+wrong.  Some tools can detect such problems.  If such a problem is
+detected during grading, you will lose points.
+
+You will not receive 99% of the point if the program is "99% correct".
+If it is "99% correct", it is wrong. That "1%" mistake may crash your
+program during grading and you will receive zero.
+
+You should initialize all variables.  If a variable is not
+initialized, its value is garbage and the program's behavior is
+undefined.
+
+If your program fails in grading, you will receive zero.  It does not
+matter whether your program works when you test it.
+
+You will lose one point for each gcc warning message.  If your program
+has any warning message, you should fix the problems and remove the
+warning message first.  Do not ignore warning messages and think you
+can fix them later (after you "finish" debugging).  In many cases, the
+warning messages indicate the bugs.
+
+Read your program line by line before you test it.
+
+If your program has any problem, read your program before you try to
+debug.  You will not be able to debug your program by testing it.
+
+=============================================================
+This assignment asks you to solve the following problems:
+
+* permute the elements in a set
+* partition a positive integer with different restrictions
+
+You should change only answer01.c.  You can add more functions in
+that file. Do not modify pa01.h or pa01.c.
+
+Please check the sample outputs for the formats.
+
+The outputs of your programs are sorted before being compared with the
+expected outputs.  Thus, you do not need to worry about the
+orders. For example, your program may output
+
+A B C
+C B A
+
+even though in the sample output, the order is
+
+C B A
+A B C
+
+Your program must provide a general solution.  Suppose n is the number
+of the elements in the original set, you cannot do anything like
+
+   if (n == 3)
+   {
+      ...
+   }
+
+   if (n == 4)
+   {
+      ...
+   }
+
+   if (n == 5)
+   {
+      ...
+   }
+
+This solution is not general.  You will receive zero if you do so.
+
+-----------------------------------------------------
+
+For permutation, the orders among lines do not matter.  The orders
+within a line matter.  Thus,
+
+A B C D
+
+is considered different from
+
+A C D B
+
+-----------------------------------------------------
+
+Partitioning an integer means breaking the integer into the sum of
+some positive integers (including the integer itself).
+
+For example, 3 can be partitioned into
+   1 + 1 + 1 
+   1 + 2
+   2 + 1
+   3
+
+Your solution must be general.  You will receive zero if you hard code
+the answers for some cases, something like the following:
+
+   if (n == 3)
+   {
+     printf("1 + 1 + 1\n");
+     printf("1 + 2\n");
+     printf("2 + 1\n");
+     printf("3\n");
+   }
+
+   if (n == 4)
+   {
+     printf("1 + 1 + 1 + 1\n");
+     printf("1 + 1 + 2\n");
+     printf("1 + 2 + 1\n");
+     printf("1 + 3\n");
+     ...
+   }
+
+This solution is not general and you will receive zero.
+
+===========================================================
+
+Please read and understand all files given to you, including
+
+pa01.h
+pa01.c
+answer01.c
+Makefile
+
+To test your program, type 
+
+perl grade.pl
+
+You do not need to understand grade.pl.
 
 
