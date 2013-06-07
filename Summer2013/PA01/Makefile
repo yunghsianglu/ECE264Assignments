@@ -7,7 +7,7 @@ TARGET = pa01
 
 # -------------------------------------------------------------
 
-.PHONY : test memcheck build clean environment help
+.PHONY : all test memcheck build clean environment help
 .DEFAULT_GOAL:= build
 
 OBJF = obj
@@ -16,10 +16,13 @@ DEPS = $(SOURCES:%=$(OBJF)/%.P)
 
 -include $(SOURCES:%=$(OBJF)/%.P)
 
-test: $(TARGET)
+all: | build test memcheck
+
+test: $(TARGET) | environment
+	./$(TARGET) > outputs/output
 	cat outputs/output | sort | diff -w -q - expected/expected 
 
-memcheck: $(TARGET) 
+memcheck: $(TARGET) | environment
 	$(VALGRIND) --log-file=outputs/memoutput ./$< > outputs/output
 
 build: $(TARGET)
@@ -40,7 +43,8 @@ environment:
 
 help:
 	@echo
-	@echo "   make             build target /with/ help message"
+	@echo "   make             build $(TARGET)"
+	@echo "   make all         build, test and memcheck"
 	@echo "   make test        run tests"
 	@echo "   make memcheck    run valgrind to check memory"
 	@echo "   make clean       start from scratch"
