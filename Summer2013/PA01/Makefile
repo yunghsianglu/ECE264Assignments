@@ -1,24 +1,53 @@
+
 GCC = gcc
 CFLAGS = -g -Wall -Wshadow
-OBJS = answer01.o pa01.o
-HDRS = pa01.h
+SOURCES = answer01.c pa01.c
 VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose
+TARGET = pa01
 
-.PHONY : clean test0 test1 test2 test3 test4 test5
-pa01: $(OBJS) $(HDRS)
+# -------------------------------------------------------------
+
+.PHONY : test memcheck build clean environment help
+.DEFAULT_GOAL:= build
+
+OBJF = obj
+OBJS = $(patsubst %.c,$(OBJF)/%.o,$(SOURCES))
+DEPF = $(SOURCES:%=$(OBJF)/%.P)
+
+-include $(SOURCES:%=$(OBJF)/%.P)
+
+test: $(TARGET)
+	cat outputs/output | sort | diff -w -q - expected/expected 
+
+memcheck: $(TARGET) 
+	$(VALGRIND) --log-file=outputs/memoutput ./$< > outputs/output
+
+build: $(TARGET)
+
+$(TARGET): $(OBJS) | environment
 	$(GCC) $(CFLAGS) $(OBJS) -o $@
-	rm -f output/output
-	./pa01 | sort > outputs/output
-	diff -q -w outputs/output expected/expected
-	$(VALGRIND) --log-file=outputs/memoutput ./pa01 > outputs/output
 
-.c.o: 
-	$(GCC) $(CFLAGS) -c $*.c
+$(OBJF)/%.o: %.c | environment
+	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/$(shell dirname "$<")\/\1,g' | sed '$$ s,$$, \\,' | sed 's,$(OBJF)/./,$(OBJF)/,' > $(OBJF)/$<.P
+	$(GCC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f pa01 $(OBJS) outputs/output outputs/memoutput 
+	rm -f $(TARGET) $(OBJS) $(DEPF) output/output output/memoutput 
 
+environment:
+	@mkdir -p outputs	
+	@mkdir -p $(OBJF)
 
+help:
+	@echo
+	@echo "   make             build target /with/ help message"
+	@echo "   make test        run tests"
+	@echo "   make memcheck    run valgrind to check memory"
+	@echo "   make clean       start from scratch"
+	@echo
+	@echo "   Temporary files written to ./$(OBJF) "
+	@echo "   Outputs: output/output and output/memoutput "
+	@echo "   Example output: expected/example-output "
 
 
 

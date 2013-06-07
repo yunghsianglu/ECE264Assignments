@@ -161,6 +161,8 @@ pa01.c
 answer01.c
 Makefile
 
+Type 'make help' for quick help
+
 To test your program, type 
 
 perl grade.pl
