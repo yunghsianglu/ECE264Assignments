@@ -24,8 +24,7 @@ test: $(TARGET) | environment
 
 memcheck: $(TARGET) | environment
 	$(VALGRIND) --log-file=outputs/memoutput ./$< > outputs/output
-	@echo
-	@./expected/valgrind-checker.sh outputs/memoutput
+	@echo && ./expected/valgrind-checker.sh outputs/memoutput
 
 build: $(TARGET)
 
