@@ -12,7 +12,7 @@ TARGET = pa01
 
 OBJF = obj
 OBJS = $(patsubst %.c,$(OBJF)/%.o,$(SOURCES))
-DEPF = $(SOURCES:%=$(OBJF)/%.P)
+DEPS = $(SOURCES:%=$(OBJF)/%.P)
 
 -include $(SOURCES:%=$(OBJF)/%.P)
 
@@ -32,7 +32,7 @@ $(OBJF)/%.o: %.c | environment
 	$(GCC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(TARGET) $(OBJS) $(DEPF) output/output output/memoutput 
+	rm -f $(TARGET) $(OBJS) $(DEPS) output/output output/memoutput 
 
 environment:
 	@mkdir -p outputs	
