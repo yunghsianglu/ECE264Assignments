@@ -28,7 +28,8 @@ memcheck: $(TARGET) | environment
 build: $(TARGET)
 
 clean:
-	rm -f $(TARGET) $(OBJS) $(DEPS) output/output output/memoutput 
+	rm -f $(TARGET) $(OBJF)/* output/output output/memoutput 
+	@rmdir $(OBJF)
 
 environment:
 	@mkdir -p outputs	
