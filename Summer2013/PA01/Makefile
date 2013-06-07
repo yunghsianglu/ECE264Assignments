@@ -27,13 +27,6 @@ memcheck: $(TARGET) | environment
 
 build: $(TARGET)
 
-$(TARGET): $(OBJS) | environment
-	$(GCC) $(CFLAGS) $(OBJS) -o $@
-
-$(OBJF)/%.o: %.c | environment
-	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/$(shell dirname "$<")\/\1,g' | sed '$$ s,$$, \\,' | sed 's,$(OBJF)/./,$(OBJF)/,' > $(OBJF)/$<.P
-	$(GCC) $(CFLAGS) -c -o $@ $<
-
 clean:
 	rm -f $(TARGET) $(OBJS) $(DEPS) output/output output/memoutput 
 
@@ -53,6 +46,11 @@ help:
 	@echo "   Outputs: output/output and output/memoutput "
 	@echo "   Example output: expected/example-output "
 
+$(TARGET): $(OBJS) | environment
+	$(GCC) $(CFLAGS) $(OBJS) -o $@
 
+$(OBJF)/%.o: %.c | environment
+	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/$(shell dirname "$<")\/\1,g' | sed '$$ s,$$, \\,' | sed 's,$(OBJF)/./,$(OBJF)/,' > $(OBJF)/$<.P
+	$(GCC) $(CFLAGS) -c -o $@ $<
 
 
