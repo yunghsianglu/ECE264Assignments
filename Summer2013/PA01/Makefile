@@ -2,8 +2,8 @@
 GCC = gcc
 CFLAGS = -g -Wall -Wshadow
 SOURCES = answer01.c pa01.c
-VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose
 TARGET = pa01
+VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose
 
 # -------------------------------------------------------------
 
@@ -12,7 +12,6 @@ TARGET = pa01
 
 OBJF = obj
 OBJS = $(patsubst %.c,$(OBJF)/%.o,$(SOURCES))
-DEPS = $(SOURCES:%=$(OBJF)/%.P)
 
 -include $(SOURCES:%=$(OBJF)/%.P)
 
@@ -52,7 +51,7 @@ $(TARGET): $(OBJS) | environment
 	$(GCC) $(CFLAGS) $(OBJS) -o $@
 
 $(OBJF)/%.o: %.c | environment
-	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/$(shell dirname "$<")\/\1,g' | sed '$$ s,$$, \\,' | sed 's,$(OBJF)/./,$(OBJF)/,' > $(OBJF)/$<.P
+	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/\1,g' | sed '$$ s,$$, \\,' > $(OBJF)/$<.P
 	$(GCC) $(CFLAGS) -c -o $@ $<
 
 
