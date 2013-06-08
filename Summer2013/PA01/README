@@ -88,6 +88,11 @@ even though in the sample output, the order is
 C B A
 A B C
 
+In the outputs directory, a file called expected_unsorted is the
+output of the instructor's solution.  Another file called
+expected_sorted is obtained by using Linux's sort command using
+expected_unsorted as the input.  
+
 Your program must provide a general solution.  Suppose n is the number
 of the elements in the original set, you cannot do anything like
 
