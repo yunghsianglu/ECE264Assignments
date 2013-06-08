@@ -93,6 +93,8 @@ output of the instructor's solution.  Another file called
 expected_sorted is obtained by using Linux's sort command using
 expected_unsorted as the input.  
 
+Also, "-w" in the diff command ignores space.
+
 Your program must provide a general solution.  Suppose n is the number
 of the elements in the original set, you cannot do anything like
 
