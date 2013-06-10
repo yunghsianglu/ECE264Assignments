@@ -1,0 +1,24 @@
+This assignment asks you to write a program that can
+
+* count the amounts of data stored in files by counting the number
+  of the newline '\n' characters
+* allocate memory based on the number of lines of the input file
+* read the files and store the data in the allocated memory
+* order the data by calling the qsort function in the C library
+* save the sorted data into a file
+
+For a file storing strings, you can assume that the length of each
+line does not exceed LINELENGTH.  However, your program does not know
+the number of lines in a file.
+
+It is possible that two different lines in the same input file have
+the same value (or the same word).
+
+You must not allocate a large amount of memory before reading a file.
+The amount of memory allocated by your program must depend on the size
+of the file.  If your program allocates a large amount of memory that
+is independent of the input file's size, you will receive zero in this
+assignment.
+
+You need to use valgrind to check whether your program has invalid
+memory access or memory leak.
