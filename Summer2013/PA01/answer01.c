@@ -16,7 +16,7 @@
 /*
  * =================================================================
  * This function prints all partitions of a positive integer value
- * See the file "expected/example-output" for the output specification
+ * See the file "expected/expected_unsorted" for the output specification
  */
 
 void partitionAll(int value)
