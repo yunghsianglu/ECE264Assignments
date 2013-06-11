@@ -19,7 +19,7 @@ all: | build test memcheck
 
 test: $(TARGET) | environment
 	./$(TARGET) > outputs/output
-	cat outputs/output | sort | diff -w -q - expected/expected 
+	cat outputs/output | sort | diff -w -q - expected/expected_sorted 
 
 memcheck: $(TARGET) | environment
 	$(VALGRIND) --log-file=outputs/memoutput ./$< > outputs/output
