@@ -9,7 +9,9 @@ This assignment asks you to write a program that can
 The main function will read two lines at a time from filelist, one as
 input, one as output, and detect if the input name contains "str". From
 there it calls the two functions depend on if the input is a file with
-strings or integers.
+strings or integers. The main function will run all the testcases in 
+filelist. If you want to test for a single case, you need to write your 
+own test main function.
 
 For a file storing strings, you can assume that the length of each
 line does not exceed LINELENGTH.  However, your program does not know
