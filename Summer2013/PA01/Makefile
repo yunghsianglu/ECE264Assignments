@@ -19,11 +19,20 @@ all: | build test memcheck
 
 test: $(TARGET) | environment
 	./$(TARGET) > outputs/output
-	cat outputs/output | sort | diff -w -q - expected/expected_sorted 
+	cat outputs/output | sort | diff -w -q - expected/expected_sorted
+	@echo "Grade: $(shell RES="0" ; cat outputs/output | sort | diff -w -q - expected/expected_sorted 1>/dev/null 2>/dev/null && RES="6" ; echo "$$RES")"
+
+test_detail: $(TARGET) | environment
+	./$(TARGET) > outputs/output
+	cat outputs/output | sort | diff -w - expected/expected_sorted 
 
 memcheck: $(TARGET) | environment
 	$(VALGRIND) --log-file=outputs/memoutput ./$< > outputs/output
 	@echo && ./expected/valgrind-checker.sh outputs/memoutput
+
+grading: $(TARGET) | environment
+	./$(TARGET) > outputs/output
+	cat outputs/output | sort | diff -w -q - expected/expected_sorted 
 
 build: $(TARGET)
 
@@ -40,12 +49,14 @@ help:
 	@echo "   make             build $(TARGET)"
 	@echo "   make all         build, test and memcheck"
 	@echo "   make test        run tests"
+	@echo "   make test_detail run tests and output detail results"
 	@echo "   make memcheck    run valgrind to check memory"
 	@echo "   make clean       start from scratch"
 	@echo
 	@echo "   Temporary files written to ./$(OBJF) "
 	@echo "   Outputs: output/output and output/memoutput "
 	@echo "   Example output: expected/example-output "
+	@echo "   make grading        run tests for grading"
 
 $(TARGET): $(OBJS) | environment
 	$(GCC) $(CFLAGS) $(OBJS) -o $@
