@@ -16,7 +16,7 @@
 /*
  * =================================================================
  * This function prints all partitions of a positive integer value
- * See the file "expected/example-output" for the output specification
+ * See the file "expected/expected_unsorted" for the output specification
  */
 
 void partitionAll(int value)
@@ -40,7 +40,6 @@ void partitionAll(int value)
  * The program should generate only valid partitions.  Do not
  * generates invalid partitions and checks validity before printing.
  *
- * See the file "expected/example-output" for the output specification
  */
 
 void partitionIncreasing(int value)
@@ -64,7 +63,6 @@ void partitionIncreasing(int value)
  * The program should generate only valid partitions.  Do not
  * generates invalid partitions and checks validity before printing.
  *
- * See the file "expected/example-output" for the output specification
  */
 
 void partitionUnique(int value)
@@ -74,7 +72,6 @@ void partitionUnique(int value)
 
 /*
  * =================================================================
- * See the file "expected/example-output" for the output specification
  */
 void permute(char * charset, int len)
 {
