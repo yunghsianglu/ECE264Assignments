@@ -4,11 +4,12 @@ OBJS = answer02.o pa02.o
 HDRS = pa02.h
 VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose
 
-.PHONY : clean test0 test1 test2 test3 test4 test5
+.PHONY : test memcheck help clean
 pa02: $(OBJS) $(HDRS)
 	$(GCC) $(CFLAGS) $(OBJS) -o $@
 	
 test:
+	mkdir -p outputs	
 	rm -f outputs/*output*
 	./pa02 inputs/filelist 
 	diff -q -w outputs/intoutput01 expected/intexpected01
@@ -30,7 +31,7 @@ memcheck:
 help:
 	@echo "	 Commands         Meaning"
 	@echo "   ---------------------------------------------"
-	@echo "   make             build the file"
+	@echo "   make             compile the file"
 	@echo "   make test        run tests"
 	@echo "   make memcheck    run valgrind to check memory"
 	@echo "   make clean       start from scratch"
