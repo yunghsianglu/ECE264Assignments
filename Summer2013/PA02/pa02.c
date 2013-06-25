@@ -36,3 +36,13 @@ int main(int argc, char * * argv)
   fclose(fileList);
   return EXIT_SUCCESS;
 }
+
+int mainx(int argc, char** argv)
+{
+    sortString("inputs/strinput01", "stroutput01");
+    sortInt("inputs/intinput01", "intoutput01");
+    return EXIT_SUCCESS;
+}
+
+
+
