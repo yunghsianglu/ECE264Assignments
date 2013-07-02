@@ -88,12 +88,11 @@ int main(int argc, char * * argv)
 	if(!image1) {
 	    fprintf(stderr, "Failed to load image file '%s'\n", argv[1]);
 	    result = EXIT_FAILURE;
-	} else {
-	    image2 = loadImage(argv[2]);
-	    if(!image2) {
-		fprintf(stderr, "Failed to load image file '%s'\n", argv[2]);
-		result = EXIT_FAILURE;
-	    }
+	}
+	image2 = loadImage(argv[2]);
+	if(!image2) {
+	    fprintf(stderr, "Failed to load image file '%s'\n", argv[2]);
+	    result = EXIT_FAILURE;
 	}
 	if(image1 && image2) {
 	    struct Point peak = convolutionMax(image1, image2);
