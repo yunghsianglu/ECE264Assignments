@@ -1,22 +1,54 @@
 
-Computer vision is, in general, extremely difficult, and remains one of the great unsolved problems of our time. For this assignment you will get a chance to use the convolution operator to locate one image within another. This operation works extremely well with tame input. The mathematics is remarkably simple -- an extension of a vector dot-product to matrices -- and you will be guided through the formulation. To perform the convolution, you will first need to read the image files from disk.
+Computer vision is, in general, extremely difficult, and remains one
+of the great unsolved problems of our time. For this assignment you
+will get a chance to use the convolution operator to locate one image
+within another. This operation works extremely well with tame
+input. The mathematics is remarkably simple -- an extension of a
+vector dot-product to matrices -- and you will be guided through the
+formulation. To perform the convolution, you will first need to read
+the image files from disk.
 
-The key thing to learn in this assignment is how to read binary files into memory, and then manipulate them. For this purpose we have created an extremely simple custom image format. A collection of image files has been provided: "images/*.ee264". If you are interested, you can use the program "bin/im-convert" can be used to convert png files to .ee264 format and vice-versa. All necessary image testcases have already been generated, so you do not need to use this program if you are not interested. 
+The key thing to learn in this assignment is how to read binary files
+into memory, and then manipulate them. For this purpose we have
+created an extremely simple custom image format. A collection of image
+files has been provided: "images/*.ee264". If you are interested, you
+can use the program "bin/im-convert" can be used to convert png files
+to .ee264 format and vice-versa. All necessary image testcases have
+already been generated, so you do not need to use this program if you
+are not interested.
 
-The file format is described in the file "answer03.c". The structure definition is in the file "pa03.h". Look at the structure, and read the instruction in answer03.c carefully.
+The file format is described in the file "answer03.c". The structure
+definition is in the file "pa03.h". Look at the structure, and read
+the instruction in answer03.c carefully.
 
-In industry, MOST software bugs come from programmers writing algorithms that do not check input data for errors. For this assignment you must read image files that may or may not be corrupt. If the file is corrupt, you indicate that by returning a NULL pointer, as described in "answer03.c". You MUST return NULL if there is /anything/ wrong with the file.
+In industry, MOST software bugs come from programmers writing
+algorithms that do not check input data for errors. For this
+assignment you must read image files that may or may not be
+corrupt. If the file is corrupt, you indicate that by returning a NULL
+pointer, as described in "answer03.c". You MUST return NULL if there
+is /anything/ wrong with the file.
 
-You will discover that safely reading binary files is a tricky business, and that you must be very particular so that unexpected input does not cause problems. To make things easier for you, a suite of test-cases has been provided which will throw both good and bad input at your program. To receive full marks, you must pass /every/ test case. Type "make help" to see a list of make options, including a list of the test-cases and what they will try to do to your program.
+You will discover that safely reading binary files is a tricky
+business, and that you must be very particular so that unexpected
+input does not cause problems. To make things easier for you, a suite
+of test-cases has been provided which will throw both good and bad
+input at your program. To receive full marks, you must pass /every/
+test case. Type "make help" to see a list of make options, including a
+list of the test-cases and what they will try to do to your program.
 
-The convolution operation is fully described in "answer03.c". While conceptually simple, you must be careful not to access out of bounds memory.
+The convolution operation is fully described in "answer03.c". While
+conceptually simple, you must be careful not to access out of bounds
+memory.
 
-Use the provided Makefile whilst writing your solution, both to compile code, and to run test cases. Type "make help" to get a full list of options. You can also run the compiled solution as follows:
+Use the provided Makefile whilst writing your solution, both to
+compile code, and to run test cases. Type "make help" to get a full
+list of options. You can also run the compiled solution as follows:
 
 # Displays help
 prompt > ./pa03 -h
 
-This will print out information on how to use the program that you have created.
+This will print out information on how to use the program that you
+have created.
 
 Good Luck!
 
