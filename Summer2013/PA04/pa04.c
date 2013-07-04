@@ -102,23 +102,27 @@ int main ( int argc , char ** argv )
   printf("*******************************\n");
   printf("Array 1\n");
   printf("*******************************\n");
-  for (i = SparseArray_getMin(array_1); i <= SparseArray_getMax(array_1); i++) {
-    onenode = SparseArray_getNode(array_1,i);
-    if (onenode != NULL)
-      {
-	printf("%5d: %6d\n" , i , onenode->value);
-      }
+  if (array_1 != NULL){
+    for (i = SparseArray_getMin(array_1); i <= SparseArray_getMax(array_1); i++) {
+      onenode = SparseArray_getNode(array_1,i);
+      if (onenode != NULL)
+	{
+	  printf("%5d: %6d\n" , i , onenode->value);
+	}
+    }
   }
 
   printf("\n*******************************\n");
   printf("Array 2\n");
   printf("*******************************\n");
-  for (i = SparseArray_getMin(array_2); i <= SparseArray_getMax(array_2); i++) {
-    onenode = SparseArray_getNode(array_2,i);
-    if (onenode != NULL)
-      {
-	printf("%5d: %6d\n" , i , onenode->value);
-      }
+  if (array_2 != NULL){
+    for (i = SparseArray_getMin(array_2); i <= SparseArray_getMax(array_2); i++) {
+      onenode = SparseArray_getNode(array_2,i);
+      if (onenode != NULL)
+	{
+	  printf("%5d: %6d\n" , i , onenode->value);
+	}
+    }
   }
   printf("\n*******************************\n");
 
@@ -131,12 +135,14 @@ int main ( int argc , char ** argv )
 
   printf("Array copy\n");
   printf("*******************************\n");
-  for (i = SparseArray_getMin(copy); i <= SparseArray_getMax(copy); i++) {
-    onenode = SparseArray_getNode(copy,i);
-    if (onenode != NULL)
-      {
-	printf("%5d: %6d\n" , i , onenode->value);
-      }
+  if (copy != NULL){
+    for (i = SparseArray_getMin(copy); i <= SparseArray_getMax(copy); i++) {
+      onenode = SparseArray_getNode(copy,i);
+      if (onenode != NULL)
+	{
+	  printf("%5d: %6d\n" , i , onenode->value);
+	}
+    }
   }
   printf("\n*******************************\n");
   
@@ -148,13 +154,15 @@ int main ( int argc , char ** argv )
   array_new = SparseArray_merge(array_1, array_2);
   printf("Array result\n");
   printf("*******************************\n");
-  for (i = SparseArray_getMin(array_new); i <= SparseArray_getMax(array_new); i++) {
-    onenode = SparseArray_getNode(array_new,i);
-    if (onenode != NULL)
-      {
-	printf("%5d: %6d\n" , i , onenode->value);
-	fprintf(fptr, "%5d: %6d\n" , i , onenode->value);
-      }
+  if (array_new != NULL){
+    for (i = SparseArray_getMin(array_new); i <= SparseArray_getMax(array_new); i++) {
+      onenode = SparseArray_getNode(array_new,i);
+      if (onenode != NULL)
+	{
+	  printf("%5d: %6d\n" , i , onenode->value);
+	  fprintf(fptr, "%5d: %6d\n" , i , onenode->value);
+	}
+    }
   }
   printf("\n*******************************\n");
 
