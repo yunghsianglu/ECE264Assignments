@@ -21,19 +21,18 @@ on the indexes:
    on the right side.
 
 -- The indexes in the whole tree are distinct: no two nodes have the
-   same index.
+   same index.  It is possible to have two nodes of the same value (but
+   different indexes).
 
 When merging two sparse array, array_1 and array_2:
 
  1. The contents in array_1 and array_2 should not be changed. You
-    should make a copy of array_1, and do merging in this copy.
+    should create a new array that stores the result of merging.
 
  2. array_2 will be merged to array_1. This means you need to read
-     nodes in array_2 and try to insert intto array_1.
+     nodes in array_2 and insert them into array_1.
 
- 3. You need to use post-order to traverse the array_2 tree. (if you
-    are not familiar with tree traversal, please search on internet
-    for more information.
+ 3. You need to use post-order to traverse the array_2 tree. 
 
  4. Values of two nodes need to be added only when the indices are the
     same.
