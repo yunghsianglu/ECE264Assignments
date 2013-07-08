@@ -54,6 +54,6 @@ int indices_2 [ NUM_VALUES_2 ] = {0 ,  1 ,  2 ,  3 , 4 , 7 , 9};
 int values_2  [ NUM_VALUES_2 ] = {5 , -3 , -8 ,  1 , 7 , 9 , 1};
 
 results:
-int indices_3 [ NUM_VALUES_3 ] = { 0 ,  1,  2 ,  4 , 8 , 9 };
-int values_3  [ NUM_VALUES_3 ] = { 5 , -3, -6 ,  7 ,-5 , 4 };
+int indices_3 [ NUM_VALUES_3 ] = { 0 ,  2 ,  4 , 8 , 9 };
+int values_3  [ NUM_VALUES_3 ] = { 5 , -6 ,  7 ,-5 , 4 };
 (elements whose values are zero are deleted)
