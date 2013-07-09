@@ -30,6 +30,7 @@ int main ( int argc , char ** argv )
    **********************************/
   int number_of_value_1 = 0;
   fscanf(fptr, "%d", &number_of_value_1);
+  printf("\nlength: %d\n", number_of_value_1);
 
   int* indices_1 = malloc(sizeof(int)* number_of_value_1);
   if (indices_1 == NULL)
@@ -45,14 +46,21 @@ int main ( int argc , char ** argv )
       return EXIT_FAILURE;
     }
 
+  printf("indices: ");
+
   for (i = 0; i < number_of_value_1; i++)
     {
       fscanf(fptr, "%d", &indices_1[i]);
+      printf("%d ", indices_1[i]);
     }
+
+  printf("\nvalues: ");
   for (i = 0; i < number_of_value_1; i++)
     {
       fscanf(fptr, "%d", &values_1[i]);
+      printf("%d ", values_1[i]);
     }
+  printf("\n");
   
   SparseNode * array_1 = NULL ;
   array_1 = SparseArray_build(indices_1, values_1, number_of_value_1);
@@ -63,6 +71,7 @@ int main ( int argc , char ** argv )
    ************************************/
   int number_of_value_2 = 0;
   fscanf(fptr, "%d", &number_of_value_2);
+  printf("\nlength: %d\n", number_of_value_2);
 
   int* indices_2 = malloc(sizeof(int)* number_of_value_2);
   if (indices_2 == NULL)
@@ -78,14 +87,20 @@ int main ( int argc , char ** argv )
       return EXIT_FAILURE;
     }
 
+  printf("indices: ");
   for (i = 0; i < number_of_value_2; i++)
     {
       fscanf(fptr, "%d", &indices_2[i]);
+      printf("%d ", indices_2[i]);
     }
+
+  printf("\nvalues: ");
   for (i = 0; i < number_of_value_2; i++)
     {
       fscanf(fptr, "%d", &values_2[i]);
+      printf("%d ", values_2[i]);
     }
+   printf("\n");
 
   SparseNode * array_2 = NULL ;
   array_2 = SparseArray_build(indices_2, values_2, number_of_value_2);
