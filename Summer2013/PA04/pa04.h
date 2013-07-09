@@ -1,8 +1,6 @@
 #ifndef pa04_h
 #define pa04_h
 
-#define NUM_VALUES 6
-
 typedef struct snode {
   int index ;
   int value ;

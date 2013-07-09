@@ -36,6 +36,7 @@ SparseNode *SparseArray_build(int * indicies, int * values, int length)
 void SparseArray_destroy ( SparseNode * array )
 {
  
+}
 /* Retrieve the smallest index in the sparse array. 
  */
 int SparseArray_getMin ( SparseNode * array )
