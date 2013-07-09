@@ -15,6 +15,20 @@ SparseNode *SparseNode_create(int index, int value)
   return one_node;
 }
 
+/* Add a particular value into a sparse array on a particular index.
+ * The sparse array uses the index as a key in a binary search tree.
+ * It returns the new sparse array root
+ * as its return value. If the index does not exist, create it. 
+ * If the index exists, REPLACE the value to the new one. Use the index to
+ * determine whether to go left or right in the tree (smaller index
+ * values than the current one go left, larger ones go right).
+ */
+
+SparseNode * SparseArray_add ( SparseNode * array, int index, int value )
+{
+  return array ;
+}
+
 /* Build a sparse array from given indices and values with specific length.
  * This function takes an array of indices, an array of values, and 
  * the length as inputs.
@@ -51,25 +65,10 @@ int SparseArray_getMax ( SparseNode * array )
   return 0;
 }
 
-
-/* Add a particular value into a sparse array on a particular index.
- * The sparse array uses the index as a key in a binary search tree.
- * It returns the new sparse array root
- * as its return value. If the index does not exist, create it. 
- * If the index exists, REPLACE the value to the new one. Use the index to
- * determine whether to go left or right in the tree (smaller index
- * values than the current one go left, larger ones go right).
- */
-
-SparseNode * SparseArray_add ( SparseNode * array, int index, int value )
-{
-  return array ;
-}
-
 /* Retrieve the node associated with a specific index in a sparse
  * array.  It returns the value
  * associated with the index. If the index does not exist in the
- * array, it returns 0. If the given index is smaller than the current
+ * array, it returns NULL. If the given index is smaller than the current
  * node, search left ; if it is larger, search right.
  */
 SparseNode * SparseArray_getNode(SparseNode * array, int index )
