@@ -15,6 +15,7 @@ int SparseArray_getMin ( SparseNode * array );
 int SparseArray_getMax ( SparseNode * array );
 SparseNode * SparseArray_getNode ( SparseNode * array , int index );
 SparseNode * SparseArray_remove ( SparseNode * array , int index );
+SparseNode * SparseArray_add ( SparseNode * array, int index, int value );
 SparseNode * SparseArray_copy(SparseNode * array);
 SparseNode * SparseArray_merge(SparseNode * array_1, SparseNode * array_2);
 
