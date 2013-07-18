@@ -76,7 +76,11 @@
  */
 struct Image* loadImage(const char* filename)
 {
+<<<<<<< HEAD
 	return NULL;
+=======
+    return NULL;
+>>>>>>> fc8a43cb050e9320bc696adb69bf34207ecf4601
 }
 
 
@@ -131,6 +135,7 @@ void freeImage(struct Image* image)
  * For more information on convolutions see: 
  * http://en.wikipedia.org/wiki/Convolution
  */
+<<<<<<< HEAD
 
 struct Point convolutionMax(const struct Image* image1, 
 			    const struct Image* image2)
@@ -140,6 +145,16 @@ struct Point convolutionMax(const struct Image* image1,
 	peak.y = 0;
 
 	return peak;
+=======
+struct Point convolutionMax(const struct Image* image1, 
+			    const struct Image* image2)
+{
+    struct Point peak;
+    peak.x = 0;
+    peak.y = 0;
+
+    return peak;
+>>>>>>> fc8a43cb050e9320bc696adb69bf34207ecf4601
 }
 
 
