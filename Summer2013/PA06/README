@@ -1,0 +1,213 @@
+
+// ~ Introduction ~ //
+
+So far we have only considered computer programs that try to do one
+thing at a time. In this programming assignment we will learn about
+computer programs that do muliple things at the same time. This is
+referred to as "threading". For example, a sufficiently smart computer
+program could optimize its time by watching important TV shows on HBO,
+while simultaneously doing the ironing. This example is not entirely
+glib. In this case we are talk about two different simultaneous tasks
+(TV and ironing), and each executing task is referred to as a thread.
+
+There are many reasons why threading is important. For this course we
+will consider speed. Although computers are still getting faster,
+today they are really only getting better at doing multiple things at
+the same time. (The execution of single threaded programs is not
+getting much faster.) To extend our analogy, if we have lots of
+ironing to do, we cannot build a faster robot to do the ironing. The
+speed of the robot is maxed out. But we can set up multiple robots on
+multiple ironing boards to do the work simultaneously. Ten robots (ten
+threads) would mean (roughly speaking) ten times as much ironing.
+
+In general, you rarely get ten times the speed for using ten times as
+many threads. The problem is that the threads will need to communicate
+with each other, and that slows everything down. To extend our
+analogy, imagine that our ironing robots are getting their tasks
+(particularly wrinkly shirts) from a big bin full of fresh laundry. If
+the robots do not communicate with each other, then we could imagine a
+situation where two robots attempt to pick up the same shirt at the
+same time -- probably tearing it in half. The chances of this
+happening may be small, but non-zero. That means, firstly, that the
+bug of a shirt being so-torn is very difficult to reproduce. If a bug
+like this happens in your computer program, it can be almost
+impossible to track down. Secondly, it means that all your robots need
+to communicate with each other to get the job done.
+
+In this assignment, we will create some threads (robots) to identify
+whether or not a large number is prime (do the laundry). The threads
+will each work on part of the task (break the laundry up into
+piles). Normally you would need to consider how to make threads work
+nicely together; however, this assignment has been carefully written
+so that you do not need to do that. (If done straight-forwardly,
+robots will never tear shirts in this assignment.) It is important to
+keep in mind that threading is difficult to get right, and to do so,
+you must learn how to synchronize the activities of your threads.
+
+// ~ Determining if a Number is Prime ~ //
+
+This is an ongoing area of research. For this assignment we will use a
+very simple approach. Please read the following webpage on factorizing
+prime numbers:
+
+http://cartera.me/2012/01/10/primality-testing-and-factorization-in-c/
+
+In this assignment, we will be using the
+"primalityTestWithOnlyOddsAndSqrtLimit" function from the above
+page. For your convenience, it is displayed below:
+
+int primalityTestWithOnlyOddsAndSqrtLimit(long int n) 
+{
+    if (n % 2 == 0) 
+       return 0;
+    long int max = floor(sqrt(n));
+    long int i;
+    for (i = 2; i < max; i++) 
+    {
+	if (n % ((2 * i) + 1) == 0) 
+	return 0;
+    }	
+    return 1;
+}
+
+You will need to modify this function to make it
+parallel. Furthermore, this function deals with puny "long int"
+numbers. We'll want more juice than that. So you will also have to
+modify this function to use 128 bit integers.
+
+The webpage above explains the very *very* simple mathematics behind
+this function.
+
+// ~ What you need to do :: Preliminaries ~ //
+
+We will be testing LARGE prime numbers. These will be 128 bit
+integers, which are far too large to fit in measly 32-bit or 64-bit
+int variables. A 32-bit int variable can only contain values from 0 to
+4 294 967 295, but with unsigned 128 bit numbers, you can go all the
+way to 340 282 366 920 938 463 463 374 607 431 768 211 455. (If you
+need that extra push over the cliff, then you what we do? See:
+http://www.youtube.com/watch?v=EbVKWCpNFhY)
+
+GCC has a native 128-bit integer type called "__int128". In this
+assignment we are interested in /unsigned/ integers, and so we will be
+using the type "unsigned __int128". There is a typedef statement in
+pa06.h that defines a shorthand notation "uint128"
+
+typedef unsigned __int128 uint128;
+
+There is no built in functions to print these integers, or to convert
+strings into these integers. The following code converts a base-10
+character string into an unsigned 128 bit integer. It is provided for
+your convenience:
+
+uint128 alphaTou128(const char * str)
+{
+    uint128 value = 0;
+    while(*str >= '0' && *str <= '9') {
+	value *= 10; // "left-shift" a base-ten number
+	value += (*str - '0'); // add in the units
+	++str;
+    }
+    return value;
+}
+
+You must write your own function for printing unsigned 128-bit
+numbers. If you examine the code for alphaTou128(...), then it should
+become apparent how to do this.
+
+// Example: writing out a Biiigggg number
+int main(int argc, char * * argv)
+{
+    uint128 w = alphaTou128("340282366920938463463374607431768211455");
+    char * w_str = u128ToString(w); /* You need to write this!!! */
+    printf("Biiigggg number: %s\n", w_str);
+    free(w_str);
+    return EXIT_SUCCESS;
+}
+
+Before continuing with the assignment, you need to complete the
+function u128ToString(w).
+
+// ~ What you need to do :: Testing primality ~ //
+
+As Carter Allen notes on his webpage, the function
+primalityTestWithOnlyOddsAndSqrtLimit lends itself to
+parallelism. Simple put, if you want to test if a number is divisible
+(exactly) by numbers in the range [0..n], then you can split this
+range into chunks, and test each chunk in a separate thread. If /any/
+chunk of the computation finds a factor, then the number is not prime.
+
+For his threaded version, Carter Allen used "Grand Central Dispatch",
+which is a relatively new Apple technology. Grand Central Dispatch
+cuts down on some of the work involved in writing threaded
+programs. For this assignment we will use the trusty pthreads library
+instead of Grand Central Dispatch. pthreads is the standard threading
+library available on all flavors of unix (including OS X and Linux),
+and is also available in some form on windows. One key reason for
+using pthreads is that, in my experience, it is not worth learning a
+shiny simplified technology until you understand a bit about the
+underlying machinery. So learning pthreads is a very good idea.
+
+Feel free to examine Carter Allen's code; however, you will not be
+able to compile it on the ece computers. Examining his code may help
+you understand how to create a threaded version using pthreads;
+however, many important details are missing.
+
+// ~ How to Compile, Run and Test ~ //
+
+In this assignment you are provided with a minimal make file, and a
+skeleton parallel-primes.c files. Use the make command to compile your
+program. You can run the program like so:
+
+./pa06
+
+This will print a help message that should be self-explanatory. To
+test if the number '2' is prime, using '1' thread, you would execute
+the program as follows:
+
+./pa06 2 1
+
+To run under valgrind, you would use the following command:
+
+valgrind --tool=memcheck --leak-check=full --verbose \
+	 --log-file=outputs/memoutput ./pa06 2 1
+
+You must then examine the file outputs/memoutput yourself to see if
+there are any memory leaks.
+
+For your convenience, the inputs folder contains two files. One file
+contains 437 prime numbers. The other file contains 2116 non-prime
+numbers. Your program should correctly detect all 437 primes as prime,
+and all 2116 non-primes as non-prime.
+
+NO SIMPLIFIED TESTING REGIME IS PROVIDED.
+
+You must figure out the best way to do this yourself.
+
+DO NOT LEAVE THIS TO THE LAST MINUTE.
+
+// ~ Why Prime Numbers ~ //
+
+You might know that modern cryptography relies on the fact that no-one
+knows how to efficiently determine whether or not a number is
+prime. If someone ever figures this out, then they may well be the
+subject of a real-life spy novel. This was the theme of the 90s hit
+film "Sneakers".
+
+But as far as prime numbers go, cryptography is the tip of the
+iceberg. If math has anything to do with the universe, then prime
+numbers have a special place in how it ticks. These special numbers
+have been the subject of extensive investigation by mathematicians for
+all of recorded history, yet they still present many mysteries. Their
+universality lead the great American scientist, Carl Sagan, to suggest
+that if aliens were to communicate with humans, then they could use
+prime numbers to capture our attention. This idea is the centre-piece
+of Sagan's only work of fiction, the best selling novel, "Contact",
+which has since been made into a film.
+
+Please watch this short video.
+
+http://www.youtube.com/watch?v=8qDjg8mdd8c
+
+So Jodie Foster thinks that primes are cool, okay?
+
