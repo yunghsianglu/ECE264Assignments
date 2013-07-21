@@ -65,7 +65,7 @@ int main(int argc, char * * argv)
 	fprintf(stderr, "2nd argument must be a valid integer >= 1, aborting.\n");
 	error = TRUE;
     }
-    if(strcmp(n_str, argv[1]) != 0) {
+    if(n_str && strcmp(n_str, argv[1]) != 0) {
 	fprintf(stderr, "1st argument must be a valid 128-bit integer: '%s' != '%s', aborting.\n", n_str, argv[1]);
 	error = TRUE;
     }
