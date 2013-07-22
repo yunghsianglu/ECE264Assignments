@@ -73,10 +73,20 @@ int primalityTestWithOnlyOddsAndSqrtLimit(long int n)
 You will need to modify this function to make it
 parallel. Furthermore, this function deals with puny "long int"
 numbers. We'll want more juice than that. So you will also have to
-modify this function to use 128 bit integers.
+modify this function to use 128 bit integers. 
 
-The webpage above explains the very *very* simple mathematics behind
-this function.
+There are some other problems with this function too. (Lesson: do not
+believe everything you read on the interwebs.) Can you see the
+problems?  For starters, this function says that 2 isn't a prime
+number! Secondly, (and more perniciously), Carter Allen does not
+handle the 'i' in the for loop correctly. For example, imagine that
+you are testing if 83 is prime. In this case max = floor(sqrt(83)) ==
+9, which is correct. Now you want to test every odd number between 3
+and 9 inclusive, but that is not what Carter Allen has done! You will
+need to fix this bug.
+
+The webpage above (correctly) explains the very *very* simple
+mathematics behind this function.
 
 // ~ What you need to do :: Preliminaries ~ //
 
