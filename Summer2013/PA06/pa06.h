@@ -1,5 +1,5 @@
 
-typedef __int128_t uint128;
+typedef __uint128_t uint128;
 
 #define SUCCESS 0
 #define FAILURE -1
