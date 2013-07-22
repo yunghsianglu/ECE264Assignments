@@ -1,4 +1,8 @@
 
+/**
+ * The ENTIRE assignment should be completed within this file
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
