@@ -1,0 +1,131 @@
+In this assignment, we will compute several properties of an array of
+integers.
+
+PLEASE NOTE: 
+(1) You should only modify the file answer01.c 
+(2) You can modify this file however you want, including adding additional
+functions. (This is true for all assignments.)  
+(3) You must only submit the file answer01.c for marking
+(4) Parts of the assignment have been written for you, but these parts do 
+not appear in the file answer01.c. Please browse through these files 
+(pa01.c and pa01.h).
+
+This assignment includes many pieces of useful information and you
+will learn these pieces in the coming weeks.  Do not worry if you do
+not understand everything in the first week.  Focus on writing the
+functions in answer01.c.  If you have taken the prerequisite CS 159,
+you should have no problem filling the code for these functions.
+
+If you need help, please visit the intructors' or the teaching
+assistants' office hours.
+
+=================================================================
+
+================================ 
+= Getting the Assignment Files =
+================================
+
+Assignments will be distributed to you via the version control system
+"git". This very useful program will allow the teaching staff to make
+modifications to assignments as problems arise, and then distribute
+them to all of you. As students, you will have "read-only" access to
+the assignment repository. The URL for the repository is:
+
+https://github.com/yunghsianglu/ECE264Assignments.git
+
+Use the "clone" command to get a copy of the files:
+
+aturing ~/School > git clone <type-url-here>
+
+Once you have a copy of the files, you can "cd" into the repository
+and use the "pull" command to get the latest version of the assignment
+files:
+
+aturing ~/School > cd ECE264Assignments 
+aturing ~/School/ECE264Assignments > git pull
+
+====================== 
+= Assignment Details = 
+======================
+
+In this assignment we shall: 
+* add all elements in an array of integers 
+* determine whether any element in the array is a negative number 
+* determine whether the elements' values are always increasing
+
+This program has the following files: 
+(1) pa01.h      A header file 
+(2) pa01.c      A C file that contains "main", the program entry point
+(3) answer01.c  A C file (only edit and submit this file)
+(4) Makefile    A file that "make" uses to build and test your solution
+
+To use the makefile, you need to cd into the assignment directory and
+type "make" in the Linux terminal. Type "make help" for a list of
+options. For example:
+
+aturing ~/School/ECE2644Assignments/PA01 > make help
+
+After you finish this program, upload answer01.c to Blackboard and
+submit it. Your program /must/, *must*, !!MUST!! compile against the 
+original assignment files (pa01.c and pa01.h), otherwise you will get
+zero. NO EXCEPTIONS.
+
+========================= 
+= Using Version Control =
+=========================
+
+For PA03, PA04, and PA05, you will need to show evidence that you are
+using version control. You can use the version control tool of your
+preferrence; however, we recommend that you learn git. The evidence
+required is the log file of your commits.
+
+This is not required for PA01; however, it is worth figuring this
+out. It may be frustrating or awkward at times; however, version
+control is an /essential/ tool for computer programming in groups, and
+is also highly recommended when working on single person projects as
+well. Spend the time now to understand what you are doing, and that
+will /save/ time later.
+
+Conceptually there are two repositories to deal with: the repository
+where you do your work (you control everything), and the repository
+that the staff use to distribute assignments to you. (URL given
+above.) This second repository will hence-forth be called
+"R-problem". The repository that you control will be referred to as
+"R-answer". These *must* be in /separate/ directories in your account.
+
+Do not modify anything in R-problem because it is read-only for
+you. When you need to do a "git pull", git will want to delete all
+your changes! IF YOU MODIFY R-problem, YOUR CODE WILL BE ERASED WHEN
+YOU DO "git pull".
+
+To set up R-answer, you will need to do some reading on the
+internet. There are many useful tutorials, and a bit of jargon that
+you must master. The internet contains everything you need to know
+to pull this off. Learning how to problem solve using information on
+the internet is an /essential/ skill for computer programing. Below is
+the URL for the official git tutorial. It is a starting point for your
+investigations:
+
+http://git-scm.com/docs/gittutorial
+
+Once you have done a "git pull" in R-problem, you will need to
+immediately copy the problems (and modifications) to R-answer. Then,
+write your programs in R-answer, and remember to commit and push
+often. It is advised that you COMMIT AND PUSH AT LEAST ONCE PER
+SESSION. (I never leave my computer for the day without committing
+changes.)
+
+In the rare cases when you are suspected of copying code, the commit
+log can be used as definitive evidence that you are developing your
+solutions step by step. However, if you commit only once before
+submission, you will not be able to use your commit log as evidence.
+
+ECE 264 requires that you submit source-control logs for only three
+assignments (PA03-PA05). After these three assignments, you are
+expected to continue using version control by yourself, even though it
+is no longer a requirement.
+
+IF YOU DO NOT PROVIDE EVIDENCE OF USING VERSION CONTROL in PA03-PA05,
+YOUR SUBSEQUENTIAL ASSIGNMENTS WILL NOT BE GRADED AND YOU WILL
+DEFINITELY RECEIVE F IN THIS COURSE.
+
