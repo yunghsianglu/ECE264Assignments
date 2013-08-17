@@ -1,0 +1,26 @@
+This assignment will have you work with strings and pointers.  We ask
+you to implement a number of string manipulation functions.  Many of
+these functions are already available in the C standard library
+(string.h); here we will create our own versions of these functions.
+You are obviously NOT allowed to use the existing versions in your
+implementing.  Instead, you must implement all the code yourself.
+
+C uses an array of characters for storing a string.  This array must
+have an element that stores the special character '\0' as the end of
+the string.  The '\0' character *terminates* the string.
+
+Please see the files pa02.h and answer02.c for the function prototypes
+you will be asked to write.  Fill in answer02.c with your code and
+submit only answer02.c through Blackboard.
+
+While string management often requires you to manage memory as well,
+this is not necessary for the functions we ask you write here.  You
+should not be required to allocate memory, not even for temporary
+storage.  If you find yourself using malloc(), strdup(), and/or
+free(), you are not solving this problem in the correct way.  You will
+lose points if you allocate or release memory.
+
+NOTE:
+The Makefile is set up test help you compile and test your code. 
+Type "make help" for a list of options.
+
