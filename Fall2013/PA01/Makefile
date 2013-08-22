@@ -20,7 +20,7 @@ OBJS = $(patsubst %.c,$(OBJF)/%.o,$(SOURCES))
 
 all: | build testall
 
-testall: | $(TESTS)
+testall: | $(TARGET) $(TESTS)
 
 build: $(TARGET)
 
