@@ -65,6 +65,6 @@ $(OBJF)/%.o: %.c | environment
 	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/\1,g' | sed '$$ s,$$, \\,' > $(OBJF)/$<.P
 	$(GCC) $(CFLAGS) -c -o $@ $<
 
-${TESTS}: test%: | $(TARGET) environment
+${TESTS}: test%: $(TARGET) | environment
 	@./bin/test.sh "$(TARGET)" $(shell echo "$(TESTT)" | awk "{ print \$$$(shell expr 1 + $* / 10); }") inputs/input$(shell expr $* % 10) outputs/output$* expected/expected$(shell expr $* % 10)_$(shell echo "$(TESTT)" | awk "{ print \$$$(shell expr 1 + $* / 10); }") outputs/valgrind-log$*
 
