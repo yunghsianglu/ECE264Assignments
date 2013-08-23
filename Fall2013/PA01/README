@@ -176,6 +176,39 @@ DEFINITELY RECEIVE F IN THIS COURSE. THERE IS NO EXCEPTION.
 
 =================================================================
 
+How does computer grading work?
+
+Your program will be graded in three ways:
+
+* whether the outputs are correct
+* whether the program has invalid memory accesses
+* whether the program has any warning messages, use global or
+  static variables ...
+
+The first is determined by using the "diff" command.  The outputs of
+your program is compared with the expected outputs.  Your program's
+outputs are stored in the "outputs" directory.  The expected outputs
+are stored in the "expected" directory.  You can use this command to
+see whether they are different
+
+    diff outputs/output0 expected/expected0
+
+We use "diff -w"; "-w" ignores the difference caused by space.
+
+The second is determined by the reports produced by valgrind.  In the
+outputs directory, you can see files called "valgrind-log.."  At the
+bottom of each file, there is a line called "ERROR SUMMARY".  Your
+program should have no error.  If there is an error (or errors),
+valgrind reports which line causes the error.
+
+The third will be checked by another program (not given to you).
+Since you can see the warning messages and you know whether you are
+using global or static variables, it is unnecessary to give you the
+checker.
+
+
+=================================================================
+
 In ECE 264, you should ALWAYS turn on gcc warning messages by adding
 
 -Wall -Wshadow
@@ -194,6 +227,7 @@ file names and directory names does not allow space. There are many
 cases when space in file (or directory) names crashed systems.  If
 your submission includes a file whose name contains space, it very
 likely that you will receive zero in the assignment.
+
 =================================================================
 
 This assignment asks you to submit only one file.  Later assignments
