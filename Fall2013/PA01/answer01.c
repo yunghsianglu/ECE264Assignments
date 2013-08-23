@@ -1,6 +1,7 @@
 /*
  * Please fill the functions in this file.
  */
+#include <stdio.h>
 #include "pa01.h"
 
 /* == Note 1 :: C does not initialize variables for you ==
