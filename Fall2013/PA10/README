@@ -1,0 +1,50 @@
+This assignment asks you to generate the states of 15 puzzle.  The 15
+puzzle is a popular game.  There are 15 squares in a 4 x 4 box.  One
+is empty.  The solved state is shows below
+
+1  2  3  4
+5  6  7  8
+9  A  B  C
+D  E  F  -
+
+Here, we use A to F for numbers 10 to 15. - is the space.  To play
+this game, you can move the space.  For example, moving - up changes
+the state to
+
+1  2  3  4
+5  6  7  8
+9  A  B  -
+D  E  F  C
+
+Moving - left changes the state to
+
+1  2  3  4
+5  6  7  8
+9  A  -  B
+D  E  F  C
+
+To solve this state, you can move - right and down.  However, if
+you move it down and right, you will get this state
+
+1  2  3  4
+5  6  7  8
+9  A  F  B
+D  E  C  -
+
+To make it simple, we will express each state by a single line from
+the upper left side to the lower right side.  The solved state is
+expressed as
+
+12345678ABCDEF- 
+
+There is no space between the numbers.
+
+123456789A-BDEFC expresses the following state
+
+1  2  3  4
+5  6  7  8
+9  A  -  B
+D  E  F  C
+
+
+
