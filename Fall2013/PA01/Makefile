@@ -20,7 +20,7 @@ OBJS = $(patsubst %.c,$(OBJF)/%.o,$(SOURCES))
 
 all: | build testall
 
-testall: | $(TESTS)
+testall: | $(TARGET) $(TESTS)
 
 build: $(TARGET)
 
@@ -64,6 +64,6 @@ $(OBJF)/%.o: %.c | environment
 	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/\1,g' | sed '$$ s,$$, \\,' > $(OBJF)/$<.P
 	$(GCC) $(CFLAGS) -c -o $@ $<
 
-${TESTS}: test%: | environment
+${TESTS}: test%: $(TARGET) | environment
 	@./bin/test.sh "$(TARGET)" inputs/input$* outputs/output$* expected/expected$* outputs/valgrind-log$*
 
