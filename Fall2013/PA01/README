@@ -1,3 +1,14 @@
+********************************************
+* DO NOT SEND EMAIL TO THE TEACHING STAFF. *
+********************************************
+
+If it is related to the course, please post it in Blackboard -
+Discussion.  Use email for only private issues.  The teaching staff
+will ignore email that is related to the course and not private.  You
+will not receive any response.
+
+=====================================================================
+
 In this assignment, we will compute several properties of an array of
 integers.
 
@@ -10,16 +21,32 @@ functions. (This is true for all assignments.)
 not appear in the file answer01.c. Please browse through these files 
 (pa01.c and pa01.h).
 
+You should not add the main function to answer01.c.  Doing so will
+guarantee that your will program fail and you will definitely receive
+zero.  The main function is already provided in pa01.c.
+
+If a file is marked as "do not modify this file", you should not
+modify this file in any circumstance. Modifying this file will
+guarantee that your program will fail and you will definitely receive
+zero.  If you believe there are mistakes in the code given to you,
+please post your questions, corrections, or suggestions in Blackboard
+Discussion.
+
 This assignment includes many pieces of useful information and you
 will learn these pieces in the coming weeks.  Do not worry if you do
 not understand everything in the first week.  Focus on writing the
 functions in answer01.c.  If you have taken the prerequisite CS 159,
 you should have no problem filling the code for these functions.
 
-If you need help, please visit the intructors' or the teaching
-assistants' office hours.
+If you find this assignment unreasonably difficult, you do not have
+the necessary background taking ECE 264.  It is advised that you take
+CS 159 first.  If you cannot do this assignment easily, you are likely
+to find ECE 264 unreachable.
 
-=================================================================
+If you need help, please visit the intructors' or the teaching
+assistants' office hours. 
+
+DO NOT SEND EMAIL.  Post your questions in Blackboard - Discussion.
 
 ================================ 
 = Getting the Assignment Files =
@@ -28,21 +55,27 @@ assistants' office hours.
 Assignments will be distributed to you via the version control system
 "git". This very useful program will allow the teaching staff to make
 modifications to assignments as problems arise, and then distribute
-them to all of you. As students, you will have "read-only" access to
-the assignment repository. The URL for the repository is:
+them to all of you. Version control will show exactly which lines have
+been changed.  As students, you will have "read-only" access to the
+assignment repository. The URL for the repository is:
 
 https://github.com/yunghsianglu/ECE264Assignments.git
 
 Use the "clone" command to get a copy of the files:
 
-aturing ~/School > git clone <type-url-here>
+git clone https://github.com/yunghsianglu/ECE264Assignments.git
 
 Once you have a copy of the files, you can "cd" into the repository
 and use the "pull" command to get the latest version of the assignment
 files:
 
-aturing ~/School > cd ECE264Assignments 
-aturing ~/School/ECE264Assignments > git pull
+cd ECE264Assignments 
+git pull
+
+Sometimes mistakes are found in the assignments. The instructor will
+tell you to obtain a new version and you should type the command
+
+git pull
 
 ====================== 
 = Assignment Details = 
@@ -63,12 +96,16 @@ To use the makefile, you need to cd into the assignment directory and
 type "make" in the Linux terminal. Type "make help" for a list of
 options. For example:
 
-aturing ~/School/ECE2644Assignments/PA01 > make help
+ECE2644Assignments/PA01 > make help
 
 After you finish this program, upload answer01.c to Blackboard and
 submit it. Your program /must/, *must*, !!MUST!! compile against the 
 original assignment files (pa01.c and pa01.h), otherwise you will get
 zero. NO EXCEPTIONS.
+
+You MUST test your program on native Linux (not cygwin, not
+Virtualbox, not MinGW ...).  There were many cases when students
+incorrect programs appeared working on cygwin or virtualbox.
 
 ========================= 
 = Using Version Control =
@@ -79,19 +116,22 @@ using version control. You can use the version control tool of your
 preferrence; however, we recommend that you learn git. The evidence
 required is the log file of your commits.
 
-This is not required for PA01; however, it is worth figuring this
-out. It may be frustrating or awkward at times; however, version
-control is an /essential/ tool for computer programming in groups, and
-is also highly recommended when working on single person projects as
+Version control is not required for PA01; however, it is worth
+figuring this out as soon as possible.  Version control is an
+*essential* tool for computer programming in groups, and is also
+highly recommended when working on single person projects as
 well. Spend the time now to understand what you are doing, and that
-will /save/ time later.
+will *save* you a lot of time later.
 
 Conceptually there are two repositories to deal with: the repository
 where you do your work (you control everything), and the repository
-that the staff use to distribute assignments to you. (URL given
-above.) This second repository will hence-forth be called
+that the teaching staff use to distribute assignments to you. (URL
+given above.) This second repository will hence-forth be called
 "R-problem". The repository that you control will be referred to as
 "R-answer". These *must* be in /separate/ directories in your account.
+
+If you mix the two repositories, you run the risk of erasing your work
+when the instrutor asks everyone in the class to do "git pull".
 
 Do not modify anything in R-problem because it is read-only for
 you. When you need to do a "git pull", git will want to delete all
@@ -99,33 +139,363 @@ your changes! IF YOU MODIFY R-problem, YOUR CODE WILL BE ERASED WHEN
 YOU DO "git pull".
 
 To set up R-answer, you will need to do some reading on the
-internet. There are many useful tutorials, and a bit of jargon that
-you must master. The internet contains everything you need to know
-to pull this off. Learning how to problem solve using information on
-the internet is an /essential/ skill for computer programing. Below is
-the URL for the official git tutorial. It is a starting point for your
-investigations:
+Internet. There are many useful tutorials, and a bit of jargon that
+you must master. The Internet contains everything you need to know.
+Below is the URL for the official git tutorial. It is a starting point
+for your learning of git:
 
 http://git-scm.com/docs/gittutorial
 
-Once you have done a "git pull" in R-problem, you will need to
-immediately copy the problems (and modifications) to R-answer. Then,
-write your programs in R-answer, and remember to commit and push
-often. It is advised that you COMMIT AND PUSH AT LEAST ONCE PER
-SESSION. (I never leave my computer for the day without committing
-changes.)
+Every non-trivial project is managed by version control.  
+
+Once you have done "git pull" (or git clone for the very first time)
+in R-problem, you will need to immediately copy the problems to
+R-answer. Then, write your programs in R-answer, and remember to
+commit and push often. It is advised that you COMMIT AND PUSH AT LEAST
+ONCE A DAY. Since this is a one-person project, it is perfectly
+acceptable if you commit and push every hour or every ten minutes.
 
 In the rare cases when you are suspected of copying code, the commit
 log can be used as definitive evidence that you are developing your
 solutions step by step. However, if you commit only once before
-submission, you will not be able to use your commit log as evidence.
+submission, you will not be able to use your commit log as evidence
+for your defence.
 
 ECE 264 requires that you submit source-control logs for only three
 assignments (PA03-PA05). After these three assignments, you are
 expected to continue using version control by yourself, even though it
-is no longer a requirement.
+is no longer a requirement for grading.
+
+You can use the version control system of your preference (git, svn,
+cvs...)  as long as you can provide evidence that you are using
+version control.
 
 IF YOU DO NOT PROVIDE EVIDENCE OF USING VERSION CONTROL in PA03-PA05,
 YOUR SUBSEQUENTIAL ASSIGNMENTS WILL NOT BE GRADED AND YOU WILL
-DEFINITELY RECEIVE F IN THIS COURSE.
+DEFINITELY RECEIVE F IN THIS COURSE. THERE IS NO EXCEPTION.
 
+=================================================================
+
+How does computer grading work?
+
+Your program will be graded in three ways:
+
+* whether the outputs are correct
+* whether the program has invalid memory accesses
+* whether the program has any warning messages, use global or
+  static variables ...
+
+The first is determined by using the "diff" command.  The outputs of
+your program is compared with the expected outputs.  Your program's
+outputs are stored in the "outputs" directory.  The expected outputs
+are stored in the "expected" directory.  You can use this command to
+see whether they are different
+
+    diff outputs/output0 expected/expected0
+
+We use "diff -w"; "-w" ignores the difference caused by space.
+
+The second is determined by the reports produced by valgrind.  In the
+outputs directory, you can see files called "valgrind-log.."  At the
+bottom of each file, there is a line called "ERROR SUMMARY".  Your
+program should have no error.  If there is an error (or errors),
+valgrind reports which line causes the error.
+
+The third will be checked by another program (not given to you).
+Since you can see the warning messages and you know whether you are
+using global or static variables, it is unnecessary to give you the
+checker.
+
+
+=================================================================
+
+In ECE 264, you should ALWAYS turn on gcc warning messages by adding
+
+-Wall -Wshadow
+
+after gcc.
+
+These warning messages have helped many students discover problems in
+their programs.  Thus, you should always use them. You will lose 1
+point for each warning message (25% of each assignment). This will be
+strictly enforced and there is absolutely no exception in any case.
+
+=================================================================
+
+You should not have space in a file name.  The ISO 9660 standard for
+file names and directory names does not allow space. There are many
+cases when space in file (or directory) names crashed systems.  If
+your submission includes a file whose name contains space, it very
+likely that you will receive zero in the assignment.
+
+=================================================================
+
+This assignment asks you to submit only one file.  Later assignments
+will ask you to submit zip files that include mulitiple files.  It is
+your responsibility submitting all needed files.  If you fail to
+submit all needed files, and your program does not work, you will
+receive zero.  The teaching staff will NEVER accept any late
+submission for any reason. DO NOT ASK FOR AN EXCEPTION.
+
+The teaching staff will NEVER go to your computer or your account for
+grading.  Do not tell the teaching staff that "I have not changed the files
+since the submission deadeline."  
+
+Your assignment scores depend ONLY on what you submit.  
+
+No late submission is accepted for any reason.  There is absolutely no
+exception whatsoever.  The instructor will not respond to any request
+for extension.
+
+DO NOT ASK FOR AN EXTENSION.  
+
+The instructor may give the whole class extensions.  The teaching
+assistants are not authorized to give extensions.
+
+=================================================================
+
+It is irrelevant whether your program runs correctly on YOUR computer.
+If your program is wrong (crashes, produces incorrect output, leak
+memory, etc.) during grading, you will lose points.
+
+The assignments will be graded on ECN-managed Linux computers.  You
+should test your programs on these computers.  Some incorrect programs
+may crash on Linux but they do not crash in MacOS os Windows (using
+cygwin or virtualbox).  It is known that valgrind (memory error
+detector) does not work on MacOS.
+
+Please do not tell the teaching staff tHat "My program is perfect on
+my machine." This statement is irrelevant in grading.
+
+=================================================================
+
+You should never use global variables or static variables.  You should
+never use goto or assert in your programs.  The instructor will
+explain the reasons.
+
+You will receive zero if your program includes 
+
+* one or more global variables
+* one or more static variables
+* one or more goto
+* one or more assert
+
+Global constants are acceptable; static functions are acceptable.
+
+====================================================================
+
+Some books encourage readers to use assert, something like this
+
+     assert(x > 0);
+
+This will stop the program if x is not positive.  These books claim
+that by stopping your program, you will be able to debug.
+
+These books are wrong.  
+
+Why?
+
+Why would you use assert?  You use assert because you are not so sure.
+If you are 100% certain that x is positive, you would not use assert.
+You would not waste time typing that line.  Would you write this?
+
+    x = 1;
+    assert(x > 0); /* assert immediately after x is assigned to 1 */
+
+Probably not. Why not? You are certain that x is positive.
+
+Thus, you use assert only if you have doubt.  Here comes the problem.
+If you use assert and the condition is false, the program stops.
+
+Imagine that you are writing a program for a large system.  Something
+unexpected happens and you stop the program! There is no chance to
+handle the problem.  This can easily cause a disaster.
+
+As an example, a company writing flight control software found someone
+wrote this
+
+   assert(distance of two airplanes > safe distance)
+
+In one of their tests, the company intentionally simulated the
+situation when two airplanes were too close and a collison was
+possible. This assert statement caused the flight control system to
+crash.  It took several minutes to reboot and restart the system.  The
+two planes collided in this simulation.
+
+Why did the software develop use assert?  Because a book said so.
+
+Many of you will have chance developing safety-critical systems.
+Assertion failure could create significant damage, injury, or loss of
+lives.
+
+If you are responsible software developer, you need to detect and
+HANDLE problems. DO NOT STOP THE PROGRAM.  This is an important
+concept.  Stopping the program is irresponsible.
+
+When C was designed, the concept of exception handling was not
+invented yet.  Newer languages, such as C++, Java, and Python, have
+exception handling.
+
+Do not use assert.  It is an irresponsible way of writing programs.
+
+
+====================================================================
+
+You are encouraged to talk to the teaching staff if you have any
+questions.  When you ask questions, please be as precise as possible
+and provide as much information as possible.  Many students ask
+questions by saying, "My program does not work. Can you help me?"
+This sentence provides no information and additional information is
+needed before anyone can help you.
+
+The teaching staff will help you but you need to provide more
+information.  When you ask questions, please provide the following
+information:
+
+* Which machine do you use?  
+* What is the output of gcc?  
+* Does the program generate any output on the screen or saved in a
+  file?
+* Does the program terminate abnormally (such as segmentation fault,
+  bus error)?
+* Does the problem appear consistently, every time you run the
+  program?
+* Have you initialized all variables?
+* What does valgrind say about your program? 
+* What is the call stack shown in gdb (or ddd)?
+* Are the indexes for arrays valid? Remember that if an array has n
+  elements, the valid indexes are 0 to n - 1; n is an INVALID index.
+
+One goal of ECE 264 is to teach you to ask the right questions and
+more important answer your own questions.  Before you ask any
+question, please answer the questions above first.
+
+Also, please remember that "My program produces correct outputs" does
+**NOT** mean the program is correct.  It is possible that your program
+has some hidden problems.  There are many cases that those hidden
+problems are discovered in grading.  "My program produces correct
+outputs" is **NOT** a reason to believe that your program is correct.
+The common problem is that the program has invalid memory accesses or
+reading uninitialized memory.
+
+Consider an analogy.  You drive a car and run red lights.  You do not
+hit anyone and reach your destination.  Does this mean running red
+lights is acceptable? No.  If you run red lights often, someday you
+will hit someone.  
+
+Please remember that correct outputs does **NOT** mean your program is
+correct.  
+
+====================================================================
+
+Computer programs follow logic flows.  Thus, understanding logic is
+important. Consider the following code
+
+   if (x == 0)
+   {
+      y = 1;
+   }
+
+If y is not 1, x cannot be zero.
+However, if y is 1, x may and may not be zero.  Why?
+
+   x = 1;
+   y = 1;
+   if (x == 0)
+   {
+      y = 1;
+   }
+
+Even though x is not zero, y still can be one.  Some students believe 
+that x must be zero if y is one.  This is incorrect.
+
+Another important concept is the difference between causality and
+correlation.  If your program always have x is zero and y is one at
+the same time, does this mean the program has this statement?
+
+   if (x == 0)
+   {
+      y = 1;
+   }
+
+No.  It is possible that 
+  
+   if (z == 0)
+   {
+       x = 0;
+       y = 1;
+   }
+
+In this case, x does not make y to be one.
+
+====================================================================
+
+Many students try to debug their programs by testing.  Testing can
+only tell you something is wrong.  Testing will not tell you what is
+wrong and how to fix it.
+
+                      READ YOUR PROGRAMS
+
+Sometimes students are surprised why the teaching staff can find and
+fix problems so quickly.  The teaching staff read code carefully.  If
+you want to write correct programs, read your code carefully after you
+type in a few lines.
+
+Do not copy-paste code.  You may find that some assignments ask your
+programs to do something similar but slightly different.  Copy-paste
+code seems a good and natural way to handle this situation.  However,
+copy-paste code is the invitation of endless debugging.  You will very
+likely forget to make necessary changes.  Even worse, if you find a
+problem in one place, you will likely forget to fix the problem in
+mulitiple places.
+
+You should assume that you will make mistakes and try to develop a
+strategy to discover and correct mistakes.  
+
+Do not write a lot of code at once. Write a small section of code and
+make sure it is correct, before you write more code.  If you take a
+small step each time, you can finish the assignments much faster.
+
+If you rush, you will spend more time.
+
+====================================================================
+
+All test cases are given to you and Makefile explains how your
+programs are graded.  You are responsible making your programs work.
+Do not expect any point if your program does not work.  You will NOT
+get 90% points if you write 90% code.  If you write 90% code, it is
+very likely that you will receive no point at all.
+
+You will lose most points (possibly all) if your programs have invalid
+memory accesses during grading.  It does not matter whether your
+programs "work" when you test them.  If your programs have problems in
+grading, you will lose most points.  Again, it is your responsibility.
+
+The teaching staff grade programs based on the functionalities, not
+sympathy; the teaching staff will not negotiate scores.  If you want
+to receive high scores, make sure the submitted programs work.
+
+You will *definitely* receive zero if your program has one or several
+syntax error reported by gcc.  There is no exception to this rule in
+any circumstance.  Even if your programs would work correctly after
+adding a semicolon, you will still receive zero.  Remember that it is
+your responsibility submitting a correct program.  
+
+The teaching staff will never modify your program for grading in any
+circumstance.  Your score depends on what is submitted.
+
+====================================================================
+
+Some students ask the instructor, "What do you want me to do?"  The
+students misunderstand the role of the instructor.  You learn FOR
+YOURSELF, not anyone else.  Ask yourself "What should I do to learn
+better?"
+
+====================================================================
+
+ECE 264 is a course for you to start writing non-trivial programs.  In
+many cases, you should design the programs before you start writing
+code.  If you want to spend less time in the programming assignments,
+think carefully and design on paper before writing code.  If you start
+writing code without clear understanding and careful design, you will
+likely spend many more hours than your classmates.
