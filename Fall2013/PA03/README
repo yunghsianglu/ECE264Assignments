@@ -1,0 +1,18 @@
+
+In this assignment, we will read a file full of integers, sort them,
+and then search for particular values. You will do this by editing the
+file "answer03.c". You should not edit any other files.
+
+To pass this assignment, just fill in the blanks in answer03.c. The
+comments in this file are there to guide you. You can (and should)
+create extra functions as needed. Please take care to follow the
+coding standards of the course. (For example, do not use any static
+variables.)
+
+Once you are happy with your solution, and it passes all of the
+testcases, and everything is *neat* and *tiddy* in your source file,
+and you compile without warnings, then please submit it to
+blackboard. Only submit the file "answer03.c"
+
+Good luck, and remember to use google and speak to your class-mates.
+
