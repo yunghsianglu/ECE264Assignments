@@ -1,0 +1,4 @@
+Unsorted array:   1
+Sorted array:     1 -- correct.
+Integer '1' in the 0th position in the sorted array -- pass.
+Integer '2' not found -- pass.

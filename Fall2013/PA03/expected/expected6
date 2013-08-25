@@ -1,0 +1,4 @@
+Unsorted array:  87  43  77  74  64  66  32  79  14  26  95
+Sorted array:    14  26  32  43  64  66  74  77  79  87  95 -- correct.
+Integer '87' in the 9th position in the sorted array -- pass.
+Integer '88' not found -- pass.

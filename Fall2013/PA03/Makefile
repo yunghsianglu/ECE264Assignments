@@ -58,7 +58,7 @@ $(OBJF)/%.o: %.c | environment
 	$(GCC) $(CFLAGS) -c -o $@ $<
 
 ${TESTS}: test%: $(TARGET) | environment
-	@./bin/test.sh "$(TARGET)" inputs/input$* outputs/output$* outputs/valgrind-log$*
+	@./bin/test.sh "$(TARGET)" inputs/input$* outputs/output$* expected/expected$* outputs/valgrind-log$*
 
 
 

@@ -5,7 +5,8 @@ cd "$(cd "$(dirname "$0")" ; pwd)/.."
 EXEC="$1"
 INF="$2"
 OUTF="$3"
-VALGF="$4"
+EXPECTEDF="$4"
+VALGF="$5"
 
 TMPF=$(mktemp /tmp/$USER.$EXEC.XXXXX)
 trap cleanup EXIT
@@ -23,12 +24,21 @@ echo
 cat $OUTF | sed 's/^/   /'
 echo
 
+# -- Check program output -- #
+echo -n "Checking expected output: $EXPECTEDF - "
+OUT_OKAY=0
+diff -w $OUTF $EXPECTEDF > $TMPF && OUT_OKAY=1 
+
+(( $OUT_OKAY == 1 )) && echo "okay"
+(( $OUT_OKAY != 1 )) \
+    && echo "FAIL. Expected: " \
+    && echo \
+    && cat $EXPECTEDF | sed 's/^/   /' 
+
 
 # -- Check valgrind output -- #
-
 VALG_OKAY=0
-
-if (( $PASS == 0 )) ; then
+if (( $OUT_OKAY == 1 )) ; then
     echo -n "Performing memory-check with valgrind: - "
 
     valgrind --tool=memcheck --leak-check=full --verbose \
@@ -42,11 +52,6 @@ if (( $PASS == 0 )) ; then
 	&& echo "FAIL!" \
 	&& echo "Examine the file '$VALGF' to diagnose the problem."
 fi
-
-# -- Check program output -- #
-OUT_OKAY=0
-(( $PASS != 0 )) && OUT_OKAY=0 && echo "Testcase FAILED because of incorrect output."
-(( $PASS == 0 )) && OUT_OKAY=1 && echo "Program produced the correct output"
 
 echo
 
