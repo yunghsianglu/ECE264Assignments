@@ -48,6 +48,9 @@
  * should *NOT* type cast malloc.  It is discouraged even though it is
  * not wrong.
  *
+ * The allocated memory will be released in pa03.c. You do not need to
+ * worry about releasing memory.
+ *
  * You will receive zero if you allocate a large array whose size is
  * independent of the number of integers in the file.  For example, if
  * you write this
@@ -104,7 +107,7 @@ void sort(int * arr, int length)
 }
 
 /**
- * Use a binary search to find 'key' in a sorted array of integers
+ * Use binary search to find 'key' in a sorted array of integers
  *
  * Arguments:
  * 
