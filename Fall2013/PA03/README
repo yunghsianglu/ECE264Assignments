@@ -9,10 +9,113 @@ create extra functions as needed. Please take care to follow the
 coding standards of the course. (For example, do not use any static
 variables.)
 
-Once you are happy with your solution, and it passes all of the
-testcases, and everything is *neat* and *tiddy* in your source file,
-and you compile without warnings, then please submit it to
-blackboard. Only submit the file "answer03.c"
+Once you finish the solution, and it passes all of the testcases, and
+everything is *neat* and *tiddy* in your source file, and you compile
+without warnings, then please submit it to blackboard. 
 
-Good luck, and remember to use google and speak to your class-mates.
+===============================
+== To Sumbit Your Assignment ==
+===============================
+
+You must submit a zip file called "pa03.zip", with precisely two files
+in it: "answer03.c", and "my-git-log.text". You must submit only those
+two files, and they must be named precisely as described.
+
+=====================================================
+
+In PA03-PA05, you need to show evidence of using version control.  You
+can use any version control system (such as CVS, SVN, RCS...).  This
+course encourages you to use github.com because you can request free
+private repositories as a student.  Please visit 
+
+https://github.com/edu
+
+to get your free private repositories.  You *MUST* use a private
+repository.  If you use a public repository (visible by everyone in
+the world) and someone copies your solution, you will be considered
+cheating.  You will receive F and your name will be reported to the
+Dean of Students.
+
+The evidence is the log (or history) of your commit.  You should
+commit often (at least once a day).  You can commit once an hour, or
+even once every 10 minutes. Each commit takes a snapshot of your
+programs.  If you commit, you can easily recover from mistakes.  If
+you do not commit, you will not have any history of the progress.  To
+meet the requirement of PA03-PA05, you must commit *at least three*
+times and each of a meaningful message.  In the rare cases when a
+student is suspected cheating, the student's commit log may be
+considered as an evidence for defense.
+
+
+For your reference, this is the commit log of the programming
+assignments.
+
+commit 5a80c29a3679fca017005c3ef0d1ea9e00f5423f
+Author: amichaux <amichaux@blakes-7.(none)>
+Date:   Sat Aug 24 16:00:01 2013 -0400
+
+    PA03 is ready to go
+
+commit d7ae597dcf8da12956fe9aab5c48252d214b3b5d
+Merge: a8790ab fcd3811
+Author: amichaux <amichaux@blakes-7.(none)>
+Date:   Sat Aug 24 12:15:34 2013 -0400
+
+    Fixed the Makefile for PA02
+    
+    Merge branch 'master' of https://github.com/yunghsianglu/ECE264Assignments
+
+commit a8790abba502ae254c8aefd9727c769f395e9d52
+Author: amichaux <amichaux@blakes-7.(none)>
+Date:   Sat Aug 24 12:15:31 2013 -0400
+
+    Fixed the Makefile for PA02
+
+commit fcd381110dccb96da660d3d70fa6f47425bf50b5
+Author: Aaron Michaux <amichaux@ecelinux12.ecn.purdue.edu>
+Date:   Fri Aug 23 15:36:39 2013 -0400
+
+    Fixed dependency -- make will compile target before running tests
+
+commit f6765efe5359b31ba9a08662d1cade3f2ecfa780
+Author: yunghsianglu <yunglu@purdue.edu>
+Date:   Fri Aug 23 10:04:30 2013 -0400
+
+    explain the assignments are graded
+
+commit 823993f487bad3245bec8ef1948b1a42ab4c035d
+Author: yunghsianglu <yunglu@purdue.edu>
+Date:   Fri Aug 23 09:49:16 2013 -0400
+
+    some hints for students
+
+commit edc7875818342cfb6fac8ddf8043e30ad8df4977
+Merge: 65427a9 c4721e7
+Author: Aaron Michaux <amichaux@ecelinux12.ecn.purdue.edu>
+Date:   Thu Aug 22 22:30:52 2013 -0400
+
+    Merge branch 'master' of https://github.com/yunghsianglu/ECE264Assignments
+
+commit 65427a9dd516eda01ce488987c1276b85cb9d47c
+Author: Aaron Michaux <amichaux@ecelinux12.ecn.purdue.edu>
+Date:   Thu Aug 22 22:30:43 2013 -0400
+
+    testing now depends on the target
+
+commit c4721e7497abcdfdb33a35e0fef99067e5585569
+Author: yunghsianglu <yunglu@purdue.edu>
+Date:   Thu Aug 22 18:34:58 2013 -0400
+
+    build the program if necessary when testall
+
+commit edc3efb4c16da07d55fb4c92e5caf53977ca8f40
+Author: yunglu <yunglu@yunglu-Latitude-E6320.(none)>
+Date:   Wed Aug 21 17:34:15 2013 -0400
+
+    explain the states
+
+commit ea01fe5c15a09c1b542bbea38fc18bc24ecb9b33
+Author: yunghsianglu <yunglu@purdue.edu>
+Date:   Sun Aug 18 15:13:59 2013 -0400
+
 

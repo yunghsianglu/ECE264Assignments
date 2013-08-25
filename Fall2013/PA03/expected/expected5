@@ -1,0 +1,4 @@
+Unsorted array:   5   0   8   1   7
+Sorted array:     0   1   5   7   8 -- correct.
+Integer '5' in the 2nd position in the sorted array -- pass.
+Integer '6' not found -- pass.

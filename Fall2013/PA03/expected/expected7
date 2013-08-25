@@ -1,0 +1,4 @@
+Unsorted array:  95  91  10  34  28  14  96  70  76  64  52  24  86  49  33  53  94  79  68  18  45  74  21
+Sorted array:    10  14  18  21  24  28  33  34  45  49  52  53  64  68  70  74  76  79  86  91  94  95  96 -- correct.
+Integer '95' in the 21st position in the sorted array -- pass.
+Integer '96' in the 22nd position in the sorted array -- pass.
