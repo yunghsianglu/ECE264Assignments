@@ -25,20 +25,20 @@ void printUsage(char * exec_path)
 	   exec);
 }
 
-const char * oridinalSuffix(int index)
+const char * oridinalSuffix(int ind)
 {
-    if(index % 10 == 1 && index != 11)
+    if(ind % 10 == 1 && ind != 11)
 	return "st";
-    if(index % 10 == 2 && index != 12) 
+    if(ind % 10 == 2 && ind != 12) 
 	return "nd";
     return "th";
 }
 
-void printSearchResult(int key, int index, int okay)
+void printSearchResult(int key, int ind, int okay)
 {
     printf("Integer '%d' ", key);
-    if(index >= 0)
-	printf("in the %d%s position in the sorted array", index, oridinalSuffix(index));
+    if(ind >= 0)
+	printf("in the %d%s position in the sorted array", ind, oridinalSuffix(ind));
     else
 	printf("not found");
     if(okay)
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 	    return EXIT_SUCCESS;
 	}
     
-    // Read and sort integers, then find 'index'
+    // Read and sort integers, then find 'ind'
     const char * filename = argv[1];
     int length = 0;
     int * integers = readIntegers(filename, &length);
@@ -95,19 +95,19 @@ int main(int argc, char *argv[])
     
     // -- Sort (and search)
     sort(integers, length);
-    int index = search(integers, length, key);
-    int index2 = search(integers, length, key2);
+    int ind = search(integers, length, key);
+    int ind2 = search(integers, length, key2);
 
-    // -- Use a linear search to find the correct index2
-    int index2_res = -1;
-    for(i = 0; i < length && index2_res == -1; ++i)
+    // -- Use a linear search to find the correct ind2
+    int ind2_res = -1;
+    for(i = 0; i < length && ind2_res == -1; ++i)
 	if(integers[i] == key2)
-	    index2_res = i;
+	    ind2_res = i;
 
     // -- Did we do everything correctly?
     int is_sorted = isSortedAscending(integers, length);
-    int key1_okay = index >= 0 && index < length && integers[index] == key;
-    int key2_okay = index2 == index2_res;
+    int key1_okay = ind >= 0 && ind < length && integers[ind] == key;
+    int key2_okay = ind2 == ind2_res;
 
     // -- Print results
     printf("Sorted array:  ");
@@ -120,8 +120,8 @@ int main(int argc, char *argv[])
     else
 	printf(" -- FAIL (not sorted).\n");
 
-    printSearchResult(key, index, key1_okay);
-    printSearchResult(key2, index2, key2_okay);
+    printSearchResult(key, ind, key1_okay);
+    printSearchResult(key2, ind2, key2_okay);
 
     // -- Clean up
     free(integers);
