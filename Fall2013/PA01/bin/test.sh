@@ -44,7 +44,6 @@ VALG_OKAY=0
 valgrind --tool=memcheck --leak-check=full --verbose \
     --log-file=$VALGF ./$EXEC $INF > $OUTF
 
-cat "$VALGF" | grep -q "All heap blocks were freed -- no leaks are possible" && VALG_OKAY=1
 cat "$VALGF" | grep -q "ERROR SUMMARY: 0 errors from 0 contexts" && VALG_OKAY=1
 
 (( $VALG_OKAY == 1 )) && echo "okay"
