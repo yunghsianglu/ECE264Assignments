@@ -36,6 +36,30 @@ the world) and someone copies your solution, you will be considered
 cheating.  You will receive F and your name will be reported to the
 Dean of Students.
 
+If you are new to version control, please understand what should be in
+version control and what should not.
+
+Version control manages different versions of the same text files, for
+example, source code and Makefile.  Version control gives you
+line-by-line comparison of different versions.  You should put the
+text files you write into version control.
+
+Version control does not work well with binary files because
+line-by-line comparison makes no sense.  If you put binary files into
+version control, the file is still saved but comparison is impossible.
+As a result, putting images into version control would be
+questionable.
+
+You should *not* put computer-generated files into version
+control. Examples are object files and executable.  If you write
+python programs, .pyc files are computer-generated. These files change
+every time you modify the source code. The source code should be
+managed by version control and the object files can be regenerated.
+
+Your Makefile should have "clean" to remove object and executable
+files.  Do "make clean" before you commit.
+
+
 The evidence is the log (or history) of your commit.  You should
 commit often (at least once a day).  You can commit once an hour, or
 even once every 10 minutes. Each commit takes a snapshot of your
