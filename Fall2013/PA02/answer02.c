@@ -187,7 +187,7 @@ void my_strinsert(char *s1, const char *s2, int pos)
  * Example(3): char foo[10] = "foobar";
  * my_strdelete(foo, 0, 34) yields "".
  * 
- * Example(3): char foo[10] = "foobar";
+ * Example(4): char foo[10] = "foobar";
  * my_strdelete(foo, 2, 30) yields "fo";
  */
 void my_strdelete(char *s, int pos, int length)
