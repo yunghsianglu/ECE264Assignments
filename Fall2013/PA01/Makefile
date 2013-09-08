@@ -1,6 +1,6 @@
 
 GCC = gcc
-CFLAGS = -g -Wall -Wshadow
+CFLAGS = -g -Wall -Wshadow -Wno-unused-variable
 LIBS =
 SOURCES = answer01.c pa01.c
 TARGET = pa01
