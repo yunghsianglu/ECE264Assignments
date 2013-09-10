@@ -9,8 +9,7 @@
  * See output format examples in any of the files in directory expected.
  * 
  * You may create additional arrays if needed.  The maximum size
- * needed is specified by MAXLENGTH in pa04.h. You need to use malloc and
- * free to handle arrays
+ * needed is specified by MAXLENGTH in pa04.h.
  */
 
 #include "pa04.h"
