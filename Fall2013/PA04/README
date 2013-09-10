@@ -71,8 +71,29 @@ This assignment asks you to solve the following problems:
 You should change only answer04.c.  You can add more functions in
 that file. Do not modify pa04.h or pa04.c.
 
-Please check the sample outputs for the formats.
+Please check the sample outputs in expected directory for the formats.
+
 You can test your functions with your own input file.
+
+input file format:
+<method> <value to partition>
+
+methods:
+1. All
+2. Increasing
+3. Decreasing
+4. Odd
+5. Even
+6. OddAndEven
+7. Prime
+
+usage: ./pa04 <input file>
+
+Example file "test.in" (the following line):
+1 3
+
+Example execute command (on the following line):
+./pa04 test.in
 
 
 Your program must provide a general solution.  Suppose n is the number
