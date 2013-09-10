@@ -1,0 +1,24 @@
+input file format:
+<method> <value to partition>
+
+methods:
+1. All
+2. Increasing
+3. Decreasing
+4. Odd
+5. Even
+6. OddAndEven
+7. Prime
+
+current method: 5
+current value: 8
+Start Partitioning...
+partitionEven 8
+= 2 + 2 + 2 + 2
+= 2 + 2 + 4
+= 2 + 4 + 2
+= 2 + 6
+= 4 + 2 + 2
+= 4 + 4
+= 6 + 2
+= 8
