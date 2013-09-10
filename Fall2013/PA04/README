@@ -72,6 +72,7 @@ You should change only answer04.c.  You can add more functions in
 that file. Do not modify pa04.h or pa04.c.
 
 Please check the sample outputs for the formats.
+You can test your functions with your own input file.
 
 
 Your program must provide a general solution.  Suppose n is the number
@@ -132,14 +133,18 @@ This solution is not general and you will receive zero.
 
 Please read and understand all files given to you, including
 
-pa01.h
-pa01.c
-answer01.c
-Makefile
+pa04.h
+pa04.c
+answer04.c
+
+To find more make commands, type
+
+make help
 
 To test your program, type 
 
-make test
+make testall
+
 
 You do not need to understand makefile.
 
