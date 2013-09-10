@@ -68,8 +68,8 @@ This assignment asks you to solve the following problems:
 
 * partition a positive integer with different restrictions
 
-You should change only answer01.c.  You can add more functions in
-that file. Do not modify pa01.h or pa01.c.
+You should change only answer04.c.  You can add more functions in
+that file. Do not modify pa04.h or pa04.c.
 
 Please check the sample outputs for the formats.
 
