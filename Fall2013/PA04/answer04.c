@@ -5,10 +5,9 @@
  * Hint: 
  * You can write additonal functions.
  * You can test your functions with your own input file.
- * See details by typing command ./pa04 in terminal after make.
- * See output format example in any of the files in expected
- * directory.
- *
+ * See details in README or typing command ./pa04 in terminal after make.
+ * See output format examples in any of the files in directory expected.
+ * 
  * You may create additional arrays if needed.  The maximum size
  * needed is specified by MAXLENGTH in pa01.h.
  */
