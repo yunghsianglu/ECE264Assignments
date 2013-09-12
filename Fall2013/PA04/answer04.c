@@ -9,7 +9,7 @@
  * See output format examples in any of the files in directory expected.
  * 
  * You may create additional arrays if needed.  The maximum size
- * needed is specified by MAXLENGTH in pa01.h.
+ * needed is specified by MAXLENGTH in pa04.h.
  */
 
 #include "pa04.h"
@@ -34,7 +34,6 @@
 void partitionAll(int value)
 {
   printf("partitionAll %d\n", value);
-  int arr[MAXLENGTH];
   
 }
 /*
@@ -60,7 +59,6 @@ void partitionAll(int value)
 void partitionIncreasing(int value)
 {
   printf("partitionIncreasing %d\n", value);
-  int arr[MAXLENGTH];
 
 }
 
@@ -87,7 +85,6 @@ void partitionIncreasing(int value)
 void partitionDecreasing(int value)
 {
   printf("partitionDecreasing %d\n", value);
-  int arr[MAXLENGTH];
   
 
 }
@@ -113,7 +110,6 @@ void partitionDecreasing(int value)
 void partitionOdd(int value)
 {
   printf("partitionOdd %d\n", value);
-  int arr[MAXLENGTH];
   
 }
 
@@ -139,7 +135,6 @@ void partitionOdd(int value)
 void partitionEven(int value)
 {
   printf("partitionEven %d\n", value);
-  int arr[MAXLENGTH];
 
 }
 
@@ -165,7 +160,6 @@ void partitionEven(int value)
 void partitionOddAndEven(int value)
 {
   printf("partitionOddAndEven %d\n", value);
-  int arr[MAXLENGTH];
   
 }
 
@@ -190,5 +184,5 @@ void partitionOddAndEven(int value)
 void partitionPrime(int value)
 {
   printf("partitionPrime %d\n", value);
-  int arr[MAXLENGTH];
+
 }
