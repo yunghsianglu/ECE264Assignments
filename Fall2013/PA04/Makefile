@@ -53,8 +53,8 @@ $(TARGET): $(OBJS) | environment
 	$(GCC) $(CFLAGS) $(OBJS) $(LIBS) -o $@
 
 $(OBJF)/%.o: %.c | environment
-	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/\1,g' | sed '$$ s,$$, \\,' > $(OBJF)/$<.P
-	$(GCC) $(CFLAGS) -c -o $@ $<
+	@$(GCC) -MM $(CFLAGS) $< | sed 's,^\([^ ]\),$(OBJF)\/\1,g' | sed '$$ s,$$, \\,' > $(OBJF)/$<.P $(LIBS)
+	$(GCC) $(CFLAGS) -c -o $@ $< $(LIBS)
 
 ${TESTS}: test%: $(TARGET) | environment
 	@echo '***************************************'
