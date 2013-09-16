@@ -1,0 +1,26 @@
+
+
+= 10
+= 1 + 2 + 3 + 4
+= 1 + 2 + 7
+= 1 + 3 + 6
+= 1 + 4 + 5
+= 1 + 9
+1. All
+= 2 + 3 + 5
+= 2 + 8
+2. Increasing
+= 3 + 7
+3. Decreasing
+= 4 + 6
+4. Odd
+5. Even
+6. OddAndEven
+7. Prime
+current method: 2
+current value: 10
+input file format:
+methods:
+<method> <value to partition>
+partitionIncreasing 10
+Start Partitioning...
