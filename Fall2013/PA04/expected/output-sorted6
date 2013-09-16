@@ -1,0 +1,27 @@
+
+
+= 1 + 2 + 1 + 2 + 1 + 2
+= 1 + 2 + 1 + 2 + 3
+= 1 + 2 + 1 + 4 + 1
+= 1 + 2 + 3 + 2 + 1
+= 1 + 4 + 1 + 2 + 1
+= 1 + 8
+1. All
+2. Increasing
+= 3 + 2 + 1 + 2 + 1
+= 3 + 6
+3. Decreasing
+4. Odd
+= 5 + 4
+5. Even
+6. OddAndEven
+= 7 + 2
+7. Prime
+= 9
+current method: 6
+current value: 9
+input file format:
+methods:
+<method> <value to partition>
+partitionOddAndEven 9
+Start Partitioning...
