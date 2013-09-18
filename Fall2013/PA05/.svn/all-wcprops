@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/78/trunk/S2013/PA/PA06
+END
+answer06.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/78/trunk/S2013/PA/PA06/answer06.c
+END
+pa06.c
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/70/trunk/S2013/PA/PA06/pa06.c
+END
+pa06.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/73/trunk/S2013/PA/PA06/pa06.h
+END
+SPECS
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/76/trunk/S2013/PA/PA06/SPECS
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/59/trunk/S2013/PA/PA06/README
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/74/trunk/S2013/PA/PA06/Makefile
+END
+grader.pl
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/77/trunk/S2013/PA/PA06/grader.pl
+END

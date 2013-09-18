@@ -1,0 +1,85 @@
+QSORT(3)                   Linux Programmer's Manual                  QSORT(3)
+
+
+
+NAME
+       qsort - sorts an array
+
+SYNOPSIS
+       #include <stdlib.h>
+
+       void qsort(void *base, size_t nmemb, size_t size,
+                  int(*compar)(const void *, const void *));
+
+DESCRIPTION
+       The  qsort()  function sorts an array with nmemb elements of size size.
+       The base argument points to the start of the array.
+
+       The contents of the array are sorted in ascending order according to  a
+       comparison  function  pointed  to  by  compar, which is called with two
+       arguments that point to the objects being compared.
+
+       The comparison function must return an integer less than, equal to,  or
+       greater  than  zero  if  the first argument is considered to be respec‐
+       tively less than, equal to, or greater than the second.  If two members
+       compare as equal, their order in the sorted array is undefined.
+
+RETURN VALUE
+       The qsort() function returns no value.
+
+CONFORMING TO
+       SVr4, 4.3BSD, C89, C99.
+
+NOTES
+       Library routines suitable for use as the compar argument include alpha‐
+       sort(3) and versionsort(3).  To compare C strings, the comparison func‐
+       tion can call strcmp(3), as shown in the example below.
+
+EXAMPLE
+       For one example of use, see the example under bsearch(3).
+
+       Another example is the following program, which sorts the strings given
+       in its command-line arguments:
+
+       #include <stdio.h>
+       #include <stdlib.h>
+       #include <string.h>
+
+       static int
+       cmpstringp(const void *p1, const void *p2)
+       {
+           /* The actual arguments to this function are "pointers to
+              pointers to char", but strcmp(3) arguments are "pointers
+              to char", hence the following cast plus dereference */
+
+           return strcmp(* (char * const *) p1, * (char * const *) p2);
+       }
+
+       int
+       main(int argc, char *argv[])
+       {
+           int j;
+
+           if (argc < 2) {
+            fprintf(stderr, "Usage: %s <string>...\n", argv[0]);
+            exit(EXIT_FAILURE);
+           }
+
+           qsort(&argv[1], argc - 1, sizeof(argv[1]), cmpstringp);
+
+           for (j = 1; j < argc; j++)
+               puts(argv[j]);
+           exit(EXIT_SUCCESS);
+       }
+
+SEE ALSO
+       sort(1), alphasort(3), strcmp(3), versionsort(3)
+
+COLOPHON
+       This page is part of release 3.35 of the Linux  man-pages  project.   A
+       description  of  the project, and information about reporting bugs, can
+       be found at http://man7.org/linux/man-pages/.
+
+
+
+                                  2009-09-15                          QSORT(3)
