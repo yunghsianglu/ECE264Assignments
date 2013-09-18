@@ -1,0 +1,69 @@
+This assignment has the following purposes: 
+
+1. Allocate memory when the program runs.  You do not know the amount
+  of memory needed in advance.  Your program will allocate memory only
+  after the program knows the file to read.  Your program will be
+  checked to determine whether the program uses memory correctly.  You
+  will receive zero if the program allocates memory whose size is
+  independent of the input file.
+
+2. Use the built-in quicksort function (qsort). This function is
+   general and can take arrays of different types. To use this
+   function, your program needs to provide "comparison" functions.
+
+This assignment asks you to write a program that reads integers and
+strings.  You are encouraged to use fscanf to read integer and fgets
+to read strings.  Please read the Linux manual about these two
+functions.
+
+Your program needs to have the following functions:
+
+* Read the integers (or strings) from a file and store the data in
+  memory.  You do not know the length of the file and have to read the
+  file once, counting the amount of data.  After knowing the amount of
+  data, allocate enough memory to store the data, read the file again
+  and store the data in memory.
+
+* Sort the data. You MUST NOT write the sorting function yourself,
+  instead, a sort function (qsort) has been provided for you in the C
+  library.  It is very important for you to understand how qsort
+  function works. The main task is to write appropriate comparison
+  functions for integers and for strings.
+
+* Write the sorted data into a file.
+
+* Release the allocated memory.
+
+* You can assume that MAXIMUM_LENGTH is the maximum length of each
+  line of a file.  It is defined for you already.
+
+*************
+* IMPORTANT *
+*************
+
+  When your program allocates memory, you must allocate enough memory
+  to store the data but not more.  You cannot assume an input file
+  has, for example, 1000 lines.  If you do so, you will definitely
+  receive zero in this assignment.
+
+  #define LARGESIZE 10000
+  Student stu[LARGESIZE]; 
+  /* allocate a large array, regardless of the size of the input file */
+
+  The teaching staff will inspect your program to ensure that you do
+  not violate this rule.  You will receive zero even if your program
+  passes the computer grader.
+
+  You should never have any global variable or static variable.
+
+  The input files are stored in the inputs directory.  The expected
+  outputs are stored in the expected directory.  Your program's
+  outputs are stored in the outputs directory.
+
+  You should read the files stored in outputs/valgrind-log* and check
+  whether your program has any invalid memory access or memory leak.
+
+NOTE:
+Type "make" to compile the source code.
+Type "make grade -s" to run the grading script.
+Type "make clean" to remove generated files.

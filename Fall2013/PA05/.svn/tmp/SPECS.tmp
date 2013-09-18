@@ -1,0 +1,88 @@
+In this assignment, you need to write README and submit it with your
+program.
+
+This assignment has the following purposes:
+learn how to allocate memory when the program runs.  You do not know
+  the amount of memory needed in advance.  Your program will allocate
+  memory only after the program knows the file to read.  For this
+  reason, your program will be manually checked to determine whether
+  the program uses memory correctly.
+
+This assignment asks you to write a program that uses a structure called
+Student.  Each Student object has two attributes: 
+
+ID is an integer
+name is a string
+
+Your program needs to have the following functions:
+
+* Read students' data from a file and store the data in memory.  You
+  do not know the length of the file and have to scan the file once,
+  counting the number of students.  After knowing the number of
+  students, allocate enough memory for the students, read the file
+  again and store the data in memory.
+
+* Sort the students' data by the IDs and by the names.  You need to
+  sort the data by using the sorting function given to you.
+  You need to write the appropriate swap function(s)
+
+* Each input file has unique IDs and unique names.  If you find 
+  a file that has duplicate IDs or duplicate names, this input 
+  file is invalid. Please inform the instructor if you find an 
+  invalid input file.
+
+* Write the sorted student data into files.
+
+* When your program reads a student's name, you can assume the name
+  does not exceed the constant defined as MAXIMUM_LENGTH.  It is
+  defined in answer06.c and the value is 80.
+
+* Each of the test inputs should have distinct IDs and distinct names.
+  If you find duplicates in a file, we have made a mistake.  Please
+  inform the instructor.
+
+*************
+* IMPORTANT *
+*************
+
+  When your program allocates memory, you must allocate enough memory
+  to store the data but not more.  In other words, you CANNOT use
+  MAXIMUM_LENGTH for the length of every student's name.  If a
+  student's name needs only 11 characters (including '\0'), your
+  program should allocate memory for only 11 characters.
+
+  If your program allocates more memory than necessary, you will lose
+  1% for every unnecessary byte (this will almost guarantee that you
+  will receive zero).
+
+  You will receive zero if your program allocate a large amount of 
+  memory that is independent of the size of the input file.  For
+  example, if you do this
+
+  #define LARGESIZE 10000
+  Student stu[LARGESIZE]; 
+  /* allocate a large array, 
+     regardless of the size of the input file */
+
+  The teaching staff will manually inspect your program to ensure that
+  you do not violate this rule.  You will receive zero even if your
+  program passes the computer grader.
+
+  You are allowed to have at most one array whose size is
+  MAXIMUM_LENGTH inside each function as a local variable. 
+
+  You should never have any global variable.
+
+
+NOTE:
+Type "make" to compile the source code.
+Type "make grade -s" to run the grading script.
+Type "make clean" to remove generated files.
+
+
+The input files are stored in the inputs directory.
+The expected outputs are stored in the expected directory.
+Your program's outputs are stored in the outputs directory.
+
+You should read the files stored in outputs/memoutput* and check
+whether your program has any invalid memory access or memory leak.
