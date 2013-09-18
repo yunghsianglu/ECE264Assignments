@@ -1,7 +1,7 @@
 
 GCC = gcc
 CFLAGS = -g -Wall -Wshadow
-LIBS =
+LIBS = -lm
 SOURCES = answer04.c pa04.c
 TARGET = pa04
 TESTN := $(shell seq 1 9)
