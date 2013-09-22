@@ -1,0 +1,78 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              (void) fseek(stream, 0L, SEEK_SET)
+              SEEK_CUR.
+       #include <stdio.h>
+       C89, C99.
+       EBADF  The stream specified is not a seekable stream.
+       EINVAL The whence argument to fseek() was not  SEEK_SET,  SEEK_END,  or
+       The  fseek()  function  sets the file position indicator for the stream
+       The  functions fgetpos(), fseek(), fsetpos(), and ftell() may also fail
+       The  rewind()  function  returns no value.  Upon successful completion,
+       The  rewind()  function sets the file position indicator for the stream
+       The fgetpos() and fsetpos() functions are alternate interfaces  equiva‚Ä       The ftell() function obtains the current value  of  the  file  position
+       This  page  is  part of release 3.35 of the Linux man-pages project.  A
+       and set errno  for  any  of  the  errors  specified  for  the  routines
+       be found at http://man7.org/linux/man-pages/.
+       by  adding offset bytes to the position specified by whence.  If whence
+       clearerr(3)).
+       complex object and these routines may be the only way to portably repo‚Ä       description of the project, and information about reporting  bugs,  can
+       end-of-file  indicator  for  the  stream  and undoes any effects of the
+       error.
+       except  that  the  error  indicator for the stream is also cleared (see
+       fflush(3), fstat(2), lseek(2), and malloc(3).
+       fgetpos(), fseek(), fsetpos() return 0, and ftell() returns the current
+       fgetpos, fseek, fsetpos, ftell, rewind - reposition a stream
+       indicator for the stream pointed to by stream.
+       int fgetpos(FILE *stream, fpos_t *pos);
+       int fseek(FILE *stream, long offset, int whence);
+       int fsetpos(FILE *stream, fpos_t *pos);
+       is set to SEEK_SET, SEEK_CUR, or SEEK_END, the offset  is  relative  to
+       lent  to ftell() and fseek() (with whence set to SEEK_SET), setting and
+       long ftell(FILE *stream);
+       lseek(2), fseeko(3)
+       offset.   Otherwise,  -1  is  returned and errno is set to indicate the
+       pointed to by stream to the beginning of the file.   It  is  equivalent
+       pointed to by stream.  The new position, measured in bytes, is obtained
+       referenced  by pos.  On some non-UNIX systems an fpos_t object may be a
+       respectively.  A successful call to the  fseek()  function  clears  the
+       sition a text stream.
+       storing the current value of the file offset into or  from  the  object
+       the  start of the file, the current position indicator, or end-of-file,
+       to:
+       ungetc(3) function on the same stream.
+       void rewind(FILE *stream);
+COLOPHON
+CONFORMING TO
+DESCRIPTION
+ERRORS
+FSEEK(3)                   Linux Programmer's Manual                  FSEEK(3)
+GNU                               1993-11-29                          FSEEK(3)
+NAME
+RETURN VALUE
+SEE ALSO
+SYNOPSIS
+ê
+ê

@@ -1,0 +1,42 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  2010-09-20                         STRCMP(3)
+       #include <string.h>
+       (at most) n characters of s1 and s2.
+       SVr4, 4.3BSD, C89, C99.
+       The  strcmp()  function compares the two strings s1 and s2.  It returns
+       The  strncmp()  function  is similar, except it only compares the first
+       The strcmp() and strncmp() functions return an integer less than, equal
+       This  page  is  part of release 3.35 of the Linux man-pages project.  A
+       an integer less than, equal to, or greater than zero if  s1  is  found,
+       bcmp(3),  memcmp(3),  strcasecmp(3),   strcoll(3),   string(3),   strn‚Ä       be found at http://man7.org/linux/man-pages/.
+       casecmp(3), strverscmp(3), wcscmp(3), wcsncmp(3)
+       description of the project, and information about reporting  bugs,  can
+       int strcmp(const char *s1, const char *s2);
+       int strncmp(const char *s1, const char *s2, size_t n);
+       respectively, to be less than, to match, or be greater than s2.
+       respectively, to be less than, to match, or be greater than s2.
+       strcmp, strncmp - compare two strings
+       to, or greater than zero if s1 (or the first n bytes thereof) is found,
+COLOPHON
+CONFORMING TO
+DESCRIPTION
+NAME
+RETURN VALUE
+SEE ALSO
+STRCMP(3)                  Linux Programmer's Manual                 STRCMP(3)
+SYNOPSIS
+ê

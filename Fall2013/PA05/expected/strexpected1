@@ -1,0 +1,90 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       #include <stdio.h>
+       ('\0').  No check for buffer overrun is performed (see BUGS below).
+       A  terminating  null  byte ('\0') is stored after the last character in
+       C89, C99, POSIX.1-2001.  LSB  deprecates  gets().   POSIX.1-2008  marks
+       Calls to the functions described here can be mixed with each other  and
+       EOF or a newline.  If a newline is read, it is stored into the  buffer.
+       For nonlocking counterparts, see unlocked_stdio(3).
+       It  is  not  advisable  to  mix calls to input functions from the stdio
+       Never use gets().  Because it is impossible to tell without knowing the
+       This page is part of release 3.35 of the Linux  man-pages  project.   A
+       ated  with  the  input  stream;  the results will be undefined and very
+       available  for subsequent read operations.  Pushed-back characters will
+       be found at http://man7.org/linux/man-pages/.
+       be returned in reverse order; only one pushback is guaranteed.
+       char *fgets(char *s, int size, FILE *stream);
+       char *gets(char *s);
+       char cast to an int or EOF on end of file or error.
+       data in advance how many  characters  gets()  will  read,  and  because
+       description  of  the project, and information about reporting bugs, can
+       either a terminating newline or EOF, which it replaces with a null byte
+       fgetc() reads the next character from  stream  and  returns  it  as  an
+       fgetc(), getc() and getchar() return the character read as an  unsigned
+       fgetc,  fgets,  getc,  getchar,  gets, ungetc - input of characters and
+       fgets() reads in at most one less than size characters from stream  and
+       fseek(3),   getline(3),  getwchar(3),  puts(3),  scanf(3),  ungetwc(3),
+       getc()  is equivalent to fgetc() except that it may be implemented as a
+       getchar() is equivalent to getc(stdin).
+       gets()  and  fgets() return s on success, and NULL on error or when end
+       gets() obsolescent.
+       gets() reads a line from stdin into the buffer pointed to  by  s  until
+       gets() will continue to store characters past the end of the buffer, it
+       input stream.
+       int fgetc(FILE *stream);
+       int getc(FILE *stream);
+       int getchar(void);
+       int ungetc(int c, FILE *stream);
+       is extremely dangerous to use.  It has  been  used  to  break  computer
+       library with low-level calls to read(2) for the file descriptor associ‚Ä       macro which evaluates stream more than once.
+       of file occurs while no characters have been read.
+       probably not what you want.
+       read(2), write(2), ferror(3), fgetwc(3), fgetws(3), fopen(3), fread(3),
+       security.  Use fgets() instead.
+       stores  them  into  the buffer pointed to by s.  Reading stops after an
+       strings
+       the buffer.
+       ungetc() pushes c back to stream, cast to unsigned char,  where  it  is
+       ungetc() returns c on success, or EOF on error.
+       unlocked_stdio(3)
+       unsigned char cast to an int, or EOF on end of file or error.
+       with calls to other input functions from the stdio library for the same
+BUGS
+COLOPHON
+CONFORMING TO
+DESCRIPTION
+GETS(3)                    Linux Programmer's Manual                   GETS(3)
+GNU                               2011-09-28                           GETS(3)
+NAME
+RETURN VALUE
+SEE ALSO
+SYNOPSIS
+ê
