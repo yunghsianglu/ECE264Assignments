@@ -1,0 +1,85 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  2009-09-15                          QSORT(3)
+                  int(*compar)(const void *, const void *));
+               puts(argv[j]);
+              pointers to char", but strcmp(3) arguments are "pointers
+              to char", hence the following cast plus dereference */
+            exit(EXIT_FAILURE);
+            fprintf(stderr, "Usage: %s <string>...\n", argv[0]);
+           /* The actual arguments to this function are "pointers to
+           exit(EXIT_SUCCESS);
+           for (j = 1; j < argc; j++)
+           if (argc < 2) {
+           int j;
+           qsort(&argv[1], argc - 1, sizeof(argv[1]), cmpstringp);
+           return strcmp(* (char * const *) p1, * (char * const *) p2);
+           }
+       #include <stdio.h>
+       #include <stdlib.h>
+       #include <stdlib.h>
+       #include <string.h>
+       Another example is the following program, which sorts the strings given
+       For one example of use, see the example under bsearch(3).
+       Library routines suitable for use as the compar argument include alpha‚Ä       SVr4, 4.3BSD, C89, C99.
+       The  qsort()  function sorts an array with nmemb elements of size size.
+       The base argument points to the start of the array.
+       The comparison function must return an integer less than, equal to,  or
+       The contents of the array are sorted in ascending order according to  a
+       The qsort() function returns no value.
+       This page is part of release 3.35 of the Linux  man-pages  project.   A
+       arguments that point to the objects being compared.
+       be found at http://man7.org/linux/man-pages/.
+       cmpstringp(const void *p1, const void *p2)
+       compare as equal, their order in the sorted array is undefined.
+       comparison  function  pointed  to  by  compar, which is called with two
+       description  of  the project, and information about reporting bugs, can
+       greater  than  zero  if  the first argument is considered to be respec‚Ä       in its command-line arguments:
+       int
+       main(int argc, char *argv[])
+       qsort - sorts an array
+       sort(1), alphasort(3), strcmp(3), versionsort(3)
+       sort(3) and versionsort(3).  To compare C strings, the comparison func‚Ä       static int
+       tion can call strcmp(3), as shown in the example below.
+       tively less than, equal to, or greater than the second.  If two members
+       void qsort(void *base, size_t nmemb, size_t size,
+       {
+       {
+       }
+       }
+COLOPHON
+CONFORMING TO
+DESCRIPTION
+EXAMPLE
+NAME
+NOTES
+QSORT(3)                   Linux Programmer's Manual                  QSORT(3)
+RETURN VALUE
+SEE ALSO
+SYNOPSIS
+ê
+ê
+ê
