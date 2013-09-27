@@ -7,6 +7,13 @@ RUN_N="$2"
 
 [ "$RUN_N" -ne "$RUN_N" 2>/dev/null ] && echo "Run-number not an integer, aborting" && exit 1
 
+TMPF=$(mktemp /tmp/test.sh.$USER.XXXXXXX)
+trap cleanup EXIT
+cleanup()
+{
+    rm -f $TMPF
+}
+
 # ------------------------------------------------- Parameters -- #
 INPUT_F="$(find . | grep ./inputs/$(printf %02d $RUN_N))"
 OUTPUT_F="outputs/$(basename $INPUT_F).out"
@@ -28,7 +35,8 @@ echo "./$EXEC $OPTION $INPUT_F $OUTPUT_F"
 ./$EXEC $OPTION $INPUT_F $OUTPUT_F
 PASS=$?
 echo
-if ! diff -w $OUTPUT_F $EXP_F 1>/dev/null ; then
+cat $EXP_F | sed '/^ *$/d' > $TMPF
+if ! cat $OUTPUT_F | sed '/^ *$/d' | diff -w $TMPF - 1>/dev/null ; then
     OKAY="false"
     echo "FAILED!"
 else
