@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "pa05.h"
-#define MAXIMUM_LENGTH 80
 
 /*
  * Read a file of integers.
@@ -63,6 +62,7 @@
 
 int * readInteger(char * filename, int * numInteger)
 {
+   return NULL;
 }
 
 /* ----------------------------------------------- */
@@ -133,6 +133,7 @@ int * readInteger(char * filename, int * numInteger)
 
 char * * readString(char * filename, int * numString)
 {
+    return NULL;
 }
 
 /* ----------------------------------------------- */
@@ -191,6 +192,7 @@ void freeString(char * * arrString, int numString)
 
 int saveInteger(char * filename, int * arrInteger, int numInteger)
 {
+   return 0;
 }
 
 /* ----------------------------------------------- */
@@ -213,6 +215,7 @@ int saveInteger(char * filename, int * arrInteger, int numInteger)
 
 int saveString(char * filename, char * * arrString, int numString)
 {
+    return 0;
 }
 
 /* ----------------------------------------------- */
@@ -237,7 +240,6 @@ void sortInteger(int * arrInteger, int numInteger)
  * Hint: use strcmp in the comparison function
  *
  */
-
 
 void sortString(char * * arrString, int numString)
 {
