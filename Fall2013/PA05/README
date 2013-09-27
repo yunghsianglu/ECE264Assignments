@@ -52,7 +52,7 @@ Your program needs to have the following functions:
 
   The teaching staff will inspect your program to ensure that you do
   not violate this rule.  You will receive zero even if your program
-  passes the computer grader.
+  passes the test-cases.
 
   You should never have any global variable or static variable.
 
@@ -65,7 +65,6 @@ Your program needs to have the following functions:
 
 NOTE:
 Type "make" to compile the source code.
-Type "make grade -s" to run the grading script.
 Type "make clean" to remove generated files.
 
 Now, it is time to take a look at Makefile. Please read this, it is very important for you to know
