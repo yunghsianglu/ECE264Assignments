@@ -66,7 +66,14 @@
  * (5) Don't forget to run your code through valgrind. You must _never_
  *     leak memory.
  *
- * (6) You can compare two binary files using the "md5sum" program:
+ * (6) You can use "diff" to compare binary files:
+ *
+ *         > diff -q outputs/01-smile.ppm expected/02-cat-chess.ppm
+ *         Files outputs/01-smile.ppm and expected/02-cat-chess.ppm differ
+ *         > diff -q outputs/01-smile.ppm expected/01-smile.ppm
+ *         > # empty output means no difference
+ * 
+ * (7) If you prefer, then use "md5sum" to compare binary files:
  *   
  *         > md5sum  expected/01-smile.ppm 
  *         b981173424d0ba22bf406fa0bf37cfe1 expected/01-smile.ppm
@@ -76,7 +83,7 @@
  *     If two files have _exactly_ the same bytes, then their md5sum
  *     will be the same. 
  *
- * (7) Don't leave this to the last minute.
+ * (8) Don't leave this to the last minute.
  *
  */
 
@@ -144,7 +151,9 @@
  * (6)  Check that malloc returned a non-NULL pointer if comment_len
  *      is greater than zero.
  * (7)  Read the string from disk, checking that you read every byte
- *      successfully.
+ *      successfully. Do NOT use fscanf or fgets to read the string,
+ *      since these functions work best on text files. Instead, use
+ *      fread(...) to read precisely the indicated number of bytes.
  * (8)  Malloc memory for the pixel data. There are width * height 
  *      pixels, and each pixel uses sizeof(uint8_t) bytes.
  * (9)  Read the pixel data from disk, making sure that you read every
