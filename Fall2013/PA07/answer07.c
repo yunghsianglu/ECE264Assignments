@@ -9,7 +9,12 @@
  */
 void List_print(FILE * out, Node * head)
 {
-
+ while(head != NULL)
+	{
+	    fprintf(out, "%5d: %6d\n", head -> index, head -> value);
+	    head = head -> next;
+	}
+    printf("\n");
 }
 
 
