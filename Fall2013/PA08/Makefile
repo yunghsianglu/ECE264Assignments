@@ -3,7 +3,7 @@ CFLAGS = -g -Wall -Wshadow
 OBJS = answer08.o pa08.o
 HDRS = pa08.h
 TARGET = pa08
-TESTN := $(shell seq 1 9)
+TESTN := $(shell seq 1 10)
 VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose
 
 TESTS := $(addprefix test,${TESTN})
