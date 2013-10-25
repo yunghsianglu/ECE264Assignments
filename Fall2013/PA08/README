@@ -27,10 +27,11 @@ on the indexes:
 When merging two sparse array, array_1 and array_2:
 
  1. The contents in array_1 and array_2 should not be changed. You
-    should create a new array that stores the result of merging.
+    should create a new array (called new_array) that stores the
+    result of merging.
 
- 2. array_2 will be merged to array_1. This means you need to read
-     nodes in array_2 and insert them into array_1.
+ 2. array_2 will be merged to new_array. This means you need to read
+     nodes in array_2 and insert them into new_array.
 
  3. You need to use post-order to traverse the array_2 tree. 
 
@@ -40,7 +41,7 @@ When merging two sparse array, array_1 and array_2:
  5. A node with value of 0 should be removed.
 
  6. if array_2 have nodes with index different than any nodes in
-     array_1, you should insert those nodes into array_1.
+     new_array, you should insert those nodes into new_array.
   
 Example:
 Consider the following indices and corresponding values:
@@ -60,7 +61,9 @@ int values_3  [ NUM_VALUES_3 ] = { 5 , -6 ,  7 ,-5 , 4 };
 
 Another hint: You may need to write your own functions.
 
-About outputs:
-The output of pa08 only contains the final output, which means make test only works when all the function has been done. 
-However, you can check your trees by "make testxx". (xx means some number, such as 01, 02) 
-Array1 and Array2 will be printed out in "debug_files/", but this only works when you finished all functions except SparseArray_merge and SparseArray_copy. 
+About outputs: The output of pa08 only contains the final output,
+which means make test only works when all the function has been done.
+However, you can check your trees by "make testxx". (xx means some
+number, such as 01, 02) Array1 and Array2 will be printed out in
+"debug_files/", but this only works when you finished all functions
+except SparseArray_merge and SparseArray_copy.
