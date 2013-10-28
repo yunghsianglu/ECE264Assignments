@@ -1,5 +1,5 @@
 ------------------------------------------------------------------
-ECE 264 - SUMMER 2013 - PROGRAMMING ASSIGNMENT 05
+ECE 264 - FALL 2013 - PROGRAMMING ASSIGNMENT 09
 ------------------------------------------------------------------
 (Derived from an assignment by Professor Vijay Raghunathan)
 
@@ -17,7 +17,7 @@ specified by the header, modify the provided postOrderPrint function and print t
 SPECIFICATIONS
 ============== 
 There will not be a skeleton provided for this assignment.  It will be
-up to you to define all functions.  In the directory PA05, there will be different files for you to start. pa05.c is for you to write your main function. utility.c is for you to write your utility functions(all the functions except main funtion). pa05.h is for you to declare all the functions and structures. A Makefile will be provided later on for your testing convenience. Even without the Makefile, you should be able to write a simple Makefile for testing purpose.
+up to you to define all functions.  In the directory PA09, there will be different files for you to start. pa05.c is for you to write your main function. utility.c is for you to write your utility functions(all the functions except main funtion). pa05.h is for you to declare all the functions and structures. A Makefile will be provided later on for your testing convenience. Even without the Makefile, you should be able to write a simple Makefile for testing purpose.
 
 *The program takes two input arguments:
  1. the input filename of the compressed file; and
@@ -26,7 +26,7 @@ up to you to define all functions.  In the directory PA05, there will be differe
   - A suite of inputs and their expected outputs.
 
 Here are some details for this program:
-  In pa05.c you will need to do:
+  In pa09.c you will need to do:
     1. Check argc, print error message if the number of arguments are not correct
     2. Open the input file, check if the file has been opened correctly, if not, print error message;
     3. Call a function to create Huffman Tree, return the head of the tree;
@@ -251,7 +251,7 @@ WHAT TO SUBMIT?
 
 Submit a .zip file containing the following files: 
 
-1. pa05.c pa05.h utility.c.
+1. pa09.c pa09.h utility.c.
 
 3. A README file that describes the algorithm used in your assignment.
    The README should say how the functions accomplish their goals, not
@@ -277,8 +277,8 @@ standards, content of README, a proper Makefile, and commenting.
 ADDTIONAL FAQ
 =============
 
-1. What should I write in pa05.c?
-You should write your main function in pa05.c. This main function should call the utility functions you write in utility.c to open the input, read the header, generate the Huffman Tree, and use post order print to an output file(See Makefile).
+1. What should I write in pa09.c?
+You should write your main function in pa09.c. This main function should call the utility functions you write in utility.c to open the input, read the header, generate the Huffman Tree, and use post order print to an output file(See Makefile).
 
 2. What are the tree.c and tree.h?
 The tree.h is the header file for tree.c. The tree.c contains a function void Huff_postOrderPrint(HuffNode *tree), You should refer to this and write your own post order print function since you are writing your output to a file. In short, you should open an output file and use fprintf to do that. You should not submit tree.c and tree.h.
