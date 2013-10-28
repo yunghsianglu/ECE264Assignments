@@ -17,7 +17,7 @@ specified by the header, modify the provided postOrderPrint function and print t
 SPECIFICATIONS
 ============== 
 There will not be a skeleton provided for this assignment.  It will be
-up to you to define all functions.  In the directory PA09, there will be different files for you to start. pa05.c is for you to write your main function. utility.c is for you to write your utility functions(all the functions except main funtion). pa05.h is for you to declare all the functions and structures. A Makefile will be provided later on for your testing convenience. Even without the Makefile, you should be able to write a simple Makefile for testing purpose.
+up to you to define all functions.  In the directory PA09, there will be different files for you to start. pa09.c is for you to write your main function. utility.c is for you to write your utility functions(all the functions except main funtion). pa05.h is for you to declare all the functions and structures. A Makefile will be provided later on for your testing convenience. Even without the Makefile, you should be able to write a simple Makefile for testing purpose.
 
 *The program takes two input arguments:
  1. the input filename of the compressed file; and
