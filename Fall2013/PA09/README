@@ -38,7 +38,7 @@ Here are some details for this program:
     2. Write functions to perform push and pop to maintain the Stack;
     3. Write any other functions you think are useful;
 
-  In pa05.h you will need to do:
+  In pa09.h you will need to do:
     1. Create two structures, one is for Huffman Tree, one is for Stack(This has been created for you, so don't worry);
     2. Declare all the functions and constants you use in your code(Do not use mysterious constants! That's very bad coding style);
 
