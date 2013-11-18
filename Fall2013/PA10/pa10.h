@@ -14,8 +14,8 @@ typedef struct stack_t {
 Stack * Stack_create();
 void Stack_destroy(Stack * stack);
 int Stack_isEmpty(Stack * stack);
-int Stack_popFront(Stack * stack);
-void Stack_pushFront(Stack * stack, int value);
+int Stack_pop(Stack * stack);
+void Stack_push(Stack * stack, int value);
 
 // ----------------------------------- Stack Sort...
 void stackSort(int * array, int len);

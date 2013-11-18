@@ -108,7 +108,7 @@ int isStackSortable(int * array, int len)
  * Generates (and prints) all the unique binary tree shapes of size k
  *
  * To do this, you must:
- * (1) Create an array with the elements [1..k] inclusive.
+ * (1) Create an array with the elements [0..k-1] inclusive.
  * (2) Find all the permutations of this array.
  * (3) In the base-case of your permute function, you must test if the
  *     permutation is "stack-sortable"
