@@ -218,7 +218,7 @@ too slow to be executed in an edit-compile-test loop. You must set up
 this loop yourself. This is EXTREMELY important if you want to learn
 how to code faster and more accurately, which is why we do this.
 
-TO TEST YOU CODE
+TO TEST YOUR CODE
 
 You should set up your own "main(...)" function, in which you create
 data an manipulate it with specific functions. For example, you can
