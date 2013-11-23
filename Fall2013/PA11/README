@@ -97,13 +97,13 @@ array as you do this. Think about the problem as follows:
 (2) Does my program produce exactly the correct states?
 (3) Does my program dismiss exactly the expected states.
 
-## A Note "validity" and "solvability" ##
+## A Note about "validity" and "solvability" ##
 
 Stage 1 only tests if a puzzle state is a _legal_ puzzle state. However,
 in the 15 puzzle, half the legal states are unreachable from each other!
 This fact was exploited by the famous 19th century America puzzle expert
 Sam Lloyd, who offered $1000 for the correct solution to "123456789ABCDFE-".
-There is not solution, but Lloyd may not have been able to prove it at the 
+There is no solution, but Lloyd may not have been able to prove it at the 
 time. $1000 in 1880 is about $25000 in 2013. See me if you are interested in a
 proof for why Lloyd's wager was safe.
 
