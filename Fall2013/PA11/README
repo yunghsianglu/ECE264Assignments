@@ -58,7 +58,7 @@ This assignment has three stages:
    D: move space down
 
 2. give a valid state and a number n, output all possible states after
-   n moves.
+   zero to n moves.
 
 3. give a valid state, find a sequence that can move to the initial
    (solved) state
@@ -120,9 +120,9 @@ The program's inputs (argv) has three arguments:
 a string as a valid state
 a number between 0 and 9 (inclusive)
 
-Your program should generate *unique* states after so many moves.  You
-do not need to worry about the order of these states since the states
-will be sorted before grading.
+Your program should generate *unique* states after zero to so many moves.  You
+do not need to worry about the order of these states since the states will be 
+sorted before grading.
 
 You will receive no point if your program prints duplicate states.  One
 way to check is to send your program to the sort program in Linux and
