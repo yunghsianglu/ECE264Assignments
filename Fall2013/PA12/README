@@ -1,0 +1,121 @@
+------------------------------------------------------------------
+ECE 264 - FALL 2013 - PROGRAMMING ASSIGNMENT 12
+------------------------------------------------------------------
+
+INTRODUCTION
+============
+
+PARALLEL PROGRAMMING
+==========
+
+Due to Moore's Law, we are reaching the limits of being able to reduce 
+the size of transistors in order to raise processor speeds.  In order 
+to continue to see improvement in computing performance, more and more
+systems are using multiple cores that can be programmed to run code in
+parallel. One way that is done are pthreads(POSIX thread). POSIX means Portable Operating System Interface; it is a standard for the programming interface of operating systems.
+
+ASSIGNMENT
+==========
+
+Write a parallel C program that .
+
+Given a nonempty set S, with elements {a1, a2, a3, ...}, and an integer N, 
+find the number of nonempty subsets of S, such that the sum of all elements 
+in this subset equals to N.
+
+This problem is NP-complete, meaning that currently there is no way 
+to sovle it efficiently. However, since this assignment is targeted for 
+parallel computing, the algorithm is not an important part. 
+You only need to take the simplest approach: 
+enumerate all the subset of S,  add up the elements and compare to N, 
+count one if there is a match, and finally return the total number of counts.
+
+You should write the function subsetSum() in subsetSum.c file and submit it.
+
+Following explanation may be helpful in doing your assignment.
+
+Thread Synchronization: 
+With multiple threads running in parallel updating a shared variable can 
+potentially cause corruption of data. Therefore there needs to be some 
+mechanism to guarantee that only one thread can update the shared variable 
+at a time. Such process is termed as Thread Synchronization, referring to 
+the fact that each thread needs to suspend its execution to form an 
+agreement on how to access a shared resource, in order to gurantee integrity 
+of the data. The code that accesses the shared resource that must not be 
+access by two or more threads is called the critical section.
+
+In pthread the synchronization process is done by protecting the critical 
+sections by using mutex objects. Mutex refers to mutual exclusion, 
+which means no two threads can have controll over the object at the same time. 
+A mutex object has two states, locked and unlocked. A thread first has to 
+lock the mutext object in order to access the shared resource protected by 
+the mutex. After it acquires the lock, it can step further to execute the 
+critical section that access shared resources. A mutex object that is locked 
+cannot be locked again, and only the thread acquired the lock can unlock it 
+at any given time. If it is locked, other threads must wait for the owner 
+of the lock to finish.  When the thread finishes access to shared resources, 
+it unlocks the mutex object and only by then can the other threads acquire 
+the lock. This way ensures only one thread gets to access the common resource 
+at any given time, therefore the threads are sychronized, and data integrity 
+is guaranteed.
+
+
+SPECIFICATIONS
+==============
+
+* You should use the following print statement if the dynamic memory
+  is not allocated properly (and exit with EXIT_FAILURE):
+  printf("Unable to allocate memory!\n");
+
+* The source files (argv[1], and argv[2]), the destination file (argv[3]), 
+  and the number of parallel thread you want to run (argv[4]) are 
+  command-line arguments.
+
+
+
+COMPILING AND EXECUTING
+=======================
+
+No warning message is allowed.
+
+To execute this program, type
+
+  ./pa13 <input_set> <input_num> <output> <number of threads>
+
+
+You need to use you ece264 account to login into quatro01 or quatro02
+to run your program. (Performance check will only be done when the 
+program is running on quatro machines, I put a restriction
+in grader.pl)
+
+Use ssh command to login into quatro01 or quatro02 and command scp(Secure Copy) to transfer files.
+
+A couple of the testcases are quite large.  Running them may cause
+you to use all of the disk space.  Be sure to check your space by typing
+'quota'. 
+
+
+MEMORY MANAGEMENT
+=================
+
+Memory management (allocation and release) is an important part of ECE
+264. You have to allocate enough memory to make your program work. You
+have to allocate and release memory as needed. You are not allowed to
+allocate a large piece of memory regardless of the input size. We will
+restrict stack size to prevent that. You will receive a heavy penalty
+(50%) if your program does not release all memory (i.e. memory
+leak). We will use valgrind to check for memory leaks.
+
+
+GRADING
+=======
+
+The maximum score for this exercise is 4.0 points.  
+
+We will first examine the correctness of your code.  After checking 
+correctness, we will then examine the runtimes of your code.  If your 
+code runs slower than the maximum allowed runtime, you will lose points 
+in proportion with how much longer the runtime.  Since multiple people 
+may be running on the quatro machines, it is possible that the runtime
+of your program may be slower than it should be.  If you feel that your program is faster than what is being reported, execute your program at
+another time.  
