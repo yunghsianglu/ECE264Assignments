@@ -5,6 +5,7 @@ VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose --show-reachable
 
 pa12: $(OBJS)
 	$(GCC) $(CFLAGS) $(OBJS) -o $@ -lpthread -lm
+	mkdir -p outputs
 
 testall: pa12
 	perl grader.pl 4 2 27
@@ -69,36 +70,6 @@ test25: pa12
 	perl grader.pl 4 1 25
 test26: pa12
 	perl grader.pl 4 1 26
-
-
-generate: pa13
-	./pa13 inputs/input1_set inputs/input1_num expected/expected1 3 > expected/exptime0
-	./pa13 inputs/input2_set inputs/input2_num expected/expected2 3 > expected/exptime1
-	./pa13 inputs/input3_set inputs/input3_num expected/expected3 3 > expected/exptime2
-	./pa13 inputs/input4_set inputs/input4_num expected/expected4 4 > expected/exptime3
-	./pa13 inputs/input5_set inputs/input5_num expected/expected5 5 > expected/exptime4
-	./pa13 inputs/input6_set inputs/input6_num expected/expected6 6 > expected/exptime5
-	./pa13 inputs/input7_set inputs/input7_num expected/expected7 7 > expected/exptime6
-	./pa13 inputs/input8_set inputs/input8_num expected/expected8 8 > expected/exptime7
-	./pa13 inputs/input9_set inputs/input9_num expected/expected9 9 > expected/exptime8
-	./pa13 inputs/input10_set inputs/input10_num expected/expected10 4 > expected/exptime9
-	./pa13 inputs/input11_set inputs/input11_num expected/expected11 1 > expected/exptime10
-	./pa13 inputs/input12_set inputs/input12_num expected/expected12 2 > expected/exptime11
-	./pa13 inputs/input13_set inputs/input13_num expected/expected13 3 > expected/exptime12
-	./pa13 inputs/input14_set inputs/input14_num expected/expected14 4 > expected/exptime13
-	./pa13 inputs/input15_set inputs/input15_num expected/expected15 5 > expected/exptime14
-	./pa13 inputs/input16_set inputs/input16_num expected/expected16 6 > expected/exptime15
-	./pa13 inputs/input17_set inputs/input17_num expected/expected17 7 > expected/exptime16
-	./pa13 inputs/input18_set inputs/input18_num expected/expected18 8 > expected/exptime17
-	./pa13 inputs/input19_set inputs/input19_num expected/expected19 9 > expected/exptime18
-	./pa13 inputs/input20_set inputs/input20_num expected/expected20 10 > expected/exptime19
-	./pa13 inputs/input21_set inputs/input21_num expected/expected21 4 > expected/exptime20
-	./pa13 inputs/input22_set inputs/input22_num expected/expected22 4 > expected/exptime21
-	./pa13 inputs/input23_set inputs/input23_num expected/expected23 4 > expected/exptime22
-	./pa13 inputs/input24_set inputs/input24_num expected/expected24 4 > expected/exptime23
-	./pa13 inputs/input25_set inputs/input25_num expected/expected25 5 > expected/exptime24
-	./pa13 inputs/input26_set inputs/input26_num expected/expected26 6 > expected/exptime25
-	./pa13 inputs/input27_set inputs/input27_num expected/expected27 7 > expected/exptime26
 
 corrtest0: pa12
 	$(VALGRIND) --log-file=outputs/memoutput0 ./pa12 inputs/input1_set inputs/input1_num outputs/output1 3 > /dev/null
