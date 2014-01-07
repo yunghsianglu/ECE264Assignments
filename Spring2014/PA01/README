@@ -38,7 +38,7 @@ You create the zip file using the following command.
  
  > zip pa01.zip answer01.c memcheck.log gdb.text git.log
 
-You your zip file does not meet the above specification, then you may
+If your zip file does not meet the above specification, then you may
 get zero for the assignment. In particular, right-clicking and
 "archiving" the file in a window manager such as Windows, OSX, or KDE,
 may produce the wrong directory structure, resulting in a zero
