@@ -117,7 +117,7 @@ course.
 
 Start with an empty file. Call it "main.c" or "pa02.c". Copy the
 following text into the file and then compile and run it. If you do
-not know how to compile your program, then see the class notes, or the
+not know how to compile the program, then see the class notes, or the
 README for PA01. (Remember, if you have a job, then nobody else is
 going to compile and test your code for you.)
 
@@ -147,7 +147,7 @@ header file. Header files must only contain declarations.
 // A function declaration... does not compile into anything
 size_t my_strlen(const char * str);
 
-// A function definition... compiles into code... never
+// A function definition... compiles into code... never put a
 // definition in a .h file. (They belong in .c files.)
 size_t my_strlen(const char * str)
 {
@@ -239,7 +239,7 @@ char * my_strchr(const char * str, int ch)
 
 Can you see that the 'const' "qualifier" has been 'discarded'? It's
 really very straight-forward once you are familiar with the jargon. To
-circumvent this warning, you use a type-case, which tells the compiler
+circumvent this warning, you use a type-cast, which tells the compiler
 that you really want to do this. See below for why this is done.
 
 char * my_strchr(const char * str, int ch)
