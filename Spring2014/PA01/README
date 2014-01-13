@@ -32,12 +32,11 @@ precisely four files:
 (2) memcheck.log, a Valgrind log that you produced running your
 program.
 (3) gdb.text, a logfile produced through running gdb.
-(4) git.log, a logfile that can be produced from git.
 
 Notes on creating each of these files are included in this readme.
 You create the zip file using the following command.
  
- > zip pa01.zip answer01.c memcheck.log gdb.text git.log
+ > zip pa01.zip answer01.c memcheck.log gdb.text 
 
 If your zip file does not meet the above specification, then you may
 get zero for the assignment. In particular, right-clicking and
@@ -298,38 +297,6 @@ You should already be familiar with this programming motif from
 earlier courses. Please refer to the class notes and course materials
 in order to understand how to iterate over arrays in C.
 
-// ~ (5) How to use Version Control ~ //
-
-Imagine writing a large technical document (e.g., the specification of
-a rocket) before the advent of computers. Such a document would easily
-be thousands of pages, and involve perhaps hundreds of authors, all
-trying to edit the same document at the same time -- with primitive
-typewriters. Large teams of technical writers were required to manage
-all of the different versions, and track down conflicts, and complex
-protocols were developed to avoid total chaos. (See: "What Do You Care
-What Other People Think?": Further Adventures of a Curious Character,
-for a humorous personal account of Nobel Prize winning physicist Dr
-Richard Feynman investigating the 1986 Challenger Disaster.)
-
-Keep this history in mind when trying to use version control software
-such as git. As difficult and inscrutable as it may seem at times, git
-is far easier to deal with than a large team of technical writers
-telling you when you can and cannot change something -- and perhaps
-making mistakes. When it comes to git, the glass is definitely
-half-full. (Technically speaking, an engineer would say that the glass
-is 50% too big.)
-
-The course notes have an extensive section on using git. I recommend
-working form these notes.
-
-To pass this assignment you must submit a log. The best way to
-generate a log file is as follows:
-
- > git log > git.log
-
-This creates a file "git.log" that contains your log. Open it up and
-have a look.
-
 // ~ Summary ~ //
 
 # Compile 
@@ -358,16 +325,10 @@ have a look.
 # correctly):
  > ./tester answer01.c
 
-# Ask git to create a log file:
- > git log > git.log
-
 # Create a zip file of your solution:
- > zip pa01.zip answer01.c memcheck.log gdb.text git.log
+ > zip pa01.zip answer01.c memcheck.log gdb.text 
 
 # Upload pa01.zip to blackboard.
 
-# As proof that you've read this README file, a TA might ask you which
-# Nobel Laureate investigated the Challenger disaster. The answer is,
-# of course, in this document. Please read all instructions before 
-# asking for help.
+# Please read all instructions before asking for help.
 
