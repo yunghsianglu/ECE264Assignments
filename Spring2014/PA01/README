@@ -1,17 +1,16 @@
 
 Please read the ENTIRE readme. Please do not ask for help until AFTER
-reading this document and the relevant sections from the course
+reading this document, and the relevant sections from the course
 notes. Do not be surprised if you are asked to do some reading before
 receiving help. Failing to read is an extremely common problem that we
 encounter when we help students. When you work at a job, nobody will
 be there to read for you. Be patient, slow down, and read everything
-before starting this assignment. This is very important, and it
+before starting this assignment. This is very important, and
 distinguishes good managers and employees from everyone else.
 
 In this assignment, you will implement five different array processing
 functions. Your solution should be short: between 50 and 150 lines of
 code, including lines used for spacing.
-
 
 // ~ Learning Goals ~ //
 
@@ -22,11 +21,12 @@ important. You must learn:
 errors.
 (3) How to run your code under gdb.
 (4) How to "iterate" over arrays in C.
+(5) How to use Version Control.
 
 // ~ Submitting Your Assignment ~ //
 
 You must submit one zip file to blackboard. This zip file must contain
-precisely three files:
+precisely four files:
 (1) answer01.c, your solution
 (2) memcheck.log, a Valgrind log that you produced running your
 program.
@@ -37,11 +37,8 @@ You create the zip file using the following command.
  
  > zip pa01.zip answer01.c memcheck.log gdb.text 
 
-Please note that if the zip file already exists, new files will be
-appended, so it's best to delete the zip before creating one again.
-
 If your zip file does not meet the above specification, then you may
-get a zero for the assignment. In particular, right-clicking and
+get zero for the assignment. In particular, right-clicking and
 "archiving" the file in a window manager such as Windows, OSX, or KDE,
 may produce the wrong directory structure, resulting in a zero
 mark. YOU HAVE BEEN WARNED.  Following the instructions is *part* of
@@ -132,7 +129,7 @@ defined in the compilation unit "answer01.c".
 
 In future assignments, you will only be provided with an "answerXY.h"
 header file, with declarations. You will need to write your answerXY.c
-file from scratch and write your own test-cases and main function in
+file from scratch, and write your own test-cases and main function in
 a separate compilation unit.
 
 // ~ (1c) Testing Your Program ~ //
@@ -173,7 +170,7 @@ little bit of testing code to start you off. However, in future
 assignments, you will have to generate all of the testing code
 yourself.
 
-To generate testing code, you have to *think* about the function you're
+To generate testing code, you have to *think* about the function your
 developing, and then you have to write code that *demonstrates* that
 it *always* works. This is a core skill to develop if you are
 interested in being a competent computer programmer.
