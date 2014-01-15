@@ -22,12 +22,11 @@ important. You must learn:
 errors.
 (3) How to run your code under gdb.
 (4) How to "iterate" over arrays in C.
-(5) How to use Version Control.
 
 // ~ Submitting Your Assignment ~ //
 
 You must submit one zip file to blackboard. This zip file must contain
-precisely four files:
+precisely three files:
 (1) answer01.c, your solution
 (2) memcheck.log, a Valgrind log that you produced running your
 program.
@@ -37,6 +36,9 @@ Notes on creating each of these files are included in this readme.
 You create the zip file using the following command.
  
  > zip pa01.zip answer01.c memcheck.log gdb.text 
+
+Please note that if the zip file already exists, new files will be
+appended, so it's best to delete the zip before creating one again.
 
 If your zip file does not meet the above specification, then you may
 get a zero for the assignment. In particular, right-clicking and
