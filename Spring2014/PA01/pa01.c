@@ -40,16 +40,13 @@ void test_00_arraySum()
 
     // Here we use "static initialization" to create an array
     int array1[] = { -4, -1, 0, 1, 5, 10, 20, 21 };
-    // We can get the compiler to automagically calculate the length
-    // of a statically intialized array. We will cover the sizeof(...)
-    // operator in further detail in later assignments.
-    int len1 = sizeof(array1) / sizeof(int);
+    int len1 = 8;
     int expected1 = 52;
     test_arraySum(array1, len1, expected1);
 
     // Our functions must always work... even on empty arrays
     int array2[] = {};
-    int len2 = sizeof(array2) / sizeof(int);
+    int len2 = 0;
     int expected2 = 0;
     test_arraySum(array2, len2, expected2);
 
@@ -74,19 +71,19 @@ void test_01_arrayCountNegative()
     printf("Testing arrayCountNegative(...)\n");
 
     int array1[] = { 1, 4, -5, 4 };
-    int len1 = sizeof(array1) / sizeof(int);
+    int len1 = 4;
     test_arrayCountNegative(array1, len1, 1);
 
     int array2[] = {};
-    int len2 = sizeof(array2) / sizeof(int);
+    int len2 = 0;
     test_arrayCountNegative(array2, len2, 0);
 
     int array3[] = { 0, 1, 2, 3, 4 };
-    int len3 = sizeof(array3) / sizeof(int);
+    int len3 = 5;
     test_arrayCountNegative(array3, len3, 0);
 
     int array4[] = { -1, -2, -3, -4 };
-    int len4 = sizeof(array4) / sizeof(int);
+    int len4 = 4;
     test_arrayCountNegative(array4, len4, 4);
 
     // You can add more test-cases here

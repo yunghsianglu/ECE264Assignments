@@ -8,7 +8,7 @@ int arraySum(int * array, int len);
  * 
  * Examples:
  * int array[] = { 1, 4, -5, 4 };
- * int len = sizeof(array) / sizeof(int);
+ * int len = 4;
  * int count = arrayCountNegative(array,len); // count == 1
  */
 int arrayCountNegative(int * array, int len);
@@ -22,9 +22,9 @@ int arrayCountNegative(int * array, int len);
  * 
  * Examples:
  * int array1[] = { 1, 1, 2, 3, 3 };
- * int len1 = sizeof(array1) / sizeof(int);
+ * int len1 = 5;
  * int array2[] = { 1, 2, 0, 4 };
- * int len2 = sizeof(array2) / sizeof(int);
+ * int len2 = 4;
  * int isInc1 = arrayIsIncreasing(array1, len1); // isInc1 == 1
  * int isInc2 = arrayIsIncreasing(array2, len2); // isInc2 == 0
  * int isInc3 = arrayIsIncreasing(NULL, 0);      // isInc3 == 1
@@ -40,7 +40,7 @@ int arrayIsIncreasing(int * array, int len);
  *
  * Examples:
  * int haystack[] = { 1, 4, -5, 4 };
- * int len = sizeof(haystack) / sizeof(int);
+ * int len = 4;
  * int x1 = arrayIndexRFind(1, haystack, len); // x1 == 0
  * int x2 = arrayIndexRFind(4, haystack, len); // x2 == 3
  * int x3 = arrayIndexRFind(6, haystack, len); // x3 == -1
@@ -52,7 +52,7 @@ int arrayIndexRFind(int needle, const int * haystack, int len);
  * 
  * Examples:
  * int array[] = { 3, 4, -5 };
- * int len = sizeof(array) / sizeof(int);
+ * int len = 3;
  * int ind1 = arrayFindSmallest(array, len); // ind1 == 2
  */
 int arrayFindSmallest(int * array, int len);
