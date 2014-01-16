@@ -26,7 +26,7 @@ errors.
 // ~ Submitting Your Assignment ~ //
 
 You must submit one zip file to blackboard. This zip file must contain
-precisely four files:
+precisely three files:
 (1) answer01.c, your solution
 (2) memcheck.log, a Valgrind log that you produced running your
 program.
