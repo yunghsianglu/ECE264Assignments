@@ -23,30 +23,6 @@ errors.
 (4) How to "iterate" over arrays in C.
 (5) How to use Version Control.
 
-// ~ Getting Started ~ //
-
-The PA01 folder contains five files:
-(1) answer01.c: this is the file that you hand in. It has the skeleton
-of five functions in it, and you must "fill in the blanks".
-(2) answer01.h: this is a "header" file and it contains a complete
-explanation of the functions you will be writing for this assignment.
-(3) pa01.c: in computer science, you cannot know if a function is
-correct without running it. You can use this file to write code that
-runs the functions in answer01.c, in order to ensure their
-correctness. pa01.c comes with some example testing code to help you
-get started. You can modify or delete this code: it is yours to do
-with what you will.
-(4) README: this file.
-(5) tester: see the discussion below on testing your assignment.
-
-To get started, browse through the answer01.h file, to see what code
-needs to be written. You will be writing code in the answer01.c
-file. You can write code in the pa01.c file to test code written in
-the answer01.c file.
-
-Follow the discussions below on how to compile and run your code, as
-well as test and submit it.
-
 // ~ Submitting Your Assignment ~ //
 
 You must submit one zip file to blackboard. This zip file must contain
@@ -54,12 +30,12 @@ precisely three files:
 (1) answer01.c, your solution
 (2) memcheck.log, a Valgrind log that you produced running your
 program.
-(3) gdb.text, a logfile produced through running gdb.
+(3) gdb.txt, a logfile produced through running gdb.
 
 Notes on creating each of these files are included in this readme.
 You create the zip file using the following command.
  
- > zip pa01.zip answer01.c memcheck.log gdb.text 
+ > zip pa01.zip answer01.c memcheck.log gdb.txt 
 
 If your zip file does not meet the above specification, then you may
 get zero for the assignment. In particular, right-clicking and
@@ -299,7 +275,7 @@ looks as follows:
 
 You must then set a breakpoint (read the documentation to learn how to
 do this), step through your code, print the values of some variables,
-and then quit gdb. You submit the file "gdb.text". See the submission
+and then quit gdb. You submit the file "gdb.txt". See the submission
 guidelines for more information.
 
 // ~ (4) Iterating Over Arrays in C ~ //
@@ -349,7 +325,7 @@ in order to understand how to iterate over arrays in C.
  > ./tester answer01.c
 
 # Create a zip file of your solution:
- > zip pa01.zip answer01.c memcheck.log gdb.text 
+ > zip pa01.zip answer01.c memcheck.log gdb.txt 
 
 # Upload pa01.zip to blackboard.
 
