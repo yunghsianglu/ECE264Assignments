@@ -48,7 +48,6 @@ int arrayIsIncreasing(int * array, int len);
 int arrayIndexRFind(int needle, const int * haystack, int len);
 
 /** Return the _index_ of the smallest element in the array.
- * If the smallest element is duplicated, then return the smallest index.
  * If the array is empty (has zero length), then return 0.
  * 
  * Examples:

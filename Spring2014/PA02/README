@@ -43,13 +43,12 @@ contain:
 (1) answer02.c, your solution
 (2) memcheck.log, a Valgrind log that you produced running your
 program.
-(3) gdb.text, a logfile produced through running gdb.
-(4) git.log, a logfile that can be produced from git.
+(3) gdb.txt, a logfile produced through running gdb.
 
 Notes on creating each of these files are included in the PA01 README.
 You create the zip file using the following command.
  
- > zip pa02.zip answer02.c memcheck.log gdb.text git.log
+ > zip pa02.zip answer02.c memcheck.log gdb.txt
 
 If your zip file does not meet the above specification, then you may
 get zero for the assignment. In particular, right-clicking and
@@ -62,16 +61,17 @@ Submit "pa02.zip" to blackboard.
 
 // ~ Determining Your Mark ~ //
 
-This assignment is pass or fail. You pass if everything works, and
-fail if there is one or more things wrong. You can determine your mark
-before submitting your assignment. To test your program, you must run
-the "tester" program. You run the tester program as follows:
+This assignment is pass or fail. You pass (5 marks) if everything
+works, and fail (0 marks) if there is one or more things wrong. You
+can determine your mark before submitting your assignment. To test
+your program, you must run the "tester" program. You run the tester
+program as follows:
  
  > ./tester answer02.c
 
 You can write your assignments on any computer, using any development
 tools; however, they will be marked on the lab computers, and so you
-should ensure that your program works on these computer before
+should ensure that your program works on these computers before
 submitting your assignment. This applies to *all* assignments in this
 course.
 
@@ -103,11 +103,8 @@ course.
 # correctly):
  > ./tester answer02.c
 
-# Ask git to create a log file:
- > git log > git.log
-
 # Create a zip file of your solution:
- > zip pa02.zip answer02.c memcheck.log gdb.text git.log
+ > zip pa02.zip answer02.c memcheck.log gdb.txt
 
 # Upload pa02.zip to blackboard.
 
@@ -237,7 +234,7 @@ char * my_strchr(const char * str, int ch)
                // from pointer target type
 }
 
-Can you see that the 'const' "qualifier" has been 'discarded'? It's
+Can you see that the 'const' "qualifier" has been 'discarded'? It is
 really very straight-forward once you are familiar with the jargon. To
 circumvent this warning, you use a type-cast, which tells the compiler
 that you really want to do this. See below for why this is done.
@@ -265,7 +262,7 @@ char * s2 = my_strchr("Hello World!", '!'); // also fine
 s2[0] = '\0'; // compiles without warning, but will fail miserably
 
 In short, do not expect C to hold your hand. This is the greatest
-strength and greatest weakness of programming in C.
+strength and also the greatest weakness of programming in C.
 
 ----------------------------------------------------------------------
 
@@ -274,21 +271,21 @@ strength and greatest weakness of programming in C.
 The ASCII character set includes special control characters which can
 be used to control the format of text output. Some of these control
 characters are rarely used. For example, if you terminal is correctly
-setup, then you can produce an audible beep by printing a "bell"
-character: '\a'. Most modern terminals have beeps (mercifully)
-disabled by default. Some control characters are still very important,
-such as '\n', which specifies a newline character.
+set up, then you can produce an audible beep by printing a "bell"
+character: '\a'. Most modern terminals have beeps disabled by default
+(mercifully).  Some control characters are still very important, such
+as '\n', which specifies a newline character.
 
 It is important to understand that text data is just a sequence of 1s
 and 0s, and it is *interpreted* as text according to an encoding
 ("code-book") which says things like "this binary value means that
 character". By default, C uses ASCII encoding, which has a number of
-different white-space 'capabilities'. Historically, all of these
+different white-space capabilities. Historically, all of these
 characters were used so that a programmer could position the head of a
 printer at specific locations on a page. This capability has long been
-superseded; however, it is important to appreciate in order to use
-ASCII correctly, and it just may come up in a future job updating some
-of the millions of lines of legacy code still used by corporate
+superseded; however, it is important to appreciate it in order to use
+ASCII correctly, and it just may come up in a future job -- updating
+some of the millions of lines of legacy code still used by corporate
 America.
 
 The C standard specifies white-space to be:
