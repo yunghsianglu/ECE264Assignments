@@ -204,7 +204,7 @@ interested in being a competent computer programmer.
 Valgrind is an extremely useful tool for finding problems in C
 programs. It is free-software, and (for C) as good as any software
 commercially available. Comparable commercial software is usually
-worth a few thousand dollars per user. (!). 
+worth a few thousand dollars per user. (!).
 
 It is a core goal of this course that you learn how to use Valgrind in
 order to ensure that your assignments do not have memory errors. If
