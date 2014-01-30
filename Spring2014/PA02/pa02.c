@@ -62,7 +62,7 @@ int main(int argc, char * * argv)
 
     // -- my_isspace. You will have to do this for yourself.
 
-    // -- my_atoi. You will have to do this for yourself/
+    // -- my_atoi. You will have to do this for yourself.
 
     return EXIT_SUCCESS;
 }
