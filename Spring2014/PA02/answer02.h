@@ -8,8 +8,9 @@
  * 
  * Examples:
  * my_strlen("abc"); // 3
- * my_strlen(""); // 0
- * my_strlen(NULL); // error -- undefined behavior. See README FAQ.
+ * my_strlen("");   // 0
+ * my_strlen(NULL); // error -- undefined behavior. You do not need to 
+ *                  // consider this case. See the README -- FAQ for more info.
  */
 size_t my_strlen(const char * str);
 
@@ -33,6 +34,7 @@ int my_countchar(const char * str, char ch);
  * const char * str = "Hello World!";
  * printf("'%s'\n", my_strchr(str, 'o')); // prints "'o World!'\n"
  * printf("'%s'\n", my_strchr(str, 'z')); // prints "'(null)'\n"
+ *                                        // i.e., my_strchr(str, 'z') == NULL
  * printf("'%s'\n", my_strchr(str, '\0')); // prints "''\n"
  *
  * Please read the README FAQ before attempting this function.
@@ -44,9 +46,10 @@ char * my_strchr(const char * str, int ch);
  *
  * Examples:
  * const char * str = "Hello World!";
- * printf("'%s'\n", my_strchr(str, 'o')); // prints "'orld!'\n"
- * printf("'%s'\n", my_strchr(str, 'z')); // prints "'(null)'\n"
- * printf("'%s'\n", my_strchr(str, '\0')); // prints "''\n" *
+ * printf("'%s'\n", my_strrchr(str, 'o')); // prints "'orld!'\n"
+ * printf("'%s'\n", my_strrchr(str, 'z')); // prints "'(null)'\n"
+ *                                         // i.e., my_strrchr(str, 'z') == NULL
+ * printf("'%s'\n", my_strrchr(str, '\0')); // prints "''\n" *
  */
 char * my_strrchr(const char * str, int ch);
 
@@ -57,8 +60,9 @@ char * my_strrchr(const char * str, int ch);
  * Examples:
  * const char * str = "Hello World!";
  * printf("'%s'\n", my_strstr(str, "World")); // prints "'World!'\n"
- * printf("'%s'\n", my_strstr(str, "")); // prints "'Hello World!'\n"
+ * printf("'%s'\n", my_strstr(str, ""));      // prints "'Hello World!'\n"
  * printf("'%s'\n", my_strstr(str, "hello")); // prints "'(null)'\n"
+ *                                      // i.e., my_strstr(str, "hello") == NULL
  */
 char * my_strstr(const char * haystack, const char * needle);
 
