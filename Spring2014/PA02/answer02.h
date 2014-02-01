@@ -81,8 +81,9 @@ char * my_strstr(const char * haystack, const char * needle);
 char * my_strcpy(char * dest, const char * src);
 
 /**
- * Append C-string 'src' to C-string 'dest'. 'Dest' must be large enough to 
- * contain both 'dest' and 'src', *including* the terminating null-byte.
+ * Append C-string 'src' to C-string 'dest'. A precondition is 'Dest' must be 
+ * large enough to contain both 'dest' and 'src', *including* the terminating
+ * null-byte.
  *
  * Returns 'dest'
  *

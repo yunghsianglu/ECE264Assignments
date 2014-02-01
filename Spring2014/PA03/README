@@ -27,6 +27,7 @@ including using valgrind to detect memory errors. See the README from
 PA01 for more details.
 (5) Demonstrate that you ran your code under gdb. See the README from
 PA01 for more details.
+(6) Demonstrate use of version management software, such as git.
 
 // ~ Submitting Your Assignment ~ //
 
@@ -36,11 +37,15 @@ contain:
 (2) cat-lite.c, your solution for "cat"
 (3) grep-lite.c, your solution for "grep"
 (4) gdb.text, a logfile produced through running gdb.
+(5) git.log, a logfile produced by git.
 
-Notes on creating each of these files are included in the PA01 README.
+With the exception of git.log, notes on creating each of these files
+are included in the PA01 README. See the FAQ below on how to create
+the git.log file.
+
 You create the zip file using the following command.
  
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text
+ > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text git.log
 
 If your zip file does not meet the above specification, then you may
 get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
@@ -52,37 +57,38 @@ Submit "pa03.zip" to blackboard.
 // ~ Determining Your Mark ~ //
 
 You must write "echo-lite", "cat-lite", and "grep-lite". In each case,
-your solution should work respectively like: "echo", "cat", and
-"grep". You can run these programs (which are pre-installed in every
-unix installation, and in cygwin) if you want to play around with
-working versions of the programs. The tester program is there to
-ensure that you have followed the instructions correctly.
+your solution should work respectively in similar fashion to the
+standard unix commands: "echo", "cat", and "grep". You can run these
+programs (which are pre-installed in every unix installation, and in
+cygwin) if you want to play around with working versions of the
+programs. The tester program is there to ensure that you have followed
+the instructions correctly.
 
 Run the tester program as follows:
  
  > ./tester
 
-You can see the commands that the tester is executing. Sometime the
+You can see the commands that the tester is executing. Sometimes the
 tester needs to use an input file to test one of the programs. The
 input files are in the directory "testcases". You can use these files
-in order to replicate a failed testcase: a recommended technqiue for
-debuggin your code.
+in order to replicate a failed testcase: a recommended technique for
+debugging your code.
 
 Please refer to the PA01 README for more information on the tester
 program.
 
 // ~ Assignment Part 1: writing echo-lite ~ //
 
-"echo" is a program that prints the arguments you give it. It behaves
-like and echo:
+"echo" is a program that prints the arguments that you give it. It
+behaves just like an echo:
 
  > echo say cheese
 say cheese
 
 You must write a program in a single file "echo-lite.c", that prints
-out the passed command-line arguments (save the first) with a single
+out the passed command-line arguments (except the first) with a single
 space between each one. Then, print a single new-line character before
-exiting the program.
+exiting the program. echo-lite always returns EXIT_SUCCESS.
 
 When your program compiles and runs, it should behave like so:
 
@@ -94,7 +100,11 @@ note that multiple space becomes 1.
  > ./echo-lite but you can use " quotes " to pass along spaces.
 but you can use  quotes  to pass along spaces.
 
-Your solution should be about 15 lines of code.
+ > ./echo-lite --help
+--help
+
+There is no help-message for this program. Your solution should be
+about 15 lines of code.
 
 // ~ Assignment Part 2: writing cat-lite ~ //
 
@@ -106,6 +116,7 @@ Cat-lite must have the following features:
 
 (1) A --help switch. (Ignore other arguments when present.) Print
 the message below, and then return EXIT_SUCCESS.
+<help-message>
 Usage: cat-lite [--help] [FILE]...
 With no FILE, or when FILE is -, read standard input.
 
@@ -114,6 +125,7 @@ Examples:
   cat-lite f - g    Print f's contents, then standard input, 
                     then g's contents.
   cat-lite          Copy standard input to standard output.
+</help-message>
 
 (2) Every argument is treated as a file name. Open each file in turn,
 and print the contents to stdout. (This is easy with fgetc and fputc.)
@@ -143,6 +155,7 @@ for this program is:
 
 (1) A --help switch. (Ignore other arguments when present.) Print
 the message below, and then return EXIT_SUCCESS.
+<help-message>
 Usage: grep-lite [OPTION]... PATTERN
 Search for PATTERN in standard input. PATTERN is a
 string. grep-lite will search standard input line by
@@ -151,12 +164,11 @@ contain pattern as a substring.
 
   -v, --invert-match     select non-matching lines
   -n, --line-number      print line numbers with output
-  -c, --count            count the matches and print
-                         the count and nothing else
   -q, --quiet            suppress all output
 
 Exit status is 0 if any line is selected, 1 otherwise;
 if any error occurs, then the exit status is 2.
+</help-message>
 
 (2) Abort the program if any bogus command-line arguments are
 passed. You must print an error message to stderr. Your main(...)
@@ -183,12 +195,10 @@ lines. (Multiple invert-match switches have the same effect as one.)
 (7) By default you will print every selected line. If the line-number
 switch is passed, then printf("%d:", lineNumber) before printing the
 selected line. You will need to keep track of line-numbers, and the
-first line of the file is line number 1. (Not 0.) If the count or
-quiet switches are passed, then you never print selected lines.
+first line of the file is line number 1. (Not 0.) 
 
-(8) When you have finished reading every line from standard input, then
-print the number of selected lines if, and only if, the count switch
-is passed. Never print anything if the quiet switch is passed.
+(8) If the quiet switch is passed, then you never print anything. You
+must still return the correct exit code.
 
 (9) Your main(...) function should return 0 if there was at least one
 matching line, and 1 otherwise.
@@ -228,8 +238,11 @@ concise code.
 # correctly):
  > ./tester
 
+# Create a git log file
+ > git log > git.log
+
 # Create a zip file of your solution: 
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text
+ > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text git.log
 
 # Upload pa03.zip to blackboard.
 
@@ -322,6 +335,8 @@ int main(int argc, char * * argv)
     return EXIT_SUCCESS;
 }
 
+This program is very similar to "echo-lite"
+
 ----------------------------------------------------------------------
 
 (*) What is the best way to parse command-line arguments?
@@ -374,4 +389,27 @@ For the grep part of the assignment, you will sometimes return "1"
 when you successfully find no instances of a pattern. Return value "2"
 is interpreted as a legitimate error. The real grep program works this
 way.
+
+----------------------------------------------------------------------
+
+(*) Okay, I'm done, but what about this git.log file?
+
+cd into *your* working repository, and type the following:
+
+ > git log
+
+You should see a stream of text float across the screen. The text is a
+log of git activities. If you read through it, you should see all of
+your commit statements.
+
+To create the "git.log" file, use a "redirect" to direct the text from
+screen into a file:
+
+ > git log > git.log
+
+Now cat the file to make sure everything is okay. (You now know what
+cat is, right??)
+
+ > cat git.log
+
 
