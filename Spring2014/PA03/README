@@ -7,11 +7,13 @@ hints.
 
 // ~ Learning Goals ~ //
 
-(1) Understand how to edit values outside of a function by passing
+(1) Know how to write your own main(...) function to test your code as
+you go.
+(2) Understand how to edit values outside of a function by passing
 pointers to those values.
-(2) Be confident with using malloc and free to manage memory.
-(3) Understand arrays of pointers.
-(4) Understand how to call the C function "qsort"
+(3) Be confident with using malloc and free to manage memory.
+(4) Understand arrays of pointers.
+(5) Understand how to call the C function "qsort"
 
 // ~ Submitting Your Assignment ~ //
 
@@ -30,6 +32,30 @@ If your zip file does not meet the above specification, then you may
 get zero for the assignment. YOU HAVE BEEN WARNED.
 
 Submit "pa03.zip" to blackboard.
+
+// ~ Working on main.c ~ //
+
+The main.c file can be compiled into a program as follows:
+
+ > gcc -Wall -Wshadow -g main.c -o a.out
+
+It contains a "swapString(...)" function that does not work. You are
+required to fix this function. This is a relatively small task, but is
+meant to be illustrative of how pointers work.
+
+The main.c file has nothing to do with the rest of the assignment.
+
+// ~ Filling in answer03.c ~ //
+
+The file "answer03.h" contains the definitions of the functions that
+you must write to pass the assignment. These functions need to be
+created in a file called "answer03.c". This file must not have a
+main(...) function. You should create your own main function in its
+own file (not in main.c), in order to test your answer as you write
+it.
+
+You will save yourself a LOT of time if you test your code as you
+write it. Test every few lines as you go.
 
 // ~ Determining Your Mark ~ //
 

@@ -3,8 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "answer03.h"
-
 // This does not work... fix it.
 void swapString(const char * a, const char * b)
 {
@@ -21,7 +19,7 @@ int main(int argc, char * * argv)
 {
     printf("Welcome to PA03.\n"
 	   "\n"
-	   "This file has a number of errors that need to be fixed\n"
+	   "Please make sure that the swapString(...) function works\n"
 	   "\n");
     
     printf("Print out some memory addresses for argc, argv...\n"
