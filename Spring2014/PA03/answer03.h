@@ -30,6 +30,8 @@ char * strcat_ex(char * * dest, int * n, const char * src);
 
 /**
  * Takes a string and splits it into an array of strings according to delimiter.
+ * The memory location *arrLen is initialized to the length of the returned
+ * array.
  *
  * For example, if delimiter is the space character ' ', then,
  * int len;

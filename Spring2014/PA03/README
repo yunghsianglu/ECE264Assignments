@@ -159,6 +159,11 @@ Okay we've initialized the first N string, but we still have to do the
 create a new string that spans the characters [last..strlen(str))
 set strArr[N] to the new string.
 
+Don't forget that you must store the length of strArr at the memory
+location *arrLen. You need to do this so that when someone calls
+explode(...), they will be able to know how long the returned string
+array is.
+
 You will save yourself a lot of time if you write and test this code
 incrementally.
 
