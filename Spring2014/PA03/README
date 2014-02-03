@@ -2,8 +2,9 @@
 // ~ Overview ~ //
 
 This assignment uses some more advanced string processing functions to
-introduce arrays of points. Make sure you read the entire README of
-hints.
+introduce arrays of pointers. Make sure you read the entire README 
+before starting your assignment. If you ask for help, then you may be
+asked to read this document.
 
 // ~ Learning Goals ~ //
 
@@ -12,8 +13,8 @@ you go.
 (2) Understand how to edit values outside of a function by passing
 pointers to those values.
 (3) Be confident with using malloc and free to manage memory.
-(4) Understand arrays of pointers.
-(5) Understand how to call the C function "qsort"
+(4) Understand how to work with arrays of pointers.
+(5) Understand the C library function "qsort"
 
 // ~ Submitting Your Assignment ~ //
 
@@ -21,9 +22,8 @@ You must submit one zip file to blackboard. This zip file must
 contain:
 (1) answer03.c, your solution
 (2) main.c, a file with a bug in it that you must fix.
-(3) git.log, a logfile that can be produced from git.
+(3) git.log, a logfile that can be produced by calling git.
 
-Notes on creating each of these files are included in the PA01 README.
 You create the zip file using the following command.
  
  > zip pa03.zip answer03.c main.c git.log
@@ -40,8 +40,8 @@ The main.c file can be compiled into a program as follows:
  > gcc -Wall -Wshadow -g main.c -o a.out
 
 It contains a "swapString(...)" function that does not work. You are
-required to fix this function. This is a relatively small task, but is
-meant to be illustrative of how pointers work.
+required to fix this function. This is a relatively small task, but it
+is illustrative.
 
 The main.c file has nothing to do with the rest of the assignment.
 
@@ -51,11 +51,10 @@ The file "answer03.h" contains the definitions of the functions that
 you must write to pass the assignment. These functions need to be
 created in a file called "answer03.c". This file must not have a
 main(...) function. You should create your own main function in its
-own file (not in main.c), in order to test your answer as you write
-it.
+own file (not in main.c), in order to test your code.
 
 You will save yourself a LOT of time if you test your code as you
-write it. Test every few lines as you go.
+write it. Test every part of every function as you write it.
 
 // ~ Determining Your Mark ~ //
 
@@ -95,15 +94,15 @@ If you want to edit a char * value, then you must pass a char * *.
 
 Simple.
 
-Please attend the help session for a clear explanation and diagram of
+Please attend the help session for a clear explanation and a diagram of
 what this looks like.
 
-(*) Help, explode is killing me, what do I do?
+(*) Help, explode(...) is killing me, what do I do?
 
 First you need to figure out how many delimiter characters appear in
-the string. You do this by iterating over each character in 'str', and
-calling strchr(str[ind], delims). If you get NULL, then str[ind] is
-not a delimiter. If you get non-NULL, then you found a delimiter.
+the string. You do this by calling strchr(str[ind], delims) on each
+character in 'str'.  If you get NULL, then str[ind] is not a
+delimiter. If you get non-NULL, then that character is a delimiter.
 
 The return result of explode(...) is an array of strings. A string is
 char *, so an array of strings is char * *. If there are N delimiters
@@ -111,8 +110,9 @@ in 'str', then the returned array must have space for (N+1) strings.
 
 So why is it (N+1)? If the string has no delimiters, then you just
 return the string. If it has 1 delimiter, then you split it in one
-place, and get two strings. If there are two delimiters, you split it
-in two places, and get three strings, etc.
+place, and get two strings. If there are two delimiters, split it in
+two places to get three strings. In general, the presence of N
+delimiters means you split the string in N places to (N+1) strings.
 
 The pseudo-code so far looks like this:
 
@@ -129,9 +129,9 @@ Before proceeding, TEST YOUR CODE, to make sure it works perfectly so
 far.
 
 Okay, now we have allocated some memory for the return result, we must
-fill it in.  To do this, you need to keep track of _two_ indices, call
+fill it in.  To do this, we need to keep track of _two_ indices, call
 them "last" and "ind".  You want "last" to point to 1 past the last
-delimiter you saw, and "ind" to point to the current character you're
+observed delimiter, and "ind" to point to the current character we are
 looking at. 
 
 The following pseudo-code explains how to use these two indices to
@@ -159,7 +159,7 @@ Okay we've initialized the first N string, but we still have to do the
 create a new string that spans the characters [last..strlen(str))
 set strArr[N] to the new string.
 
-Don't forget that you must store the length of strArr at the memory
+Do not forget that you must store the length of strArr at the memory
 location *arrLen. You need to do this so that when someone calls
 explode(...), they will be able to know how long the returned string
 array is.

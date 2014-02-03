@@ -30,17 +30,20 @@ char * strcat_ex(char * * dest, int * n, const char * src);
 
 /**
  * Takes a string and splits it into an array of strings according to delimiter.
- * The memory location *arrLen is initialized to the length of the returned
+ * The memory location '*arrLen' is initialized to the length of the returned
  * array.
  *
- * For example, if delimiter is the space character ' ', then,
+ * 'delims' is a string that contains a set of delimiter characters. 
+ * explode(...) will split the string at any character that appears in 'delims'.
+ *
+ * For example, if delimiter is white space " \t\v\n\r\f", then,
  * int len;
- * char * * strArr = explode("The\nTuring test", " \n", &len);
+ * char * * strArr = explode("The\nTuring test", " \t\v\n\r\f", &len);
  * // len = 3, strArr[0] is "The", strArr[1] is "Turing", strArr[2] is "test"
  *
- * Hint: you can use <string.h> function "memcpy" and "strchr"
+ * Hint: you can use <string.h> functions "memcpy" and "strchr"
  *       "memcpy" copies blocks of memory.
- *       "strchr" can we used to tell if a specific character is in delims.
+ *       "strchr" can be used to tell if a specific character is in delims.
  * Hint: this question is hard; it will help to draw out your algorithm.
  * Hint: read the FAQ...
  */
@@ -56,7 +59,7 @@ char * * explode(const char * str, const char * delims, int * arrLen);
  * char * str = implode(strArr, len, ", ");
  * printf("(%s)\n", str); // (100, 224, 147, 80)
  *
- * Hint: use strcat_ex
+ * Hint: use strcat_ex in a for loop.
  */
 char * implode(char * * strArr, int len, const char * glue);
 
@@ -65,11 +68,12 @@ char * implode(char * * strArr, int len, const char * glue);
  *
  * For example, 
  * int len;
- * char * * strArr = explode("Lady beatle brew", " ", &len);
+ * char * * strArr = explode("lady beatle brew", " ", &len);
  * sortStringArray(strArr, len);
  * char * str = implode(strArr, len, " ");
- * printf("%s\n"); // beatle brew Lady
+ * printf("%s\n"); // beatle brew lady
  *
+ * Hint: use the <stdlib.h> function "qsort"
  * Hint: you must _clearly_ understand the typecasts.
  */
 void sortStringArray(char * * arrString, int len);
@@ -82,13 +86,14 @@ void sortStringArray(char * * arrString, int len);
  * sortStringCharacters(s1)
  * // s1 is now "       ?Haddeegiilnooooossstttw"
  *
+ * Hint: use the <stdlib.h> function "qsort"
  * Hint: you must _clearly_  understand the typecasts.
  */
 void sortStringCharacters(char * str);
 
 /**
  * Safely frees all memory associated with strArr, and then strArr itself.
- * Can safely pass NULL as the first parameters.
+ * Passing NULL as the first parameter has no effect.
  *
  * int len;
  * const char * abe = "Give me six hours to chop down a tree and I will spend\n"
