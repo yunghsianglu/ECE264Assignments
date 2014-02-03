@@ -24,6 +24,10 @@ contain:
 (2) main.c, a file with a bug in it that you must fix.
 (3) git.log, a logfile that can be produced by calling git.
 
+With the exception of git.log, notes on creating each of these files
+are included in the PA01 README. See the FAQ below on how to create
+the git.log file.
+
 You create the zip file using the following command.
  
  > zip pa03.zip answer03.c main.c git.log
@@ -166,4 +170,27 @@ array is.
 
 You will save yourself a lot of time if you write and test this code
 incrementally.
+
+----------------------------------------------------------------------
+
+(*) Okay, I'm done, but what about this git.log file?
+
+cd into *your* working repository, and type the following:
+
+ > git log
+
+You should see a stream of text float across the screen. The text is a
+log of git activities. If you read through it, you should see all of
+your commit statements.
+
+To create the "git.log" file, use a "redirect" to direct the text from
+screen into a file:
+
+ > git log > git.log
+
+Now cat the file to make sure everything is okay. (You now know what
+cat is, right??)
+
+ > cat git.log
+
 
