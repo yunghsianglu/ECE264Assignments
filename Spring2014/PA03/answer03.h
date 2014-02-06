@@ -33,8 +33,11 @@ char * strcat_ex(char * * dest, int * n, const char * src);
  * The memory location '*arrLen' is initialized to the length of the returned
  * array.
  *
- * 'delims' is a string that contains a set of delimiter characters. 
- * explode(...) will split the string at any character that appears in 'delims'.
+ * str: A string to split
+ * delims: a string that contains a set of delimiter characters. explode(...) 
+ *         will split the string at any character that appears in 'delims'.
+ * arrLen: pointer to an int that is used to store the resultant length of the
+ *         returned array.
  *
  * For example, if delimiter is white space " \t\v\n\r\f", then,
  * int len;
@@ -50,8 +53,12 @@ char * strcat_ex(char * * dest, int * n, const char * src);
 char * * explode(const char * str, const char * delims, int * arrLen);
 
 /**
- * Takes an array of strings, and then concatenates them into a single string,
- * placing 'glue' between each.
+ * Takes an array of strings, and concatenates the elements into a single
+ * string, placing 'glue' between each successive element.
+ *
+ * strArr: an array of strings
+ * len: the length of the array 'strArr'
+ * glue: string to concatenate between each element of 'strArr'
  *
  * For example:
  * int len;
@@ -65,6 +72,9 @@ char * implode(char * * strArr, int len, const char * glue);
 
 /**
  * Takes an array of C-strings, and sorts them alphabetically, ascending.
+ *
+ * arrString: an array of strings
+ * len: length of the array 'arrString'
  *
  * For example, 
  * int len;
@@ -81,6 +91,8 @@ void sortStringArray(char * * arrString, int len);
 /**
  * Sorts the characters in a string.
  *
+ * str: string whose characters are to be sorted
+ *
  * For example, 
  * char * s1 = strdup("How did it get so late so soon?");
  * sortStringCharacters(s1)
@@ -94,6 +106,9 @@ void sortStringCharacters(char * str);
 /**
  * Safely frees all memory associated with strArr, and then strArr itself.
  * Passing NULL as the first parameter has no effect.
+ *
+ * strArr: an array of strings
+ * len: the length of 'strArr'
  *
  * int len;
  * const char * abe = "Give me six hours to chop down a tree and I will spend\n"
