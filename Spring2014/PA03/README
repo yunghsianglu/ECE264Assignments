@@ -1,4 +1,3 @@
-
 // ~ Overview ~ //
 
 This assignment uses some more advanced string processing functions to
@@ -77,7 +76,7 @@ have the correct answer to all the problems.
 
 (*) Why pass char * * in strcat_ex?
 
-Pay close attention to the section in the course nodes on the swap
+Pay close attention to the section in the course notes on the swap
 function.  It is important to appreciate that a function can never
 edit a value outside of itself unless you pass a pointer. So swap(int,
 int) can never work. You must write swap(int *, int *).
