@@ -45,14 +45,14 @@ the git.log file.
 
 You create the zip file using the following command.
  
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
+ > zip pa04.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
 
 If your zip file does not meet the above specification, then you may
 get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
 instructions is *part* of getting the assignment correct. So please
 follow the instructions.
 
-Submit "pa03.zip" to blackboard.
+Submit "pa04.zip" to blackboard.
 
 // ~ Determining Your Mark ~ //
 
@@ -242,9 +242,9 @@ concise code.
  > git log > git.log
 
 # Create a zip file of your solution: 
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
+ > zip pa04.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
 
-# Upload pa03.zip to blackboard.
+# Upload pa04.zip to blackboard.
 
 // ~ FAQ ~ //
 
