@@ -36,7 +36,7 @@ contain:
 (1) echo-lite.c, your solution for "echo"
 (2) cat-lite.c, your solution for "cat"
 (3) grep-lite.c, your solution for "grep"
-(4) gdb.text, a logfile produced through running gdb.
+(4) gdb.txt, a logfile produced through running gdb.
 (5) git.log, a logfile produced by git.
 
 With the exception of git.log, notes on creating each of these files
@@ -45,7 +45,7 @@ the git.log file.
 
 You create the zip file using the following command.
  
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text git.log
+ > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
 
 If your zip file does not meet the above specification, then you may
 get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
@@ -242,7 +242,7 @@ concise code.
  > git log > git.log
 
 # Create a zip file of your solution: 
- > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.text git.log
+ > zip pa03.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
 
 # Upload pa03.zip to blackboard.
 
