@@ -1,133 +1,78 @@
 /**
- * Do not modify this file
+ * Do not modify this file.
  */
 #ifndef PA05_H
 #define PA05_H
-#define MAXLENGTH 100
-#define TRUE 1
-#define FALSE 0
+
+#include <stdint.h>
+
+#define ECE264_IMAGE_MAGIC_NUMBER 0x21343632
+
+// Tell gcc not to pad structs with extra bytes.
+// Padding is sometimes included for performance reasons.
+#pragma pack(1)
+
+typedef struct ImageHeader_st {
+    uint32_t magic_number; // Should be ECE264_IMAGE_MAGIC_NUMBER
+    uint32_t width;        // [width x height], cannot be zero
+    uint32_t height;
+    uint32_t comment_len;  // A comment added to the file
+} ImageHeader;
+
+typedef struct Image_st {
+    int width;
+    int height;
+    char * comment;
+    uint8_t * data;
+} Image;
 
 /**
- * Print all the partitions of a positive integer value.
+ * Loads a bmp (windows bitmap) image, returning an Image structure.
+ * Will return NULL if there is any error.
  *
- * Example:
- * partitionAll(3); // prints the following: (line order not important)
- * = 1 + 1 + 1
- * = 1 + 2
- * = 2 + 1
- * = 3
- *
- * Note: Order does not matter, and neither does white-space. 
- * Hint: look at file: expected/partitionAll.output
+ * Note: This function is written for you and appears in image-bmp.c
  */
-void partitionAll(int value);
+Image * Image_loadbmp(const char * filename);
 
 /**
- * Print all partitions that have strictly increasing values.
+ * Saves an Image structure to a file. Returns TRUE if success, or
+ * FALSE if there is any error.
  *
- * Example:
- * partitionIncreasing(5); // prints the following: (line order not important)
- * = 1 + 4
- * = 2 + 3
- * = 5
- * 
- * These partitions are excluded because they are not _strictly_ increasing
- * 1 + 1 + 3
- * 2 + 1 + 2
- * 3 + 2
- * 
- * Note:
- * The program should generate only valid partitions.  Do not
- * generates all partitions and then filter for validity. If you 
- * do this, you will almost certainly have trouble understanding the exam.
- *
- * Hint: look at file: expected/partitionIncreasing.output
+ * Note: This function is written for you and appears in image-bmp.c
  */
-void partitionIncreasing(int value);
+int Image_savebmp(const char * filename, Image * image);
 
 /**
- * Print all partitions that have strictly decreasing values.
+ * Loads a ECE264 image file, returning an Image structure.
+ * Will return NULL if there is any error.
  *
- * Example:
- * partitionDecreasing(5); // prints the following: (line order not important)
- * = 3 + 2
- * = 4 + 1
- * = 5
- * 
- * These partitions are excluded because they are not _strictly_ decreasing
- * 1 + 1 + 3
- * 2 + 1 + 2
- * 3 + 2
- * 
- * See: note on partitionIncreasing(...)
- * Hint: look at file: expected/partitionDecreasing.output
+ * Hint: Please see the README for extensive hints
  */
-void partitionDecreasing(int value);
+Image * Image_load(const char * filename);
 
 /**
- * Prints all partitions comprised solely of odd numbers.
+ * Save an image to the passed filename, in ECE264 format.
+ * Return TRUE if this succeeds, or FALSE if there is any error.
  *
- * Example:
- * partitionOdd(5); // prints the following (line order not important)
- * = 1 + 1 + 1 + 1 + 1
- * = 1 + 1 + 3
- * = 1 + 3 + 1
- * = 3 + 1 + 1
- * = 5
- * 
- * See: note on partitionIncreasing(...)
- * Hint: for odd numbers, (value % 2 != 0)
- * Hint: look at file: expected/partitionOdd.output
+ * Hint: Please see the README for extensive hints
  */
-void partitionOdd(int value);
+int Image_save(const char * filename, Image * image);
 
 /**
- * Prints all partitions comprised solely of even numbers.
+ * Free memory for an image structure
  *
- * Example:
- * partitionEven(6); // prints the following (line order not important)
- * = 2 + 2 + 2
- * = 2 + 4
- * = 4 + 2
- * = 6
- * 
- * See: note on partitionIncreasing(...)
- * Hint: for even numbers, (value % 2 == 0)
- * Hint: you can never partition an odd number with even numbers alone.
- * Hint: look at file: expected/partitionEven.output
+ * Image_load(...) (above) allocates memory for an image structure. 
+ * This function must clean up any allocated resources. If image is 
+ * NULL, then it does nothing. (There should be no error message.) If 
+ * you do not write this function correctly, then valgrind will 
+ * report an error. 
  */
-void partitionEven(int value);
+void Image_free(Image * image);
 
 /**
- * Prints all partitions that do not have consecutive odd or even numbers.
- *
- * Example:
- * partitionOddAndEven(5); // prints the following (line order not important)
- * = 1 + 4
- * = 2 + 1 + 2
- * = 2 + 3
- * = 3 + 2
- * = 4 + 1
- * = 5
- *
- * See: note on partitionIncreasing(...)
- * Hint: look at file: expected/partitionOddAndEven.output
+ * Performs linear normalization, see README
  */
-void partitionOddAndEven(int value);
+void linearNormalization(int width, int height, uint8_t * intensity);
 
-/**
- * Prints all partitions that comprise solely of prime numbers.
- *
- * Example:
- * partitionPrime(5); // prints the following (line order not important)
- * = 2 + 3
- * = 3 + 2
- * = 5
- * 
- * See: note on partitionIncreasing(...)
- * Hint: you will need to write a function that checks if a number is prime.
- * Hint: 1 is not a prime number.
- * Hint: look at file: expected/partitionPrime.output
- */
-void partitionPrime(int value);
 #endif
+
