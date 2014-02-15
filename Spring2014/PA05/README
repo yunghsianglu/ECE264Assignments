@@ -1,4 +1,3 @@
-
 Please read the entire README (including FAQ at the end) before
 starting your assignment, or asking for help.
 
@@ -12,7 +11,7 @@ improves the viewing quality of washed out or dark images.
 // ~ Learning Goals ~ //
 
 (1) Structs
-(2) Reading and writing binary files in a robust and safe manor
+(2) Reading and writing binary files in a robust and safe manner
 (3) Managing memory in functions with many if statements
 (4) Introduction to hexidecimal numbers
 
