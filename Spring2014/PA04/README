@@ -163,7 +163,7 @@ line, and (by default) print out those lines which
 contain pattern as a substring.
 
   -v, --invert-match     print non-matching lines
-  -n, --line-number      print line number with output
+  -n, --line-number      print line numbers with output
   -q, --quiet            suppress all output
 
 Exit status is 0 if any line is selected, 1 otherwise;
