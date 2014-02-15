@@ -68,7 +68,7 @@ means that every pixel in the image has a single 8-bit value
 [0..255], that denotes the intensity (amount of whiteness) at 
 that pixel.
 
-The following diagram summaries the byte layout in ee264 files:
+The following diagram summarizes the byte layout in ee264 files:
 
   -----------------------------------------------
   | magic-number | width | height | comment-len |  16 bytes
