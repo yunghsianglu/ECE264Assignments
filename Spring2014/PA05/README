@@ -1,4 +1,3 @@
-
 Please read the entire README (including FAQ at the end) before
 starting your assignment, or asking for help.
 
@@ -64,7 +63,7 @@ writing ee264 images.
 
 // ~ The ee264 Format ~ //
 
-The "ece264" image format supports 8-bit grayscale images. That 
+The "ee264" image format supports 8-bit grayscale images. That 
 means that every pixel in the image has a single 8-bit value 
 [0..255], that denotes the intensity (amount of whiteness) at 
 that pixel.
