@@ -23,7 +23,6 @@
 #define BMP_MAGIC_NUMBER 0x4d42
 #define DEFAULT_DPI_X 3780
 #define DEFAULT_DPI_Y 3780
-#define HISTOGRAM_SIZE 256
 
 #define FALSE 0
 #define TRUE 1
@@ -37,7 +36,6 @@
 // sometimes help in high-performance code.
 #pragma pack(push)
 #pragma pack(1)  
-
 typedef struct {
     uint16_t type;                      // Magic identifier
     uint32_t size;                      // File size in bytes
@@ -56,7 +54,6 @@ typedef struct {
     uint32_t ncolors;                  // Number of colors  
     uint32_t importantcolors;          // Important colors
 } BMP_Header;
-
 #pragma pack(pop)
 
 static int BMP_checkValid(BMP_Header * header);

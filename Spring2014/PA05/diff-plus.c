@@ -25,7 +25,9 @@ int main(int argc, char * * argv)
 {
     if(argc != 3) {
 	print_usage(argv[0]);
-	return EXIT_SUCCESS;
+	if(argc == 2 && strcmp(argv[1], "--help") == 0)
+	    return EXIT_SUCCESS;
+	return EXIT_FAILURE;
     }
 
     FILE * fp1 = fopen(argv[1], "rb");
@@ -42,6 +44,7 @@ int main(int argc, char * * argv)
     int ret = EXIT_SUCCESS;
     int byte_counter = 0;
     int ch1, ch2;
+    int tolerance = 5; // rounding error of 5 pixels is generous
     while(ret == EXIT_SUCCESS) {
 	ch1 = fgetc(fp1);
 	ch2 = fgetc(fp2);
@@ -52,7 +55,7 @@ int main(int argc, char * * argv)
 		    argv[(ch1 == EOF ? 1 : 2)],
 		    argv[(ch2 == EOF ? 1 : 2)]);
 	    ret = EXIT_FAILURE;
-	} else if(ch1 - ch2 < -5 || ch1 - ch2 > 5) {
+	} else if(ch1 - ch2 < -tolerance || ch1 - ch2 > tolerance) {
 	    fprintf(stderr, "Difference found at byte %d\n", byte_counter);
 	    ret = EXIT_FAILURE;
 	}
@@ -64,5 +67,4 @@ int main(int argc, char * * argv)
 
     return ret;
 }
-
 

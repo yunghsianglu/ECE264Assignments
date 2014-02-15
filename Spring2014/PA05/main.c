@@ -38,6 +38,7 @@ int main(int argc, char * * argv)
 	    return EXIT_SUCCESS;
 	return EXIT_FAILURE;
     }
+
     const char * in_filename = argv[1];
     const char * out_filename = argv[2];
 
@@ -64,5 +65,4 @@ int main(int argc, char * * argv)
 
     return ret;
 }
-
 

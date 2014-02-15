@@ -9,25 +9,12 @@ In this assignment you will read and write image files, and
 stretching, and is an image enhancement technique that (in general)
 improves the viewing quality of washed out or dark images.
 
-As a programmer, you must know how to write robust code. This is
-especially important in industry. This assignment challenges you to
-think about how a computer program can go wrong, and what to do about
-it. A general rule of thumb is that you never, *never*, trust anything
-which comes from "outside" your program. So when you read an input
-file, you should assume that the file could be corrupted by some
-malicious user, who wants to use bugs in your program to take control
-of the machine. Most software exploits occur because programmers do
-not think sufficiently about the ways in which malformed inputs can be
-exploited.
-
-Obligatory: http://xkcd.com/327/
-
 // ~ Learning Goals ~ //
 
 (1) Structs
 (2) Reading and writing binary files in a robust and safe manor
 (3) Managing memory in functions with many if statements
-(4) Introduction to hexidecimal
+(4) Introduction to hexidecimal numbers
 
 // ~ Submitting Your Assignment ~ //
 
@@ -45,15 +32,14 @@ get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
 instructions is *part* of getting the assignment correct. So please
 follow the instructions.
 
-Submit "pa05.zip" to blackboard.
-
 // ~ Project Files ~ //
 
-+ answer05.h: Header file contains the declartions you must implement.
++ answer05.h: Header file contains the declarations that you must 
+implement.
 + diff-plus.c: A short computer program that you can compile and use
 to test if two image files are "different". (See the discussion on
 linear normalization below.)
-+ image-bmp.c: Code for reading and writing bmp files.
++ image-bmp.c: Code for reading and writing windows "bmp" files.
 + main.c: Some example code to get you started.
 + README: this file.
 + images: a directory of images, described below.
@@ -66,28 +52,39 @@ The images directory contains four collections of images:
 images. Please look at these files before proceeding. Any standard
 image viewer should do the trick.
 + originals: These are the original images that were used to generate
-the bmps.
-+ corrupt-testcases: These files are all broken, but in different
-ways. You Image_load(...) function should return NULL when attempting
-to read any of these file. Furthermore, you should have no memory
+the bmps. You do not need to do anything with them.
++ corrupt-testcases: These files are all corrupted, but in different
+ways. Your Image_load(...) function should return NULL when attempting
+to read any of these files. Furthermore, you should have no memory
 errors.
-+ the ee264 images: There is an equivalent bmp file for each ee264
-image. See below for a description of the ee264 file format. A major
-part of the assignment involves reading and writing ee264 images.
++ the ee264 images: There is an equivalent ee264 file for every bmp
+image in the bmps directory. See below for a description of the ee264
+file format. A major part of the assignment involves reading and
+writing ee264 images.
 
-// ~ ee264 Format ~ //
+// ~ The ee264 Format ~ //
 
 The "ece264" image format supports 8-bit grayscale images. That 
 means that every pixel in the image has a single 8-bit value 
-(0..255), which denotes the intensity, or amount of whiteness at 
+[0..255], that denotes the intensity (amount of whiteness) at 
 that pixel.
+
+The following diagram summaries the byte layout in ee264 files:
+
+  -----------------------------------------------
+  | magic-number | width | height | comment-len |  16 bytes
+  |----------------------------------------------
+  |           comment with null-byte            |  comment-len bytes
+  |----------------------------------------------
+  |                 pixel data                  |  width*height bytes
+  -----------------------------------------------
 
 The file has a 16 byte header whose binary layout is given by the 
 struct ImageHeader in the file "answer05.h". The full explanation of 
 this header is:
 
 + 4 byte integer: "magic number" 0x21343632. 
-                  The first 4 bytes of the file always start with
+                  The first 4 bytes of the file always starts with
                   this number (in little-endian format). If this
                   number is absent, then there is something wrong
                   with the file.
@@ -96,7 +93,7 @@ this header is:
 + 4 byte integer: length of an ASCII string file comment *including*
                   the NULL-byte
 
-The next N bytes is a null-termianted ASCII string. The length of
+The next N bytes is a null-terminated ASCII string. The length of
 the string is specified in the last field of the header. The length
 *includes* the trailing NULL byte.
  
@@ -119,37 +116,40 @@ right, and y increasing top-to-bottom.
 
 // ~ Part 1: Reading an Image File ~ //
 
-This assignment is tricky because you cannot
-control data that is coming from outside of your program. Because you cannot 
-control this data, you cannot trust it either, and so you must assume
-the worst, and check *everything*.
+This assignment is tricky because you cannot control data that is
+coming from outside of your program. Because you cannot control this
+data, you cannot trust it either, and so you must assume the worst,
+and check *everything*.
 
-Most dangerous real-world computer bugs are related to programmers
-not sufficiently checking the inputs to their programs. So for
-this assignment, you will need to think very carefully about what
-could go wrong when reading a file. If anything goes wrong, you
-return NULL and leak no resources. In this way your code will be
-bullet-proof; even a malicious user cannot crash your program.
+Most dangerous real-world computer bugs are related to programmers not
+sufficiently checking the inputs to their programs. So for this
+assignment, you will need to think very carefully about what could go
+wrong when reading a file. If anything goes wrong, you return NULL and
+leak no resources. In this way your code will be bullet-proof; even a
+malicious user cannot crash your program and thereby take control of
+the computer.
 
-You are supplied with a few test images, including corrupt test 
+Obligatory: http://xkcd.com/327/
+
+You are supplied with a few test images, including corrupt test
 images. These test-cases are provided in order to simplify and
-standardize the assignment, and ease the learning process. However,
-in real-world scenarios, you will need to generate your own
-testcases, including corrupt test cases. By the end of this
-assignment, you should understand how to go about doing that.
+standardize the assignment, and ease the learning process. However, in
+real-world scenarios, you will need to generate your own testcases,
+including corrupt test cases. By the end of this assignment, you
+should understand how to go about doing precisely that.
 
 A big, *big*, hint is to look at the code in image-bmp.c You don't
 have to do everything you see there, or even the same things; however,
 it should give you a pretty good idea of where to start and how to go
 about it.
 
-The following is a list of things that you should check for. It
+The following is a list of things that you should check for. In
 real-world scenarios, you'll have to develop this list yourself. If
-there are *any* errors, then return NULL, and leak to resources.
+there are *any* errors, then return NULL, and leak no resources.
 
 (1) Make sure you can open the file
 (2) Read the header:
-(2.a) Make sure that you can read the header
+(2.a) Make sure that you can read all the bytes of the header
 (2.b) Make sure that the magic_number in the header is correct
 (2.c) Make sure that neither the width nor height is zero
 (2.d) Make sure that the comment length is not zero. (Remember, it
@@ -162,7 +162,7 @@ malloc will return NULL if it cannot do its job.
 (5) Read the pixels
 (5.a) Make sure you read *all* width*height pixels
 (5.b) Make sure you've reached the end of the file. (i.e., there are
-no trailing bytes of data past the end of the pixels.)
+no trailing bytes of data past the end of the pixel data.)
 
 A suite of corrupt image files is provided to help ensure that you get
 all of this correct. Your code must successfully return NULL for
@@ -188,14 +188,16 @@ That's it! For the above example the equation is:
 
 To implement this, you need two for loops, one after the other. 
 The first for-loop completes step (1), and the second for-loop 
-to complete step (2). 
+to completes step (2). 
 
 // ~ Part 3: Saving an Image File ~ //
 
 Saving an image is easier than reading an image, because you can
-assume (as a precondition) that the Image struct is valid. Thus you
-do not have to worry about the plethora of errors that may be
-encountered when reading an input.
+assume (as a precondition) that the Image struct is valid. Thus you do
+not have to worry about the plethora of errors that may be encountered
+when reading an input. (Remember, inputs come from outside of the
+program, and hence you have no control over what is actually
+received.)
 
 In this part of the assignment, you merely have to take an Image
 struct and write it out in the prescribed format.
@@ -224,7 +226,7 @@ find mistakes in answer05.c. No other files are marked.
 
 Remember, the tester must be run on the ECE lab computers, and it
 should not be run until after you are 100% confident that you already
-have the correct answer to all the problems.
+have the correct answer.
 
 // ~ Hints ~ //
 

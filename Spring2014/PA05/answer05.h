@@ -16,7 +16,7 @@ typedef struct ImageHeader_st {
     uint32_t magic_number; // Should be ECE264_IMAGE_MAGIC_NUMBER
     uint32_t width;        // [width x height], cannot be zero
     uint32_t height;
-    uint32_t comment_len;  // A comment added to the file
+    uint32_t comment_len;  // A comment embedded in the file
 } ImageHeader;
 
 typedef struct Image_st {
@@ -43,7 +43,7 @@ Image * Image_loadbmp(const char * filename);
 int Image_savebmp(const char * filename, Image * image);
 
 /**
- * Loads a ECE264 image file, returning an Image structure.
+ * Loads an ECE264 image file, returning an Image structure.
  * Will return NULL if there is any error.
  *
  * Hint: Please see the README for extensive hints
