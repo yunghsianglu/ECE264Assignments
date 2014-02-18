@@ -3,9 +3,6 @@
  */
 #ifndef PA06_H
 #define PA06_H
-#define MAXLENGTH 100
-#define TRUE 1
-#define FALSE 0
 
 /**
  * Print all the partitions of a positive integer value.

@@ -91,6 +91,13 @@ Run the tester program as follows:
 Please refer to the PA01 README for more information on the tester
 program.
 
+// ~ Hint ~ //
+
+You will need some sort of int buffer to contain the partition results
+as it is created. If you partition the number N, then you will a
+buffer (array of ints) that can store N values. (i.e., the largest
+partition of N is 1+1+...+1.)
+
 ----------------------------------------------------------------------
 
                      THIS ASSIGNMENT IS HARD
