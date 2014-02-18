@@ -44,6 +44,12 @@ linear normalization below.)
 + README: this file.
 + images: a directory of images, described below.
 + tester: for testing your assignment
++ tester-sample-output.text: the tester's output for a working
+solution.
++ output-tester: When you run the tester, it will save the output of
+each testcase and the valgrind log for each testcase in separate files
+inside of this directory. Please review these files if you
+fail a testcase, so that you can recreate the problem yourself.
 
 // ~ About the Image Files ~ //
 
@@ -248,4 +254,24 @@ There are many hex-editors available. I prefer emacs, which is
 installed on the lab computers. You can ask emacs to show you the raw
 byte-structure of a file by using "hexl-mode". (M-x hexl-mode) Please
 ask the TAs for assistance if you are unsure how to do this.
+
+(*) Help, I don't know how to test my code!
+
+Firstly, you have everything you need, including all the
+testcases. You will need to compile the diff-plus.c program:
+
+ > gcc -Wall -Wshadow -g diff-plus.c -o diff-plus
+
+You use this program to test if two files are approximately the same:
+
+ > ./diff-plus --help
+
+Now you need to write a short program that will read a file, apply
+normalization to it, and write it out. The code in "main.c" should get
+you started.
+
+Once you have this program, you can apply normalization to various bmp
+or ee264 images. Compare your results to the supplied file with
+./diff-plus.
+
 
