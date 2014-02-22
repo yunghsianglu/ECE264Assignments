@@ -95,7 +95,7 @@ program.
 a) You will need some sort of int buffer to contain the partition results
 as they are created. If you partition the number N, then you will need a
 buffer (array of ints) that can store N values. (i.e., the largest
-partition of N is 1+1+...+1.)
+partition of N is 1+1+...+1).
 
 b) As mentioned above, you will be asked to print partitions that satisfy 
 certain restrictions. If an input has no partitions that satisfy the 
