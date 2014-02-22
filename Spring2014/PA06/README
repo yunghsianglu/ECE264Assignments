@@ -92,10 +92,18 @@ program.
 
 // ~ Hint ~ //
 
-You will need some sort of int buffer to contain the partition results
+a) You will need some sort of int buffer to contain the partition results
 as they are created. If you partition the number N, then you will need a
 buffer (array of ints) that can store N values. (i.e., the largest
-partition of N is 1+1+...+1.)
+partition of N is 1+1+...+1).
+
+b) As mentioned above, you will be asked to print partitions that satisfy 
+certain restrictions. If an input has no partitions that satisfy the 
+restriction of the function you're in, do NOT print an error message! 
+Instead, since there are 0 partitions that abide by that restriction, 
+simply do nothing and return.
+Eg. See 'partitionPrime(1)', located in the expected output file 
+'partitionPrime.output'.
 
 ----------------------------------------------------------------------
 
