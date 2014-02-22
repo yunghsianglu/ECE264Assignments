@@ -5,7 +5,7 @@
 #define PA06_H
 
 /**
- * Print all the partitions of a positive integer value.
+ * Prints all the partitions of a positive integer value.
  *
  * Example:
  * partitionAll(3); // prints the following: (line order not important)
@@ -20,7 +20,7 @@
 void partitionAll(int value);
 
 /**
- * Print all partitions that have strictly increasing values.
+ * Prints all partitions that have strictly increasing values.
  *
  * Example:
  * partitionIncreasing(5); // prints the following: (line order not important)
@@ -43,7 +43,7 @@ void partitionAll(int value);
 void partitionIncreasing(int value);
 
 /**
- * Print all partitions that have strictly decreasing values.
+ * Prints all partitions that have strictly decreasing values.
  *
  * Example:
  * partitionDecreasing(5); // prints the following: (line order not important)
