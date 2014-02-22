@@ -96,6 +96,8 @@ void partitionEven(int value);
 
 /**
  * Prints all partitions that do not have consecutive odd or even numbers.
+ * In other words, it only prints partitions that have alternating odd and 
+ * even numbers.
  *
  * Example:
  * partitionOddAndEven(5); // prints the following (line order not important)
