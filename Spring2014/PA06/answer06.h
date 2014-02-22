@@ -54,7 +54,6 @@ void partitionIncreasing(int value);
  * These partitions are excluded because they are not _strictly_ decreasing
  * 1 + 1 + 3
  * 2 + 1 + 2
- * 3 + 2
  * 
  * See: note on partitionIncreasing(...)
  * Hint: look at file: expected/partitionDecreasing.output
