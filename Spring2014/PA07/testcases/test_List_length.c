@@ -33,6 +33,7 @@ int tests_List_length(int test_number)
     // Explain what's about to happen
     printf("Testing: List_length(list) = ");
     fflush(stdout);
+    int stu_len = List_length(list);
     printf("%d", List_length(list));
     printf(", where list is: ");
     List * tail = list;
@@ -42,9 +43,16 @@ int tests_List_length(int test_number)
     }
     printf("NULL\n");
 
+    int ret = TRUE;
+    int sol_len = List_length_sol(list);
+    if(sol_len != stu_len) {
+	printf("Error: expected length is %d\n", sol_len);
+	ret = FALSE;
+    }
+
     // Cleanup
     List_destroy_sol(list);
 
-    return TRUE;
+    return ret;
 }
 
