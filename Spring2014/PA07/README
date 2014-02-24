@@ -20,7 +20,7 @@ this way.
 
 In this assignment, we will use (1) and (2) above to sort linked-lists
 of strings using the "merge-sort" algorithm. Merge-sort is a beautiful
-algorithm that sorts extremely quickly with large inputs. It also the
+algorithm that sorts extremely quickly with large inputs. It is also the
 best possible algorithm to use for sorting linked-lists.
 
 Included in the assignment files is a file called "example.c". This
@@ -60,7 +60,7 @@ You never need to allocate or copy memory (or create new Nodes) when
 merge-sorting linked-lists. It is important that you discover how to
 do this. You cannot pass the tester if you allocate or create
 list-nodes when sorting. Hints on how to do this are included in the
-assignment file "answer07.h"
+assignment file "answer07.h".
 
 Note: In general, merge-sorting arrays requires some sort of buffer
 that is proportional to the size of the array. It is for this reason
