@@ -2,8 +2,8 @@
  * Do not modify this file
  */
 
-#ifndef ANSWERXX_H
-#define ANSWERXX_H
+#ifndef ANSWER08_H
+#define ANSWER08_H
 
 /**
  * A Binary Search Tree Node structure to store a sparse array element.

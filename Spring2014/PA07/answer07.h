@@ -21,7 +21,7 @@ List * List_createNode(const char * str);
 
 /**
  * Free all memory associated with the linked list, including memory for
- * constained strings. Must safely handle NULL lists.
+ * contained strings. Must safely handle NULL lists.
  */
 void List_destroy(List * list);
 
