@@ -172,7 +172,7 @@ When merging two sparse array binary trees, array_1 and array_2:
     ***NOTE*** I believe you can use any traversal technique
 
 (3.1) You must traverse each node in array_2 and "insert" in into new_array.
-(3.2) If you inserted node's index does not exist in new_array, then insert
+(3.2) If index of the node you are trying to insert does not exist in new_array, then insert
       the new node normally.
 (3.3) If the node's index *does* exist, then simply add the values together
       *instead* of inserting the node. But keep in mind that if the resultant
@@ -198,7 +198,7 @@ results:
 
 // ~ Hints ~ //
 
-(*) Make sure you read the class notes on binary tress.
+(*) Make sure you read the class notes on binary trees.
 
 ----------------------------------------------------------------------
 
@@ -268,12 +268,12 @@ int main(int argc, char * * argv)
 }
 
 // Step 2 // 
-Once you can create an print various trees (as above), then write the
+Once you can create and print various trees (as above), then write the
 check function and make sure it works. (i.e., create invalid trees and
-make sure check picks up they are bogus.)
+make sure the check function picks up that they are bogus.)
 
 // Step 3 //
-Write SparseArray_destroy(...). You should now have no memory leaks of
+Write SparseArray_destroy(...). You should now have no memory leaks or
 errors.
 
 // Step 4 //
