@@ -165,7 +165,7 @@ When merging two sparse array binary trees, array_1 and array_2:
     you should create a new array (called new_array) that stores the result
     of merging.
 
-(2) Copy the all the nodes in array_1 into new_array.
+(2) Copy all the nodes in array_1 into new_array.
 
 (3) Now we are ready to copy nodes from array_2 into new_array.
     //  You need to use post-order to traverse array_2 tree. //
