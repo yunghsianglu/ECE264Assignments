@@ -168,7 +168,8 @@ SparseNode * SparseArray_remove(SparseNode * array, int index);
  * SparseNode *     the root node of the new sparse array tree that you
  *                  just copied from the input sparse array tree.
  *
- * Of course, this is should done recursively also.
+ * To copy the array you will need to traverse the tree. See README Hints on
+ * iterate.
  */
 SparseNode * SparseArray_copy(SparseNode * array);
 
@@ -189,7 +190,7 @@ SparseNode * SparseArray_copy(SparseNode * array);
  *    make a copy of array_1, and do merging in this copy.
  * 2. array_2 will be merged to array_1. This means you need to read nodes in
  *    array_2 and insert them into array_1.
- * 3. You need to use POST-ORDER to traverse the array_2 tree.
+ * 3. You need to traverse the array_2 tree. (See README Hints on iterate.)
  * 4. Values of two nodes need to be added only when the indices are the same.
  * 5. A node with value of 0 should be removed.
  * 6. if array_2 has nodes with index different than any nodes in array_1, you
