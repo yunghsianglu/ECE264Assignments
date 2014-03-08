@@ -1,0 +1,15 @@
+Reading file: 'inputs/08-gophers.bit-huff', textmode = FALSE.
+Huffman coding tree is:
+
+                ______________o_______________
+               /                              \
+        ______o_______                  ______o_______
+       /              \                /              \
+      g               o             __o___          __o___
+                                   /      \        /      \
+                                  s      ' '      o_      o_
+                                                 /  \    /  \
+                                                 e   h   p   r
+
+Message is:
+go go gophers

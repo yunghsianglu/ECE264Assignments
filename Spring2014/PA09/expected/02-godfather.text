@@ -1,0 +1,45 @@
+Reading file: 'inputs/02-godfather.txt-huff', textmode = TRUE.
+Huffman coding tree is:
+1810
+     332
+          ' '
+          300
+               e
+               199
+                    a
+                    f
+     1478
+          486
+               219
+                    m
+                    n
+               267
+                    o
+                    156
+                         u
+                         '
+          992
+               426
+                    207
+                         g
+                         h
+                    219
+                         i
+                         r
+               566
+                    172
+                         t
+                         56
+                              \n
+                              .
+                    394
+                         172
+                              I
+                              c
+                         222
+                              k
+                              s
+
+Message is:
+I'm going to make him an offer he can't refuse.
+
