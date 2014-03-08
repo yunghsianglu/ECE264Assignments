@@ -34,7 +34,7 @@ typedef struct snode
  */
 SparseNode * SparseNode_create(int index, int value);
 
-/* Add a particular value into a sparse array tree on a particular index.
+/* Add a particular value into a sparse array tree at a particular index.
  *
  * Arguments:
  * array         the root node of the sparse array tree
@@ -47,7 +47,7 @@ SparseNode * SparseNode_create(int index, int value);
  *
  * The sparse array tree uses the index as a key in a binary search tree.
  * If the index does not exist, create it.
- * If the index exists, REPLACE the value to the new one.
+ * If the index exists, REPLACE the value with the new one.
  * Use the index to determine whether to go left or right in the tree (smaller
  * index values than the current one go left, larger ones go right).
  * (For this assignment, you should not insert nodes with a value of 0)
@@ -84,8 +84,8 @@ SparseNode * SparseArray_build(int * indices, int * values, int length);
  *
  * returns: void
  *
- * traversing the binary tree in postorder. Use the SparseNode_destroy()
- * function to destroy each node by itself.
+ * Traversing the binary tree in postorder, use the SparseNode_destroy()
+ * function to destroy each node individually.
  */
 void SparseArray_destroy(SparseNode * array);
 
@@ -120,7 +120,7 @@ int SparseArray_getMax(SparseNode * array);
  *
  * Arguments:
  * array        the root node of a sparse array tree
- * index        the index of the node you want to search
+ * index        the index of the node you want to search for
  *
  * returns:
  * SparseNode *     the node with the index that you searched from the tree.
@@ -147,7 +147,7 @@ SparseNode * SparseArray_getNode(SparseNode * array, int index);
  * - If *array is empty ( NULL ), return NULL.
  * - Go left or right if the current node index is different.
  * - If both subtrees are empty, you can just remove the node.
- * - If one subtree is empty, you can just remove the current and replace it
+ * - If one subtree is empty, you can just remove the current node and replace it
  *   with the non - empty child.
  * - If both children exist, you must find the immediate successor of the
  *   current node ( leftmost of right branch ), swap its values with the
@@ -157,7 +157,7 @@ SparseNode * SparseArray_getNode(SparseNode * array, int index);
 SparseNode * SparseArray_remove(SparseNode * array, int index);
 
 /**
- * The function makes a copy of the input sparse array tree and it returns a
+ * The function makes a copy of the input sparse array tree and returns this
  * new copy.
  *
  * Arguments:
