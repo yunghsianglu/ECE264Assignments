@@ -55,24 +55,25 @@ SparseNode * SparseNode_create(int index, int value);
 SparseNode * SparseArray_insert(SparseNode * array, int index, int value);
 
 /**
- * Build a sparse array tree from given indices and values with specific
- * length.
+ * Build a sparse array tree from given array of indices and array of values,
+ * each having the same length.
  *
  * Arguments:
  * indices      a pointer pointing to the start position of the index array
  * values       a pointer pointing to the start position of the value array
- * length       the size of both array
+ * length       the size of each of the above input arrays
  *
  * returns:
  * SparseNode *     the pointer points to the root node of sparse array
  *                  tree just constructed
  *
- * It returns a sparse array tree.  You need to insert tree nodes in order
+ * It returns a sparse array tree.  You need to insert tree nodes in order,
  * starting from index zero of the array.
  *
- * The first sparse array node contains indices[0] and values[0], second node
- * contains indices[1] and values[1]. Basically, elements of indices and values
- * with the same index form a sparse array pair and should go into the same node.
+ * i.e. The first sparse array node contains indices[0] and values[0], second node
+ * contains indices[1] and values[1], etc. Basically, elements of the index array
+ *  and value array that have the same array index form a sparse array pair 
+ * and should go into the same sparse array node.
  */
 SparseNode * SparseArray_build(int * indices, int * values, int length);
 
@@ -84,7 +85,7 @@ SparseNode * SparseArray_build(int * indices, int * values, int length);
  *
  * returns: void
  *
- * Traversing the binary tree in postorder, use the SparseNode_destroy()
+ * Traversing the binary tree in postorder, use the SparseArray_destroy()
  * function to destroy each node individually.
  */
 void SparseArray_destroy(SparseNode * array);
@@ -144,7 +145,7 @@ SparseNode * SparseArray_getNode(SparseNode * array, int index);
  *
  * HINT : First, you need to go to that node. Then, you will need to isolate
  * several different cases here :
- * - If *array is empty ( NULL ), return NULL.
+ * - If array is empty ( NULL ), return NULL.
  * - Go left or right if the current node index is different.
  * - If both subtrees are empty, you can just remove the node.
  * - If one subtree is empty, you can just remove the current node and replace it
