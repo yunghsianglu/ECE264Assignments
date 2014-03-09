@@ -1,4 +1,3 @@
-
 Below is a step-by-step guide to reading a header file. We will use a stack
 of Huffman trees (i.e., HuffNode *), and push nodes on stack when we read '1',
 and pop-pop-combine-push nodes when we read a '0'. After each operation, we will
@@ -8,7 +7,7 @@ The input header is:
 
 1m1r01t1y001e1 001T1b01i1l001s1\n1!001M1a01c1h00000027
 
-The carrot indicates the *next* byte to be read.
+The caret indicates the *next* byte to be read.
 We start with an empty stack.
 
 Note the special step at the end...
