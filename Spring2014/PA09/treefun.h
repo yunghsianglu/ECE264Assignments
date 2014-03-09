@@ -28,7 +28,7 @@ void HuffNode_printPretty(FILE * fp, HuffNode * tree);
 void Stack_print(FILE * fp, Stack * stack);
 
 /**
- * Given a Huffman Coding Tree, and a correctly position 'fp', decode the data
+ * Given a Huffman Coding Tree, and a correctly positioned 'fp', decode the data
  * 
  * Parameters:
  * 'fp'    File to read from. The file must be positioned just past the tree
