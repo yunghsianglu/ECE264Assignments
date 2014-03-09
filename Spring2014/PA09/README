@@ -168,7 +168,7 @@ Note that I've numbered the bits as follows:
    // Bit#  76543210
    //     0b01000000
 
-The reason is that is follows the value of each bit. 
+The reason is that it follows the value of each bit. 
 For example, if bits "0, 1 and 5" are set, then the
 value of the number is: 
 
