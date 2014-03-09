@@ -17,7 +17,7 @@ Please read the entire attached PDF file from Spring 2013. This file
 includes the relevant theory for Huffman encoding.
 
 To complete this assignment, you must write ten functions, as listed
-in "answerXX.h".
+in "answer09.h".
 
 // ~ Hard ~ //
 
@@ -34,9 +34,9 @@ THIS ASSIGNMENT IS HARD. DO NOT LEAVE IT TO THE LAST MINUTE.
 
 // ~ Assignment Files ~ //
 
-+ answerXX.h: Header file contains the declarations that you must 
++ answer09.h: Header file contains the declarations that you must 
 implement. These functions must be implemented in a file called
-"answerXX.c". 
+"answer09.c". 
 + treefun.c: This source file contains some auxiliary functions that
 are useful for displaying trees, and linked-lists of trees. There is
 also a function that decodes a Huffman file, once the header has been
@@ -47,7 +47,7 @@ file.
 + example.c: Some example code that shows how to write a program that
 reads in a Huffman encoded file (either text or binary header), and
 prints information about it. This code cannot be run until after
-implementation of the functions in "answerXX.c"
+implementation of the functions in "answer09.c"
 + read-header-example.text: This file shows how a Huffman encoding
 tree is built step-by-step. Please see the "Hints" for more
 information.
@@ -70,11 +70,11 @@ testcase, so that you can recreate the problem yourself.
 
 You must submit one zip file to blackboard. This zip file must
 contain:
-(1) answerXX.c
+(1) answer09.c
 
 You create the zip file using the following command.
  
- > zip paXX.zip answerXX.c
+ > zip pa09.zip answer09.c
 
 If your zip file does not meet the above specification, then you may
 get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
@@ -163,8 +163,21 @@ To position a bit in the sixth position:
    unsigned char six = 1 << 6;
    printBits(six);            // 0b01000000
 
+Note that I've numbered the bits as follows:
+
+   // Bit#  76543210
+   //     0b01000000
+
+The reason is that is follows the value of each bit. 
+For example, if bits "0, 1 and 5" are set, then the
+value of the number is: 
+
+Bit#  76543210
+    0b00100011 = 2^5 + 2^1 + 2^0 = 32 + 2 + 1 = 35
+
 To set the sixth bit:
 
+   // Bit#  76543210
    //     0b10010111
    // or  0b01000000
    //              =
@@ -189,12 +202,19 @@ To test if the sixth bit is set:
 
 The code for printBits is as follows:
 
+/**
+ * Print the bits of X
+ * In the for loop, we 
+ * (1) take the value of X and left shift it by 'ind' ((X >> ind)
+ * (2) clear out all bits except for the zeroth bit.       & 0x01)
+ * 0x01 is hexidecimal for 1, and in binary is: 0b00000001
+ */
 void printBits(unsigned char X)
 {
     printf("0b");
     int ind;
     for(ind = 7; ind >= 0; --ind)
-	printf("%d", ((X >> ind) & 0x01));	
+	printf("%d", ((X >> ind) & 0x01)); 
     printf("\n");
 }
 
@@ -204,7 +224,7 @@ void printBits(unsigned char X)
     with pop-pop-combine-push(...)
 
 There is no point reading this section until you have implemented the
-first seven functions in answerXX.h, and furthermore, that you have
+first seven functions in answer09.h, and furthermore, that you have
 read the pdf document, and consulted the class notes.
 
 Please look at the file "read-header-example.text". It shows how the
