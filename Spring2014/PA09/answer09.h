@@ -37,9 +37,9 @@ void HuffNode_destroy(HuffNode * tree);
  *
  * (1) Stack_create();              // Allocate a brand new stack.
  * (2) Stack_destroy(stack);        // Clean up memory for the stack.
- * (3) TreeStack_isEmpty(stack);    // TRUE iff the stack is empty.
+ * (3) TreeStack_isEmpty(stack);    // TRUE iff (if and only if) the stack is empty.
  * (4) TreeStack_pushFront(stack, tree); // push a tree onto the stack.
- * (6) TreeStack_popFront(stack);  // remove a tree from the stack, returning it
+ * (6) TreeStack_popFront(stack);  // remove a tree from the stack and return it.
  *
  * Altogether, these six functions should be around 40 lines of code.
  */
@@ -61,8 +61,8 @@ Stack * Stack_create();
 
 /**
  * Frees all memory associated with the stack. 
- * Don't forget that you most free the entire contained linked-list.
- * Also, you must safely to nothing if stack == NULL. 
+ * Don't forget that you must free the entire contained linked-list.
+ * Also, you must safely do nothing if stack == NULL. 
  */
 void Stack_destroy(Stack * stack);
 
@@ -81,7 +81,7 @@ int Stack_isEmpty(Stack * stack);
 HuffNode * Stack_popFront(Stack * stack);
 
 /**
- * Push an 'value' onto the front of the stack.
+ * Push a 'value' onto the front of the stack.
  *
  * More precisely, this function must:
  * (1) Create a new StackNode with 'tree' for its tree.
