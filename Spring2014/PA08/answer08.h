@@ -94,10 +94,13 @@ void SparseArray_destroy(SparseNode * array);
  * Retrieve the smallest index in the sparse array tree.
  *
  * Arguments:
- * array        the root node of a sparse array tree
+ * array        the root node of a sparse array tree, is never NULL
  *
  * returns:
  * int          the smallest index in the sparse array tree
+ *
+ * If array is NULL then it does not make sense to get the max value,
+ * so you are free to do whatever you think is appropriate. 
  *
  * (Hint: consider the property of binary search tree)
  */
@@ -107,10 +110,13 @@ int SparseArray_getMin(SparseNode * array);
  * Retrieve the largest index in the sparse array tree.
  *
  * Arguments:
- * array        the root node of a sparse array tree
+ * array        the root node of a sparse array tree, is never NULL
  *
  * returns:
  * int          the largest index in the sparse array tree
+ *
+ * If array is NULL then it does not make sense to get the max value,
+ * so you are free to do whatever you think is appropriate. 
  *
  * (Hint: consider the property of binary search tree)
  */

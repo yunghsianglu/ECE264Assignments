@@ -6,7 +6,7 @@
 #define FALSE 0
 
 int tests_SparseArray_getMin(int test_number) {
-    int n_tests = 8;
+    int n_tests = 7;
 
     // If test_number is out of range, then...
     if(test_number < 0 || test_number >= n_tests) {
