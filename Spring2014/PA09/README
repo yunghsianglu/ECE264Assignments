@@ -94,7 +94,7 @@ Run the tester program as follows:
 
 (*) Help, I don't know where to start?
 
-Start by writing *and* testing every function except for:
+Start by writing *and* test every function except for:
 
  (1) void Stack_popPopCombinePush(Stack * stack);
  (2) HuffNode * HuffTree_readTextHeader(FILE * fp);
