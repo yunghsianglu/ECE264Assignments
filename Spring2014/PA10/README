@@ -38,7 +38,7 @@ submitted, and will not be marked.
 section "Making Sure Your Answer is Correct" at the end of this
 document.
 
-Your answer file: answer10.c, must have no main(...) function, must
+Your answer file: answer10.c, must have no main(...) function,
 must not contain any duplicates of the code in tree.c.
 
 // -------------------------------//
