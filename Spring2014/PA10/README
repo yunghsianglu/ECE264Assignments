@@ -1,4 +1,3 @@
-
 // -------------//
 // ~ Overview ~ //
 // -------------//
@@ -40,7 +39,7 @@ section "Making Sure Your Answer is Correct" at the end of this
 document.
 
 Your answer file: answer10.c, must have no main(...) function, must
-must not contain any duplicates of code in tree.c.
+must not contain any duplicates of the code in tree.c.
 
 // -------------------------------//
 // ~ Submitting Your Assignment ~ //
@@ -67,13 +66,13 @@ A stack is just a linked-list; however, you only ever add and remove
 elements to and from the head. It is as simple as that. 
 
 You are already familiar with the "Call Stack", which shares an 
-import property that the last function-frame added to the call-stack
+important property that the last function-frame added to the call-stack
 is the first function-frame removed when the stack is shrunk. 
 This property is called LIFO, or "Last-in-first-out".
 
 When you add an element to a stack, that is called "pushing". When
 you remove, that is called "popping". If you pushed (in order) the
-number 1, 2, 3, 4, 5, then your stack would be the linked list:
+numbers 1, 2, 3, 4, 5, then your stack would be the linked list:
 
     [5] -> [4] -> [3] -> [2] -> [1] -> (null)
 
@@ -100,9 +99,9 @@ for Part II, but will not be graded.
 // ~ Part II, Stack Sort ~ //
 // ----------------------- //
 
-In the this part of the assignment, you are required to implement
+In this part of the assignment, you are required to implement
 Donald Knuth's "Stack Sort" algorithm. This is an extremely fast
-sorting algorithm (must faster than quick-sort for large inputs);
+sorting algorithm (much faster than quick-sort for large inputs);
 however, it has a flaw; Stack Sort only works for certain inputs.
 These inputs are called "stack sortable", and what that looks like,
 and why it is important, will become apparent in the second part of
@@ -159,7 +158,7 @@ If a binary tree has three nodes, there are five shapes.
          /              \
         N                N
 
-The number of shapes for k nodes can be expresses as the Catalan
+The number of shapes for k nodes can be expressed as the Catalan
 series.
 
 // -- Stack Sort and Binary Trees -- //
@@ -174,7 +173,7 @@ Stack Sort only works on lists of numbers that are "stack-sortable".
 This works as follows:
 
 Consider two lists: 'u' = { 1, 2, 4, 3 } and 'v' = { 3, 1, 4, 2 }.
-The 'u' is stack-sortable, but 'v' is not. To understand why, 
+The list 'u' is stack-sortable, but 'v' is not. To understand why, 
 consider what happens when we divide the lists around their largest
 element:
 
@@ -190,7 +189,7 @@ in the second example we have to output '3' before we output '2', and
 so the sort fails. So we can never have an element in the right list that
 is smaller than an element in the left list.
 
-It so happens that if a sequence is of numbers is not stack-sortable,
+It so happens that if a sequence of numbers is not stack-sortable,
 and you produced a binary tree from this sequence, then there is
 precisely one stack-sortable sequence (of the same length) that would
 produce the same shaped binary tree. Furthermore, all stack-sortable
@@ -244,7 +243,7 @@ permutations in the 'stack-unsortable' files as unsortable.
 
 It may be helpful to read these files into your own main(...) 
 function, and iterate over each line (remember earlier assignments!)
-and check the behaviour if isStackSortable(...) and stackSort(...).
+and check the behaviour of isStackSortable(...) and stackSort(...).
 
 Remember that stackSort must fail to produce a sorted list if the
 input is not stack-sortable.
