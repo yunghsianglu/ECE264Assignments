@@ -27,7 +27,7 @@ integers. This source code is given to you for convenience -- you
 should already know how to create it. You may find this code useful in
 your solution. Do *not* copy any of this code into your solution
 file. (Instead, you must compile tree.c separately, and link it into
-your solution.)
+your solution). This file should not be submitted, and will not be marked.
 + tree.h: Header file for the binary-tree implementation in tree.c.
 + README: This file.
 + pa10.c: Source code with a main(...) function that you may find
