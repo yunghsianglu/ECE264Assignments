@@ -102,7 +102,7 @@ int main(int argc, char * * argv)
 	else
 	    printf("N\n");
     } else if(strcmp(cmd, "shapes") == 0) { // -- Shapes command
-	len = atoi(argv[2]);
+	len = strtol(argv[2], NULL, 10);
 	if(len < 1 || len > 9) {
 	    fprintf(stderr, "Invalid number of shapes... aborting\n");
 	    ret = EXIT_FAILURE;
