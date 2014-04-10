@@ -22,8 +22,8 @@ Stack * Stack_create();
 
 /**
  * Frees all memory associated with the stack. 
- * Don't forget that you most free the entire contained linked-list.
- * Also, you must safely to nothing if stack == NULL. 
+ * Don't forget that you must free the entire contained linked-list.
+ * Also, you must safely do nothing if stack == NULL. 
  */
 void Stack_destroy(Stack * stack);
 
@@ -42,7 +42,7 @@ int Stack_isEmpty(Stack * stack);
 int Stack_popFront(Stack * stack);
 
 /**
- * Push an 'value' onto the front of the stack.
+ * Push a 'value' onto the front of the stack.
  *
  * More precisely, this function must:
  * (1) Create a new ListNode with 'value' for it's value.
