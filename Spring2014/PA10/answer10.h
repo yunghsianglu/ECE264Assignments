@@ -81,7 +81,7 @@ void stackSort(int * array, int len);
  * (1) If 'len' is less than 3, return TRUE.
  * (2) Find the maximum value in 'array'.
  * (3) Partition array into two parts: left of max, and right of max.
- * (4) The maximum value in left must be smaller than the minimum
+ * (4) The maximum value in left must be smaller than or equal to the minimum
  *     value in right. (Otherwise return FALSE.)
  * (5) Return TRUE if both left and right are stack-sortable.
  *
