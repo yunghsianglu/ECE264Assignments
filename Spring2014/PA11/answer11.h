@@ -127,7 +127,7 @@ void MoveTree_print(MoveTree * node);
  * Generate all possible states from 'state' after 0 to 'n_moves'.
  * Returns a 'MoveTree' which contains all of the unique states
  * reachable from 'state' after '0..n_moves' (inclusive). If the same
- * state can be reached by different move sequences, the prefer the
+ * state can be reached by different move sequences, then prefer the
  * shorter of the two sequences.
  * 
  * To write this function you need to create a list of unique states.
@@ -150,7 +150,7 @@ void MoveTree_print(MoveTree * node);
  *        (2.a.i) Duplicate 'state' and store it in 'dup_state'
  *                You do this because you don't want to corrupt 
  *                'state' for any other move sequences.
- *        (2.a.ii) Try to apply move 'm' to 'dup_state. If it doesn't
+ *        (2.a.ii) Try to apply move 'm' to 'dup_state'. If it doesn't
  *                 work, then do nothing and free 'dup_state'
  *        (2.a.iii) If the move was applied, then insert 'dup_state'
  *                  and 'movelist' into the tree 'root'. Be careful...
