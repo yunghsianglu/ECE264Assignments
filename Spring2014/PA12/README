@@ -1,4 +1,3 @@
-
 // ~ Learning Goals ~ //
 
 (1) Learn basics of creating and running threads.
@@ -111,8 +110,8 @@ http://www.youtube.com/watch?v=EbVKWCpNFhY)
 
 GCC has a native 128-bit integer type called "__int128". In this
 assignment we are interested in /unsigned/ integers, and so we will be
-using the type "unsigned __int128". There is a typedef statement in
-pa06.h that defines a shorthand notation "uint128"
+using the type "unsigned __int128". There is a typedef statement
+that defines a shorthand notation "uint128":
 
 typedef unsigned __int128 uint128;
 
