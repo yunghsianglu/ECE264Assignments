@@ -1,0 +1,31 @@
+
+partitionEven(1)
+
+partitionEven(2)
+= 2
+
+partitionEven(3)
+
+partitionEven(4)
+= 2 + 2
+= 4
+
+partitionEven(5)
+
+partitionEven(6)
+= 2 + 2 + 2
+= 2 + 4
+= 4 + 2
+= 6
+
+partitionEven(7)
+
+partitionEven(8)
+= 2 + 2 + 2 + 2
+= 2 + 2 + 4
+= 2 + 4 + 2
+= 2 + 6
+= 4 + 2 + 2
+= 4 + 4
+= 6 + 2
+= 8

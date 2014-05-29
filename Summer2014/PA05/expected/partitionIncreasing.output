@@ -1,0 +1,40 @@
+
+partitionIncreasing(1)
+= 1
+
+partitionIncreasing(2)
+= 2
+
+partitionIncreasing(3)
+= 1 + 2
+= 3
+
+partitionIncreasing(4)
+= 1 + 3
+= 4
+
+partitionIncreasing(5)
+= 1 + 4
+= 2 + 3
+= 5
+
+partitionIncreasing(6)
+= 1 + 2 + 3
+= 1 + 5
+= 2 + 4
+= 6
+
+partitionIncreasing(7)
+= 1 + 2 + 4
+= 1 + 6
+= 2 + 5
+= 3 + 4
+= 7
+
+partitionIncreasing(8)
+= 1 + 2 + 5
+= 1 + 3 + 4
+= 1 + 7
+= 2 + 6
+= 3 + 5
+= 8
