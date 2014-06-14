@@ -44,10 +44,9 @@ Additionally, make sure you follow the submission guidelines!
 errors.
 (3) How to run your code under gdb.
 (4) How to "iterate" over arrays in C.
-(5) How to use Version Control.
-(6) Demonstrate that you ran your code under gdb. See further down in
+(5) Demonstrate that you ran your code under gdb. See further down in
 this README for more details.
-(7) Learn about C arrays, strings, and ASCII.
+(6) Learn about C arrays, strings, and ASCII.
 
 
 // ~ Getting Started ~ //
