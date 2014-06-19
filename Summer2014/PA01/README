@@ -1,6 +1,6 @@
 
 Please read the ENTIRE readme. Please do not ask for help until AFTER
-reading this document, and the relevant sections from the course
+reading this document and the relevant sections from the course
 notes. Do not be surprised if you are asked to do some reading before
 receiving help. Failing to read is an extremely common problem that we
 encounter when helping students. When you work at a job, nobody will
@@ -44,9 +44,10 @@ Additionally, make sure you follow the submission guidelines!
 errors.
 (3) How to run your code under gdb.
 (4) How to "iterate" over arrays in C.
-(5) Demonstrate that you ran your code under gdb. See further down in
+(5) How to use Version Control.
+(6) Demonstrate that you ran your code under gdb. See further down in
 this README for more details.
-(6) Learn about C arrays, strings, and ASCII.
+(7) Learn about C arrays, strings, and ASCII.
 
 
 // ~ Getting Started ~ //
@@ -303,11 +304,11 @@ Most memory errors fall into one of four categories:
 you are reading X bytes of memory that you do not have access to.
 (2b.ii) "Invalid write of size X", as above, except that you are
 *writing* memory. Writing means, that the memory access is on the
-left-hand side of an "=" sign. (ie., assignment operation, eg. x = 5.)
+left-hand side of an "=" sign. (i.e., assignment operation, e.g. x = 5.)
 (2b.iii) "X bytes in 1 blocks definitely lost in loss record U of V",
 which means that you have asked for X bytes of memory, but never freed
 them.
-(2b.iv) "Conditional jump or move depends on uninitialised value(s)" A
+(2b.iv) "Conditional jump or move depends on uninitialized value(s)" A
 conditional jump or move is what happens in an if statement or a for
 loop, where some condition (e.g., if(x > 5) {...}) determines the next
 line of code that is executed. If the memory is uninitialized (e.g.,
@@ -457,7 +458,7 @@ crash your program.
 (*) What is the deal with "const"? 
 
 "Const" is a type "qualifier". That means that you can take any type
-and add const to it. (ie., qualify the type with a const.) When so
+and add const to it. (i.e., qualify the type with a const.) When so
 qualified, the compiler will try to stop you from modifying the
 value. So:
 

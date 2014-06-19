@@ -11,7 +11,7 @@ int arraySum(int * array, int len);
 //-------------------------------------------------------------
 
 /**
- * How many elements are less than zero. 
+ * Return how many elements are less than zero. 
  * 
  * Examples:
  * int array[] = { 1, 4, -5, 4 };
@@ -64,11 +64,14 @@ int arrayIndexRFind(int needle, const int * haystack, int len);
 /** 
  * Return the _index_ of the smallest element in the array.
  * If the array is empty (has zero length), then return 0.
+ * If the array has duplicate smallest entries, return the first.
  * 
  * Examples:
  * int array[] = { 3, 4, -5 };
+ * int array2[] = { 3, 2, 2 };
  * int len = 3;
- * int ind1 = arrayFindSmallest(array, len); // ind1 == -5
+ * int ind1 = arrayFindSmallest(array, len); // ind1 == 0
+ * int ind2 = arrayFindSmallest(array2, len); // ind2 == 1
  */
 int arrayFindSmallest(int * array, int len);
 
@@ -88,7 +91,7 @@ size_t my_strlen(const char * str);
 //-------------------------------------------------------------
 
 /**
- * Return a pointer to the first occurance of character 'ch' in C string 'str'
+ * Return a pointer to the first occurrence of character 'ch' in C string 'str'
  * Return NULL if 'ch' is not found.
  *
  * Note that the terminating '\0' character is considered to be part of the 
@@ -141,7 +144,7 @@ char * my_strcpy(char * dest, const char * src);
 //-------------------------------------------------------------
 
 /**
- * Append C-string 'src' to C-string 'dest'. A precondition is 'Dest' must be 
+ * Append C-string 'src' to C-string 'dest'. A precondition is 'dest' must be 
  * large enough to contain both 'dest' and 'src', *including* the terminating
  * null-byte.
  *

@@ -10,8 +10,9 @@
  * at '*dest'. The parameter 'n' is the address of a int that specifies how
  * many characters can safely be stored in '*dest'. 
  *
- * If '*dest' is NULL, or if '*dest' is not large enough to contain the result,
- * then strcat_ex will:
+ * If '*dest' is NULL, or if '*dest' is not large enough to contain the result
+ * (that is, the sum of the lengths of *dest, src, and the null byte), then
+ * strcat_ex will:
  * (1) malloc a new buffer of size 1 + 2 * (strlen(*dest) + strlen(src))
  * (2) set '*n' to the size of the new buffer
  * (3) copy '*dest' into the beginning of the new buffer
