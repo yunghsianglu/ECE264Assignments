@@ -2,6 +2,7 @@
 #define PA01_H 
 
 #include <stdlib.h>
+#include <stdio.h>
 
 //----------------------------------------------ARRAY FUNCTIONS
 
@@ -67,7 +68,7 @@ int arrayIndexRFind(int needle, const int * haystack, int len);
  * If the array has duplicate smallest entries, return the first.
  * 
  * Examples:
- * int array[] = { 3, 4, -5 };
+ * int array[] = { 3, 4, 5 };
  * int array2[] = { 3, 2, 2 };
  * int len = 3;
  * int ind1 = arrayFindSmallest(array, len); // ind1 == 0
