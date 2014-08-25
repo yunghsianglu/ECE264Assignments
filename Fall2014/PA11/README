@@ -1,0 +1,287 @@
+
+// -------------//
+// ~ Overview ~ //
+// -------------//
+
+This assignment asks you to generate the states of 15 puzzle.  The 15
+puzzle is a popular game.  There are 15 squares in a 4 x 4 box.  One
+is empty.  The solved state is shows below
+
+1  2  3  4
+5  6  7  8
+9  A  B  C
+D  E  F  -
+
+Here, we use A to F for numbers 10 to 15. - is the space.  To play
+this game, you can move the space.  For example, moving - up changes
+the state to
+
+1  2  3  4
+5  6  7  8
+9  A  B  -
+D  E  F  C
+
+Moving - left changes the state to
+
+1  2  3  4
+5  6  7  8
+9  A  -  B
+D  E  F  C
+
+To solve this state, you can move - right and down.  However, if
+you move it down and right, you will get this state
+
+1  2  3  4
+5  6  7  8
+9  A  F  B
+D  E  C  -
+
+To make it simple, we will express each state by a single line from
+the upper left side to the lower right side.  The solved state is
+expressed as
+
+123456789ABCDEF- 
+
+There is no space between the numbers.
+
+123456789A-BDEFC expresses the following state
+
+1  2  3  4
+5  6  7  8
+9  A  -  B
+D  E  F  C
+
+Please notice that we do not use "10"; we use "A" instead.
+
+This assignment has three stages:
+
+1. given a valid state and a sequence, output the final state
+   A sequence contains only four possible moves: 
+   R: move space right
+   L: move space left
+   U: move space up
+   D: move space down
+
+2. give a valid state and a number n, output all possible states after
+   zero to n moves.
+
+3. give a valid state, find a sequence that can move to the initial
+   (solved) state
+
+These stages are described in detail below.
+
+// -------------------//
+// ~ Learning Goals ~ //
+// -------------------//
+
+(1) Recursion.
+(2) Binary trees to efficiently manage a collection of unique items.
+(3) Managing memory.
+
+// ---------------------//
+// ~ Assignment Files ~ //
+// ---------------------//
+
++ answer11.h: Header file contains function declarations and
+documentation. You must implement each of the declared functions in
+the file "answer11.c"
++ answer11.c: Contains two function which are given to you. You must
+complete the rest of the function (specified in answer11.h)
++ README: This file
++ tester: For ensuring the correctness of your solution.
+
+You must also create "pa11.c", which contains the main(...) function
+for this assignment. The specification for the main function is
+contained within the descriptions of the three stages below.
+
+// -------------------------------//
+// ~ Submitting Your Assignment ~ //
+// -------------------------------//
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) answer11.c
+(2) pa11.c
+
+You create the zip file using the following command.
+ 
+ > zip pa11.zip answer11.c pa11.c
+
+If your zip file does not meet the above specification, then you may
+get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
+instructions is *part* of getting the assignment correct. So please
+follow the instructions.
+
+// ---------------------------------//
+// ~ Stage "0" :: Checking Inputs ~ //
+// ---------------------------------//
+
+This isn't really a stage of the assignment; however, you will need to
+check that input arguments are valid. There are two functions that
+should be written:
+
+(1) isValidState(...)
+(2) isValidMoveList(...)
+
+These are described in "answer11.h"
+
+You should also check that argv[1] is either "1", "2", or "3". If it
+is none of these (or doesn't exist), then return EXIT_FAILURE.
+
+// -------------------------------------//
+// ~ Stage 1 :: Procesing a Move List ~ //
+// -------------------------------------//
+
+The program's inputs (argv) has three arguments:
++ argv[1]: "1" means stage 1
++ argv[2]: a string as a valid state
++ argv[3]: another string as the move sequence
+
+If argv[2] is not a valid board state, or if argv[3] is not a valid
+move-list, then return EXIT_FAILURE.
+
+Otherwise, process the moves in the move-list, and print out the new
+board state, and return EXIT_SUCCESS.
+
+It is possible that the move sequence will produce an invalid state.
+For example, if the input is the initial state and the sequence starts
+with D, the result is an invalid state.  Your output should be "I",
+and you should still return EXIT_SUCCESS.
+
+Here are some sample outputs:
+
+ > ./pa11 1 123456789AFBDE-C U
+123456789A-BDEFC
+
+ > ./pa11 1 123456789AFBDE-C UUU
+12-456389A7BDEFC
+
+ > ./pa11 1 123456789AFBDE-C D
+I
+
+ > ./pa11 1 123456789AFBDE-C LLUUU
+-23416785AFB9DEC
+
+You must test this code yourself, by generating your own test cases,
+and running them. You may be helpful to print the puzzle in a 2d
+array as you do this. Think about the problem as follows:
+(1) Given a board state, what sequences are valid and invalid
+(2) Does my program produce exactly the correct states?
+(3) Does my program dismiss exactly the expected states.
+
+## A Note about "validity" and "solvability" ##
+
+Stage 1 only tests if a puzzle state is a _legal_ puzzle state. However,
+in the 15 puzzle, half the legal states are unreachable from each other!
+This fact was exploited by the famous 19th century America puzzle expert
+Sam Lloyd, who offered $1000 for the correct solution to "123456789ABCDFE-".
+There is no solution, but Lloyd may not have been able to prove it at the 
+time. $1000 in 1880 is about $25000 in 2013. See me if you are interested in a
+proof for why Lloyd's wager was safe.
+
+Note: In a truly shameless act of self-promotion (probably typical in the 
+19th century), Lloyd claimed to have invented the 15-puzzle himself. He did 
+not. It first appeared about fifteen years before any of Lloyd's publications.
+
+// -----------------------------------//
+// ~ Stage 2 :: Generate a MoveTree ~ //
+// -----------------------------------//
+
+The program's inputs (argv) has three arguments:
++ argv[1]: "2" means stage 2
++ argv[2]: a string as a valid state
++ argv[3]: a number between 0 and 9 (inclusive)
+
+If argv[2] is not a valid board state, or if argv[3] is not a valid
+integer between [0..9] inclusive, then return EXIT_FAILURE.
+
+Otherwise, the program should generate *unique* states after zero to
+so many moves, and return EXIT_SUCCESS.
+
+You do not need to worry about the order of these states since the
+states will be sorted before grading.
+
+You will receive no point if your program prints duplicate states.  One
+way to check is to send your program to the sort program in Linux and
+then use the uniq program in Linux.  Adding "-d" after uniq will print
+duplicates.  This is a way to check.
+
+ > ./pa11 2 state num | sort | uniq -d
+
+Here are some sample outputs:
+
+ > ./pa11 2 123-456789AFBDEC 1
+123-456789AFBDEC
+12-3456789AFBDEC
+1237456-89AFBDEC
+
+ > ./pa11 2 123-456789AFBDEC 2
+123-456789AFBDEC
+12-3456789AFBDEC
+1-23456789AFBDEC
+1237456-89AFBDEC
+123745-689AFBDEC
+1237456F89A-BDEC
+126345-789AFBDEC
+
+ > ./pa11 2 123-456789AFBDEC 3
+123-456789AFBDEC
+12-3456789AFBDEC
+1-23456789AFBDEC
+-123456789AFBDEC
+12-7453689AFBDEC
+1237456-89AFBDEC
+123745-689AFBDEC
+12374-5689AFBDEC
+1237456F89A-BDEC
+1237456F89-ABDEC
+1237456F89ACBDE-
+123745A689-FBDEC
+126345-789AFBDEC
+12634-5789AFBDEC
+126345A789-FBDEC
+1263457-89AFBDEC
+15234-6789AFBDEC
+
+// ----------------------------------//
+// ~ Stage 3 :: Solving the Puzzle ~ //
+// ----------------------------------//
+
+The program's inputs (argv) has two arguments:
++ argv[1]: "3" means stage 3
++ argv[2]: a string as a valid state
+
+If argv[2] is not a valid board state then return EXIT_FAILURE.
+
+Otherwise, your program should generate a sequence that moves the
+puzzle to the initial state, and return EXIT_SUCCESS. The length of
+this sequence must be between 1 and 9 (inclusive). Always return
+EXIT_SUCCESS, even if no solution is found.
+
+Below is some sample output:
+
+ > make && ./pa11 3 -23416785ABC9DEF
+DDDRRR
+
+Note that a solution could be up to 80 moves long, which is impossible
+to calculate with this approach. So why do it this way? This assignment
+is instructive, in that it shows that, in general, brute-force solutions 
+work for tiny problems only. Brute force solutions often require more
+time and energy to solve than is available in the known universe, and
+so knowing _how_ to get a solution is not the same as being _able_ to 
+calculate it. This is a major road-block in artificial intelligence.
+Russel Norvig's classic book "Artificial Intelligence" has more 
+information on how to solve the 15-puzzle.
+
+// ----------//
+// ~ Hints ~ //
+// ----------//
+
+(*) You should finish the first stage before starting the second
+stage; you should finish the second stage before starting the third
+stage.
+
+(*) For stage 2, your program needs to remember a state and does not
+have duplicate states.  You should use a binary tree to keep the
+states.
+

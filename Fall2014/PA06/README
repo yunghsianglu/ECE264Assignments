@@ -1,0 +1,118 @@
+Please read the entire README (including FAQ at the end) before
+starting your assignment, or asking for help.
+
+// ~ Overview ~ //
+
+This assignment asks you to solve problems using recursion, which is
+one of the most important and powerful concepts in computer
+programming. Recursion is a little tricky to get used to at first;
+however, with a little experience, it is very straightforward. Pay
+very close attention to this assignment, since recursion is heavily
+used throughout the rest of the course, including assignments and
+exams.
+
+// ~ Learning Goals ~ //
+
+(1) Recur
+(1.a) Recur
+(1.a.i) Recur
+(1.a.i.i) base case.
+(1.a.i) sion.
+(1.a) sion.
+(1) sion.
+
+// ~ Submitting Your Assignment ~ //
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) answer06.c
+(2) git.log
+
+You create the zip file using the following command.
+ 
+ > zip pa06.zip answer06.c git.log
+
+If your zip file does not meet the above specification, then you may
+get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
+instructions is *part* of getting the assignment correct. So please
+follow the instructions.
+
+// ~ The Partition Problem ~ //
+
+This assignment asks you to solve a set of related problems:
+
+* partition a positive integer with different restrictions
+
+Partitioning an integer means breaking the integer into the sum of
+some positive integers (including the integer itself).
+
+For example, 3 can be partitioned into
+   1 + 1 + 1 
+   1 + 2
+   2 + 1
+   3
+
+You must write partition functions that have particular properties as
+specified in "answer06.h". The class notes contain a lot of
+information that will be helpful in doing this assignment.
+
+Your solution must be general.  You will receive zero if you hard code
+the answers for some cases, something like the following:
+
+   if (n == 3)
+   {
+     printf("1 + 1 + 1\n");
+     printf("1 + 2\n");
+     printf("2 + 1\n");
+     printf("3\n");
+   } // Marker: does this person really think they'll pass the exam?
+
+   if (n == 4)
+   {
+     printf("1 + 1 + 1 + 1\n");
+     printf("1 + 1 + 2\n");
+     printf("1 + 2 + 1\n");
+     printf("1 + 3\n");
+     ...
+   }
+
+This solution is not general and you will receive zero.
+
+// ~ Determining Your Mark ~ //
+
+The tester program is there to ensure that you have followed the
+instructions correctly.
+
+Run the tester program as follows:
+ 
+ > ./tester
+
+Please refer to the PA01 README for more information on the tester
+program.
+
+// ~ Hint ~ //
+
+a) You will need some sort of int buffer to contain the partition results
+as they are created. If you partition the number N, then you will need a
+buffer (array of ints) that can store N values. (i.e., the largest
+partition of N is 1+1+...+1).
+
+b) As mentioned above, you will be asked to print partitions that satisfy 
+certain restrictions. If an input has no partitions that satisfy the 
+restriction of the function you're in, do NOT print an error message! 
+Instead, since there are 0 partitions that abide by that restriction, 
+simply do nothing and return.
+Eg. See 'partitionPrime(1)', located in the expected output file 
+'partitionPrime.output'.
+
+----------------------------------------------------------------------
+
+                     THIS ASSIGNMENT IS HARD
+
+Try and get into the lab on Monday, and speak to the TAs if you are
+unsure how to get started. You will find it difficult to get much help
+from the TAs in the later part of the week.
+
+The help session on Tuesday will cover the theory of this assignment
+in a straight-forward way.
+

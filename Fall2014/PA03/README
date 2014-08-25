@@ -1,0 +1,196 @@
+
+// ~ Overview ~ //
+
+This assignment uses some more advanced string processing functions to
+introduce arrays of pointers. Make sure you read the entire README 
+before starting your assignment. If you ask for help, then you may be
+asked to read this document.
+
+// ~ Learning Goals ~ //
+
+(1) Know how to write your own main(...) function to test your code as
+you go.
+(2) Understand how to edit values outside of a function by passing
+pointers to those values.
+(3) Be confident with using malloc and free to manage memory.
+(4) Understand how to work with arrays of pointers.
+(5) Understand the C library function "qsort"
+
+// ~ Submitting Your Assignment ~ //
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) answer03.c, your solution
+(2) main.c, a file with a bug in it that you must fix.
+(3) git.log, a logfile that can be produced by calling git.
+
+With the exception of git.log, notes on creating each of these files
+are included in the PA01 README. See the FAQ below on how to create
+the git.log file.
+
+You create the zip file using the following command.
+ 
+ > zip pa03.zip answer03.c main.c git.log
+
+If your zip file does not meet the above specification, then you may
+get zero for the assignment. YOU HAVE BEEN WARNED.
+
+Submit "pa03.zip" to blackboard.
+
+// ~ Working on main.c ~ //
+
+The main.c file can be compiled into a program as follows:
+
+ > gcc -Wall -Wshadow -g main.c -o a.out
+
+It contains a "swapString(...)" function that does not work. You are
+required to fix this function. This is a relatively small task, but it
+is illustrative.
+
+The main.c file has nothing to do with the rest of the assignment.
+
+// ~ Filling in answer03.c ~ //
+
+The file "answer03.h" contains the definitions of the functions that
+you must write to pass the assignment. These functions need to be
+created in a file called "answer03.c". This file must not have a
+main(...) function. You should create your own main function in its
+own file (not in main.c), in order to test your code.
+
+You will save yourself a LOT of time if you test your code as you
+write it. Test every part of every function as you write it.
+
+// ~ Determining Your Mark ~ //
+
+This assignment is pass or fail. You pass if everything works, and
+fail if there is one or more things wrong. You can use the tester to
+find mistakes in answer03.c. The main.c file will be marked
+separately.
+ 
+ > ./tester
+
+Remember, the tester must be run on the ECE lab computers, and it
+should not be run until after you are 100% confident that you already
+have the correct answer to all the problems.
+
+// ~ FAQ ~ //
+
+(*) Why pass char * * in strcat_ex?
+
+Pay close attention to the section in the course notes on the swap
+function.  It is important to appreciate that a function can never
+edit a value outside of itself unless you pass a pointer. So swap(int,
+int) can never work. You must write swap(int *, int *).
+
+The same thinking goes for strcat_ex(char * * dest, int * n, const
+char * src).
+
+The amount of bytes available at dest (stored at address n) may not be
+enough to store the final concatenated string. So you need to do a new
+malloc, and then update the value of *dest, and also *n. That means
+that strcat_ex(...) must be able to edit these values from inside its
+function body. There is no way to do this without passing a pointer to
+these values.
+
+If you want to edit an int value, then you must pass an int *.
+
+If you want to edit a char * value, then you must pass a char * *.
+
+Simple.
+
+Please attend the help session for a clear explanation and a diagram of
+what this looks like.
+
+(*) Help, explode(...) is killing me, what do I do?
+
+First you need to figure out how many delimiter characters appear in
+the string. You do this by calling strchr(delims, str[ind]) on each
+character in 'str'.  If you get NULL, then str[ind] is not a
+delimiter. If you get non-NULL, then that character is a delimiter.
+
+The return result of explode(...) is an array of strings. A string is
+char *, so an array of strings is char * *. If there are N delimiters
+in 'str', then the returned array must have space for (N+1) strings.
+
+So why is it (N+1)? If the string has no delimiters, then you just
+return the string. If it has 1 delimiter, then you split it in one
+place, and get two strings. If there are two delimiters, split it in
+two places to get three strings. In general, the presence of N
+delimiters means you split the string in N places to (N+1) strings.
+
+The pseudo-code so far looks like this:
+
+// Count how many delimiters are in 'str'
+int N = 0;
+for each character in 'str' {
+   if strchr(delims, str[ind]) != NULL then increment N
+}
+
+// Create the return array
+char * * strArr = malloc((N+1) * sizeof(char *));
+
+Before proceeding, TEST YOUR CODE, to make sure it works perfectly so
+far.
+
+Okay, now we have allocated some memory for the return result, we must
+fill it in.  To do this, we need to keep track of _two_ indices, call
+them "last" and "ind".  You want "last" to point to 1 past the last
+observed delimiter, and "ind" to point to the current character we are
+looking at. 
+
+The following pseudo-code explains how to use these two indices to
+initialize the first N strings in strArr:
+
+// 
+arrInd = 0; // this is the next position where we'll create a string
+last = 0; // 1 + the last index we saw a delimiter. Init to 0.
+for each ind from [0..strlen(str)), do {
+    if str[ind] is a delimiter, then... {
+        create a new string that spans the characters [last..ind)
+	set strArr[arrInd] to that new string.
+        set last to ind + 1.
+	increment arrInd
+    }
+}
+
+Before proceeding, TEST YOUR CODE, to make sure it works perfectly so
+far.
+
+Okay we've initialized the first N string, but we still have to do the
+(N+1)th string. This is done in the same way as above:
+
+// just take the remaining characters of the string
+create a new string that spans the characters [last..strlen(str))
+set strArr[N] to the new string.
+
+Do not forget that you must store the length of strArr at the memory
+location *arrLen. You need to do this so that when someone calls
+explode(...), they will be able to know how long the returned string
+array is.
+
+You will save yourself a lot of time if you write and test this code
+incrementally.
+
+----------------------------------------------------------------------
+
+(*) Okay, I'm done, but what about this git.log file?
+
+cd into *your* working repository, and type the following:
+
+ > git log
+
+You should see a stream of text float across the screen. The text is a
+log of git activities. If you read through it, you should see all of
+your commit statements.
+
+To create the "git.log" file, use a "redirect" to direct the text from
+screen into a file:
+
+ > git log > git.log
+
+Now cat the file to make sure everything is okay. (You now know what
+cat is, right??)
+
+ > cat git.log
+
+

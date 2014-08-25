@@ -1,0 +1,417 @@
+
+Please read the entire README (including FAQ at the end) before
+starting your assignment, or asking for help.
+
+// ~ Overview ~ //
+
+This assignment introduces writing proper main functions, which
+includes handling command-line arguments. You will re-create the
+essence of three small but useful unix programs that you should become
+familiar with over the semester.
+
+// ~ Learning Goals ~ //
+
+(1) Write your own main(...) functions, including handling
+command-line switches.
+(2) Write simple versions "echo", "cat", and "grep". See below for
+details.
+(3) Learn the basics of handling files in C, including:
+(3.a) The standard file descriptors "stdin", "stdout", and "stderr".
+(3.b) How to open and close a file on disk.
+(3.c) How to read and write files character by character ("fgetc" and
+"fputc").
+(3.d) How to read and write files a line at a time ("fgets" and
+"fprintf").
+(4) Be able to compile, run, and test your programs for correctness,
+including using valgrind to detect memory errors. See the README from
+PA01 for more details.
+(5) Demonstrate that you ran your code under gdb. See the README from
+PA01 for more details.
+(6) Demonstrate use of version management software, such as git.
+
+// ~ Submitting Your Assignment ~ //
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) echo-lite.c, your solution for "echo"
+(2) cat-lite.c, your solution for "cat"
+(3) grep-lite.c, your solution for "grep"
+(4) gdb.txt, a logfile produced through running gdb.
+(5) git.log, a logfile produced by git.
+
+With the exception of git.log, notes on creating each of these files
+are included in the PA01 README. See the FAQ below on how to create
+the git.log file.
+
+You create the zip file using the following command.
+ 
+ > zip pa04.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
+
+If your zip file does not meet the above specification, then you may
+get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
+instructions is *part* of getting the assignment correct. So please
+follow the instructions.
+
+Submit "pa04.zip" to blackboard.
+
+// ~ Determining Your Mark ~ //
+
+You must write "echo-lite", "cat-lite", and "grep-lite". In each case,
+your solution should work respectively in similar fashion to the
+standard unix commands: "echo", "cat", and "grep". You can run these
+programs (which are pre-installed in every unix installation, and in
+cygwin) if you want to play around with working versions of the
+programs. The tester program is there to ensure that you have followed
+the instructions correctly.
+
+Run the tester program as follows:
+ 
+ > ./tester
+
+You can see the commands that the tester is executing. Sometimes the
+tester needs to use an input file to test one of the programs. The
+input files are in the directory "testcases". You can use these files
+in order to replicate a failed testcase: a recommended technique for
+debugging your code.
+
+Please refer to the PA01 README for more information on the tester
+program.
+
+// ~ Assignment Part 1: writing echo-lite ~ //
+
+"echo" is a program that prints the arguments that you give it. It
+behaves just like an echo:
+
+ > echo say cheese
+say cheese
+
+You must write a program in a single file "echo-lite.c", that prints
+out the passed command-line arguments (except the first) with a single
+space between each one. Then, print a single new-line character before
+exiting the program. echo-lite always returns EXIT_SUCCESS.
+
+When your program compiles and runs, it should behave like so:
+
+ > ./echo-lite
+
+ > ./echo-lite note that    multiple space becomes 1.
+note that multiple space becomes 1.
+
+ > ./echo-lite but you can use " quotes " to pass along spaces.
+but you can use  quotes  to pass along spaces.
+
+ > ./echo-lite --help
+--help
+
+There is no help-message for this program. Your solution should be
+about 15 lines of code.
+
+// ~ Assignment Part 2: writing cat-lite ~ //
+
+"cat" is a program that concatenates files and then prints them to
+standard output. You must write a simple version of cat in a file
+called cat-lite.c. A good solution should be around 70 lines of code.
+
+Cat-lite must have the following features:
+
+(1) A --help switch. (Ignore other arguments when present.) Print
+the message below, and then return EXIT_SUCCESS. The help switch can 
+appear in any position, in which case other arguments are ignored.
+<help-message>
+Usage: cat-lite [--help] [FILE]...
+With no FILE, or when FILE is -, read standard input.
+
+Examples:
+  cat-lite README   Print the file README to standard output.
+  cat-lite f - g    Print f's contents, then standard input, 
+                    then g's contents.
+  cat-lite          Copy standard input to standard output.
+</help-message>
+
+(2) Every argument is treated as a file name. Open each file in turn,
+and print the contents to stdout. (This is easy with fgetc and fputc.)
+
+(3) The "-" argument is interpreted as the special file "stdin". The
+--help message above should make this clear.
+
+(4) If you fail to open one of the files specified in the command-line
+arguments, then you must print to stderr: "cat cannot open %s\n",
+where %s is replaced with the invalid filename. You must then exit the
+program with EXIT_FAILURE.
+
+For example:
+
+ > ./cat-lite tin
+cat cannot open tin
+
+(5) If every file is opened and printed successfully, then return
+EXIT_SUCCESS.
+
+// ~ Assignment Part 3: writing grep-lite ~ //
+
+"grep" is an amazingly useful program that filters lines of input for
+specific patterns. It has quite a few features, but the ones you need
+to implement are simplified and listed in the help message. The spec
+for this program is:
+
+(1) A --help switch. (Ignore other arguments when present.) Print
+the message below, and then return EXIT_SUCCESS. The help switch can 
+appear in any position, in which case other arguments are ignored.
+<help-message>
+Usage: grep-lite [OPTION]... PATTERN
+Search for PATTERN in standard input. PATTERN is a
+string. grep-lite will search standard input line by
+line, and (by default) print out those lines which
+contain pattern as a substring.
+
+  -v, --invert-match     print non-matching lines
+  -n, --line-number      print line numbers with output
+  -q, --quiet            suppress all output
+
+Exit status is 0 if any line is selected, 1 otherwise;
+if any error occurs, then the exit status is 2.
+</help-message>
+
+(2) Abort the program if any bogus command-line arguments are
+passed. You must print an error message to stderr. Your main(...)
+function must return 2.
+
+(3) The user must specify a pattern when they execute
+grep-lite. PATTERN is always the last argument. PATTERN can *never*
+begin with a '-' character. If the last argument begins with a '-'
+character, then print an error message to stderr, and your main(...)
+function must return 2.
+
+(4) If the help switch is not specified, and the command-line
+arguments are good, then you must read stdin line by line. IMPORTANT:
+you can assume that no line is longer than 2000 characters. Use
+"fgets(...)" to read each line.
+
+(5) Use strstr(...) on each read line to determine whether you have a
+match or not. See PA02 if you are unsure what strstr(...) is.
+
+(6) By default you select those lines that match. If one or more
+invert-match switches are present, then you select non-matching
+lines. (Multiple invert-match switches have the same effect as one.)
+
+(7) By default you will print every selected line. If the line-number
+switch is passed, then printf("%d:", lineNumber) before printing the
+selected line. You will need to keep track of line-numbers, and the
+first line of the file is line number 1. (Not 0.) 
+
+(8) If the quiet switch is passed, then you never print anything. You
+must still return the correct exit code.
+
+(9) Your main(...) function should return 0 if there was at least one
+matching line, and 1 otherwise.
+
+The grep-lite program can be written in about 100 lines of clear and
+concise code.
+
+// ~ Summary ~ //
+
+# Compile 
+ > gcc -Wall -Wshadow -g echo-lite.c -o echo-lite
+ > gcc -Wall -Wshadow -g cat-lite.c -o cat-lite
+ > gcc -Wall -Wshadow -g grep-lite.c -o grep-lite
+
+# Run -- you must write your own tests
+ > ./echo-lite "a b    c"   a   b   c
+ > ./echo-lite "The rain in Spain" | ./cat-lite
+ > ./echo-lite "The rain in Spain" | ./cat-lite | ./grep-lite -c -n Spain
+
+# Run under valgrind -- you must test everything under valgrind
+ > valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./echo-lite Say Cheese
+
+# Don't forget to *LOOK* at the log-file "memcheck.log"
+
+# Run under gdb -- this is an *example*. You will need to adjust these
+# commands to your situation.
+ > gdb -ex "set logging overwrite on" -ex "set logging on" ./echo-lite
+(gdb) b echo-lite.c:44
+(gdb) run
+(gdb) p argc
+(gdb) n
+(gdb) n
+(gdb) c
+(gdb) quit
+
+# See what your grade should be (providing you submit everything
+# correctly):
+ > ./tester
+
+# Create a git log file
+ > git log > git.log
+
+# Create a zip file of your solution: 
+ > zip pa04.zip echo-lite.c cat-lite.c grep-lite.c gdb.txt git.log
+
+# Upload pa04.zip to blackboard.
+
+// ~ FAQ ~ //
+
+(*) What functions do I need to know to do this assignment?
+
+Look in the notes (and the unix man pages) for:
+
+fopen, fclose
+fgetc, fputc
+fgets,
+printf
+strstr
+
+----------------------------------------------------------------------
+
+(*) What are "stdin", "stdout", and "stderr"
+
+Under normal circumstances, whenever a program launches, the operating
+system (windows or unix) always does a few things before handing
+control over to the computer programmer. Before invoking the main
+function, a computer program is supplied with three
+"file-descriptors":
+(1) "stdin" is for input, and any program can *read* from this
+input. For example, you would use stdin if you wanted to read
+characters that a human user types into the terminal whilst the
+program is running.
+(2) "stdout" is for normal output and (in general) goes to the
+terminal. Calling printf(...) is the _same_ as calling fprintf(stdout,
+...).
+(3) "stderr" is for error output. By default stderr will flow onto the
+terminal along with stdout; however, read on.
+
+You get both stdout and stderr, because when you invoke a program you
+can tell the operating system where to direct each output. The
+following example directs errors to a file "errors.log", and standard
+output goes to the terminal:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char * * argv)
+{
+    fprintf(stdout, "Printing normal stuff.\n");
+    fprintf(stderr, "This is just a DEBUG statement that I "
+                    "want printed to stderr, and not stdout\n");
+    return EXIT_SUCCESS;
+}
+
+ > ./a.out 2>errors.log
+Printing normal stuff
+
+ > cat errors.log
+This is just a DEBUG statement that I want printed to stderr, and not
+stdout
+
+Try this out: it is very useful to know. 
+
+If any assignment (including this one) requires particular output, it
+will be output to stdout unless otherwise specified. In such cases,
+you can save yourself a lot of time by printing error messages and
+debug statements to stderr.
+
+----------------------------------------------------------------------
+
+(*) Handling command-line arguments
+
+Once your program has been compiled it cannot change, but that doesn't
+mean it always has to do the same thing everytime it runs. You can
+pass arguments to your program, and in turn, the program can be
+written to look at these arguments and execute in different ways.
+
+The following program prints out the current command-line
+arguments. Compile and run it to see...
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char * * argv)
+{
+    int ind;
+	
+    printf("Printing command-line arguments:\n");
+    for(ind = 0; ind < argc; ++ind) {
+	printf("   argv[%d] = '%s'\n", ind, argv[ind]);
+    }
+    printf("Done!\n");
+
+    return EXIT_SUCCESS;
+}
+
+This program is very similar to "echo-lite"
+
+----------------------------------------------------------------------
+
+(*) What is the best way to parse command-line arguments?
+
+The best way is something clear and simple and that _you_
+understand. Look at the file "example.c" for my suggestion. After
+compiling this program, run it in multiple ways using different
+arguments. For example:
+
+ > gcc -Wall -Wshadow -g example.c -o icecream
+
+ > ./icecream 
+Do you get icecream? Sorry, try again next-time.
+
+ > ./icecream --help
+Usage: ./icecream OPTIONS...
+   -i, --serve-icecream  Not as exciting as it sounds
+
+ > ./icecream -i
+Do you get icecream? YES!!!
+
+ > ./icecream --serve-icecream
+Do you get icecream? YES!!!
+
+ > ./icecream blagh
+Unknown switch: 'blagh'
+Aborting...
+
+You are welcome to use example.c as a starting point for this
+assignment.
+
+----------------------------------------------------------------------
+
+(*) What is EXIT_SUCCESS and EXIT_FAILURE?
+
+When your main function finishes it can return a value. (That's why
+it's "int main(...)" and not "void main(...)".) The returned value is
+called the exit status, and should be a number between 0 and 255
+inclusive.
+
+By convention, EXIT_SUCCESS is 0. When your main(...) function returns
+EXIT_SUCCESS, you are saying that your program ran successfully. 
+EXIT_FAILURE is 1, and, in general, is interpreted as your program 
+saying that it failed somehow.
+
+But, and it's a big but, you can return any number [0..255], and can
+interpret it however you want.
+
+For the grep part of the assignment, you will sometimes return "1"
+when you successfully find no instances of a pattern. Return value "2"
+is interpreted as a legitimate error. The real grep program works this
+way.
+
+----------------------------------------------------------------------
+
+(*) Okay, I'm done, but what about this git.log file?
+
+cd into *your* working repository, and type the following:
+
+ > git log
+
+You should see a stream of text float across the screen. The text is a
+log of git activities. If you read through it, you should see all of
+your commit statements.
+
+To create the "git.log" file, use a "redirect" to direct the text from
+screen into a file:
+
+ > git log > git.log
+
+Now cat the file to make sure everything is okay. (You now know what
+cat is, right??)
+
+ > cat git.log
+
+

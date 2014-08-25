@@ -1,0 +1,307 @@
+
+Please read the entire README (including FAQ at the end) before
+starting your assignment, or asking for help.
+
+// ~ Overview ~ //
+
+In this assignment you will reimplement a number of standard C-library
+string functions. The purpose is to develop a deep understanding of C
+strings, and also to familiarize yourself with the C standard library
+and its idioms.
+
+You can use the "man" program to see the official documentation of the
+assignment's functions. "Man" stands for "manual"; however, if it
+helps you remember, pretend it stands for "mansplain". So...
+
+ > man strlen
+
+This will show you the official documentation for the strlen(...)
+function.
+
+You do not need to use malloc/free in this assignment. Furthermore,
+you must not include the <string.h> header file in your submission.
+
+Make sure you follow the submission guidelines.
+
+// ~ Learning Goals ~ //
+
+(1) Write your own main(...) function in a separate module. See the
+FAQ for more details.
+(2) Write your own answer02.c file. See the FAQ for more details.
+(3) Be able to compile, run, and test answer02.c for correctness. See
+the README for PA01 for more details.
+(4) Demonstrate that you ran your code under gdb. See the README for
+PA01 for more details.
+(5) Demonstrate that you used Version Control. See the README for PA01
+for more details.
+(6) Learn about C strings, and ASCII.
+
+// ~ Submitting Your Assignment ~ //
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) answer02.c, your solution
+(2) memcheck.log, a Valgrind log that you produced running your
+program.
+(3) gdb.txt, a logfile produced through running gdb.
+
+Notes on creating each of these files are included in the PA01 README.
+You create the zip file using the following command.
+ 
+ > zip pa02.zip answer02.c memcheck.log gdb.txt
+
+If your zip file does not meet the above specification, then you may
+get zero for the assignment. In particular, right-clicking and
+"archiving" the file in a window manager such as Windows, OSX, or KDE,
+may produce the wrong directory structure, resulting in a zero
+mark. YOU HAVE BEEN WARNED.  Following the instructions is *part* of
+getting the assignment correct. So please follow the instructions.
+
+Submit "pa02.zip" to blackboard.
+
+// ~ Determining Your Mark ~ //
+
+This assignment is pass or fail. You pass (5 marks) if everything
+works, and fail (0 marks) if there is one or more things wrong. You
+can determine your mark before submitting your assignment. To test
+your program, you must run the "tester" program. You run the tester
+program as follows:
+ 
+ > ./tester answer02.c
+
+You can write your assignments on any computer, using any development
+tools; however, they will be marked on the lab computers, and so you
+should ensure that your program works on these computers before
+submitting your assignment. This applies to *all* assignments in this
+course.
+
+// ~ Summary ~ //
+
+# Compile 
+ > gcc -Wall -Wshadow -g pa02.c answer02.c -o pa02
+
+# Run -- you must write your own tests
+ > ./pa02
+
+# Run under valgrind -- you must test everything under valgrind
+ > valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./pa02
+
+# Don't forget to *LOOK* at the log-file "memcheck.log"
+
+# Run under gdb -- this is an *example*. You will need to adjust these
+# commands to your situation.
+ > gdb -ex "set logging overwrite on" -ex "set logging on" ./pa02
+(gdb) b pa02.c:24
+(gdb) run
+(gdb) p argc
+(gdb) n
+(gdb) n
+(gdb) c
+(gdb) quit
+
+# See what your grade should be (providing you submit everything
+# correctly):
+ > ./tester answer02.c
+
+# Create a zip file of your solution:
+ > zip pa02.zip answer02.c memcheck.log gdb.txt
+
+# Upload pa02.zip to blackboard.
+
+// ~ FAQ ~ //
+
+(*) Writing your own main(...) function
+
+Start with an empty file. Call it "main.c" or "pa02.c". Copy the
+following text into the file and then compile and run it. If you do
+not know how to compile the program, then see the class notes, or the
+README for PA01. (Remember, if you have a job, then nobody else is
+going to compile and test your code for you.)
+
+#include <stdio.h>
+#include "answer02.h"
+
+int main(int argc, char * * argv)
+{
+   printf("Hello World!\n");
+   // Create your test-cases here, good luck!
+}
+
+----------------------------------------------------------------------
+
+(*) What the pack is #include?
+
+The #include statements tell gcc to copy and paste the files <stdio.h>
+and "answer02.h" into the top of the document. (Literally, copy and
+paste.) The angle brackets on <stdio.h> tells gcc that stdio.h is a
+system header file. The quotes tell gcc to look in the current
+directory, so "answer02.h" must be in the same directory as your .c
+file.
+
+Once included, you can use any functions that are declared in the
+header file. Header files must only contain declarations.
+
+// A function declaration... does not compile into anything
+size_t my_strlen(const char * str);
+
+// A function definition... compiles into code... never put a
+// definition in a .h file. (They belong in .c files.)
+size_t my_strlen(const char * str)
+{
+   return 0; // not very useful though.
+}
+
+The last step of building a computer program is called "linking". gcc
+locates all of the definitions in a collection of compilation units
+(.c files), and glues everything together.
+
+Never, NEVER, include a .c file:
+
+// Evil
+#include "answer02.c"
+
+----------------------------------------------------------------------
+
+(*) How to write your own answer02.c file?
+
+The answer02.c file contains your solution to the assignment, and it
+is this file that you will test with the "tester" program. Simply
+create an empty file (with the correct name), and start typing. To get
+you started, you probably want to add the following to the top of your
+file:
+
+#include "answer02.h"
+
+size_t my_strlen(const char * str)
+{
+   return 0;
+}
+
+----------------------------------------------------------------------
+
+(*) What is "size_t"? 
+
+Read as "size-type", this is just some form of unsigned integer. (An
+unsigned integer cannot be negative.) The C library uses "size_t" to
+denote the size of various things, and it is the return type of the
+"sizeof(...)" operator.
+
+----------------------------------------------------------------------
+
+(*) Undefined behavior?
+
+Assumptions are always made whenever a function is written, in any
+computer language. Programming gets extremely complex surprisingly
+quickly, and for this reason, good programmers always specify what
+their assumptions are. These assumptions are often called
+"preconditions". If the preconditions are met, then the function will
+execute perfectly. (Because you're a good programmer, right?) If the
+preconditions are not met, then something will happen, but no
+guarantees are made. This is called "undefined behavior", and is
+always absent from good computer programs. Thus, it is always a bug to
+call a function without meeting its preconditions, even if the
+function seems to otherwise work.
+
+A precondition of the strlen(const char * str) function is that "str"
+is a pointer to a valid C string. If you pass a pointer to an integer,
+an invalid pointer, or a NULL pointer, then the behavior is
+undefined. It is up to the function caller to ensure that "str" is a C
+string, and the strlen(...) function itself is under no obligation to
+check this. Thus in most implementations, calling strlen(NULL) will
+crash your program.
+
+----------------------------------------------------------------------
+
+(*) What is the deal with "const"? 
+
+"Const" is a type "qualifier". That means that you can take any type
+and add const to it. (ie., qualify the type with a const.) When so
+qualified, the compiler will try to stop you from modifying the
+value. So:
+
+const int x = 4;
+x += 4; // ERROR: assignment of read-only variable 'x'
+
+const char * str = "Hello World!";
+str[0] = 'h'; // ERROR: assignment to read-only location *str
+
+If you try to return a const pointer as a non-const pointer, then gcc
+will give you what seems at first like a cryptic warning message:
+
+char * my_strchr(const char * str, int ch)
+{
+   return str; // warning: return discards 'const' qualifier 
+               // from pointer target type
+}
+
+Can you see that the 'const' "qualifier" has been 'discarded'? It is
+really very straight-forward once you are familiar with the jargon. To
+circumvent this warning, you use a type-cast, which tells the compiler
+that you really want to do this. See below for why this is done.
+
+char * my_strchr(const char * str, int ch)
+{
+   return (char *) str; // no warning.
+}
+
+You can always treat a non-const type as const.
+
+----------------------------------------------------------------------
+
+(*) What is the deal with my_strchr, my_strrchr, my_strstr, and const?
+
+The C programming language has a long history, and a number of
+programming conventions, called "idioms". Returning non-const pointers
+is a widely used idiom in the C language, that ensures that the same
+function can be used for const and non-const purposes. In C, *you*,
+the all-powerful programmer, are expected to get things right, and as
+such, const is merely a guide.
+
+const char * s1 = my_strchr("Hello World!", 'o'); // fine
+char * s2 = my_strchr("Hello World!", '!'); // also fine
+s2[0] = '\0'; // compiles without warning, but will fail miserably
+
+In short, do not expect C to hold your hand. This is the greatest
+strength and also the greatest weakness of programming in C.
+
+----------------------------------------------------------------------
+
+(*) What are form-feeds, carriage returns and vertical tabs?
+
+The ASCII character set includes special control characters which can
+be used to control the format of text output. Some of these control
+characters are rarely used. For example, if you terminal is correctly
+set up, then you can produce an audible beep by printing a "bell"
+character: '\a'. Most modern terminals have beeps disabled by default
+(mercifully).  Some control characters are still very important, such
+as '\n', which specifies a newline character.
+
+It is important to understand that text data is just a sequence of 1s
+and 0s, and it is *interpreted* as text according to an encoding
+("code-book") which says things like "this binary value means that
+character". By default, C uses ASCII encoding, which has a number of
+different white-space capabilities. Historically, all of these
+characters were used so that a programmer could position the head of a
+printer at specific locations on a page. This capability has long been
+superseded; however, it is important to appreciate it in order to use
+ASCII correctly, and it just may come up in a future job -- updating
+some of the millions of lines of legacy code still used by corporate
+America.
+
+The C standard specifies white-space to be:
+(1) '\t', (ASCII value 9). Interpreted as a fixed number of space
+characters. Historically this was typically 8 spaces.
+(2) '\n', (ASCII value 10). So called 'line-feed', historically goes
+to the next line but at the same horizontal position. The '\n' is now
+always interpreted as a new line character, which implicitly includes
+a 'carriage-return' (see below).
+(3) '\v', (ASCII value 11). Interpreted as a fixed number of 
+new-lines. Historically this was typically 6 new lines.
+(4) '\f', (ASCII value 12). A 'form-feed', historically asks the 
+printer to eject the current page, and start a new one.
+(5) '\r', (ASCII value 13). A 'carriage-return', historically moves 
+the cursor to the beginning of the line. (Thus, a 'new line' 
+character is conceptually a line-feed and a carriage-return in one.)
+(6) ' ', (ASCII value 32). The space character.
+
+

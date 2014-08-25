@@ -1,0 +1,65 @@
+Reading file: 'inputs/03-on-golden-pond.txt-huff', textmode = TRUE.
+Huffman coding tree is:
+2666
+     544
+          ' '
+          512
+               o
+               401
+                    300
+                         256
+                              210
+                                   f
+                                   l
+                              .
+                         ,
+                    e
+     2122
+          619
+               208
+                    i
+                    g
+               411
+                    t
+                    295
+                         198
+                              b
+                              d
+                         a
+          1503
+               446
+                    n
+                    336
+                         h
+                         232
+                              s
+                              u
+               1057
+                    795
+                         317
+                              y
+                              196
+                                   Y
+                                   k
+                         478
+                              162
+                                   w
+                                   43
+                                        \n
+                                        !
+                              316
+                                   141
+                                        D
+                                        I
+                                   175
+                                        L
+                                        c
+                    262
+                         r
+                         148
+                              '
+                              m
+
+Message is:
+Listen to me, mister. You're my knight in shining armor. Don't you forget it. You're going to get back on that horse, and I'm going to be right behind you, holding on tight, and away we're gonna go, go, go!
+

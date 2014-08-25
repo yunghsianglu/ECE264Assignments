@@ -1,0 +1,250 @@
+// -------------//
+// ~ Overview ~ //
+// -------------//
+
+This assignment has three parts to it. You must complete all parts.
+Please see the end of this README for information on testing the
+correctness of your code.
+
+// -------------------//
+// ~ Learning Goals ~ //
+// -------------------//
+
+(1) Recursion.
+(2) Using linked lists to implement a stack.
+(3) Binary trees.
+(4) Managing memory.
+
+// ---------------------//
+// ~ Assignment Files ~ //
+// ---------------------//
+
++ answer10.h: Header file contains function declarations and
+documentation. You must implement each of the declared functions in
+a file called "answer10.c"
++ tree.c: Source file contains an implementation of a binary tree of
+integers. This source code is given to you for convenience -- you
+should already know how to create it. You may find this code useful in
+your solution. Do *not* copy any of this code into your solution
+file. (Instead, you must compile tree.c separately, and link it into
+your solution). This file should not be submitted, and will not be marked.
++ tree.h: Header file for the binary-tree implementation in tree.c.
++ README: This file.
++ pa10.c: Source code with a main(...) function that you may find
+useful. You can do whatever you want with this file. It should not be
+submitted, and will not be marked.
++ tester: For ensuring the correctness of your solution.
++ expected: A directory of files whose purpose is described in the
+section "Making Sure Your Answer is Correct" at the end of this
+document.
+
+Your answer file: answer10.c, must have no main(...) function,
+must not contain any duplicates of the code in tree.c.
+
+// -------------------------------//
+// ~ Submitting Your Assignment ~ //
+// -------------------------------//
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) answer10.c
+
+You create the zip file using the following command.
+ 
+ > zip pa10.zip answer10.c
+
+If your zip file does not meet the above specification, then you may
+get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
+instructions is *part* of getting the assignment correct. So please
+follow the instructions.
+
+// ----------------------------- //
+// ~ Part I, Implement a Stack ~ //
+// ----------------------------- //
+
+A stack is just a linked-list; however, you only ever add and remove
+elements to and from the head. It is as simple as that. 
+
+You are already familiar with the "Call Stack", which shares an 
+important property that the last function-frame added to the call-stack
+is the first function-frame removed when the stack is shrunk. 
+This property is called LIFO, or "Last-in-first-out".
+
+When you add an element to a stack, that is called "pushing". When
+you remove, that is called "popping". If you pushed (in order) the
+numbers 1, 2, 3, 4, 5, then your stack would be the linked list:
+
+    [5] -> [4] -> [3] -> [2] -> [1] -> (null)
+
+Now if you popped an element, you would pop '5', and the stack would be:
+
+    [4] -> [3] -> [2] -> [1] -> (null)
+
+Simple.
+
+You have to implement five functions for working with a stack:
+
+Stack * Stack_create();
+void Stack_destroy(Stack * stack);
+int Stack_isEmpty(Stack * stack);
+int Stack_popFront(Stack * stack);
+void Stack_pushFront(Stack * stack, int value);
+
+Further instructions are in the file "answer10.h"
+
+You will have to test these functions yourself. They are required
+for Part II, but will not be graded.
+
+// ----------------------- //
+// ~ Part II, Stack Sort ~ //
+// ----------------------- //
+
+In this part of the assignment, you are required to implement
+Donald Knuth's "Stack Sort" algorithm. This is an extremely fast
+sorting algorithm (much faster than quick-sort for large inputs);
+however, it has a flaw; Stack Sort only works for certain inputs.
+These inputs are called "stack sortable", and what that looks like,
+and why it is important, will become apparent in the second part of
+the assignment.
+
+Stack Sort works as follows:
+
+Initialize an empty stack
+For each input value x:
+      While the stack is nonempty and x is 
+      larger than the top item on the stack:
+             pop the stack to the output
+      Push x onto the stack
+While the stack is nonempty, pop it to the output
+
+You are required to implement the function:
+
+void stackSort(int * array, int len);
+
+Further instructions are in the file "answer10.h"
+
+// --------------------------------------------- //
+// ~ Part III, All Possible Binary Tree Shapes ~ //
+// --------------------------------------------- //
+
+In this part of the assignment, we'll generate all possible shapes
+for a binary tree.
+ 
+If a binary tree has only one node, there is one and only one shape.
+
+If a binary tree has two nodes, there are two shapes.
+
+         N                  N
+        /         or         \
+       N                      N
+
+Here, N is one node.
+
+If a binary tree has three nodes, there are five shapes.
+
+         N           N
+        /           /      
+       N            N       
+      /             \
+     N               N
+
+           N
+          / \
+         N   N
+
+        N            N
+         \            \
+          N            N
+         /              \
+        N                N
+
+The number of shapes for k nodes can be expressed as the Catalan
+series.
+
+// -- Stack Sort and Binary Trees -- //
+
+Please implement stackSort(...) before reading this section.
+
+Generating all the possible shapes with k nodes is surprisingly 
+subtle; however, it can be done if we understand how and why 
+"Stack Sort" can fail. Really! 
+
+Stack Sort only works on lists of numbers that are "stack-sortable".
+This works as follows:
+
+Consider two lists: 'u' = { 1, 2, 4, 3 } and 'v' = { 3, 1, 4, 2 }.
+The list 'u' is stack-sortable, but 'v' is not. To understand why, 
+consider what happens when we divide the lists around their largest
+element:
+
+ 'u' = { 1, 2, 4, 3 } ==> { 1, 2 } 4 { 3 }
+ 'v' = { 3, 1, 4, 2 } ==> { 3, 1 } 4 { 2 }
+
+Note that if we do this recursively, we're making binary trees!
+
+Okay, so when we run the "Stack Sort" algorithm, when we reach '4', we
+must output all of the left-children. { 1, 2 } in the first example, 
+and { 3, 1 } in the second example. This is all well and good, but
+in the second example we have to output '3' before we output '2', and
+so the sort fails. So we can never have an element in the right list that
+is smaller than an element in the left list.
+
+It so happens that if a sequence of numbers is not stack-sortable,
+and you produced a binary tree from this sequence, then there is
+precisely one stack-sortable sequence (of the same length) that would
+produce the same shaped binary tree. Furthermore, all stack-sortable
+sequences produce uniquely shaped binary trees! This means that you
+can get the unique binary trees with 'k' nodes by building trees from
+all of the stack-sortable sequences of 'k' length.
+
+// -------------------------------------------------- //
+// All the Unique Shapes of a Binary Tree of size 'k' //
+// -------------------------------------------------- //
+
+To generate all the unique shapes of a binary tree with 'k' nodes,
+you simply generate all the permutations of an array of unique
+numbers of length 'k', and if the permutation is "stack-sortable", then
+simply insert the permutation into a binary tree and print it.
+
+That's it!
+
+You must implement the function:
+
+int isStackSortable(int * array, int len);
+void genShapes(int n);
+
+For your convenience, you have been supplied with an implementation
+of a binary tree, in the files tree.c and tree.h.
+
+Further instructions are in the file "answer10.h"
+
+// --------------------------------------- //
+// ~ Making Sure Your Answer is Correct. ~ //
+// --------------------------------------- //
+
+You must run valgrind yourself, and check the output for
+memory errors. Please consult the TAs if you are unsure how to validate
+your program for memory errors.
+
+To help you verify the correctness of your solution, we have provided
+an 'expected' directory that contains 27 files: 9 'shapes' files,
+9 'stack-sortable' files, and 9 'stack-unsortable' files.
+
+The shapes-K files contain all the unique binary tree shapes for
+binary trees of K nodes. You must be able to generate all of these
+shapes without duplicates. You can use sort and diff to check that
+you have generated all of them correctly.
+
+The 'stack-sortable' and 'stack-unsortable' files contain lists of
+permutations that are either stack-sortable or stack-unsortable.
+Your isStackSortable(...) function must correctly identify all
+permutations in the 'stack-sortable' files as sortable, and all 
+permutations in the 'stack-unsortable' files as unsortable.
+
+It may be helpful to read these files into your own main(...) 
+function, and iterate over each line (remember earlier assignments!)
+and check the behaviour of isStackSortable(...) and stackSort(...).
+
+Remember that stackSort must fail to produce a sorted list if the
+input is not stack-sortable.
+

@@ -1,0 +1,36 @@
+
+partitionPrime(1)
+
+partitionPrime(2)
+= 2
+
+partitionPrime(3)
+= 3
+
+partitionPrime(4)
+= 2 + 2
+
+partitionPrime(5)
+= 2 + 3
+= 3 + 2
+= 5
+
+partitionPrime(6)
+= 2 + 2 + 2
+= 3 + 3
+
+partitionPrime(7)
+= 2 + 2 + 3
+= 2 + 3 + 2
+= 2 + 5
+= 3 + 2 + 2
+= 5 + 2
+= 7
+
+partitionPrime(8)
+= 2 + 2 + 2 + 2
+= 2 + 3 + 3
+= 3 + 2 + 3
+= 3 + 3 + 2
+= 3 + 5
+= 5 + 3

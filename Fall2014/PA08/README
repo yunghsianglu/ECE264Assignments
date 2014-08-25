@@ -1,0 +1,293 @@
+Please read the entire README before starting your assignment, or asking
+for help.
+
+// ~ Overview ~ //
+
+Recursion is an elegant method for solving many problems, and many data
+structures are actually easier to manipulate with recursive functions.
+In this assignment, we will see how a binary tree (actually any tree
+data structure) can utilize the power of recursion.
+
+// ~ Learning Goals ~ //
+
+(1) Recursion
+(2) Binary (search) trees
+(3) Sparse arrays
+(4) Memory management
+
+// ~ Submitting Your Assignment ~ //
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) answer08.c
+
+Please create your zip file using the following command:
+
+ > zip pa08.zip answer08.c
+
+If your zip file does not meet the above specification, then you may
+get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
+instructions is *part* of getting the assignment correct. So please
+follow the instructions.
+
+// ~ Determining Your Mark ~ //
+
+The tester program is there to ensure that you have followed the
+instructions correctly.
+
+Run the tester program as follows:
+
+ > ./tester
+
+// ~ Binary (Search) Trees ~ //
+
+From Wikipedia: A binary tree is a tree data structure in which each
+node has at most two children (referred to as the left child and the
+right child).
+
+This is similar (and more general) to "linked lists", where nodes have
+at most one child.
+
+Linked List:
+    O   head/tail   O   head        O   head        O   head
+                    |               |               |
+                    V               V               V
+                    O   tail        O               O
+                                    |               |
+                                    V               V
+                                    O   tail        O
+                                                    |
+                                                    V
+                                                    O   tail
+
+Binary Tree:
+    O   root        O   root       O   root            O   root
+                   / \           /   \              /     \
+                  O   O         O     O          O           O
+                left right     / \   / \       /   \       /   \
+                              O   O O   O     O     O     O     O
+                                             / \   / \   / \   / \
+                                            O   O O   O O   O O   O
+
+The above diagrams show *full* binary trees, where every node has
+either zero or two children. It is perfectly acceptable to have a node
+with one child somewhere in the tree:
+
+More Binary Trees:
+    O   root        O   root       O   root       O   root
+                   / \            / \            / \
+                  O   O          O   O          O   O
+                       \        /                \   \
+                        O      O                  O   O
+      
+Note that every linked list is (conceptually) also a binary tree.
+
+What makes these structures work so well recursively is their
+naturally recurring instances. If a recursive program can handle one
+node, then it can handle the entire tree.
+
+So what can we do with binary trees? One useful application is sorting
+indices in a "binary search tree", which is an ordered binary tree
+with the following properties:
+
+(1) Each node's left subtree contains nodes with indices less than its
+    own index.
+
+(2) Each node's right subtree contains nodes with indices greater than
+    its own index.
+
+(3) All left and right subtrees are binary search trees themselves.
+
+(4) No two nodes have the same index.
+
+Tree data structures like this are at the heart of every database
+index, which in turn makes much of the world's commerce possible. 
+
+The relevant theory for why this is so is covered in future courses,
+but for a teaser, think about this: if you have a collection of N
+elements in a linked list, and you want to see if element X is in the
+list, then you need to compare X to every element in the list, a total
+of N comparisons. However, if you use a binary search tree, you only
+need to traverse down a single branch, and on average will make around
+log_2(N) comparisons. (i.e., log-base-2 of N.) What it means to
+"traverse down a single branch" will become clear as you write the
+code for this assignment.
+
+// ~ Sparse Arrays (As Data For Binary Search Trees) ~ //
+
+You might ask, "why would I want to store values in another data
+structure? Can't I already store and sort things in an array or a linked
+list?"
+
+Consider, for example, a case where you have a collection of a large
+number of elements; however, most of the elements store the same value
+(usually a value of 0). In a C program, a normal array of size N
+occupies a contiguous piece of memory allocated for indices from 0 to
+N-1. It would be inefficient to store this collection in a normal C
+array because most of the memory space would be wasted repeating the
+same value. What is a more efficient way to store this?
+
+The answer is sparse array, which only stores indices with a value
+different from the most common value of 0. See the comparison below:
+
+Normal C array[100]:
+   (index):  0  1  2 ... 48 49 50 51 52 ... 98 99
+    value : [0, 6, 0, ... 0, 0, 4, 0, 0, ... 0, 2]
+
+Sparse array with 100 indices:
+    index: [1, 50, 99]
+    value: [6,  4,  2]
+
+So a normal C array has to store all 100 values, but a sparse array
+would be able to store the exact same data with just three index-value
+pairs. Compressing large amounts of redundant data like this can make
+or break a computer program.
+
+In this assignment, these index-value pairs will be stored in a binary
+search tree. In theory, the index-value pairs can also be stored in a
+linked list; however, binary trees are much better suited because of
+their "database-index" quality, as described above.
+
+To store a sparse array in a binary search tree, each tree node must
+have two integers (the index and the value) along with pointers to the
+left and right children. The binary search tree is built and sorted
+based on the indices, as described above. This means that the index of
+the left-child (and all of its descendants) will always be less than
+the index of the current node, and the index of the right-child (and
+all of its descendants) will always be greater than the index of the
+current node.
+
+// ~ Merging Two (Sparse-Array-Filled) Binary Trees ~ //
+
+When merging two sparse array binary trees, array_1 and array_2:
+
+(1) The contents in array_1 and array_2 should not be changed. Therefore 
+    you should create a new array (called new_array) that stores the result
+    of merging.
+
+(2) Copy all the nodes in array_1 into new_array.
+
+(3) Now we are ready to copy nodes from array_2 into new_array.
+    (You will need to "iterate" over the nodes in the tree: see hints.)
+
+(3.1) You must traverse each node in array_2 and "insert" it into new_array.
+(3.2) If the index of the node you are trying to insert does not exist in new_array, then insert
+      the new node normally.
+(3.3) If the node's index *does* exist, then simply add the values together
+      *instead* of inserting the node. But keep in mind that if the resultant
+      value is 0, then the node must be removed from new_array.
+
+Example:
+Consider the following indices and corresponding values in
+sparse array form (but note you will actually work in binary search tree
+form in the program):
+
+tree_1:
+    index_1 = [ 1 ,  2 ,  3 ,  7 ,  8 , 9 ];
+    value_1 = [ 3 ,  2 , -1 , -9 , -5 , 3 ];
+
+tree_2:
+    index_2 = [ 0 ,  1 ,  2 ,  3 , 4 , 7 , 9 ];
+    value_2 = [ 5 , -3 , -8 ,  1 , 7 , 9 , 1 ];
+
+results:
+    index_3 = [ 0 ,  2 ,  4 , 8 , 9 ];
+    value_3 = [ 5 , -6 ,  7 ,-5 , 4 ];
+(elements whose values are zero are deleted)
+
+// ~ Hints ~ //
+
+(*) Make sure you read the class notes on binary trees.
+
+----------------------------------------------------------------------
+
+(*) You may need to write your own functions.
+
+----------------------------------------------------------------------
+
+(*) Even though a tree is not an array, it is still easy to "iterate"
+over all of the elements. Iteration means you want to visit every
+element once, and only once. You already know how to do this with an
+array:
+
+int myints[] = { 5, 3, 6, 7 };
+for(ind = 0; ind < 4; ++ind)
+   do_something_with(myints[ind]); // see, visit each element once and only once
+
+With trees, you choose either pre-order, in-order, or post-order
+traversal to do the same thing. You *must* know this for the exam.
+Please look them up in the class notes.
+
+----------------------------------------------------------------------
+
+(*) If you get stuck with some cryptic bug keep in mind the discussion
+of "undefined behavior" from PA02. (Go back and read this section.)
+Keep in mind that your sparse-array-binary-tree data structure is
+invalid if any of the following occur:
+
+(1) The value becomes zero.
+(2) The index of the left-child is >= to the index of the current node.
+(3) The index of the right-child is <= to the index of the current node.
+
+If you do *any* operation (insert, delete, etc.) on the
+sparse-array-binary-tree data structure, and any of the above are
+violated, then you will be in for a nasty and cryptic surprise when
+writing some later function.
+
+The best way to deal with these types of cryptic bugs is to write a
+"check" function:
+
+int SparseNode_check(SparseNode * node)
+{
+   // Check the above conditions here.
+   // return FALSE if the node is invalid, or if there is an
+   // invalid child node.
+}
+
+Call the check function before and after *every* line of code that
+modifies the sparse array. This will help you pinpoint which function
+is corrupting the data structure.
+
+----------------------------------------------------------------------
+
+(*) If you get stuck getting started, then try writing just
+SparseNode_create(...), and a print_tree(...) function. You should
+then be able to do the following:
+
+// Step 1 //
+Create and print trees like so:
+
+int main(int argc, char * * argv)
+{
+   SparseNode * root = SparseNode_create(10, 100);
+   root->left = SparseNode_create(5, 101);
+   root->right = SparseNode_create(15, 102);
+   root->left->right = SparseNode_create(8, 103);
+   print_tree(root);
+   return 0;
+}
+
+// Step 2 // 
+Once you can create and print various trees (as above), then write the
+check function and make sure it works. (i.e., create invalid trees and
+make sure the check function picks up that they are bogus.)
+
+// Step 3 //
+Write SparseArray_destroy(...). You should now have no memory leaks or
+errors.
+
+// Step 4 //
+Write SparseArray_insert(...) and use check(...) to make sure it
+always works no matter what is thrown at it.
+
+// Step 5 // 
+Write SparseArray_build(...), which calls insert in a loop.
+
+// Step 6 //
+Write SparseArray_remove(...), which should work perfectly when you
+remove a node with zero, one or two children. It should also work if
+removing a node makes the tree empty. Use check(...) to verify that
+your tree is still well formed.
+
+At this stage you will be reasonably close to completing the assignment.
+
