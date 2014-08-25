@@ -115,7 +115,8 @@ called cat-lite.c. A good solution should be around 70 lines of code.
 Cat-lite must have the following features:
 
 (1) A --help switch. (Ignore other arguments when present.) Print
-the message below, and then return EXIT_SUCCESS.
+the message below, and then return EXIT_SUCCESS. The help switch can 
+appear in any position, in which case other arguments are ignored.
 <help-message>
 Usage: cat-lite [--help] [FILE]...
 With no FILE, or when FILE is -, read standard input.
@@ -154,7 +155,8 @@ to implement are simplified and listed in the help message. The spec
 for this program is:
 
 (1) A --help switch. (Ignore other arguments when present.) Print
-the message below, and then return EXIT_SUCCESS.
+the message below, and then return EXIT_SUCCESS. The help switch can 
+appear in any position, in which case other arguments are ignored.
 <help-message>
 Usage: grep-lite [OPTION]... PATTERN
 Search for PATTERN in standard input. PATTERN is a

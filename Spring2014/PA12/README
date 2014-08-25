@@ -1,7 +1,8 @@
+
 // ~ Learning Goals ~ //
 
 (1) Learn basics of creating and running threads.
-(2) Understand further the nature and limits of inbuilt types.
+(2) Understand further the nature an limits of inbuilt types.
 
 // ~ Submitting Your Assignment ~ //
 
@@ -110,8 +111,8 @@ http://www.youtube.com/watch?v=EbVKWCpNFhY)
 
 GCC has a native 128-bit integer type called "__int128". In this
 assignment we are interested in /unsigned/ integers, and so we will be
-using the type "unsigned __int128". There is a typedef statement
-that defines a shorthand notation "uint128":
+using the type "unsigned __int128". There is a typedef statement in
+pa06.h that defines a shorthand notation "uint128"
 
 typedef unsigned __int128 uint128;
 
@@ -154,14 +155,14 @@ which is a relatively new Apple technology. For this assignment we
 will use the trusty pthreads library instead of Grand Central
 Dispatch. pthreads is the standard threading library available on all
 flavors of unix (including OS X and Linux), and can also be used on
-Windows. One key reason for using pthreads is that, in my experience,
-it is not worth learning a shiny simplified technology until you
+windows. One key reason for using pthreads is that, in my experience,
+it is not worth learning a shiny simplified technologies until you
 understand a bit about the underlying machinery. So learning pthreads
 is a very good idea, and the knowledge gained will transfer naturally
 to other threading libraries.
 
 Feel free to examine Carter Allen's code; however, you will not be
-able to compile it on the ECE computers. Examining his code may help
+able to compile it on the ece computers. Examining his code may help
 you understand how to create a threaded version using pthreads;
 however, many important details are missing.
 

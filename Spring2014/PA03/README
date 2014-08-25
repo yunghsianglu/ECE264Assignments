@@ -104,7 +104,7 @@ what this looks like.
 (*) Help, explode(...) is killing me, what do I do?
 
 First you need to figure out how many delimiter characters appear in
-the string. You do this by calling strchr(str[ind], delims) on each
+the string. You do this by calling strchr(delims, str[ind]) on each
 character in 'str'.  If you get NULL, then str[ind] is not a
 delimiter. If you get non-NULL, then that character is a delimiter.
 
@@ -123,7 +123,7 @@ The pseudo-code so far looks like this:
 // Count how many delimiters are in 'str'
 int N = 0;
 for each character in 'str' {
-   if strchr(str[ind], delims) != NULL then increment N
+   if strchr(delims, str[ind]) != NULL then increment N
 }
 
 // Create the return array
