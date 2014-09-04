@@ -89,7 +89,8 @@ char * my_strrchr(const char * str, int ch) {
  * printf("'%s'\n", my_strstr(str, "hello")); // prints "'(null)'\n"
  *                                      // i.e., my_strstr(str, "hello") == NULL
  */
-char * my_strstr(const char * haystack, const char * needle);
+char * my_strstr(const char * haystack, const char * needle) {
+}
 
 /**
  * Copys C-string 'src' (including the null-byte terminator) into the memory 
