@@ -10,8 +10,7 @@ strings, and also to familiarize yourself with the C standard library
 and its idioms.
 
 You can use the "man" program to see the official documentation of the
-assignment's functions. "man" stands for "manual"; however, if it
-helps you remember, pretend it stands for "mansplain". So...
+assignment's functions. "man" stands for "manual".  So...
 
  > man strlen
 
@@ -157,7 +156,7 @@ locates all of the definitions in a collection of compilation units
 
 Never, NEVER, include a .c file:
 
-// Evil
+// Bad
 #include "answer02.c"
 
 ----------------------------------------------------------------------
