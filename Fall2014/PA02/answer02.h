@@ -73,7 +73,7 @@ char * my_strstr(const char * haystack, const char * needle);
  * enough to contain 'src', *including* the terminating null-byte.
  * (NOTE: Just as with the real strcpy function, these are PRECONDITIONS,
  * NOT something your function should check for!)
- * 
+ *
  * Returns 'dest'
  *
  * Examples:

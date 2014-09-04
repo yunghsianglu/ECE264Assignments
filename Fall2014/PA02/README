@@ -10,7 +10,8 @@ strings, and also to familiarize yourself with the C standard library
 and its idioms.
 
 You can use the "man" program to see the official documentation of the
-assignment's functions. "man" stands for "manual".  So...
+assignment's functions. "man" stands for "manual"; however, if it
+helps you remember, pretend it stands for "mansplain". So...
 
  > man strlen
 
@@ -60,7 +61,7 @@ Submit "pa02.zip" to blackboard.
 
 // ~ Determining Your Mark ~ //
 
-This assignment is pass or fail. You pass (3 marks) if everything
+This assignment is pass or fail. You pass (5 marks) if everything
 works, and fail (0 marks) if there is one or more things wrong. You
 can determine your mark before submitting your assignment. To test
 your program, you must run the "tester" program. You run the tester
@@ -156,7 +157,7 @@ locates all of the definitions in a collection of compilation units
 
 Never, NEVER, include a .c file:
 
-// Bad
+// Evil
 #include "answer02.c"
 
 ----------------------------------------------------------------------
