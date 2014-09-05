@@ -23,7 +23,7 @@ size_t my_strlen(const char * str);
 int my_countchar(const char * str, char ch);
 
 /**
- * Return a pointer to the first occurance of character 'ch' in C string 'str'
+ * Return a pointer to the first occurrence of character 'ch' in C string 'str'
  * Return NULL if 'ch' is not found.
  *
  * Note that the terminating '\0' character is considered to be part of the 
@@ -53,7 +53,7 @@ char * my_strchr(const char * str, int ch);
  */
 char * my_strrchr(const char * str, int ch);
 
-/** Finds the first occurance of C-string 'needle' in C-string 'haystack'
+/** Finds the first occurrence of C-string 'needle' in C-string 'haystack'
  * Return 'haystack' when 'needle' is the empty string (ie, "").
  * The terminating null bytes are not compared.
  *
@@ -67,9 +67,12 @@ char * my_strrchr(const char * str, int ch);
 char * my_strstr(const char * haystack, const char * needle);
 
 /**
- * Copys C-string 'src' (including the null-byte terminator) into the memory 
- * pointed to by 'dest'. The strings must not overlap, and 'dest' must be large
+ * Copies C-string 'src' (including the null-byte terminator) into the memory 
+ * pointed to by 'dest'. 
+ * The strings must not overlap, and 'dest' must be large
  * enough to contain 'src', *including* the terminating null-byte.
+ * (NOTE: Just as with the real strcpy function, these are PRECONDITIONS,
+ * NOT something your function should check for!)
  *
  * Returns 'dest'
  *
@@ -81,7 +84,7 @@ char * my_strstr(const char * haystack, const char * needle);
 char * my_strcpy(char * dest, const char * src);
 
 /**
- * Append C-string 'src' to C-string 'dest'. A precondition is 'Dest' must be 
+ * Append C-string 'src' to C-string 'dest'. A precondition is 'dest' must be 
  * large enough to contain both 'dest' and 'src', *including* the terminating
  * null-byte.
  *
@@ -116,7 +119,7 @@ char * my_strcat(char * dest, const char * src);
 int my_isspace(int ch);
 
 /**
- * Convert the initial portion of 'str' to an integer.
+ * Converts (only) the initial portion of 'str' to an integer.
  *
  * Implement my_atoi(str) as follows:
  * (1) Increment str to skip all white-space characters as defined by 
@@ -136,7 +139,7 @@ int my_isspace(int ch);
  * my_atoi("15th of March would be the ides."); // 15
  * my_atoi("4 months to Summer."); // 4
  * my_atoi("\n\f\t\v\r 6 white space characters handled correctly."); // 6
- * my_atoi("garbage should yield 0"); // 0
+ * my_atoi("garbage, instead of a number like 73 for example, should yield a zero"); // 0
  */
 int my_atoi(const char * str);
 

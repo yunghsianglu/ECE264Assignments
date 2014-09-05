@@ -1,6 +1,3 @@
-/* 
- * Do not modify this file.
- */
 
 #include <stdio.h>
 #include <string.h>
