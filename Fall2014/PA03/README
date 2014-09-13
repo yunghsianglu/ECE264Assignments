@@ -101,6 +101,45 @@ Simple.
 Please attend the help session for a clear explanation and a diagram of
 what this looks like.
 
+(*) I get a memory error when I run the tester on strcat_ex...
+
+Some students wonder why they cannot use code like this:
+
+  int src_len = strlen(src); 
+  int dst_len = strlen(*dest); 
+  if( (src_len + dst_len + 1 > *n) || (*dest == NULL)) { 
+     // etc..  
+  }
+
+Carefully read the instructions for strcat_ex, and note the *dest
+could be NULL. If it is NULL then we always allocate a new buffer. But
+there are two problems with the above code.
+
+Firstly, calling strlen(*dest) is an error if *dest is NULL. That is
+because the NULL pointer is not a string! Remember, a string is a
+pointer to valid memory, and if you go to that memory, you will find a
+sequence of characters that ends in a null terminator, '\0'. The NULL
+pointer is *not* a string. So calling strlen(*dest) will cause a
+segfault on most implementations.
+
+Secondly, if *dest is NULL, then there is no guarantee that *n has
+been initialized -- and why should there! *dest is not even a valid
+memory location, so why should it have a length! Okay, if *n has not
+been initialized, then calling:
+
+   (src_len + dst_len + 1 > *n)
+
+has an unpredictable result. It is a memory error.
+
+Remember short-circuit evaluation from CS159? It is perfectly okay to
+write this:
+
+  if( (*dest == NULL) || (src_len + dst_len + 1 > *n) ) { 
+     // etc..  
+  }
+
+Because *n is not evaluated if *dest is NULL.
+
 (*) Help, explode(...) is killing me, what do I do?
 
 First you need to figure out how many delimiter characters appear in
