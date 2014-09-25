@@ -54,7 +54,16 @@ follow the instructions.
 
 Submit "pa04.zip" to blackboard.
 
+********************************************************************
+NOTE: 
+
+gdb.log, git.log, and memcheck.log must be non-empty and contain 
+evidence that you used gdb, git, and valgrind, respectively. 
+No credit will be given if these are empty or have irrelevant contents.
+********************************************************************
+
 // ~ Determining Your Mark ~ //
+
 
 You must write "echo-lite", "cat-lite", and "grep-lite". In each case,
 your solution should work respectively in similar fashion to the
