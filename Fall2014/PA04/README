@@ -54,6 +54,14 @@ follow the instructions.
 
 Submit "pa04.zip" to blackboard.
 
+********************************************************************
+NOTE: 
+
+gdb.log, git.log, and memcheck.log must be non-empty and contain 
+evidence that you used gdb, git, and valgrind, respectively. 
+No credit will be given if these are empty or have irrelevant contents.
+********************************************************************
+
 // ~ Determining Your Mark ~ //
 
 You must write "echo-lite", "cat-lite", and "grep-lite". In each case,
@@ -218,7 +226,7 @@ concise code.
 # Run -- you must write your own tests
  > ./echo-lite "a b    c"   a   b   c
  > ./echo-lite "The rain in Spain" | ./cat-lite
- > ./echo-lite "The rain in Spain" | ./cat-lite | ./grep-lite -c -n Spain
+ > ./echo-lite "The rain in Spain" | ./cat-lite | ./grep-lite -n Spain
 
 # Run under valgrind -- you must test everything under valgrind
  > valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./echo-lite Say Cheese

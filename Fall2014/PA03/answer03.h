@@ -82,7 +82,7 @@ char * implode(char * * strArr, int len, const char * glue);
  * char * * strArr = explode("lady beatle brew", " ", &len);
  * sortStringArray(strArr, len);
  * char * str = implode(strArr, len, " ");
- * printf("%s\n"); // beatle brew lady
+ * printf("%s\n", str); // beatle brew lady
  *
  * Hint: use the <stdlib.h> function "qsort"
  * Hint: you must _clearly_ understand the typecasts.
