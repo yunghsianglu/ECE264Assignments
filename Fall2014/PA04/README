@@ -64,7 +64,6 @@ No credit will be given if these are empty or have irrelevant contents.
 
 // ~ Determining Your Mark ~ //
 
-
 You must write "echo-lite", "cat-lite", and "grep-lite". In each case,
 your solution should work respectively in similar fashion to the
 standard unix commands: "echo", "cat", and "grep". You can run these
