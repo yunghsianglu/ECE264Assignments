@@ -1,8 +1,8 @@
 /**
  * Do not modify this file.
  */
-#ifndef PA05_H
-#define PA05_H
+#ifndef PA06_H
+#define PA06_H
 
 #include <stdint.h>
 

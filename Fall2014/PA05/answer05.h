@@ -1,8 +1,8 @@
 /**
  * Do not modify this file
  */
-#ifndef PA06_H
-#define PA06_H
+#ifndef PA05_H
+#define PA05_H
 
 /**
  * Prints all the partitions of a positive integer value.

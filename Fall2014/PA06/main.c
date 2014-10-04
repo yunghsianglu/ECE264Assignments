@@ -4,7 +4,7 @@
 #include <string.h>
 #include <libgen.h>
 
-#include "answer05.h"
+#include "answer06.h"
 
 void print_usage(char * argv0)
 {
@@ -20,7 +20,7 @@ void print_usage(char * argv0)
 }
 
 /**
- * Welcome to PA05.
+ * Welcome to PA06.
  *
  * This file is an example to help you get started.
  * It works on BMP files and inverts the pixel intensity (whiteness)

@@ -20,12 +20,12 @@ improves the viewing quality of washed out or dark images.
 
 You must submit one zip file to blackboard. This zip file must
 contain:
-(1) answer05.c
+(1) answer06.c
 (2) git.log
 
 You can do this as follows:
 
- > zip pa05.zip answer05.c git.log
+ > zip pa06.zip answer06.c git.log
 
 If your zip file does not meet the above specification, then you may
 get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
@@ -34,7 +34,7 @@ follow the instructions.
 
 // ~ Project Files ~ //
 
-+ answer05.h: Header file contains the declarations that you must 
++ answer06.h: Header file contains the declarations that you must 
 implement.
 + diff-plus.c: A short computer program that you can compile and use
 to test if two image files are "different". (See the discussion on
@@ -86,7 +86,7 @@ The following diagram summarizes the byte layout in ee264 files:
   -----------------------------------------------
 
 The file has a 16 byte header whose binary layout is given by the 
-struct ImageHeader in the file "answer05.h". The full explanation of 
+struct ImageHeader in the file "answer06.h". The full explanation of 
 this header is:
 
 + 4 byte integer: "magic number" 0x21343632. 
@@ -226,7 +226,7 @@ Don't forget that you must also test all of the corrupt testcases.
 
 This assignment is pass or fail. You pass if everything works, and
 fail if there is one or more things wrong. You can use the tester to
-find mistakes in answer05.c. No other files are marked.
+find mistakes in answer06.c. No other files are marked.
  
  > ./tester
 
