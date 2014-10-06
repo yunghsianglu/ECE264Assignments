@@ -25,12 +25,12 @@ exams.
 
 You must submit one zip file to blackboard. This zip file must
 contain:
-(1) answerXX.c
+(1) answer05.c
 (2) git.log
 
 You create the zip file using the following command.
  
- > zip paXX.zip answerXX.c git.log
+ > zip pa05.zip answer05.c git.log
 
 If your zip file does not meet the above specification, then you may
 get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
@@ -53,7 +53,7 @@ For example, 3 can be partitioned into
    3
 
 You must write partition functions that have particular properties as
-specified in "answerXX.h". The class notes contain a lot of
+specified in "answer05.h". The class notes contain a lot of
 information that will be helpful in doing this assignment.
 
 Your solution must be general.  You will receive zero if you hard code
@@ -119,7 +119,7 @@ Partial credit will be given for this assignment, as follows:
 
 Within each line above, you must pass all tests.  As usual, no credit will be
 given for the assignment if the assignment is turned in after the deadline, if
-it is not zipped as directed above, or if your gdb.log is missing, empty, or
+it is not zipped as directed above, or if your git.log is missing, empty, or
 contains erronneous information.  Also, an assignment will receive zero if any
 function has been hard-coded with answers to specific inputs.  We may add
 additional test cases similar to the existing ones to check for that.
