@@ -1,0 +1,245 @@
+XXXXXXXXXXXXX XXXXXXXXXXX
+X   X         X         X
+X XXX XXXXXXX X XXXXXXX X
+X X   X     X X X   X   X
+X X XXX XXX X X XXX X XXX
+X   X X   X   X X   X   X
+X XXX XXX XXXXX X X XXX X
+X X     X       X X   X X
+X X XXXXXXXXXXXXX XXXXX X
+X X         X   X   X   X
+X XXX XXX XXX X X X X X X
+X   X X X     X   X X X X
+XXX X X XXXXXXXXXXX X XXX
+X X X   X   X   X   X   X
+X X XXX X X X X X X XXXXX
+X   X   X X X X   X     X
+X XXXXX X X X XXXXXXXXX X
+X X   X X X X         X X
+X X X X X XXXXX XXXXX X X
+X   X X   X   X     X X X
+XXXXX XXXXX X XXXXX X X X
+X   X X   X X X     X X X
+X XXX X X X X XXXXXXX X X
+X       X   X         X X
+XXXXXXXXXXXXX XXXXXXXXXXX
+S 1
+W 8
+S 2
+W 2
+S 2
+W 2
+N 4
+E 2
+W 2
+S 4
+S 6
+E 2
+S 4
+W 2
+N 2
+S 2
+S 4
+E 2
+N 2
+E 2
+S 6
+E 2
+N 2
+E 2
+S 2
+E 2
+N 4
+E 2
+S 4
+E 8
+N 6
+W 6
+S 2
+E 4
+S 2
+W 4
+E 4
+N 2
+W 4
+N 2
+W 2
+N 4
+E 2
+S 2
+E 2
+N 2
+E 2
+N 4
+W 2
+N 4
+E 2
+N 2
+W 2
+E 2
+S 2
+S 2
+E 2
+W 2
+N 2
+W 2
+S 4
+S 2
+W 2
+N 2
+W 2
+S 2
+W 4
+N 2
+E 2
+W 2
+W 4
+S 4
+E 2
+N 2
+S 2
+S 2
+W 2
+E 2
+S 4
+E 2
+N 6
+E 2
+S 4
+N 4
+W 2
+S 6
+W 2
+N 6
+W 2
+N 4
+W 2
+N 2
+E 2
+N 2
+S 2
+E 2
+W 4
+S 2
+E 6
+S 2
+E 4
+N 2
+E 2
+S 2
+E 2
+N 2
+E 2
+S 4
+S 2
+E 4
+S 8
+N 8
+W 4
+N 2
+W 2
+S 2
+W 2
+N 2
+W 2
+S 4
+E 8
+S 6
+W 8
+S 1
+N 5
+W 2
+S 4
+W 2
+N 2
+W 2
+S 2
+W 2
+W 4
+N 2
+E 2
+W 2
+S 2
+E 4
+N 6
+W 2
+S 2
+W 2
+N 4
+E 2
+N 4
+W 2
+N 6
+E 2
+N 2
+E 2
+N 2
+E 8
+S 4
+W 2
+N 2
+W 4
+S 2
+E 2
+S 2
+E 6
+N 6
+E 8
+S 2
+W 2
+S 2
+E 2
+S 4
+W 2
+S 4
+E 2
+W 2
+N 4
+E 2
+S 2
+N 6
+W 2
+N 2
+E 2
+N 2
+W 8
+S 6
+W 6
+N 2
+W 2
+N 2
+E 4
+S 2
+E 2
+N 5
+
+
+
+--------------------------------------
+
+
+XXXXXXXXXXXXX.XXXXXXXXXXX
+X...X.........X.........X
+X.XXX.XXXXXXX.X.XXXXXXX.X
+X.X...X.....X.X.X...X...X
+X.X.XXX.XXX.X.X.XXX.X.XXX
+X...X.X...X...X.X...X...X
+X.XXX.XXX.XXXXX.X.X.XXX.X
+X.X.....X.......X.X...X.X
+X.X.XXXXXXXXXXXXX.XXXXX.X
+X.X.........X...X...X...X
+X.XXX.XXX.XXX.X.X.X.X.X.X
+X...X.X.X.....X...X.X.X.X
+XXX.X.X.XXXXXXXXXXX.X.XXX
+X.X.X...X...X...X...X...X
+X.X.XXX.X.X.X.X.X.X.XXXXX
+X...X...X.X.X.X...X.....X
+X.XXXXX.X.X.X.XXXXXXXXX.X
+X.X...X.X.X.X.........X.X
+X.X.X.X.X.XXXXX.XXXXX.X.X
+X...X.X...X...X.....X.X.X
+XXXXX.XXXXX.X.XXXXX.X.X.X
+X...X.X...X.X.X.....X.X.X
+X.XXX.X.X.X.X.XXXXXXX.X.X
+X.......X...X.........X.X
+XXXXXXXXXXXXX.XXXXXXXXXXX

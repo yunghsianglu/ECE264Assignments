@@ -1,0 +1,39 @@
+XXXXX XXX
+X       X
+X XXX XXX
+X X X   X
+X X XXXXX
+X       X
+XXXXX XXX
+S 1
+E 2
+W 2
+W 4
+S 4
+E 2
+N 2
+S 2
+E 2
+S 1
+N 1
+E 2
+W 6
+N 4
+E 4
+S 2
+E 2
+W 2
+N 3
+
+
+
+--------------------------------------
+
+
+XXXXX.XXX
+X.......X
+X.XXX.XXX
+X.X.X...X
+X.X.XXXXX
+X.......X
+XXXXX.XXX
