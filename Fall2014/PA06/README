@@ -46,8 +46,8 @@ You don't need to worry about where you exit from--or even exiting at
 all.  You only need to enter through the entrance and ensure that you
 cover all paths.
 
-A space (' ') signifies a path that you need to cover.  An 'X' signifies a
-wall.
+In the input maze, a space (' ') signifies a path that you need to
+cover.  An 'X' signifies a wall.
 
 Your code may modify the maze that is passed in, if you like.
 
