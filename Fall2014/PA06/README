@@ -34,13 +34,19 @@ The following are strictly required in order to receive credit:
 - All test cases pass.  There is no partial credit for this assignment.
 - git.log contains a valid git log (i.e., not empty)
 - Assignment is submitted before the deadline.
-- Code compiles on ecegrid without any compiler warnings or errors
+- Code compiles on ecegrid without any compiler warnings or errors.
+- Code runs with no memory errors (as reported by Valgrind).
 
 
 // ~ Notes ~ //
 
 You always enter the maze through the entrance, which is always on the
-upper edge of the maze.
+upper edge of the maze.  There will only be one entrance.
+
+The directions printed by your program do not have to match the samples.
+The only requirement is that they cover the entire maze (starting from
+the entrance) without running through walls or beyond the edge of the
+maze.
 
 You don't need to worry about where you exit from--or even exiting at
 all.  You only need to enter through the entrance and ensure that you
