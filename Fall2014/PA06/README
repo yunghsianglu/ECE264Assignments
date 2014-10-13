@@ -10,9 +10,11 @@ prints a set of driving directions for covering every path in the maze.
 
 Several samples are included with the starter code.
 
+
 // ~ Learning Goals ~ //
 
 Recursion
+
 
 // ~ Submitting Your Assignment ~ //
 
@@ -24,6 +26,7 @@ You create the zip file using the following command.
  
  > zip pa06.zip answer06.c git.log
 
+
 // ~ Rules ~ //
 
 The following are strictly required in order to receive credit:
@@ -33,17 +36,35 @@ The following are strictly required in order to receive credit:
 - Assignment is submitted before the deadline.
 - Code compiles on ecegrid without any compiler warnings or errors
 
+
 // ~ Notes ~ //
 
 You always enter the maze through the entrance, which is always on the
-upper edge of the maze.  You don't need to worry about where you exit
-from--or even exiting at all.  You only need to enter through the entrance
-and ensure that you cover all paths.
+upper edge of the maze.
+
+You don't need to worry about where you exit from--or even exiting at
+all.  You only need to enter through the entrance and ensure that you
+cover all paths.
 
 A space (' ') signifies a path that you need to cover.  An 'X' signifies a
 wall.
 
 Your code may modify the maze that is passed in, if you like.
+
+Each line of the output should be a direction ("N", "E", "S", or "W"),
+a space, and an integer (number of units to move).  "N" means up, "S"
+means down, "E" means right, and "W" means left.
+
+The input maze will never be more than 99 characters high and/or 99
+characters wide.
+
+The code used to create the sample mazes is called "amaze" and is
+included.  To create a maze that is w characters wide and h characters
+high, call it as "amaze (h-1)/2 (w-1)/2".  The width and height in
+characters must be an odd number.  For example, to create a
+20x10-character maze (i.e., 21 characters wide, 11 characters high),
+you would run this:  ./amaze 5 10 X
+
 
 // ~ How to start ~ //
 
@@ -68,6 +89,7 @@ the paths on a ride-on lawn mower.  For this assignment, recursion is your frien
 This assignment is similar to recursion-related problems that frequently come
 up in job interviews with large software companies.  Think through the problem and
 discuss your ideas with classmates.
+
 
 // ~ Tips ~ //
 

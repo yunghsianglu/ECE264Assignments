@@ -1,28 +1,3 @@
-XXXXXXXXXXXXX XXXXXXXXXXX
-X       X     X         X
-X XXXXX XXXXX X XXX XXXXX
-X X   X     X X X X     X
-X X X XXXXX X X X XXXXX X
-X X X     X   X X     X X
-X XXXXX X XXX X XXX X X X
-X     X X   X X     X X X
-X XXX X XXXXX XXXXXXX X X
-X X   X         X     X X
-X X XXXXXXXXXXXXX XXXXX X
-X X X           X   X   X
-XXX X XXXXXXXXX XXX X XXX
-X   X   X     X     X X X
-X XXXXX XXXXX XXXXXXX X X
-X       X     X     X X X
-X XXXXXXX XXX X X X X X X
-X X       X   X X X X X X
-X X XXXXXXX XXX X X X X X
-X   X     X X   X X X X X
-XXXXX XXX X XXXXX XXX X X
-X   X   X X     X X   X X
-X XXXXX X XXXXX X X XXX X
-X       X         X     X
-XXXXXXXXXXXXX XXXXXXXXXXX
 S 1
 W 4
 E 4
@@ -190,34 +165,3 @@ E 2
 S 4
 E 6
 N 9
-
-
-
---------------------------------------
-
-
-XXXXXXXXXXXXX.XXXXXXXXXXX
-X.......X.....X.........X
-X.XXXXX.XXXXX.X.XXX.XXXXX
-X.X...X.....X.X.X.X.....X
-X.X.X.XXXXX.X.X.X.XXXXX.X
-X.X.X.....X...X.X.....X.X
-X.XXXXX.X.XXX.X.XXX.X.X.X
-X.....X.X...X.X.....X.X.X
-X.XXX.X.XXXXX.XXXXXXX.X.X
-X.X...X.........X.....X.X
-X.X.XXXXXXXXXXXXX.XXXXX.X
-X.X.X...........X...X...X
-XXX.X.XXXXXXXXX.XXX.X.XXX
-X...X...X.....X.....X.X.X
-X.XXXXX.XXXXX.XXXXXXX.X.X
-X.......X.....X.....X.X.X
-X.XXXXXXX.XXX.X.X.X.X.X.X
-X.X.......X...X.X.X.X.X.X
-X.X.XXXXXXX.XXX.X.X.X.X.X
-X...X.....X.X...X.X.X.X.X
-XXXXX.XXX.X.XXXXX.XXX.X.X
-X...X...X.X.....X.X...X.X
-X.XXXXX.X.XXXXX.X.X.XXX.X
-X.......X.........X.....X
-XXXXXXXXXXXXX.XXXXXXXXXXX
