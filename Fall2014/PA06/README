@@ -82,7 +82,7 @@ void print_directions(char** maze, int w, int h) {
 Next, think through how you would traverse the maze if you were actually mowing
 the paths on a ride-on lawn mower.  Use recursion.
 
-You may want to your algorithm on paper before coding it up.
+You may want to work out your algorithm on paper before coding it up.
 
 Tip:  Beware of buffer overflow errors.  It is very easy to create segmentation
 faults if your "mower" goes through the walls and outside the maze!
