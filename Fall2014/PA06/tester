@@ -1,0 +1,217 @@
+#!/usr/bin/python
+# vim: fileencoding=utf8 noexpandtab tabstop=4 shiftwidth=4
+"""
+Tester for PA06 (corn maze recursion) in ECE 264 at Purdue University
+
+(c) Copyright 2014 Purdue University -- All Rights Reserved
+Author: Alexander J. Quinn
+"""
+from __future__ import division, unicode_literals
+import tempfile, shutil, sys, re, os
+from subprocess import Popen, PIPE, STDOUT
+
+def main():
+	# Make sure required files are here before we start.
+	for path in ("answer06.h", "answer06.c", "amaze.c"):
+		if not os.path.isfile(path):
+			sys.stderr.write("Can't find %s\n"%path)
+			sys.exit(1)
+
+	# We will combine all of the code to be compiled into a single string and pass to gcc on stdin.
+	src = "\n".join((
+		read_file("answer06.h"),
+		read_file("answer06.c"),
+		read_file("amaze.c").replace("int main", "int amaze_main"),
+		TESTER_C
+	))
+
+	# Dimensions -- We will test with mazes having all of these dimensions (width, height)
+	dimensions = ((5,5), (7, 9), (7, 9), (9,17), (17,9), (27, 9))
+
+	# Measurements to help with formatting the input
+	max_width = max(w for (w,h) in dimensions)
+	padding_x = 4
+	padding_y = 2
+
+	# Create a temporary directory where the temporary executable will live
+	temp_dir = tempfile.mkdtemp(prefix="ece264_pa06_tester_")
+	try:
+		try:
+			# Construct the path to the binary.
+			bin_path = "%s/test_pa06"%(temp_dir)
+
+			# Check:  Compiles
+			(status, output) = run(["gcc", "-g", "-Wall", "-Wshadow", "-xc", "-", "-o", bin_path], input=src)
+			if status != 0:
+				raise Failure("Compilation failed with code %d\n%s"%(status, output))
+
+			# Check:  Memory errors (a la Valgrind)
+			(status, output) = run(["valgrind", "--tool=memcheck", "--leak-check=full", bin_path, str(5), str(11)])
+			mo = re.search(r"ERROR SUMMARY: (\d+) errors from \d+ contexts", output)
+			if mo.group(1) != "0":
+				raise Failure("Memory errors (x %s)\n%s"%(mo.group(1), output))
+
+			for w,h in dimensions:
+					
+				# Check:  Execute binary
+				(status, output) = run([bin_path, str(w), str(h)])
+				if status != 0:
+					raise Failure("Execution failed with code %d\n%s"%(status, output))
+
+				# Extract the maze from the program output
+				maze,instructions = output.split("\n\n\n", 1)
+
+				# Split the maze into tuples that will be easier to work with below
+				old_grid = tuple(tuple(s.strip()) for s in maze.strip().splitlines())
+				new_grid = tuple(list(row) for row in old_grid)
+
+				assert all(len(row)==w for row in old_grid), (tuple(len(row) for row in old_grid), w)
+				assert len(old_grid)==h, (len(old_grid), h)
+
+				# Extract the instructions from the program output
+				instructions = tuple(s.strip() for s in instructions.strip().upper().splitlines())
+
+				# Find the entrance -- first and only space on the top row
+				y = 0
+				x = old_grid[0].index(" ")
+
+				# Place a breadcrumb at the entrance
+				new_grid[y][x] = '.'
+
+				try:
+					for step_idx,line in enumerate(instructions):
+						# Ignore blank lines or lines that contain part ot the maze (i.e., start with "X")
+						if line == "" or line.startswith("X"):
+							continue
+
+						# Check: format of instruction  (be fairly lenient)
+						if re.match(r'^\s*[NESW]\s+\d+\s*$', line, re.IGNORECASE) is None:
+							raise Failure("Instruction not understood:  \"%s\""%line)
+
+						# Extract the compass direction and number of steps
+						direction,n = line.strip().split()
+						direction = direction.upper()
+						n = int(n)
+						
+						for i in xrange(n):
+
+							# Move the position according to the instruction
+							x += {"N": 0, "E":1, "S":0, "W":-1}[direction]
+							y += {"N":-1, "E":0, "S":1, "W": 0}[direction]
+
+							# Check: out of bounds
+							if x < 0 or x >= w or y < 0 or y >= h:
+								raise Failure("Out of bounds to (%d, %d) at step %d: \"%s\""%(x, y, step_idx+1, line))
+
+							# Check:  run into wall
+							elif old_grid[y][x] == 'X':
+								raise Failure("Ran into wall (%d, %d) at step %d: \"%s\""%(x, y, step_idx+1, line))
+
+							else:
+								new_grid[y][x] = '.'
+
+					# Check: remaining spaces
+					location_of_a_space = None
+					num_spaces = 0
+					for y in xrange(h):
+						if " " in new_grid[y] and location_of_a_space is None:
+							num_spaces += new_grid[y].count(' ')
+							location_of_a_space = (new_grid[y].index(' '), y)
+
+					if num_spaces >= 1:
+						s = "1 space remains" if num_spaces==1 else "%d spaces remain"%num_spaces
+						raise Failure("Incomplete: %s, such as at %r"%(s, location_of_a_space))
+
+				finally:
+					# Print maze with and without the breadcrumbs
+					for y in xrange(h):
+						old_line = "".join(old_grid[y])
+						new_line = "".join(new_grid[y])
+						print old_line.rjust(max_width) + " "*padding_x + new_line
+
+					sys.stderr.write("\n"*padding_y)
+
+		except Failure as e:
+			# Print the error that occurred
+			sys.stderr.write(e.args[0] + "\n")
+			sys.exit(1)
+
+		else:
+			# Print a nicely formatted message on success.
+			total_width = 2 * max_width + padding_x
+			sys.stderr.write("*"*total_width + "\n")
+			sys.stderr.write("*" + " "*(total_width-2) + "*\n")
+			sys.stderr.write("*" + "SUCCESS - all tests pass".center(total_width-2) + "*\n")
+			sys.stderr.write("*" + " "*(total_width-2) + "*\n")
+			sys.stderr.write("*"*total_width + "\n")
+	finally:
+		# Remove the temporary directory containing the temporary executable that was created for this test.
+		shutil.rmtree(temp_dir)
+
+class Failure(Exception): pass
+
+def run(cmd, input=None):
+	'''
+	Run a command and return the return code and output
+
+	- input is any text that you want to pipe to the process
+	'''
+	proc = Popen(cmd, stdin=PIPE, stderr=STDOUT, stdout=PIPE)
+	output = proc.communicate(input=input)[0]
+	output = output.decode("ascii", "replace")
+	return (proc.returncode, output)
+
+def read_file(path):
+	'''
+	Read the contents of a file
+	'''
+	with open(path, "r") as infile:
+		return infile.read()
+
+TESTER_C = br'''
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+
+	// Validate command line arguments
+	if(argc !=3 ) {
+		fprintf(stderr, "Expected usage:  %s <width> <height>\n", argv[0]);
+		return EXIT_FAILURE;
+	}
+	
+	// Get width and height from command line
+	int h = atoi(argv[2]), w = atoi(argv[1]);
+	
+	// Translate to form needed by amaze.c
+	int rows = (h-1)/2, cols = (w-1)/2;
+
+	// Create maze
+	initrand();
+	char** maze = mazeinit(rows, cols, 'X');
+	mazewalk(maze,rows,cols);
+
+	// Print maze
+	int y,x;
+	for(y=0; y < h; y++) {
+		for(x=0; x < w; x++) {
+			putchar(maze[y][x]);
+		}
+		putchar('\n');
+	}
+
+	// Print divider
+	printf("\n\n");
+
+	// Call student code
+	print_directions(maze, w, h);
+
+	// Free maze memory
+	mazefree(maze, rows);
+
+	return EXIT_SUCCESS;
+}
+'''
+
+if __name__=="__main__":
+	main()
