@@ -83,17 +83,18 @@ def main():
 				max_digits = 1
 				for step_idx,line in enumerate(instructions):
 					# Ignore blank lines or lines that contain part ot the maze (i.e., start with "X")
-					if line == "" or line.startswith("X"):
+					if line == "" or line.startswith("X") or line.replace("-","")=="":
 						continue
 
 					# Check: format of instruction  (be fairly lenient)
-					if re.match(r'^\s*[NESW]\s+\d+\s*$', line, re.IGNORECASE) is None:
-						raise Failure("Instruction not understood:  \"%s\""%line)
+					mo = re.match(r'^\s*([NESW])\s*(\d+)\s*$', line, re.IGNORECASE)
+					if mo is None:
+						stderr_write("Warning:  Instruction not understood:  \"%s\"\n"%line)
+						continue
 
 					# Extract the compass direction and number of steps
-					direction,n = line.strip().split()
-					direction = direction.upper()
-					n = int(n)
+					direction = mo.group(1).upper()
+					n = int(mo.group(2))
 
 					instructions_extracted.append( (len(instructions_extracted)+1, direction, n) )
 
@@ -146,7 +147,7 @@ def main():
 							old_line = " "*len(old_line)
 							new_line = " "*len(new_line)
 
-						stdout_write((" "*padding_x).join((
+						stderr_write((" "*padding_x).join((
 							old_line.rjust(max_width),
 							middle,
 							new_line)) + "\n")
@@ -173,7 +174,7 @@ def main():
 class Failure(Exception): pass
 
 def stderr_write(s):
-	sys.stderr.write(s.encode("ascii", "replace"))
+	sys.stdout.write(s.encode("ascii", "replace"))
 
 def stdout_write(s):
 	sys.stdout.write(s.encode("ascii", "replace"))
