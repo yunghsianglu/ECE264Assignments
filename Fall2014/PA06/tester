@@ -14,7 +14,7 @@ def main():
 	# Make sure required files are here before we start.
 	for path in ("answer06.h", "answer06.c", "amaze.c"):
 		if not os.path.isfile(path):
-			sys.stderr.write("Can't find %s\n"%path)
+			stderr_write("Can't find %s\n"%path)
 			sys.exit(1)
 
 	# We will combine all of the code to be compiled into a single string and pass to gcc on stdin.
@@ -78,21 +78,29 @@ def main():
 				# Place a breadcrumb at the entrance
 				new_grid[y][x] = '.'
 
-				try:
-					for step_idx,line in enumerate(instructions):
-						# Ignore blank lines or lines that contain part ot the maze (i.e., start with "X")
-						if line == "" or line.startswith("X"):
-							continue
+				# Extract compass direction and number from instructions
+				instructions_extracted = []
+				max_digits = 1
+				for step_idx,line in enumerate(instructions):
+					# Ignore blank lines or lines that contain part ot the maze (i.e., start with "X")
+					if line == "" or line.startswith("X"):
+						continue
 
-						# Check: format of instruction  (be fairly lenient)
-						if re.match(r'^\s*[NESW]\s+\d+\s*$', line, re.IGNORECASE) is None:
-							raise Failure("Instruction not understood:  \"%s\""%line)
+					# Check: format of instruction  (be fairly lenient)
+					if re.match(r'^\s*[NESW]\s+\d+\s*$', line, re.IGNORECASE) is None:
+						raise Failure("Instruction not understood:  \"%s\""%line)
 
-						# Extract the compass direction and number of steps
-						direction,n = line.strip().split()
-						direction = direction.upper()
-						n = int(n)
+					# Extract the compass direction and number of steps
+					direction,n = line.strip().split()
+					direction = direction.upper()
+					n = int(n)
+
+					instructions_extracted.append( (len(instructions_extracted)+1, direction, n) )
+
+					max_digits = len(str(n))
 						
+				try:
+					for step_idx,direction,n in instructions_extracted:
 						for i in xrange(n):
 
 							# Move the position according to the instruction
@@ -123,32 +131,57 @@ def main():
 						raise Failure("Incomplete: %s, such as at %r"%(s, location_of_a_space))
 
 				finally:
+					fmt = "%%%dd. %%s %%%dd"%(len(str(len(instructions_extracted))), max_digits)
 					# Print maze with and without the breadcrumbs
+					for y in xrange(max(h, len(instructions_extracted))):
+						if y < len(instructions_extracted):
+							middle = fmt%instructions_extracted[y]
+						else:
+							middle = " "*len(middle)
+						if y < h:
+							old_line = "".join(old_grid[y])
+							new_line = "".join(new_grid[y])
+						else:
+							old_line = " "*len(old_line)
+							new_line = " "*len(new_line)
+						#stdout_write(old_line.rjust(max_width) + " "*padding_x + new_line + "\n")
+						stdout_write((" "*padding_x).join((
+							old_line.rjust(max_width),
+							middle,
+							new_line)) + "\n")
+
 					for y in xrange(h):
 						old_line = "".join(old_grid[y])
-						new_line = "".join(new_grid[y])
-						print old_line.rjust(max_width) + " "*padding_x + new_line
+						if y < len(instructions_extracted):
+							middle = "%d. %s %d"%instructions_extracted[y]
 
-					sys.stderr.write("\n"*padding_y)
+					stderr_write("\n"*padding_y)
 
 		except Failure as e:
 			# Print the error that occurred
-			sys.stderr.write(e.args[0] + "\n")
+			stderr_write(e.args[0] + "\n")
 			sys.exit(1)
 
 		else:
 			# Print a nicely formatted message on success.
 			total_width = 2 * max_width + padding_x
-			sys.stderr.write("*"*total_width + "\n")
-			sys.stderr.write("*" + " "*(total_width-2) + "*\n")
-			sys.stderr.write("*" + "SUCCESS - all tests pass".center(total_width-2) + "*\n")
-			sys.stderr.write("*" + " "*(total_width-2) + "*\n")
-			sys.stderr.write("*"*total_width + "\n")
+			stderr_write("*"*total_width + "\n")
+			stderr_write("*" + " "*(total_width-2) + "*\n")
+			stderr_write("*" + "SUCCESS - all tests pass".center(total_width-2) + "*\n")
+			stderr_write("*" + " "*(total_width-2) + "*\n")
+			stderr_write("*"*total_width + "\n")
 	finally:
 		# Remove the temporary directory containing the temporary executable that was created for this test.
 		shutil.rmtree(temp_dir)
 
 class Failure(Exception): pass
+
+def stderr_write(s):
+	sys.stderr.write(s.encode("ascii", "replace"))
+
+def stdout_write(s):
+	sys.stdout.write(s.encode("ascii", "replace"))
+
 
 def run(cmd, input=None):
 	'''
