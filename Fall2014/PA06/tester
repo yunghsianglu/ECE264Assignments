@@ -97,7 +97,7 @@ def main():
 
 					instructions_extracted.append( (len(instructions_extracted)+1, direction, n) )
 
-					max_digits = len(str(n))
+					max_digits = max(max_digits, len(str(n)))
 						
 				try:
 					for step_idx,direction,n in instructions_extracted:
@@ -132,6 +132,7 @@ def main():
 
 				finally:
 					fmt = "%%%dd. %%s %%%dd"%(len(str(len(instructions_extracted))), max_digits)
+
 					# Print maze with and without the breadcrumbs
 					for y in xrange(max(h, len(instructions_extracted))):
 						if y < len(instructions_extracted):
@@ -144,16 +145,11 @@ def main():
 						else:
 							old_line = " "*len(old_line)
 							new_line = " "*len(new_line)
-						#stdout_write(old_line.rjust(max_width) + " "*padding_x + new_line + "\n")
+
 						stdout_write((" "*padding_x).join((
 							old_line.rjust(max_width),
 							middle,
 							new_line)) + "\n")
-
-					for y in xrange(h):
-						old_line = "".join(old_grid[y])
-						if y < len(instructions_extracted):
-							middle = "%d. %s %d"%instructions_extracted[y]
 
 					stderr_write("\n"*padding_y)
 
