@@ -14,7 +14,7 @@ def main():
 	# Make sure required files are here before we start.
 	for path in ("answer06.h", "answer06.c", "amaze.c"):
 		if not os.path.isfile(path):
-			stderr_write("Can't find %s\n"%path)
+			stdout_write("Can't find %s\n"%path)
 			sys.exit(1)
 
 	# We will combine all of the code to be compiled into a single string and pass to gcc on stdin.
@@ -32,6 +32,17 @@ def main():
 	max_width = max(w for (w,h) in dimensions)
 	padding_x = 4
 	padding_y = 2
+	total_width = 2 * max_width + padding_x  # for messages printed below
+
+	def print_msg(msg):
+		# Print a nicely formatted message on success.
+		w = max(total_width, len(msg) + 4)
+
+		stdout_write("*"*w + "\n")
+		stdout_write("*" + " "*(w-2) + "*\n")
+		stdout_write("*" + msg.center(w-2) + "*\n")
+		stdout_write("*" + " "*(w-2) + "*\n")
+		stdout_write("*"*w + "\n")
 
 	# Create a temporary directory where the temporary executable will live
 	temp_dir = tempfile.mkdtemp(prefix="ece264_pa06_tester_")
@@ -43,20 +54,20 @@ def main():
 			# Check:  Compiles
 			(status, output) = run(["gcc", "-g", "-Wall", "-Wshadow", "-xc", "-", "-o", bin_path], input=src)
 			if status != 0:
-				raise Failure("Compilation failed with code %d\n%s"%(status, output))
+				raise Failure("Compilation failed with code %d"%status, output)
 
 			# Check:  Memory errors (a la Valgrind)
 			(status, output) = run(["valgrind", "--tool=memcheck", "--leak-check=full", bin_path, str(5), str(11)])
 			mo = re.search(r"ERROR SUMMARY: (\d+) errors from \d+ contexts", output)
 			if mo.group(1) != "0":
-				raise Failure("Memory errors (x %s)\n%s"%(mo.group(1), output))
+				raise Failure("Memory errors (x %s)"%mo.group(1), output)
 
 			for w,h in dimensions:
 					
 				# Check:  Execute binary
 				(status, output) = run([bin_path, str(w), str(h)])
 				if status != 0:
-					raise Failure("Execution failed with code %d\n%s"%(status, output))
+					raise Failure("Execution failed with code %d"%status, output)
 
 				# Extract the maze from the program output
 				maze,instructions = output.split("\n\n\n", 1)
@@ -89,7 +100,7 @@ def main():
 					# Check: format of instruction  (be fairly lenient)
 					mo = re.match(r'^\s*([NESW])\s*(\d+)\s*$', line, re.IGNORECASE)
 					if mo is None:
-						stderr_write("Warning:  Instruction not understood:  \"%s\"\n"%line)
+						stdout_write("Warning:  Instruction not understood:  \"%s\"\n"%line)
 						continue
 
 					# Extract the compass direction and number of steps
@@ -133,13 +144,14 @@ def main():
 
 				finally:
 					fmt = "%%%dd. %%s %%%dd"%(len(str(len(instructions_extracted))), max_digits)
+					middle_pad = " "*len(fmt%(1, "S", 1))
 
 					# Print maze with and without the breadcrumbs
 					for y in xrange(max(h, len(instructions_extracted))):
 						if y < len(instructions_extracted):
 							middle = fmt%instructions_extracted[y]
 						else:
-							middle = " "*len(middle)
+							middle = middle_pad
 						if y < h:
 							old_line = "".join(old_grid[y])
 							new_line = "".join(new_grid[y])
@@ -147,38 +159,35 @@ def main():
 							old_line = " "*len(old_line)
 							new_line = " "*len(new_line)
 
-						stderr_write((" "*padding_x).join((
+						stdout_write((" "*padding_x).join((
 							old_line.rjust(max_width),
 							middle,
 							new_line)) + "\n")
 
-					stderr_write("\n"*padding_y)
+					stdout_write("\n"*padding_y)
 
 		except Failure as e:
 			# Print the error that occurred
-			stderr_write(e.args[0] + "\n")
+			#stdout_write(e.args[0] + "\n")
+			if len(e.args) >= 2:
+				for arg in e.args[1:]:
+					stdout_write(arg.strip("\n\r") + "\n")
+				stdout_write("\n")
+			print_msg("FAILURE - " + e.args[0])
 			sys.exit(1)
 
 		else:
-			# Print a nicely formatted message on success.
-			total_width = 2 * max_width + padding_x
-			stderr_write("*"*total_width + "\n")
-			stderr_write("*" + " "*(total_width-2) + "*\n")
-			stderr_write("*" + "SUCCESS - all tests pass".center(total_width-2) + "*\n")
-			stderr_write("*" + " "*(total_width-2) + "*\n")
-			stderr_write("*"*total_width + "\n")
+			print_msg("SUCCESS - all tests pass")
 	finally:
 		# Remove the temporary directory containing the temporary executable that was created for this test.
 		shutil.rmtree(temp_dir)
 
 class Failure(Exception): pass
 
-def stderr_write(s):
-	sys.stdout.write(s.encode("ascii", "replace"))
-
 def stdout_write(s):
+	# Like print statement, but without trailing "\n" and guards against some encoding issues.
 	sys.stdout.write(s.encode("ascii", "replace"))
-
+	sys.stdout.flush()
 
 def run(cmd, input=None):
 	'''
@@ -201,8 +210,10 @@ def read_file(path):
 TESTER_C = br'''
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char *argv[]) {
+	int y,x;
 
 	// Validate command line arguments
 	if(argc !=3 ) {
@@ -218,11 +229,17 @@ int main(int argc, char *argv[]) {
 
 	// Create maze
 	initrand();
-	char** maze = mazeinit(rows, cols, 'X');
-	mazewalk(maze,rows,cols);
+	char** maze_not_terminated = mazeinit(rows, cols, 'X');
+	mazewalk(maze_not_terminated,rows,cols);
+	char** maze = malloc(h*sizeof(char*));
+	for(y=0; y<h; y++) {
+		maze[y] = malloc((w+1)*sizeof(char));
+		memcpy(maze[y], maze_not_terminated[y], w);
+		maze[y][w] = '\0';
+	}
+	mazefree(maze_not_terminated, rows);
 
 	// Print maze
-	int y,x;
 	for(y=0; y < h; y++) {
 		for(x=0; x < w; x++) {
 			putchar(maze[y][x]);
@@ -237,7 +254,12 @@ int main(int argc, char *argv[]) {
 	print_directions(maze, w, h);
 
 	// Free maze memory
-	mazefree(maze, rows);
+	for(y=0; y<h; y++) {
+		free(maze[y]);
+		maze[y] = NULL;
+	}
+	free(maze);
+	maze = NULL;
 
 	return EXIT_SUCCESS;
 }
