@@ -111,6 +111,9 @@ def main():
 
 					max_digits = max(max_digits, len(str(n)))
 						
+				if len(instructions_extracted) == 0:
+					raise Failure("No instructions were printed")
+
 				try:
 					for step_idx,direction,n in instructions_extracted:
 						for i in xrange(n):
