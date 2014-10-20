@@ -1,0 +1,388 @@
+   ---------------------------------------------------------------------------
+   Welcome to the PA07 testing program. This program takes a _long_ time
+   to execute. There is a reason for this. You should not rely on this
+   program to test your code as you go. Instead, you should think about
+   what your code should be doing, and what inputs should produce what
+   outputs for each of your functions.
+   
+        YOU SHOULD THEN TEST EVERY PIECE OF CODE AS YOU WRITE IT 
+   
+                                 AND 
+   
+                        FIX MISTAKES AS YOU GO.
+   
+   When you are convinced that you have the entire assignment 100% correct,
+   then you can use this testing program to test it. 
+   
+   This will give you your mark assuming that you submit it correctly, and 
+   there are no other irregularities.
+   ---------------------------------------------------------------------------
+
+/**
+ * Testcase 00 :: images/bmps/01-unnormalized-smile.bmp 
+ * Test linear normalization on bmp file
+ */
+Attempt to read 'images/bmps/01-unnormalized-smile.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 200982
+  offset to image data: 54
+  header size: 40
+  width: 224
+  height: 299
+  planes: 1
+  bits: 24
+Success.
+Applying normalization
+Writing out 'student-out-00_01-smile.bmp' in .bmp format
+Comparing student-out-00_01-smile.bmp with expected output: 
+./diff-plus student-out-00_01-smile.bmp images/bmps/01-smile.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 01 :: images/bmps/02-unnormalized-cat-chess.bmp 
+ * Test linear normalization on bmp file
+ */
+Attempt to read 'images/bmps/02-unnormalized-cat-chess.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 202554
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 225
+  planes: 1
+  bits: 24
+Success.
+Applying normalization
+Writing out 'student-out-01_02-cat-chess.bmp' in .bmp format
+Comparing student-out-01_02-cat-chess.bmp with expected output: 
+./diff-plus student-out-01_02-cat-chess.bmp images/bmps/02-cat-chess.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 02 :: images/bmps/03-unnormalized-hawkes-bay-NZ.bmp 
+ * Test linear normalization on bmp file
+ */
+Attempt to read 'images/bmps/03-unnormalized-hawkes-bay-NZ.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 180054
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 200
+  planes: 1
+  bits: 24
+Success.
+Applying normalization
+Writing out 'student-out-02_03-hawkes-bay-NZ.bmp' in .bmp format
+Comparing student-out-02_03-hawkes-bay-NZ.bmp with expected output: 
+./diff-plus student-out-02_03-hawkes-bay-NZ.bmp images/bmps/03-hawkes-bay-NZ.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 03 :: images/bmps/04-unnormalized-nelsonmandela.bmp 
+ * Test linear normalization on bmp file
+ */
+Attempt to read 'images/bmps/04-unnormalized-nelsonmandela.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 296154
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 329
+  planes: 1
+  bits: 24
+Success.
+Applying normalization
+Writing out 'student-out-03_04-nelsonmandela.bmp' in .bmp format
+Comparing student-out-03_04-nelsonmandela.bmp with expected output: 
+./diff-plus student-out-03_04-nelsonmandela.bmp images/bmps/04-nelsonmandela.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 04 :: images/bmps/05-unnormalized-sagan-stamp.bmp 
+ * Test linear normalization on bmp file
+ */
+Attempt to read 'images/bmps/05-unnormalized-sagan-stamp.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 231354
+  offset to image data: 54
+  header size: 40
+  width: 299
+  height: 257
+  planes: 1
+  bits: 24
+Success.
+Applying normalization
+Writing out 'student-out-04_05-sagan-stamp.bmp' in .bmp format
+Comparing student-out-04_05-sagan-stamp.bmp with expected output: 
+./diff-plus student-out-04_05-sagan-stamp.bmp images/bmps/05-sagan-stamp.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 05 :: images/bmps/01-smile.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/01-smile.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 200982
+  offset to image data: 54
+  header size: 40
+  width: 224
+  height: 299
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-05_01-smile.ee264' in .ee264 format
+Comparing student-out-05_01-smile.ee264 with expected output: 
+./diff-plus student-out-05_01-smile.ee264 images/01-smile.ee264
+Match.
+Testcase passed.
+
+/**
+ * Testcase 06 :: images/bmps/02-cat-chess.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/02-cat-chess.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 202554
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 225
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-06_02-cat-chess.ee264' in .ee264 format
+Comparing student-out-06_02-cat-chess.ee264 with expected output: 
+./diff-plus student-out-06_02-cat-chess.ee264 images/02-cat-chess.ee264
+Match.
+Testcase passed.
+
+/**
+ * Testcase 07 :: images/bmps/03-hawkes-bay-NZ.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/03-hawkes-bay-NZ.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 180054
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 200
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-07_03-hawkes-bay-NZ.ee264' in .ee264 format
+Comparing student-out-07_03-hawkes-bay-NZ.ee264 with expected output: 
+./diff-plus student-out-07_03-hawkes-bay-NZ.ee264 images/03-hawkes-bay-NZ.ee264
+Match.
+Testcase passed.
+
+/**
+ * Testcase 08 :: images/bmps/04-nelsonmandela.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/04-nelsonmandela.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 296154
+  offset to image data: 54
+  header size: 40
+  width: 300
+  height: 329
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-08_04-nelsonmandela.ee264' in .ee264 format
+Comparing student-out-08_04-nelsonmandela.ee264 with expected output: 
+./diff-plus student-out-08_04-nelsonmandela.ee264 images/04-nelsonmandela.ee264
+Match.
+Testcase passed.
+
+/**
+ * Testcase 09 :: images/bmps/05-sagan-stamp.bmp 
+ * Test writing ee264 format
+ */
+Attempt to read 'images/bmps/05-sagan-stamp.bmp' as .bmp format
+Printing BMP header information:
+  file type (should be 4d42): 4d42
+  file size: 231354
+  offset to image data: 54
+  header size: 40
+  width: 299
+  height: 257
+  planes: 1
+  bits: 24
+Success.
+Writing out 'student-out-09_05-sagan-stamp.ee264' in .ee264 format
+Comparing student-out-09_05-sagan-stamp.ee264 with expected output: 
+./diff-plus student-out-09_05-sagan-stamp.ee264 images/05-sagan-stamp.ee264
+Match.
+Testcase passed.
+
+/**
+ * Testcase 10 :: images/01-smile.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/01-smile.ee264' as .ee264 format
+Success.
+Writing out 'student-out-10_01-smile.bmp' in .bmp format
+Comparing student-out-10_01-smile.bmp with expected output: 
+./diff-plus student-out-10_01-smile.bmp images/bmps/01-smile.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 11 :: images/02-cat-chess.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/02-cat-chess.ee264' as .ee264 format
+Success.
+Writing out 'student-out-11_02-cat-chess.bmp' in .bmp format
+Comparing student-out-11_02-cat-chess.bmp with expected output: 
+./diff-plus student-out-11_02-cat-chess.bmp images/bmps/02-cat-chess.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 12 :: images/03-hawkes-bay-NZ.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/03-hawkes-bay-NZ.ee264' as .ee264 format
+Success.
+Writing out 'student-out-12_03-hawkes-bay-NZ.bmp' in .bmp format
+Comparing student-out-12_03-hawkes-bay-NZ.bmp with expected output: 
+./diff-plus student-out-12_03-hawkes-bay-NZ.bmp images/bmps/03-hawkes-bay-NZ.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 13 :: images/04-nelsonmandela.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/04-nelsonmandela.ee264' as .ee264 format
+Success.
+Writing out 'student-out-13_04-nelsonmandela.bmp' in .bmp format
+Comparing student-out-13_04-nelsonmandela.bmp with expected output: 
+./diff-plus student-out-13_04-nelsonmandela.bmp images/bmps/04-nelsonmandela.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 14 :: images/05-sagan-stamp.ee264 
+ * Test reading ee264 format
+ */
+Attempt to read 'images/05-sagan-stamp.ee264' as .ee264 format
+Success.
+Writing out 'student-out-14_05-sagan-stamp.bmp' in .bmp format
+Comparing student-out-14_05-sagan-stamp.bmp with expected output: 
+./diff-plus student-out-14_05-sagan-stamp.bmp images/bmps/05-sagan-stamp.bmp
+Match.
+Testcase passed.
+
+/**
+ * Testcase 15 :: images/corrupt-testcases/01-incomplete-header.ee264 
+ * File has less than 128 bytes, and thus too small to contain a complete header. (Image_load should return NULL.)
+ */
+Failed to read header
+Error: failed to read 'images/corrupt-testcases/01-incomplete-header.ee264'
+Attempt to read 'images/corrupt-testcases/01-incomplete-header.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 16 :: images/corrupt-testcases/02-check-magic-number.ee264 
+ * File has corrupted magic bits. (Image_load should return NULL.)
+ */
+Failed to read header
+Error: failed to read 'images/corrupt-testcases/02-check-magic-number.ee264'
+Attempt to read 'images/corrupt-testcases/02-check-magic-number.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 17 :: images/corrupt-testcases/03-width0.ee264 
+ * File header specifies 0 width, which is an error that you must check for. (Image_load should return NULL.)
+ */
+Failed to read header
+Error: failed to read 'images/corrupt-testcases/03-width0.ee264'
+Attempt to read 'images/corrupt-testcases/03-width0.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 18 :: images/corrupt-testcases/04-height0.ee264 
+ * File header specifies 0 height, which is an error that you must check for. (Image_load should return NULL.)
+ */
+Failed to read header
+Error: failed to read 'images/corrupt-testcases/04-height0.ee264'
+Attempt to read 'images/corrupt-testcases/04-height0.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 19 :: images/corrupt-testcases/05-big-width-height.ee264 
+ * File header has crazy values for width and height which may cause malloc to fail. (Image_load should return NULL.)
+ */
+Failed to read -671088540 bytes of image data
+Error: failed to read 'images/corrupt-testcases/05-big-width-height.ee264'
+Attempt to read 'images/corrupt-testcases/05-big-width-height.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 20 :: images/corrupt-testcases/06-bad-comment-len.ee264 
+ * File header has a crazy value for the comment length which will either cause malloc to fail, or you will fail to find enough bytes in the file to read the comment. (Image_load should return NULL.)
+ */
+Failed to read 2122219134 bytes for image comment
+Error: failed to read 'images/corrupt-testcases/06-bad-comment-len.ee264'
+Attempt to read 'images/corrupt-testcases/06-bad-comment-len.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 21 :: images/corrupt-testcases/07-comment-has-no-null-byte.ee264 
+ * Comment (in file) does not end with a null-byte, which can cause serious problems. (Image_load should return NULL.)
+ */
+Failed to find null byte on comment
+Error: failed to read 'images/corrupt-testcases/07-comment-has-no-null-byte.ee264'
+Attempt to read 'images/corrupt-testcases/07-comment-has-no-null-byte.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 22 :: images/corrupt-testcases/08-height-wrong.ee264 
+ * File header specifies the wrong image height, meaning that you will not find the end of file when you expect to. (Image_load should return NULL.)
+ */
+Failed to find EOF in the correct place
+Error: failed to read 'images/corrupt-testcases/08-height-wrong.ee264'
+Attempt to read 'images/corrupt-testcases/08-height-wrong.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+/**
+ * Testcase 23 :: images/corrupt-testcases/09-incomplete-image.ee264 
+ * There is data missing from the end of the file. (Image_load should return NULL.)
+ */
+Failed to read 100 bytes of image data
+Error: failed to read 'images/corrupt-testcases/09-incomplete-image.ee264'
+Attempt to read 'images/corrupt-testcases/09-incomplete-image.ee264' as .ee264 format
+Image_load(...) correctly returns NULL on corrupt image
+Testcase passed.
+
+
+24/24 testcases passed.
+Overall mark is a PASS.
