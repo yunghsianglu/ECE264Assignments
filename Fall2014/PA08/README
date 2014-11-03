@@ -25,7 +25,7 @@ best possible algorithm to use for sorting linked-lists.
 
 Included in the assignment files is a file called "example.c". This
 file contains the code for merge-sorting arrays of strings. In this
-assignment we will re-implement this code to work with link-lists. The
+assignment we will re-implement this code to work with linked-lists. The
 result will look different; however, the essential idea will be
 exactly the same.
 
