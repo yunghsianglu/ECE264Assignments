@@ -154,10 +154,10 @@ One line in the .tsv file lists one business and is structured like this:
 
 In order to fill the fields of one node, you need to seperate a line according
 to the delimiter '\t'. Remember your explode() function from PA03? It could
-come in very handy for this assignment. If you want to use it, copy & paste the
-code (only the explode(...) function) at the top of your answer09.c. Of course,
-you don't HAVE to use explode(...) here, as long as you create the nodes
-properly and without memory leaks.
+come in very handy for this assignment. If you want to use it, copy your solution
+(.c and .h files) into the assignment directory, and #include "answer03.h" at
+the top of your solution. Of course, you don't HAVE to use explode(...) here, as
+long as you create the nodes properly and without memory leaks.
 
 // ~ Hints ~ //
 
