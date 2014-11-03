@@ -41,10 +41,8 @@ tree_insert(BusinessNode * node, BusinessNode * root);
 /* Parse a .tsv file line by line, create a BusinessNode for each entry, and
  * enter that node into a new BST. Return a pointer to the root of the BST.
  *
- * To break up a line of the read buffer into seperate fields, use the
- * explode(...) function from PA03. To do this, copy your answer03.h and
- * answer03.c into this directory and include "answer03.h" at the top of your
- * answer09.c
+ * The explode(...) function from PA03 may be useful for breaking up a lines 
+ * into seperate fields. 
  */
 BusinessNode *
 load_tree_from_file(char * filename);
