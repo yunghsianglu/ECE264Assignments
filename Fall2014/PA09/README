@@ -1,0 +1,224 @@
+Please read the entire README before starting your assignment, or asking
+for help.
+
+// ~ Overview ~ //
+
+Recursion is an elegant method for solving many problems, and many data
+structures are actually easier to manipulate with recursive functions.
+In this assignment, we will see how a binary tree (actually any tree
+data structure) can utilize the power of recursion.
+
+// ~ Learning Goals ~ //
+
+(1) Recursion
+(2) Binary (search) trees
+(3) Large datasets
+(4) Memory management
+
+You must submit one zip file to blackboard. This zip file must
+contain:
+(1) answer09.c
+(2) git.log
+
+Please create your zip file using the following command:
+
+ > zip pa09.zip answer09.c git.log
+
+If your zip file does not meet the above specification, then you may
+get zero for this assignment. YOU HAVE BEEN WARNED.  Following the
+instructions is *part* of getting the assignment correct. So please
+follow the instructions.
+
+// ~ Determining Your Mark ~ //
+
+The tester program is there to ensure that you have followed the
+instructions correctly.
+
+Run the tester program as follows:
+
+ > ./tester
+
+// ~ Binary (Search) Trees ~ //
+
+From Wikipedia: A binary tree is a tree data structure in which each
+node has at most two children (referred to as the left child and the
+right child).
+
+This is similar (and more general) to "linked lists", where nodes have
+at most one child.
+
+Linked List:
+    O   head/tail   O   head        O   head        O   head
+                    |               |               |
+                    V               V               V
+                    O   tail        O               O
+                                    |               |
+                                    V               V
+                                    O   tail        O
+                                                    |
+                                                    V
+                                                    O   tail
+
+Binary Tree:
+    O   root        O   root       O   root            O   root
+                   / \           /   \              /     \
+                  O   O         O     O          O           O
+                left right     / \   / \       /   \       /   \
+                              O   O O   O     O     O     O     O
+                                             / \   / \   / \   / \
+                                            O   O O   O O   O O   O
+
+The above diagrams show *full* binary trees, where every node has
+either zero or two children. It is perfectly acceptable to have a node
+with one child somewhere in the tree:
+
+More Binary Trees:
+    O   root        O   root       O   root       O   root
+                   / \            / \            / \
+                  O   O          O   O          O   O
+                       \        /                \   \
+                        O      O                  O   O
+
+Note that every linked list is (conceptually) also a binary tree.
+
+What makes these structures work so well recursively is their
+naturally recurring instances. If a recursive program can handle one
+node, then it can handle the entire tree.
+
+This assignment combines the power of binary search trees with a set of data
+that is as close to the real world as possible: Data about local businesses.
+Users of the website yelp (http://www.yelp.com) can post reviews and
+recommendation about their local restaurants and share them with the world.
+Yelp hosts about 57 million reviews for businesses catering to 132 million
+users a month, who constantly query their servers for information about their
+local businesses.
+
+One fundamental problem for companies with huge datasets like Yelp is
+retrieving information from a database. The user experience of the Yelp website
+would be unacceptable if, hypothetically, all of the data describing the
+businesses would be stored in a simple array or linked list: It would mean that
+for every search, the server would have to compare every single entry in the
+database to the search term.
+
+Of course, this is not how it is done in the real world, and this is where tree
+data structures like the binary search tree described above come in.
+
+The dataset you'll be working with is a small fraction of data pulled from
+Yelp's servers. The information available to you is:
+
+ - the name of the business
+ - the address of the business
+ - an average rating of the business on a scale of 1 through 4
+
+You will construct a binary tree from this dataset that is ordered according
+to the names of the businesses. Recall that there exists a certain C library
+that provides functions to compare two strings to each other. This will create
+a tree data structure with the following properties:
+
+(1) Each node's left subtree contains nodes with names "less than" "equal to"
+    its own name
+
+(2) Each node's right subtree contains nodes with names "greater than" its
+    own name
+
+(3) All left and right subtrees are binary search trees themselves.
+
+The relevant theory for why a binary tree is more efficient than a regular
+list is covered in future courses,
+but for a teaser, think about this: if you have a collection of N
+elements in a linked list, and you want to see if element X is in the
+list, then you need to compare X to every element in the list, a total
+of N comparisons. However, if you use a binary search tree, you only
+need to traverse down a single branch, and on average will make around
+log_2(N) comparisons. (i.e., log-base-2 of N.) What it means to
+"traverse down a single branch" will become clear as you write the
+code for this assignment.
+
+// ~ The Yelp Dataset ~ //
+
+The dataset you'll be working with is a small fraction of the Yelp Academic
+dataset, which is itself a fraction of Yelp's database that was made public for
+use in academia. More information and a download for the full dataset can be
+found here: http://www.yelp.com/dataset_challenge
+
+The data was converted from the JSON format to a text file filled with
+tab-seperated values with the extension '.tsv'. There is a lot more information
+in the full dataset, but for this assignment, you will only use the average
+rating, the name, and the address. The file you're provided with, called
+'yelp_businesses.tsv' has information about 42153 businesses in the United
+States and should be read line by line.
+
+One line in the .tsv file lists one business and is structured like this:
+
+  [rating]\t[name]\t[address]\n
+
+In order to fill the fields of one node, you need to seperate a line according
+to the delimiter '\t'. Remember your explode() function from PA03? It could
+come in very handy for this assignment. If you want to use it, copy & paste the
+code (only the explode(...) function) at the top of your answer09.c. Of course,
+you don't HAVE to use explode(...) here, as long as you create the nodes
+properly and without memory leaks.
+
+// ~ Hints ~ //
+
+(*) Make sure you read the class notes on binary trees.
+
+----------------------------------------------------------------------
+
+(*) Even though a tree is not an array, it is still easy to "iterate"
+over all of the elements. Iteration means you want to visit every
+element once, and only once. You already know how to do this with an
+array:
+
+int myints[] = { 5, 3, 6, 7 };
+for(ind = 0; ind < 4; ++ind)
+   do_something_with(myints[ind]); // see, visit each element once and only once
+
+With trees, you choose either pre-order, in-order, or post-order
+traversal to do the same thing. You *must* know this for the exam.
+Please look them up in the class notes.
+
+----------------------------------------------------------------------
+
+(*) If you get stuck getting started, then try writing just
+create_node(...), and a print_tree(...) function. You should
+then be able to do the following:
+
+// Step 1 //
+Create and print trees like so:
+
+int main(int argc, char * * argv)
+{
+   BusinessNode * root = create_node("5.0", "random name", "random address");
+   root->left = create_node("3.5", "another name", "another address");
+   root->right = create_node("4.0", "yet another name", "some address");
+   root->left->right = create_node("1.5", "name 3", "address 3");
+   print_tree(root);
+   return 0;
+}
+
+// Step 2 //
+Write destroy_tree(...). You should now have no memory leaks or
+errors.
+
+// Step 3 //
+Write tree_insert(...) and make sure it
+always works no matter what is thrown at it.
+
+// Step 4 //
+Write load_tree_from_file(...), which calls insert in a loop.
+
+// Step 5 //
+Write tree_search_name() and try to search for some Businesses that you know
+are in the tree.
+
+At this stage you will be reasonably close to completing the assignment.
+
+----------------------------------------------------------------------
+
+(*) To test the load_tree_from_file(...) function, it makes sense to work with
+a smaller subset of the data. To read the first 10 lines of
+'yelp_businesses.tsv' into a new file called 'shortfile.tsv', use the following
+command:
+
+ > cat yelp_businesses.tsv | head -n 5 >> shortfile.tsv
