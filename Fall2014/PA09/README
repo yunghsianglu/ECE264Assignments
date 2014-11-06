@@ -217,8 +217,8 @@ At this stage you will be reasonably close to completing the assignment.
 ----------------------------------------------------------------------
 
 (*) To test the load_tree_from_file(...) function, it makes sense to work with
-a smaller subset of the data. To read the first 10 lines of
+a smaller subset of the data. To read the first 5 lines of
 'yelp_businesses.tsv' into a new file called 'shortfile.tsv', use the following
 command:
 
- > cat yelp_businesses.tsv | head -n 10 > shortfile.tsv
+ > cat yelp_businesses.tsv | head -n 5 > shortfile.tsv
