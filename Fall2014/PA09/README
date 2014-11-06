@@ -221,4 +221,4 @@ a smaller subset of the data. To read the first 10 lines of
 'yelp_businesses.tsv' into a new file called 'shortfile.tsv', use the following
 command:
 
- > cat yelp_businesses.tsv | head -n 5 >> shortfile.tsv
+ > cat yelp_businesses.tsv | head -n 10 > shortfile.tsv
