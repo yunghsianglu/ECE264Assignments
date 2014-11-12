@@ -1,5 +1,10 @@
 #include <inttypes.h>
 
+/* The struct types below are used for returning results.  You will
+ * almost certainly need to define other struct types in your
+ * answer10.c file.  
+ */
+
 struct Review {
 	char* text;                /* Text of the review */
 	uint8_t stars;             /* Star rating given with this review */

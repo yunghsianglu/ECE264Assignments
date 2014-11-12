@@ -40,6 +40,14 @@ Locations should be sorted by state >> city >> address.
 
 Reviews should be sorted by star rating (descending) >> text of review.
 
+You must use a binary search tree for searching the list of businesses.
+For this assignment, you may need a somewhat more complex structure.
+Designing that structure is part of the assignment.
+
+There are no restrictions other than those explicitly mentioned in the
+README and answer10.h files.
+
+
 // ~ Data ~ //
 
 The data files for this assignment are located at the following path,
