@@ -1,0 +1,106 @@
+Please read the entire README before starting your assignment, or asking
+for help.
+
+// ~ Overview ~ //
+
+In this assignment, you will use the Yelp review data set to create a
+program that prints the reviews for a given business name.  Since the
+set of reviews is very large (about 740 MB), you should not load them
+all into memory.  Instead, you will use a more complex structure to
+track their location on disk and access them as needed.  You must do
+the same for the address information of each restaurant.
+
+// ~ Learning Goals ~ //
+
+(1) Binary (search) trees
+(2) File I/O
+(3) Memory management
+(3) Dynamic structures
+
+You must submit one zip file to blackboard. This zip file must
+contain these two files:
+(1) answer10.c
+(2) git.log
+
+Please create your zip file using the following command:
+
+ > zip pa10.zip answer10.c git.log
+
+If your zip file does not meet the above specification, then you will
+get zero for this assignment.
+
+// ~ Task ~ //
+
+The primary objective is to support a function that retrieves all of the
+reviews for a given restaurant name, grouped by location.
+
+The functions you need to implement are specified in answer10.h.
+
+Locations should be sorted by state >> city >> address.
+
+Reviews should be sorted by star rating (descending) >> text of review.
+
+// ~ Data ~ //
+
+The data files for this assignment are located at the following path,
+which is accessible from ecegrid.  Please access them using those paths.
+Do not copy them into your home directory.  You will not need to change
+them.  It is recommended that you work from ecegrid.  You may download
+them to your personal computer if you wish, but do not make copies within
+the ECE cluster.
+
+  /home/shay/a/ece264p0/share/yelp_data/businesses.tsv
+  /home/shay/a/ece264p0/share/yelp_data/reviews.tsv
+
+businesses.tsv contains one row for each location of a business, with each
+of the following fields, separated by tabs:
+
+ 1) business ID (an integer)
+ 2) name
+ 3) address
+ 4) city
+ 5) state
+ 6) zip_code
+ 7) full address (address, city, state, zip code in one field)
+
+The star rating is not included with the business records.
+
+reviews.tsv contains one row for each review of a location.  They are guaranteed
+to be sorted in order of the business ID, but there is no particular order within
+reviews for a given business ID.  They contain the following fields, tab-separated.
+
+ 1) business ID
+ 2) star rating given with that review
+ 3) review rating: "funny"
+ 4) review rating: "useful"
+ 5) review rating: "cool"
+ 6) review text
+
+You will not need all data fields for this assignment.  Each row of the above files
+is separated by a single newline ('\n') character.
+
+// ~ How to start ~ //
+
+Create an answer10.c file containing each of the functions specified in answer10.h.
+The most difficult part of this assignment will be to create the create_business_bst(..)
+function.  There are different ways you could do this.
+
+Your solution must not load all of the reviews into memory at once at any time.  Your
+data structure will need to store the *file offset* for the review text, as well as the
+address details for the business locations.  When you are reading a file, you can get
+the current file offset using the ftell(..) function.  Then, you can return to
+a location using the fseek(..) function.  See the man page for those functions for
+the full details.
+
+// ~ Tester ~ //
+
+A tester will be made available approximately 72 hours before the assignment deadline
+to help you with final testing.  You should write your own tests to aid in your
+development and use the tester only for final confirmation of your score.  When
+you receive an email, you will need to run git pull.
+
+The tester for this assignment will intentionally *not* run Valgrind for you.  Please
+refer to the instructions for PA01 for how to run Valgrind.  You will be responsible
+for finding and fixing memory errors, as always.  We want you to learn to find
+these on your own.
+need to run git pull to receive it.
