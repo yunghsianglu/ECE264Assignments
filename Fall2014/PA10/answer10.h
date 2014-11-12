@@ -60,6 +60,13 @@ struct Business* get_business_reviews(struct YelpDataBST* bst,
  *     to include all states.
  * zip_code - five digit ZIP code to filter locations by, or NULL to include
  *     all ZIP codes.
+ *
+ * Locations must be sorted by state >> city >> address.
+ *
+ * Reviews must be sorted by star rating (descending) >> text of review.
+ *
+ * Matching of names, cities, and states must be case-insensitive.  You
+ * may use functions from strings.h for that, if you wish.
  */
 
 
