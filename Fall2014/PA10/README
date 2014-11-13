@@ -111,4 +111,3 @@ The tester for this assignment will intentionally *not* run Valgrind for you.  P
 refer to the instructions for PA01 for how to run Valgrind.  You will be responsible
 for finding and fixing memory errors, as always.  We want you to learn to find
 these on your own.
-need to run git pull to receive it.
