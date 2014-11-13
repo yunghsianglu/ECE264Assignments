@@ -16,13 +16,13 @@ struct Location {
 	char* state;                /* 2 uppercase letters */
 	char* zip_code;             /* 5 digits */
 	struct Review* reviews;     /* ARRAY of Review struct objects */
-	uint32_t num_reviews;       /* size of the array */
+	uint32_t num_reviews;       /* size of the above array */
 };
 
 struct Business {
 	char* name;                 /* Business name, e.g., "McDonald's" */
 	struct Location* locations; /* ARRAY of Location struct objects */
-	uint32_t num_locations;     /* size of the array */
+	uint32_t num_locations;     /* size of the above array */
 	/* Note that we do not include the average star rating with the Business. */
 };
 
