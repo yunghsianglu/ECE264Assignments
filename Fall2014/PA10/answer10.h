@@ -52,7 +52,7 @@ struct YelpDataBST* create_business_bst(const char* businesses_path,
 
 struct Business* get_business_reviews(struct YelpDataBST* bst,
                                       char* name, char* state, char* zip_code);
-/* get_reviews(..) should return a pointer to a Business struct object
+/* get_business_reviews(...) should return a pointer to a Business struct object
  * on the heap.  That object will include links to the individual locations.
  * For example, if "McDonald's" is the business, then there would be thousands
  * of locations.  Each Location struct object in turn contains links to
@@ -76,7 +76,7 @@ struct Business* get_business_reviews(struct YelpDataBST* bst,
 
 
 void destroy_business_bst(struct YelpDataBST* bst);
-/* Deallocate all memory allocated by the object returned
+/* Deallocate all memory allocated for the object returned
  * by create_business_bst(..) and close the files. */
 
 void destroy_business_result(struct Business* b);
