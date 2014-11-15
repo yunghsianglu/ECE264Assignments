@@ -8,7 +8,7 @@ program that prints the reviews for a given business name.  Since the
 set of reviews is very large (about 740 MB), you should not load them
 all into memory.  Instead, you will use a more complex structure to
 track their location on disk and access them as needed.  You must do
-the same for the address information of each restaurant.
+the same for the address information of each business.
 
 // ~ Learning Goals ~ //
 
@@ -32,7 +32,7 @@ get zero for this assignment.
 // ~ Task ~ //
 
 The primary objective is to support a function that retrieves all of the
-reviews for a given restaurant name, grouped by location.
+reviews for a given business name, grouped by location.
 
 The functions you need to implement are specified in answer10.h.
 
