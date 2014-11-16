@@ -28,8 +28,9 @@ struct Business {
 
 struct YelpDataBST;
 /* You define this struct in your answer10.c file.  There are different ways
- * you might choose to structure it.  This YelpDataBST object is probably NOT the root
- * node of the tree, although the root node might be an attribute of this YelpDataBST object.
+ * you might choose to structure it.  The YelpDataBST object is probably NOT
+ * the root node of the tree, although the root node might be an attribute of
+ * this YelpDataBST object.
  */
 
 struct YelpDataBST* create_business_bst(const char* businesses_path,
@@ -70,15 +71,15 @@ struct Business* get_business_reviews(struct YelpDataBST* bst,
  *
  * Reviews must be sorted by star rating (descending) >> text of review.
  *
- * Matching of names, cities, and states must be case-insensitive.  You
- * may use functions from strings.h for that, if you wish.
+ * Matching and sorting of names, cities, and states must be case-insensitive.
+ * You may use functions from strings.h for that, if you wish.
  */
 
 
 void destroy_business_bst(struct YelpDataBST* bst);
-/* Deallocate all memory allocated for the object returned
- * by create_business_bst(..) and close the files. */
+/* Deallocate all memory allocated for the object returned by
+ * create_business_bst(..) and close the files. */
 
 void destroy_business_result(struct Business* b);
-/* Deallocate all heap memory tied to an object returned
- * by get_business_reviews(..). */
+/* Deallocate all heap memory tied to an object returned by
+ * get_business_reviews(..). */

@@ -8,7 +8,11 @@ program that prints the reviews for a given business name.  Since the
 set of reviews is very large (about 740 MB), you should not load them
 all into memory.  Instead, you will use a more complex structure to
 track their location on disk and access them as needed.  You must do
-the same for the address information of each business.
+the same for the address information of each business location.
+
+Definitions:  In this assignment, "business" means a unique business
+name (e.g., "Burgerhaus"), and "location" means a specific location of a
+business (e.g., "Burgerhaus" at "335 W 9th St, Indianapolis, IN 46202").
 
 // ~ Learning Goals ~ //
 
