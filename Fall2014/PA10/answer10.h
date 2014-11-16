@@ -27,9 +27,9 @@ struct Business {
 };
 
 struct YelpDataBST;
-/* You define this struct in your answerXX.c file.  There are different ways
- * you might choose to structure it.  This object is probably NOT the root
- * node of the tree, although it might be an attribute of this object.
+/* You define this struct in your answer10.c file.  There are different ways
+ * you might choose to structure it.  This YelpDataBST object is probably NOT the root
+ * node of the tree, although the root node might be an attribute of this YelpDataBST object.
  */
 
 struct YelpDataBST* create_business_bst(const char* businesses_path,
