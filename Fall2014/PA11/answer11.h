@@ -37,9 +37,9 @@ void HuffNode_destroy(HuffNode * tree);
  *
  * (1) Stack_create();              // Allocate a brand new stack.
  * (2) Stack_destroy(stack);        // Clean up memory for the stack.
- * (3) TreeStack_isEmpty(stack);    // TRUE iff (if and only if) the stack is empty.
- * (4) TreeStack_pushFront(stack, tree); // Push a tree onto the stack.
- * (6) TreeStack_popFront(stack);  // Remove a tree from the stack and return it.
+ * (3) Stack_isEmpty(stack);    // TRUE iff (if and only if) the stack is empty.
+ * (4) Stack_pushFront(stack, tree); // Push a tree onto the stack.
+ * (6) Stack_popFront(stack);  // Remove a tree from the stack and return it.
  *
  * Altogether, these six functions should be around 40 lines of code.
  */
