@@ -67,7 +67,7 @@ testcase, so that you can recreate the problem yourself.
 
 // ~ Submitting Your Assignment ~ //
 
-You must submit one zip file to blackboard. This zip file must
+You must submit one zip file to Blackboard. This zip file must
 contain:
 (1) answer11.c
 
@@ -116,7 +116,7 @@ simplify code. The Stack interface is six very simple functions that
 operate on a Stack pointer. The person who uses this code (okay
 yourself) never needs to worry about the underlying
 implementation. Simply use the six functions. When you modify the
-stack, you never need to managed the pointer to the head element, or
+stack, you never need to manage the pointer to the head element, or
 consider the case when it is NULL. Simple. (!)
 
 By encapsulating the Stack logic, your code will be simpler, and
@@ -233,6 +233,6 @@ same stack of trees as it reads bytes from the header of this file.
 
 The function "Stack_print(...)" is your friend.
 
-Also, ask questions on blackboard, and show up during office hours.  
+Also, ask questions on Blackboard, and show up during office hours.  
 
 
