@@ -9,7 +9,7 @@
  * A Huffman coding tree. We must implement two small functions... 
  *
  * (1) HuffNode_create(value);         // create a new HuffNode
- * (2) HuffNode_destory(tree);         // free all memory safely
+ * (2) HuffNode_destroy(tree);         // free all memory safely
  */
 typedef struct leaf {
     int value;
@@ -72,17 +72,17 @@ void Stack_destroy(Stack * stack);
 int Stack_isEmpty(Stack * stack);
 
 /**
- * Pop the front (top) 'value' from the stack.
+ * Pop the front (top) 'value' (i.e. Huffman tree) from the stack.
  *
  * More precisely, this function must do three things:
- * (1) Save the value of the head node of the stack's list
+ * (1) Save the value (i.e. Huffman tree) of the head node of the stack's list
  * (2) Remove the head node of the stack's list, freeing it.
- * (3) Return the value saved in (1).
+ * (3) Return the value (i.e. Huffman tree) saved in (1).
  */
 HuffNode * Stack_popFront(Stack * stack);
 
 /**
- * Push a 'value' onto the front (top) of the stack.
+ * Push a 'value' (i.e. Huffman tree) onto the front (top) of the stack.
  *
  * More precisely, this function must do two things:
  * (1) Create a new StackNode with 'tree' for its tree.
