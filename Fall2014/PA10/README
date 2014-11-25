@@ -11,8 +11,8 @@ track their location on disk and access them as needed.  You must do
 the same for the address information of each business location.
 
 Definitions:  In this assignment, "business" means a unique business
-name (e.g., "Burgerhaus"), and "location" means a specific location of a
-business (e.g., "Burgerhaus" at "335 W 9th St, Indianapolis, IN 46202").
+name (e.g., "Meatballz"), and "location" means a specific location of a
+business (e.g., "Meatballz" at "1935 E Camelback Rd., Phoenix, AZ 85016").
 
 // ~ Learning Goals ~ //
 
@@ -20,6 +20,9 @@ business (e.g., "Burgerhaus" at "335 W 9th St, Indianapolis, IN 46202").
 (2) File I/O
 (3) Memory management
 (3) Dynamic structures
+
+This assignment counts for the File and Dynamic Structures learning
+objectives.
 
 You must submit one zip file to blackboard. This zip file must
 contain these two files:
@@ -40,9 +43,9 @@ reviews for a given business name, grouped by location.
 
 The functions you need to implement are specified in answer10.h.
 
-Locations should be sorted by state >> city >> address.
-
-Reviews should be sorted by star rating (descending) >> text of review.
+Locations should be sorted by state >> city >> address.  Reviews should be
+sorted by star rating (descending) >> text of review.  Sorting and matching
+must be case-insensitive.
 
 You must use a binary search tree for searching the list of businesses.
 For this assignment, you may need a somewhat more complex structure.
@@ -106,12 +109,47 @@ the full details.
 
 // ~ Tester ~ //
 
-A tester will be made available approximately 72 hours before the assignment deadline
-to help you with final testing.  You should write your own tests to aid in your
-development and use the tester only for final confirmation of your score.  When
-you receive an email, you will need to run git pull.
+You should get used to creating test cases of your own, and using tools like Valgrind
+directly to verify that there are no errors.  However, to give you some confirmation
+of whether your submission meets the requirements, a test interface (search.c)
+has been supplied along with test output data obtained from the solution.
 
-The tester for this assignment will intentionally *not* run Valgrind for you.  Please
-refer to the instructions for PA01 for how to run Valgrind.  You will be responsible
-for finding and fixing memory errors, as always.  We want you to learn to find
-these on your own.
+This is somewhat different from some of the other assignments.  Instead of
+running a tester and getting an answer, you will compile your code with
+search.c, run it on several test queries, and compare the results with the test
+data that has been provided.
+
+Here's how to get started:
+
+1.  Look at the test interface (search.c) to make sure you understand how it
+    works.  *** Read the usage examples at the bottom of search.c. ***
+    
+	vim search.c
+
+1.  Compile your code with search.c.
+    
+	gcc -o search search.c answer10.c -Wall -Wshadow
+
+2.  Try a test query to make sure it works.
+
+	./search Meatballz
+
+3.  Look at the test output data.  Notice that the query (name, state, and zip_code)
+    are listed at the top of each file.
+
+	cd test
+	vim 00.Boston_Cleaners.NV.89135
+
+4.  To compare the output of your code with the test data, look at the top of the
+    test data file, get the parameters (name, state, and zip_code), and use the
+	diff command to compare the output.  The diff command tells you which lines are
+	different between two files.  You can also compare a file with some data on
+	stdout, which turns out to be convenient for this assignment.  The following
+	command compares the output for the first test case.
+
+	./search "Boston Cleaners" NV 89135 | diff test/00.Boston_Cleaners.NV.89135
+
+5.  If you see no output, that means there were no differences.  You also need to
+	test your code using Valgrind.  It is your responsibility to find memory errors.
+
+	valgrind --tool=memcheck ./search "Boston Cleaners" NV 89135

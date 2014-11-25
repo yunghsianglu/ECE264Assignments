@@ -73,6 +73,11 @@ struct Business* get_business_reviews(struct YelpDataBST* bst,
  *
  * Matching and sorting of names, cities, and states must be case-insensitive.
  * You may use functions from strings.h for that, if you wish.
+ *
+ * Note: This function should not result in a scan of the entire reviews.tsv.
+ * It should use the offsets stored in your structure to go right to the
+ * address data and reviews for the given business name, without looking at any
+ * data in the file about other businesses.
  */
 
 
