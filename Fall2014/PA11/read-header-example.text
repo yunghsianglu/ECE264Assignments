@@ -24,7 +24,7 @@ Note the special step at the end...
   ^
 -- BEGIN Stack --
 
-Node #0
+Node #0           [Note: In this file, the convention we follow is that Node #0 always indicates the TOP of the stack]
 
  m
 
@@ -1004,10 +1004,10 @@ Node #0
 # Header #-------------------------------------------- Step 34
 1m1r01t1y001e1 001T1b01i1l001s1\n1!001M1a01c1h00000027
                                                     ^
-Okay, the stack only has one element on it; however, we just read a
-'0', which is a pop-pop-combine-push operation. This indicates that we
-have come to the end of the Huffman Coding tree, and we return the
-tree at the top of the stack.
+Okay, we just read a '0', which is a pop-pop-combine-push operation,
+but the stack has only one element on it. This indicates that we
+have finished constructing the Huffman Coding tree, currently the 
+only element on the stack, which we then return.
 
 The remaining "27" indicates that there are 27 bytes of data following
 the header. You do not need to do anything with this information.
