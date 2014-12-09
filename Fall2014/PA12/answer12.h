@@ -9,8 +9,6 @@ typedef __uint128_t uint128;
 #define FALSE 0
 #define TRUE 1
 
-#define MAX(X,Y) ((X) > (Y) ? (X) : (Y))
-
 /**
  * Convert the initial portion of C-string 'str' to an unsigned 128-bit integer
  *
