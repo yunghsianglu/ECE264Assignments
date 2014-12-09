@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
     // Sort assignment scores so that we can drop the bottom two.
     float pa_all[12] = {pa01, pa02, pa03, pa04, pa05, pa06,
                         pa07, pa08, pa09, pa10, pa11, pa12};
-    qsort(pa_all, 4, sizeof(float), cmp_float);
+    qsort(pa_all, 12, sizeof(float), cmp_float);
 
 	// Calculate assignments total
     float asg_total = 0.0;
