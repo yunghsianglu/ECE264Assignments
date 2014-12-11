@@ -12,7 +12,7 @@ typedef __uint128_t uint128;
 /**
  * Convert the initial portion of C-string 'str' to an unsigned 128-bit integer
  *
- * This function should be just like atoi(...), except that it returns an 128
+ * This function should be just like atoi(...), except that it returns a 128
  * bit unsigned integer. Return 0 on any error. Don't forget you must skip 
  * any initial white-space.
  *
