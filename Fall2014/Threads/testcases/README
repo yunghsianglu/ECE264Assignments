@@ -1,0 +1,45 @@
+Please put test.bash, folder testFiles and executable files server and client in the same directory. Run ./test.bash to get the grade.
+server.c and client.c are the simple solution to this assignment.
+Please note that the grading process will not terminate server.
+
+Following are testcases.
+
+testcase 0:
+1 server 1 client. 
+
+Client feed number: 23 123 32 1 345
+expected sum: 524
+
+=====================================
+testcase 1:
+1 server 1 client. 
+
+Client feed number: -32 -52 12 355 20
+expected sum: 303
+
+=====================================
+testcase 2:
+1 server 1 client. 
+
+Client feed number: -32 -52 12 355 20 23 444 123 453 3432
+expected sum: 4778
+
+=====================================
+testcase 3:
+1 server 2 client. 
+Client 1 feed number: 98 700 823 4905 23
+expected sum: 6549
+
+Client 2 feed number: 32 43 146 75 323
+expected sum: 619
+
+test case 4:
+1 server 3 client.
+Client 1 feed number: 98 700 823 4905 23
+expected sum: 6549
+
+Client 2 feed number: 32 43 146 75 323
+expected sum: 619
+
+Client 3 feed number: -32 -52 12 355 20 23 444 123 453 3432
+expected sum: 4778

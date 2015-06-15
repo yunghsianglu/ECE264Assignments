@@ -1,0 +1,62 @@
+====Overview====
+This assignment asks you to implement a arithmetic server and client. The server should be able to get a series of numbers from a connected client and return the summation of the numbers to the client. In addition, the server should be able to handle the case where multiple clients are connecting to it simultaneously. The client should be able to connect to the server, send a series of numbers to it, get the summation of it and disconnected.
+
+====Learning Goals====
+(1)socket application
+(2)thread
+
+====assignment====
+(1)Server
+You need to create and implement a server.c file as your answer to server part. The functions you need to implement are given in the skeleton file server.c.
+(2)Client
+You need to create and implement a client.c file as your answer to client part. The functions you need to implement are given in the skeleton file client.c.
+
+====Given Files====
+(1)server.c
+(2)client.c
+(3)README
+(4)server_test
+
+====Compile====
+For server:
+    gcc server.c -pthread -o server
+and the executable file is server.
+
+For client:
+    gcc client.c -o client
+and the executable file is client.
+
+====Input and Output====
+The argument for running a server is: 
+    ./server 8000
+where 8000 is the only parameter you need to feed as a port name.
+
+Then the server is going to simply wait for clients to be connected and print out the summation if it receives a series of numbers. Note that the server should never be killed unless you hit ctrl+c command. You are required to print out the summation in the following format: "Sent summation is #!" where # is the summation.
+
+The usage of server_test is simply 
+    ./server_test 8000
+
+The argument for running a client is:
+    ./client 8000 127.0.0.1
+where 8000 is the port name and 127.0.0.1 is a localhost ip address. Do not change this ip address when testing. Note that the port numbers must be same for a server and a client to be connected, but can be any other higher number. 
+
+Then the client will prompt you to enter a series of numbers. After you hit enter, you client should receive the summation from server very shortly and then print out the summation. You are required to print out the summation in the following format: "Received summation is #!" where # is the summation.
+
+Note that you need to run server and each client in different terminals meaning you need to open multiple terminals in order to test your programs.
+
+samle input and output:
+./server 8000
+Sent summation is: 31!
+
+./client 8000 127.0.0.1
+Enter a series of numbers: 2 3 4 5 6 7 4
+Received summation is 31
+
+====Important Hint====
+Please start with client.c first. This client program is much easier and help you recollect the usage of socket and then build the connection successfully. Use server_test executable file to test the correctness of your client file.
+
+Finish the server.c without threads first. Once you get it worked, add thread to it.
+
+Please make sure your server will not terminate when all the clients disconnect.
+
+Please use fflush(stdout) after every printf() statement to make sure all the messages will be printed out immediately.

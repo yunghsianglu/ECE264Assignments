@@ -1,0 +1,2 @@
+Enter a series of numbers: Received summation is 6549
+Enter a series of numbers: Received summation is 4778
