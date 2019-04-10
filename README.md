@@ -1,3 +1,5 @@
+# This repository has retired. Do not use it.
+
 # ECE264Assignments
 ECE 264 Advanced C Programming
 
